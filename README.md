@@ -194,7 +194,7 @@ Do [initialization](#initialization) and then press `nvim` to get started.
 
 ## Initialization
 
-- Use your current editor to edit config in file `init.lua`. You can refer to [my config](./init.lua).
+- Use your current editor to edit config in file `init.lua`. You can refer to [my init.lua][init.lua].
   - `config.pluginManager.use` choose your favorite plugin manager. See [Plugin Manager](#plugin-manager) for details.
   - It maybe be slow to download plugins. Modify `config.proxy.github` option to use proxy. See [Proxy](#proxy) for details.
 - Open `nvim`. It will auto download dependent packages, like impatient.nvim, vim-plug or packer. And then auto download plugins.
@@ -250,7 +250,7 @@ require('one').setup {
 }
 ```
 
-You can refer to [my init.lua](./init.lua) to write your config.
+You can refer to [my init.lua][init.lua] to write your config.
 
 You can override the default options of plugins. See [Plugin - Using Plugin](./doc/plugin.md#using-plugin).
 
@@ -470,3 +470,4 @@ See the [NOTICE][] file distributed with this work for additional information re
 [null-ls]: https://github.com/jose-elias-alvarez/null-ls.nvim
 [nvim-lspconfig]: https://github.com/neovim/nvim-lspconfig
 [NVIM v0.8]: https://github.com/neovim/neovim/releases/tag/v0.8.0
+[init.lua]: https://github.com/adoyle-h/neovim-config/blob/master/init.lua

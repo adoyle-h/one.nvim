@@ -193,7 +193,7 @@ git clone --depth 1 https://github.com/adoyle-h/one.nvim.git "$NVIM_HOME"
 
 ## 初始化
 
-- 用你现有的编辑器修改 `init.lua` 文件的配置。你可以参考[我的配置](./init.lua)。
+- 用你现有的编辑器修改 `init.lua` 文件的配置。你可以参考[我的 init.lua][init.lua]。
   - `config.pluginManager.use` 选择你喜欢的插件管理器。详见[插件管理器](#插件管理器)章节。
   - 下载插件可能会比较慢。通过配置项 `config.proxy.github` 设置代理加速。详见[代理](#代理)。
 - 打开 `nvim`。它会自动下载所需依赖包，比如 impatient.nvim, vim-plug 或 packer。然后自动下载插件。
@@ -249,9 +249,9 @@ require('one').setup {
 }
 ```
 
-你可参考[我的 ./init.lua](./init.lua) 来编写你的配置。
+你可参考[我的 init.lua][init.lua] 来编写你的配置。
 
-你可以覆盖插件的默认选项。详见 [插件 - ](./doc/plugin.zh)。
+你可以覆盖插件的默认选项。详见 [插件 - 使用插件](./doc/plugin.zh.md#使用插件)。
 
 ### 默认配置
 
@@ -471,3 +471,4 @@ See the [LICENSE][] file for the specific language governing permissions and lim
 [null-ls]: https://github.com/jose-elias-alvarez/null-ls.nvim
 [nvim-lspconfig]: https://github.com/neovim/nvim-lspconfig
 [NVIM v0.8]: https://github.com/neovim/neovim/releases/tag/v0.8.0
+[init.lua]: https://github.com/adoyle-h/neovim-config/blob/master/init.lua
