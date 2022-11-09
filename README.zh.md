@@ -146,49 +146,30 @@ require('one').setup {
 
 ## 安装
 
-你有三种方式安装本项目。
-
-1. 以插件的形式加载。
-2. 使用容器，开箱即用。
-3. 直接 Git clone 本项目。
-
-### 插件形式加载
+### git clone
 
 ```sh
-# 设置你的 nvim 目录
+PACK_DIR=${XDG_DATA_HOME:-$HOME/.local/share}/nvim/site/pack/user/start
+mkdir -p "$PACK_DIR"
+git clone --depth 1 --single-branch https://github.com/adoyle-h/one.nvim.git "$PACK_DIR"/one.nvim
+
+# Set your nvim config directory
 NVIM_HOME=${XDG_CONFIG_HOME:-$HOME/.config}/nvim
-NVIM_DATA=${XDG_CONFIG_HOME:-$HOME/.local/share}/nvim
-mkdir -p "$NVIM_DATA"/plugins
-git clone --depth 1 --single-branch https://github.com/adoyle-h/one.nvim.git "$NVIM_DATA"/plugins/one
-
-# 创建 init.lua 文件
-cat <<EOF > "$NVIM_HOME"/init.lua
-vim.opt.rtp:prepend { vim.fn.stdpath('data') .. '/plugins/one' }
-
-require('one').setup {}
-EOF
+mkdir -p "$NVIM_HOME"
+echo "require('one').setup {}" > "$NVIM_HOME"/init.lua
 ```
 
 [初始化](#初始化)后，执行 `nvim` 启动。
 
-### 开箱即用
+### 容器
 
 ```sh
 # 在主机上缓存 nvim 数据
 docker volume create nvim-data
 # 建议把这行 alias 加到 ~/.bashrc
-alias nvim='docker run --rm -it --platform linux/amd64 -v "nvim-data:/root/.local/share/nvim" -v "$PWD:/workspace" adoyle/neovim:v0.8.0'
+alias nvim='docker run --rm -it --platform linux/amd64 -v "$HOME/.config/nvim:/root/.config/nvim" -v "nvim-data:/root/.local/share/nvim" -v "$PWD:/workspace" adoyle/one.nvim:v0.8.0'
 ```
 
-[初始化](#初始化)后，执行 `nvim` 启动。
-
-### 直接 git clone
-
-```sh
-# 设置你的 nvim 配置目录
-NVIM_HOME=${XDG_CONFIG_HOME:-$HOME/.config}/nvim
-git clone --depth 1 https://github.com/adoyle-h/one.nvim.git "$NVIM_HOME"
-```
 [初始化](#初始化)后，执行 `nvim` 启动。
 
 ## 初始化

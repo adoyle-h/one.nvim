@@ -145,49 +145,30 @@ require('one').setup {
 
 ## Installation
 
-You have three ways to install the project.
-
-1. Use the project as an plugin.
-2. Out of the box via container.
-3. Git clone the project directly.
-
-### Use as plugin
+### git clone
 
 ```sh
+PACK_DIR=${XDG_DATA_HOME:-$HOME/.local/share}/nvim/site/pack/user/start
+mkdir -p "$PACK_DIR"
+git clone --depth 1 --single-branch https://github.com/adoyle-h/one.nvim.git "$PACK_DIR"/one.nvim
+
 # Set your nvim config directory
 NVIM_HOME=${XDG_CONFIG_HOME:-$HOME/.config}/nvim
-NVIM_DATA=${XDG_CONFIG_HOME:-$HOME/.local/share}/nvim
-mkdir -p "$NVIM_DATA"/plugins
-git clone --depth 1 --single-branch https://github.com/adoyle-h/one.nvim.git "$NVIM_DATA"/plugins/one
-
-# Create init.lua file
-cat <<EOF > "$NVIM_HOME"/init.lua
-vim.opt.rtp:prepend { vim.fn.stdpath('data') .. '/plugins/one' }
-
-require('one').setup {}
-EOF
+mkdir -p "$NVIM_HOME"
+echo "require('one').setup {}" > "$NVIM_HOME"/init.lua
 ```
 
 Do [initialization](#initialization) and then press `nvim` to get started.
 
-### Out of the box
+### Container
+
+You can use it in container.
 
 ```sh
 # Cache the nvim data in host
 docker volume create nvim-data
 # It's recommended to add this line to ~/.bashrc
-alias nvim='docker run --rm -it --platform linux/amd64 -v "nvim-data:/root/.local/share/nvim" -v "$PWD:/workspace" adoyle/neovim:v0.8.0'
-```
-
-Do [initialization](#initialization) and then press `nvim` to get started.
-
-### Git clone directly
-
-```sh
-# Set your nvim config directory
-NVIM_HOME=${XDG_CONFIG_HOME:-$HOME/.config}/nvim
-git clone --depth 1 --single-branch https://github.com/adoyle-h/one.nvim.git "$NVIM_HOME"
-# If you want to change configs, checkout to new branch
+alias nvim='docker run --rm -it --platform linux/amd64 -v "$HOME/.config/nvim:/root/.config/nvim" -v "nvim-data:/root/.local/share/nvim" -v "$PWD:/workspace" adoyle/one.nvim:v0.8.0'
 ```
 
 Do [initialization](#initialization) and then press `nvim` to get started.
