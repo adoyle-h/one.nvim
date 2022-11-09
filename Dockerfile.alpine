@@ -3,7 +3,6 @@ FROM $BASE_IMAGE AS base
 
 WORKDIR /workspace
 ARG APK_PROXY
-ARG GH_PROXY
 
 RUN if [ -n "$APK_PROXY" ]; then \
   cp /etc/apk/repositories /etc/apk/repositories.bak && \
@@ -15,9 +14,10 @@ RUN apk update && apk add --no-cache \
 
 ENV NVIM_TAR=/workspace/nvim-linux64.tar.gz
 ARG VERSION=master
+ARG GH_PROXY
 
-RUN curl -Lo $NVIM_TAR "${GH_PROXY}https://github.com/neovim/neovim/releases/download/$VERSION/nvim-linux64.tar.gz" && \
-  curl -Lo "${NVIM_TAR}.sha256sum" "${GH_PROXY}https://github.com/neovim/neovim/releases/download/$VERSION/nvim-linux64.tar.gz.sha256sum"
+RUN curl -Lo $NVIM_TAR "${GH_PROXY}/https://github.com/neovim/neovim/releases/download/$VERSION/nvim-linux64.tar.gz" && \
+  curl -Lo "${NVIM_TAR}.sha256sum" "${GH_PROXY}/https://github.com/neovim/neovim/releases/download/$VERSION/nvim-linux64.tar.gz.sha256sum"
 
 RUN sha256sum "${NVIM_TAR}" && tar xzvf "${NVIM_TAR}"
 
@@ -29,7 +29,6 @@ LABEL maintainer="ADoyle <adoyle.h@gmail.com>"
 
 WORKDIR /workspace
 ARG APK_PROXY
-ARG GH_PROXY
 
 COPY --from=base /workspace/nvim-linux64 /opt/nvim
 
@@ -41,19 +40,22 @@ RUN if [ -n "$APK_PROXY" ]; then \
   sed -i "s|dl-cdn.alpinelinux.org|$APK_PROXY|g" /etc/apk/repositories ; \
   fi
 
+ARG GH_PROXY
 # GLIBC not work
 ARG GLIBC_VER=2.35-r0
 RUN apk update && \
   apk add --no-cache curl && \
   curl -Lo /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub && \
-  curl -LO "${GH_PROXY}https://github.com/sgerrand/alpine-pkg-glibc/releases/download/$GLIBC_VER/glibc-$GLIBC_VER.apk" && \
+  curl -LO "${GH_PROXY}/https://github.com/sgerrand/alpine-pkg-glibc/releases/download/$GLIBC_VER/glibc-$GLIBC_VER.apk" && \
   apk add glibc-$GLIBC_VER.apk && rm glibc-$GLIBC_VER.apk /etc/apk/keys/sgerrand.rsa.pub && \
   apk add --no-cache git gcompat libgcc ripgrep python3 py3-pip && \
   pip3 install pynvim
 
-COPY . /root/.config/nvim
+COPY . /usr/local/share/nvim/site/pack/user/start/one.nvim
 
 RUN if [ -n "$GH_PROXY" ]; then git config --global http.https://github.com.proxy $GH_PROXY; fi
+
+RUN echo "require('one').setup {}" > /root/.config/nvim/init.lua
 
 ENTRYPOINT [ "sh", "-c" ]
 CMD [ "nvim" "/workspace" ]

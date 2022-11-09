@@ -8,6 +8,7 @@ set -o errtrace
 
 SCRIPT_DIR="$(cd -P -- "$(dirname -- "$0")" && pwd -P)"
 readonly SCRIPT_DIR
+# shellcheck source=./lobash.bash
 source "$SCRIPT_DIR/lobash.bash"
 
 declare -A opts=()
@@ -51,7 +52,7 @@ main() {
     docker_args+=(
       -t "adoyle/one.nvim:$VERSION"
       -t "adoyle/one.nvim:$VERSION-china"
-      --build-arg "GH_PROXY=https://ghproxy.com/"
+      --build-arg "GH_PROXY=https://ghproxy.com"
     )
 
     if [[ $DIST == 'ubuntu' ]]; then

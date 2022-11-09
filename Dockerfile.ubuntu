@@ -5,7 +5,6 @@ SHELL [ "/bin/bash", "-c" ]
 
 WORKDIR /workspace
 ARG APT_PROXY
-ARG GH_PROXY
 
 RUN if [[ -n "$APT_PROXY" ]]; then \
   sed -i "s|http://.*.ubuntu.com|$APT_PROXY|g" /etc/apt/sources.list ; \
@@ -16,9 +15,10 @@ RUN apt-get update && apt-get install -y \
 
 ENV NVIM_TAR=/workspace/nvim-linux64.tar.gz
 ARG VERSION=master
+ARG GH_PROXY
 
-RUN curl -o $NVIM_TAR "${GH_PROXY}https://github.com/neovim/neovim/releases/download/$VERSION/nvim-linux64.tar.gz" && \
-  curl -o "${NVIM_TAR}.sha256sum" "${GH_PROXY}https://github.com/neovim/neovim/releases/download/$VERSION/nvim-linux64.tar.gz.sha256sum"
+RUN curl -o $NVIM_TAR "${GH_PROXY}/https://github.com/neovim/neovim/releases/download/$VERSION/nvim-linux64.tar.gz" && \
+  curl -o "${NVIM_TAR}.sha256sum" "${GH_PROXY}/https://github.com/neovim/neovim/releases/download/$VERSION/nvim-linux64.tar.gz.sha256sum"
 
 RUN sha256sum "${NVIM_TAR}" && tar xzvf "${NVIM_TAR}"
 
@@ -32,7 +32,6 @@ LABEL maintainer="ADoyle <adoyle.h@gmail.com>"
 
 WORKDIR /workspace
 ARG APT_PROXY
-ARG GH_PROXY
 
 COPY --from=base /workspace/nvim-linux64 /opt/nvim
 
@@ -44,15 +43,19 @@ RUN if [[ -n "$APT_PROXY" ]]; then \
   fi
 
 RUN apt update && apt install -y --no-install-recommends \
-  glibc-source gcc git curl ripgrep python3 python3-pip && \
+  build-essential git curl ripgrep python3 python3-pip && \
   rm -rf /var/lib/apt/lists/* && \
   pip3 install --upgrade pynvim
 
-COPY . /root/.config/nvim
+COPY . /usr/local/share/nvim/site/pack/user/start/one.nvim
+
+ARG GH_PROXY
 
 RUN if [[ -n "$GH_PROXY" ]]; then \
   git config --global http.https://github.com.proxy $GH_PROXY; \
   fi
+
+RUN echo "require('one').setup {}" > /root/.config/nvim/init.lua
 
 ENTRYPOINT [ "bash", "-c" ]
 CMD [ "nvim", "/workspace" ]
