@@ -114,21 +114,6 @@ Click [./README.md](./README.md) to read English documents.
 
 ![completion-function-args.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/completion-function-args.png)
 
-### Float Cmdline
-
-该功能默认未开启，因为还不稳定。
-你可以开启试用。
-
-```lua
-require('one').setup {
-  plugins = {
-    { 'noice', disable = false },
-  },
-}
-```
-
-![cmdline.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/cmdline.png)
-
 </details>
 
 ## 依赖
@@ -145,6 +130,8 @@ require('one').setup {
 - 支持 Linux 和 MacOS，不支持 Windows
 
 ## 安装
+
+你可使用 git clone 安装本项目。或在容器中运行 nvim。
 
 ### git clone
 
@@ -304,7 +291,9 @@ vim-plug 管理的插件目录和 packer 管理的是不一样的。当你改变
 - Packer [默认配置](./lua/one/config/packer.lua)
 - Vim-Plug [默认配置](./lua/one/config/vim-plug.lua)
 
-### [插件](./doc/plugin.zh.md)
+### 插件
+
+插件的定义和使用，详见[./doc/plugin.md](./doc/plugin.md)。
 
 ### [颜色和高亮](./doc/colors.md)
 
@@ -382,6 +371,43 @@ Formatter 配置在 `lsp.format` 与 `nullLS.sources`。
 按下 `<C-w><C-w>` 打开选择器浏览所有 Tab 和窗口。
 按下 `<CR>` 跳转到对应的窗口或者 Tab。
 
+### 浮动命令栏
+
+该功能默认未开启，因为还不稳定。
+你可以依照下面的代码启用。
+
+```lua
+require('one').setup {
+  plugins = {
+    { 'noice', disable = false },
+  },
+}
+```
+
+它会隐藏命令栏。当 `:`, `/`, `?` 按下会弹出窗口。
+
+![cmdline.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/cmdline.png)
+
+### 默认禁用的插件
+
+下面这些插件是可用的，但默认禁用。为了减少安装和加载插件的时间。你可以按需开启它们。
+
+```lua
+require('one').setup {
+  plugins = {
+    { 'zk', disable = false },
+    { 'node', disable = false },
+    { 'curl', disable = false },
+    { 'latex', disable = false },
+    { 'calendar', disable = false },
+    { 'todo', disable = false },
+    { 'zen', disable = false },
+    { 'funny', disable = false },
+    { 'noice', disable = false },
+  }
+}
+```
+
 ## API
 
 直接看[代码](./lua/one/init.lua)。
@@ -426,7 +452,7 @@ require('one').setup {
 
 启动 [profiling](./lua/plugins/profiling.lua) 插件，nvim 启动后调用 `:StartupTime`。将会输出启动阶段的用时。
 
-## 建议，Bug，做贡献
+## 提建议，修 Bug，做贡献
 
 欢迎提供任何建议或者意见。请开 [issue][] 与我联系。
 

@@ -113,21 +113,6 @@ Function signature completion
 
 ![completion-function-args.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/completion-function-args.png)
 
-### Float Cmdline
-
-This feature is disabled by default. Because it seems not stable.
-You can enable it by below codes.
-
-```lua
-require('one').setup {
-  plugins = {
-    { 'noice', disable = false },
-  },
-}
-```
-
-![cmdline.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/cmdline.png)
-
 </details>
 
 ## Dependencies
@@ -144,6 +129,8 @@ require('one').setup {
 - Linux and MacOS are supported. Windows not.
 
 ## Installation
+
+You can use git clone to install. Or run nvim in container.
 
 ### git clone
 
@@ -309,7 +296,9 @@ The plugins directory maneged by vim-plug is different from packer. When you mod
 - Packer [default config](./lua/one/config/packer.lua)
 - Vim-Plug [default config](./lua/one/config/vim-plug.lua)
 
-### [Plugin](./doc/plugin.md)
+### Plugin
+
+Read [./doc/plugin.md](./doc/plugin.md) for plugin definitions and references.
 
 ### [Colors and Highlights](./doc/colors.md)
 
@@ -327,6 +316,10 @@ require('one').setup {
 ```
 
 Proxy will not work for some plugins using "git submodule". It's recommended to execute `git config --global http.https://github.com.proxy https://ghproxy.com` to set global git proxy.
+
+## Notice
+
+`$VIMRUNTIME/filetype.vim` won't be loaded. Filetype detected in [./lua/plugins/filetype.lua](./lua/plugins/filetype.lua)。
 
 ## Usage
 
@@ -373,6 +366,44 @@ Use `<space>;` to view all telescope extensions.
 
 Press `<C-w><C-w>` to open a picker to view all tabpages and windows.
 Press `<CR>` to goto selected window or tabpage.
+
+### Float Cmdline
+
+This feature is disabled by default. Because it seems not stable.
+You can enable it by below codes.
+
+```lua
+require('one').setup {
+  plugins = {
+    { 'noice', disable = false },
+  },
+}
+```
+
+It will hide cmdline. And popup window when `:`, `/`, `?` pressed.
+
+![cmdline.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/cmdline.png)
+
+### Disabled Plugins By Default
+
+Below plugins are available but disabled by default for reduce installing and loading time.
+You can enable them as required.
+
+```lua
+require('one').setup {
+  plugins = {
+    { 'zk', disable = false },
+    { 'node', disable = false },
+    { 'curl', disable = false },
+    { 'latex', disable = false },
+    { 'calendar', disable = false },
+    { 'todo', disable = false },
+    { 'zen', disable = false },
+    { 'funny', disable = false },
+    { 'noice', disable = false },
+  }
+}
+```
 
 ## API
 
