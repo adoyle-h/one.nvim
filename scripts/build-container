@@ -1,0 +1,84 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o nounset
+set -o pipefail
+set -o errtrace
+(shopt -p inherit_errexit &>/dev/null) && shopt -s inherit_errexit
+
+SCRIPT_DIR="$(cd -P -- "$(dirname -- "$0")" && pwd -P)"
+readonly SCRIPT_DIR
+source "$SCRIPT_DIR/lobash.bash"
+
+declare -A opts=()
+declare -a args=()
+
+usage() {
+  cat <<EOF
+Usage: $0 [Options]
+
+Description: build image
+
+Options:
+  -p  Use proxy for China users
+  -d <distro>  Choose base image [Value: ubuntu|alpine] [Default: ubuntu]
+EOF
+}
+
+main() {
+  l.parse_params opts args "$@"
+
+  if [[ -n ${opts[h]:-${opts[help]:-}} ]]; then
+    usage
+    exit 0
+  fi
+
+  local VERSION="${opts[v]:-v0.8.0}"
+  local PLATFORM=${opts[platform]:-linux/amd64} # neovim has not arm64 release https://github.com/neovim/neovim/issues/15143
+  local DIST=${opts[d]:-ubuntu}
+
+  declare -a docker_args=(
+    --build-arg "VERSION=$VERSION"
+  )
+
+  if [[ -n $PLATFORM ]]; then
+    docker_args+=(
+      --platform "$PLATFORM"
+    )
+  fi
+
+  if [[ -n ${opts[p]:-} ]]; then
+    docker_args+=(
+      -t "adoyle/one.nvim:$VERSION"
+      -t "adoyle/one.nvim:$VERSION-china"
+      --build-arg "GH_PROXY=https://ghproxy.com/"
+    )
+
+    if [[ $DIST == 'ubuntu' ]]; then
+      docker_args+=( --build-arg "APT_PROXY=http://mirrors.tuna.tsinghua.edu.cn" )
+    else
+      docker_args+=( --build-arg "APK_PROXY=mirrors.ustc.edu.cn" )
+    fi
+  else
+    docker_args+=(
+      -t "adoyle/one.nvim:$VERSION"
+    )
+  fi
+
+  if [[ $DIST == 'ubuntu' ]]; then
+    docker_args+=(
+      -f "$SCRIPT_DIR/../Dockerfile.ubuntu"
+      --build-arg "BASE_IMAGE=${opts[IMAGE]:-ubuntu:22.04}"
+    )
+  else
+    docker_args+=(
+      -f "$SCRIPT_DIR/../Dockerfile.alpine"
+      --build-arg "BASE_IMAGE=${opts[IMAGE]:-alpine:3.16}"
+    )
+  fi
+
+  echo "[TODO] docker build ${docker_args[*]} $SCRIPT_DIR/../"
+  docker build "${docker_args[@]}" "$SCRIPT_DIR/../"
+}
+
+main "$@"

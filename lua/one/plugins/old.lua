@@ -1,0 +1,19 @@
+-- Plug 'mattn/emmet-vim', {['for'] = ['html', 'xml', 'xhtml']}
+-- Plug 'elzr/vim-json', {['for'] = ['javascript', 'json']}
+-- Plug 'pangloss/vim-javascript' -- 不要使用 for 选项，否则会导致语法高亮不会在初次加载时生效
+-- Plug 'mxw/vim-jsx', {['for'] = ['javascript', 'javascript.jsx']}
+-- Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+-- Plug 'ekalinin/Dockerfile.vim'
+-- Plug 'tokozedg/vim-sman'
+-- Plug 'aklt/plantuml-syntax'
+-- Plug 'nikvdp/ejs-syntax'
+-- Plug 'chr4/nginx.vim'
+-- Plug 'cespare/vim-toml'
+-- Plug 'sirosen/vim-rockstar'
+-- Plug 'jvirtanen/vim-hcl'
+-- Plug 'hashivim/vim-terraform'
+-- Plug 'google/vim-jsonnet'
+-- Typescript
+-- Plug 'leafgarland/typescript-vim'
+-- Plug 'Quramy/tsuquyomi'
+-- Plug 'HerringtonDarkholme/yats.vim'

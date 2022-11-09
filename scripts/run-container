@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o nounset
+set -o pipefail
+set -o errtrace
+(shopt -p inherit_errexit &>/dev/null) && shopt -s inherit_errexit
+
+# nvim --headless -c PlugInstall -c qa
+# nvim --headless -c 'TSInstall all' -c 'MasonToolsInstall' -c qa
+
+main() {
+  docker volume create nvim-data >/dev/null
+
+  local docker_args=(
+    --rm -it
+    -v "$PWD:/workspace/"
+    -v "nvim-data:/root/.local/share/nvim"
+  )
+
+  # neovim has not arm64 release https://github.com/neovim/neovim/issues/1514
+  if [[ -n ${PLATFORM:=linux/amd64} ]]; then
+    docker_args+=(
+      --platform "$PLATFORM"
+    )
+  fi
+
+  if (( $# > 0 )); then
+    docker run "${docker_args[@]}" "adoyle/one.nvim:${NVIM_VERSION:-v0.8.0}" "$@"
+  else
+    docker run "${docker_args[@]}" "adoyle/one.nvim:${NVIM_VERSION:-v0.8.0}"
+  fi
+}
+
+main "$@"
