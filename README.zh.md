@@ -371,9 +371,16 @@ Formatter 配置在 `lsp.format` 与 `nullLS.sources`。
 
 ### Telescope 插件
 
-本项目定义了很多有用的 Telescope 插件，详见 [./lua/one/plugins/telescope/extensions.lua](./lua/one/plugins/telescope/extensions.lua)。
+本项目实现了很多有用的 Telescope 插件，详见 [ad-telescope-extensions.nvim](https://github.com/adoyle-h/ad-telescope-extensions.nvim) 和 [./lua/one/plugins/telescope/extensions.lua](./lua/one/plugins/telescope/extensions.lua)。
 
 可使用 `<space>;` 快捷键查询所有 Telescope 插件。
+
+### 窗口选择器
+
+![window-picker.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/window-picker.png)
+
+按下 `<C-w><C-w>` 打开选择器浏览所有 Tab 和窗口。
+按下 `<CR>` 跳转到对应的窗口或者 Tab。
 
 ## API
 

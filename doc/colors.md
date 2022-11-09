@@ -55,7 +55,7 @@ require('one').setup {
 
 ## The syntax highlights
 
-The syntax are parsed by nvim-treesitter. nvim-treesitter will set highlights for each syntax. See the [treesitter highlights](../lua/one/plugins/treesitter/highlights.lua) and [colors/highlights](lua/one/plugins/colors/highlights.lua).
+The syntax is parsed by [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter). The nvim-treesitter will set highlights for each syntax. See the [treesitter highlights](../lua/one/plugins/treesitter/highlights.lua) and [colors/highlights](lua/one/plugins/colors/highlights.lua).
 
 Use `:TSHighlightCapturesUnderCursor` to view the highlight group of word under cursor.
 

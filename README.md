@@ -363,9 +363,16 @@ Default to use the formatters defined in `nullLS.sources`, and then formatters d
 
 ### Telescope Extensions
 
-There are many useful telescope extensions. See [./lua/one/plugins/telescope/extensions.lua](./lua/one/plugins/telescope/extensions.lua)
+There are many useful telescope extensions. See [ad-telescope-extensions.nvim](https://github.com/adoyle-h/ad-telescope-extensions.nvim) and [./lua/one/plugins/telescope/extensions.lua](./lua/one/plugins/telescope/extensions.lua)
 
 Use `<space>;` to view all telescope extensions.
+
+### Window Picker
+
+![window-picker.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/window-picker.png)
+
+Press `<C-w><C-w>` to open a picker to view all tabpages and windows.
+Press `<CR>` to goto selected window or tabpage.
 
 ## API
 
