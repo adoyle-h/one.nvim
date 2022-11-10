@@ -19,6 +19,7 @@ return function(Plug, Load, config)
 	Load 'search'
 	Load 'scrollbar' -- scrollbar must put after search, it relies on nvim-hlslens
 	Load 'scroll'
+	Load 'beacon'
 
 	---------- Enhanced plugins ----------
 	Load 'filetype'
