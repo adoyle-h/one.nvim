@@ -30,11 +30,14 @@ return {
 
 				require('ad-telescope-extensions').setup {
 					enable = 'all',
+					floaterm = { alias = 'terminals' },
 					windows = {
-						excludeFileTypes = config.ignore.fileTypesForSomePlugs,
-						tab = function(props)
-							return 'Tab ' .. props.tab .. util.superNum(#props.wins)
-						end,
+						opts = {
+							excludeFileTypes = config.ignore.fileTypesForSomePlugs,
+							tab = function(props)
+								return 'Tab ' .. props.tab .. util.superNum(#props.wins)
+							end,
+						},
 					},
 				}
 			end,

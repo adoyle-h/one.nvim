@@ -32,6 +32,7 @@ Press `<space>k` to see all keymaps in nvim.
 
 ## Edit and Write
 
+- `jk` = Exit from input mode
 - `u` = Undo
 - `U` = Redo
 - `u` in visual selection = Characters to upper case
@@ -306,7 +307,11 @@ If bufferline plugin enabled, some keymaps will be overrided. See [Buffer Line](
 
 ## Terminal
 
-- `<leader>tt` = Create new terminal
+- `jk` = Exit from terminal mode
+- `<space>t` = Show all terminal windows
+- `<leader>tn` = Create a terminal
+- `<leader>tt` = Toggle terminal
+- `<leader>tk` = Kill terminal
 - `<leader>ts` = Send current line or selected texts to terminal
 
 ## Coding
