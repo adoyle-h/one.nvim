@@ -28,7 +28,7 @@ M.defaultConfig = {
 		Character = { link = 'String' }, -- single character constant: 'c', '\n'
 		Number = { fg = c.orange }, -- a number constant: 234, 0xff
 		Float = { link = 'Number' }, -- a floating point constant: 2.3e10
-		Boolean = { fg = '#008200', bold = true }, -- a boolean constant: TRUE, false
+		Boolean = { fg = '#A5552D' }, -- a boolean constant: TRUE, false
 		Identifier = { fg = '#B63636' }, -- (preferred) any variable name
 		Function = { fg = '#5395F9' }, -- function name (also: methods for classes)
 		Statement = { fg = c.purple }, -- (preferred) any statement
