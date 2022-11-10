@@ -18,6 +18,7 @@ local M = {
 		local c = config.colors
 		return { --
 			NoiceMini = { fg = c.grey, bg = c.darkBlue },
+			NoiceMiniBorder = { bg = c.darkBlue },
 			NoiceCmdlineIconSearch = { fg = c.match.fg },
 			NoiceFormatEvent = { fg = c.green },
 			NoiceFormatKind = { fg = c.yellow },
@@ -240,11 +241,24 @@ M.defaultConfig = function()
 					reverse = false,
 					align = 'message-left',
 					timeout = 3000,
+					position = { row = -2, col = -2 },
 					size = {
 						max_height = math.ceil(0.8 * vim.o.lines),
 						max_width = math.ceil(0.8 * vim.o.columns),
 						width = 'auto',
 						height = 'auto',
+					},
+					border = {
+						style = {
+							{ ' ', 'NoiceMiniBorder' },
+							{ ' ', 'NoiceMiniBorder' },
+							{ ' ', 'NoiceMiniBorder' },
+							{ ' ', 'NoiceMiniBorder' },
+							{ ' ', 'NoiceMiniBorder' },
+							{ ' ', 'NoiceMiniBorder' },
+							{ ' ', 'NoiceMiniBorder' },
+							{ ' ', 'NoiceMiniBorder' },
+						},
 					},
 					win_options = { winblend = 0 },
 				},
