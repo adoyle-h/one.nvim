@@ -14,13 +14,13 @@ return {
 		'beacon',
 		{
 			enable = true,
-			size = 60,
+			size = 999,
 			fade = true,
-			minimal_jump = 10,
+			minimal_jump = 6,
 			show_jumps = true,
 			focus_gained = false,
 			shrink = true,
-			timeout = 1200,
+			timeout = 3000,
 			ignore_buffers = {},
 			ignore_filetypes = {
 				-- LuaFormatter off
