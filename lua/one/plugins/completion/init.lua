@@ -233,6 +233,7 @@ function M.config(config)
 		formatting = configFormating(conf),
 		sources = normalSources,
 		snippet = snippet,
+		experimental = conf.experimental,
 
 		window = {
 			-- https://github.com/hrsh7th/nvim-cmp/blob/main/lua/cmp/config/window.lua
@@ -274,6 +275,10 @@ M.defaultConfig = function(config)
 		{
 			pumheight = 20, -- The window height of cmdline completion
 			pageScrollLines = 8, -- Page down/up scroll lines
+
+			experimental = {
+				ghost_text = false, -- this feature conflict with copilot.vim's preview.
+			},
 
 			mapping = configMapping(cmp, config),
 
