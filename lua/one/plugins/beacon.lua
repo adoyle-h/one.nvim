@@ -10,25 +10,21 @@ return {
 		require('beacon').setup(config.beacon)
 	end,
 
-	defaultConfig = {
-		'beacon',
-		{
-			enable = true,
-			size = 999,
-			fade = true,
-			minimal_jump = 6,
-			show_jumps = true,
-			focus_gained = false,
-			shrink = true,
-			timeout = 3000,
-			ignore_buffers = {},
-			ignore_filetypes = {
-				-- LuaFormatter off
-				'TelescopePrompt', 'TelescopeResults', 'lsp-installer', 'null-ls-info', 'lspinfo', 'aerial',
-				'nerdtree', 'NvimTree', 'neo-tree', 'notify', 'Trouble', 'Mundo', 'mason', 'man', 'calendar',
-				'PlenaryTestPopup', 'noice',
-				-- LuaFormatter on
+	defaultConfig = function(config)
+		return {
+			'beacon',
+			{
+				enable = true,
+				size = 999,
+				fade = true,
+				minimal_jump = 6,
+				show_jumps = true,
+				focus_gained = false,
+				shrink = true,
+				timeout = 3000,
+				ignore_buffers = {},
+				ignore_filetypes = config.ignore.fileTypesForSomePlugs,
 			},
-		},
-	},
+		}
+	end,
 }
