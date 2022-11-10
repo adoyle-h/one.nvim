@@ -1,8 +1,7 @@
 local M = {
-	'noice',
+	'folke/noice.nvim',
 	disable = true,
-
-	requires = { 'folke/noice.nvim' },
+	id = 'noice',
 
 	keymaps = {
 		{

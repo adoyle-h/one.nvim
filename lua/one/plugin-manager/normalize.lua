@@ -33,20 +33,22 @@ function M.normalizeOpts(repo, opts)
 			opts = { id = repo, repo = repo }
 		elseif t == 'table' then
 			opts = repo
-			if opts.id then return opts end
+			if opts._normalized then return opts end
 
 			repo = table.remove(opts, 1)
-			opts.id = M.getId(repo)
+			opts.id = opts.id or M.getId(repo)
 			opts.repo = M.getRepo(repo)
 		else
 			error(string.format('Invalid Plug Type: %s', t))
 		end
 	else
-		if opts.id then return opts end
+		if opts._normalized then return opts end
 
-		opts.id = M.getId(repo)
+		opts.id = opts.id or M.getId(repo)
 		opts.repo = M.getRepo(repo)
 	end
+
+	opts._normalized = true
 
 	return opts
 end
