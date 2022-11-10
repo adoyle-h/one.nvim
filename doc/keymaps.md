@@ -65,7 +65,8 @@ Press `<space>k` to see all keymaps in nvim.
 - `<leader>p` = Paste from vim clipboard
 - `<leader>P` = Paste from system clipboard
 - `<M-p>` = Toggle paste mode
-- `<space>y` = List vim registers
+- `<space>R` = List vim registers
+- `<space>y` = List yank history
 - `<C-r>"` in insert mode = Paste from vim clipboard (:h i_CTRL-R)
 
 ## Open

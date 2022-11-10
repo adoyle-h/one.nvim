@@ -119,7 +119,7 @@ return function()
 		{ 'n', '<M-s>', ':Telescope spell_suggest<cr>', opts },
 		{ 'n', '<space>j', ':Telescope jumplist<cr>', opts },
 		{ 'n', '<space>v', ':Telescope vim_options<cr>', opts },
-		{ 'n', '<space>y', ':Telescope registers<cr>', opts },
+		{ 'n', '<space>R', ':Telescope registers<cr>', opts },
 		{ 'n', '<space>l', ':Telescope lsp_document_symbols<cr>', opts },
 
 		{
