@@ -11,6 +11,8 @@ return function()
 
 		{ 'n', '<space>f', ':Telescope find_files<cr>', opts },
 
+		{ 'n', '<space>n', ':Telescope message<cr>', opts },
+
 		{
 			'v',
 			'<space>f',
