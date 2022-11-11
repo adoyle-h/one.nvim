@@ -17,6 +17,7 @@ return {
 				enable = true,
 				size = 999,
 				fade = true,
+				fader = 'cursor_line',
 				minimal_jump = 6,
 				show_jumps = true,
 				focus_gained = false,
