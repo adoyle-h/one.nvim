@@ -1,4 +1,4 @@
-local M = { desc = 'Define highlight groups' }
+local M = { 'colors.highlights', desc = 'Define highlight groups' }
 
 local config = require('one.config').config
 local c = config.colors
@@ -11,7 +11,7 @@ M.defaultConfig = {
 		MyCursor = { bg = c.blue },
 		Visual = { bg = c.darkOrange, fg = c.white },
 		QuickFixLine = { bg = c.darkYellow, bold = true },
-		-- Whitespace = { fg = '#958720' }, -- TODO: Remove
+		Whitespace = { fg = c.yellow }, -- 'listchars'
 		NonText = { fg = c.grey3, bg = 'NONE' },
 		Title = { fg = c.blue },
 		ColorColumn = { bg = c.grey1 },
@@ -23,12 +23,12 @@ M.defaultConfig = {
 
 		-- Syntax Highlights
 		Comment = { fg = c.comment }, -- Comments
-		Constant = { fg = '#AB9D1C' }, -- (preferred) any constant
+		Constant = { fg = '#83B1A5' }, -- (preferred) any constant
 		String = { fg = c.green }, --   a string constant: "this is a string"
 		Character = { link = 'String' }, -- single character constant: 'c', '\n'
 		Number = { fg = c.orange }, -- a number constant: 234, 0xff
 		Float = { link = 'Number' }, -- a floating point constant: 2.3e10
-		Boolean = { fg = '#A5552D' }, -- a boolean constant: TRUE, false
+		Boolean = { fg = '#79C0FF' }, -- a boolean constant: TRUE, false
 		Identifier = { fg = '#B63636' }, -- (preferred) any variable name
 		Function = { fg = '#5395F9' }, -- function name (also: methods for classes)
 		Statement = { fg = c.purple }, -- (preferred) any statement

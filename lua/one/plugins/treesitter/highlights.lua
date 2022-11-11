@@ -54,7 +54,7 @@ return function(config)
 		['@keyword'] = { link = 'Keyword' },
 		['@keyword.function'] = { fg = '#2F66FF' },
 		['@keyword.operator'] = { fg = c.purple, italic = true }, -- e.g. `and`, `as`, `or`.
-		['@keyword.return'] = { fg = '#96C726' },
+		['@keyword.return'] = { link = 'Keyword' },
 
 		['@conditional'] = { link = 'Conditional' },
 		['@repeat'] = { link = 'Repeat' },
@@ -70,7 +70,7 @@ return function(config)
 		['@type.definition'] = { link = 'Typedef' },
 
 		['@storageclass'] = { link = 'StorageClass' },
-		['@field'] = { fg = '#A19E65' }, -- #75902F #90852F '#C75D14'
+		['@field'] = { fg = '#B1A983' }, -- #A99C37 #75902F #90852F '#C75D14'
 		['@property'] = { fg = '#5098A3' },
 
 		-- Identifiers
