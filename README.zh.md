@@ -24,7 +24,7 @@ Click [./README.md](./README.md) to read English documents.
   - 状态栏: [lualine](lua/one/plugins/lualine.lua) (默认) 或 [airline](lua/one/plugins/airline.lua)
   - Tab 栏: [tabby](lua/one/plugins/tabby.lua)
   - Buffer 栏: [barbar](lua/one/plugins/barbar.lua) 或 [bufferline](lua/one/plugins/bufferline.lua) (如果使用 Buffer 栏，你要禁用 Tab 栏插件)
-  - 光标栏高亮: [beacon](lua/one/plugins/beacon.lua)
+  - 光标栏高亮: [beacon](lua/one/plugins/beacon.lua) (默认) 或 [specs.nvim](lua/one/plugins/specs.lua)
   - 滚动条: [nvim-scrollbar](lua/one/plugins/scrollbar.lua)
   - 平滑滚动: [neoscroll.nvim](lua/one/plugins/scroll.lua)
   - 会话: [persisted](lua/one/plugins/session/persisted.lua) (默认) 或 [possession](lua/one/plugins/session/possession.lua) 或 [xolox/vim-session](lua/one/plugins/session/vim-session.lua) 或 [rmagatti/auto-session](lua/one/plugins/session/auto-session.lua)

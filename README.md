@@ -24,7 +24,7 @@ All-in-one neovim configuration framework implemented with Lua. It is high flexi
   - Statusline: [lualine](lua/one/plugins/lualine.lua) (default) or [airline](lua/one/plugins/airline.lua)
   - Tabline: [tabby](lua/one/plugins/tabby.lua)
   - Bufferline: [barbar](lua/one/plugins/barbar.lua) or [bufferline](lua/one/plugins/bufferline.lua) (If use bufferline, you should disable tabline plugin)
-  - Cursorline Highlight: [beacon](lua/one/plugins/beacon.lua)
+  - Cursorline Highlight: [beacon](lua/one/plugins/beacon.lua) (default) or [specs.nvim](lua/one/plugins/specs.lua)
   - Scrollbar: [nvim-scrollbar](lua/one/plugins/scrollbar.lua)
   - Smooth-Scroll: [neoscroll.nvim](lua/one/plugins/scroll.lua)
   - Session: [persisted](lua/one/plugins/session/persisted.lua) (default) or [possession](lua/one/plugins/session/possession.lua) or [xolox/vim-session](lua/one/plugins/session/vim-session.lua) or [rmagatti/auto-session](lua/one/plugins/session/auto-session.lua)
