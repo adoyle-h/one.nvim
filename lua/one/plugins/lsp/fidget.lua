@@ -1,7 +1,9 @@
+local PM = require('one.plugin-manager')
+
 return {
 	'j-hui/fidget.nvim',
 	desc = 'nvim-lsp loading progress',
-	disable = true, -- use noice lsp.progress
+	disable = not PM.isPlugDisabled('folke/noice.nvim'), -- If noice enabled, disable this plugin.
 
 	highlights = function(config)
 		local c = config.colors
