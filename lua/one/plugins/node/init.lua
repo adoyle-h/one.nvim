@@ -1,6 +1,5 @@
 return {
 	'node',
-	disable = true,
 
 	deps = {
 		{

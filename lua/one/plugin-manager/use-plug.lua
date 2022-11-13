@@ -13,7 +13,10 @@ local function usePlug(pm, loadPlug, repo, opts)
 
 	local userPluginOpts = userPlugins[id]
 	if userPluginOpts then
-		opts = util.merge(opts, userPluginOpts) -- For user override existed plugin config
+		if opts ~= userPluginOpts then
+			-- plugin default opts may equal to userPluginOpts when user require builtin plug
+			opts = util.merge(opts, userPluginOpts) -- For user override existed plugin config
+		end
 		userPlugins[id] = nil -- Avoid repeat merge userPluginOpts. And for loading user added plugins in P.fin()
 	end
 

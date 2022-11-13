@@ -1,11 +1,8 @@
 local util = require('one.util')
 
 return {
-	'calendar',
-
-	requires = { 'mattn/calendar-vim' },
-
-	disable = true,
+	'mattn/calendar-vim',
+	id = 'calendar',
 
 	config = function(config)
 		for key, value in pairs(config.calendar) do vim.g['calendar_' .. key] = value end

@@ -385,24 +385,42 @@ It will hide cmdline. And popup window when `:`, `/`, `?` pressed.
 
 ![cmdline.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/cmdline.png)
 
-### Disabled Plugins By Default
+### Not-Loaded Plugins By Default
 
-Below plugins are available but disabled by default for reduce installing and loading time.
+For reduce installing and loading time, some plugins are available but disabled or not loaded by default.
 You can enable them as required.
 
 ```lua
 require('one').setup {
-  plugins = {
-    { 'zk', disable = false },
-    { 'node', disable = false },
-    { 'curl', disable = false },
-    { 'latex', disable = false },
-    { 'calendar', disable = false },
-    { 'todo', disable = false },
-    { 'zen', disable = false },
-    { 'funny', disable = false },
-    { 'noice', disable = false },
-  }
+  plugins = function(load, config)
+    -- Load the builtin plugins
+    return {
+      load('profiling'),
+      load('funny', { disable = true }), -- You can pass options to override the default options of plugin.
+      load('noice'),
+    }
+  end
+}
+```
+
+The not-loaded plugins list in [here](./doc/available-but-not-loaded-plugins.md).
+
+### Extend your plugins/highlights/commands and so on
+
+```lua
+local my = {}
+
+my.highlights = function(config)
+  local c = config.colors
+  return { CmpGhostText = { fg = c.grey4, bg = c.darkBlue } }
+end
+
+my.commands = {
+  Hello = ':echo world'
+}
+
+require('one').setup {
+  plugins = { my },
 }
 ```
 

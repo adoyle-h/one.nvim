@@ -1,9 +1,6 @@
 local M = {
-	'todo',
-
-	requires = { 'folke/todo-comments.nvim' },
-
-	disable = true,
+	'folke/todo-comments.nvim',
+	id = 'todo',
 
 	keymaps = {
 		-- You can override it with ':TodoTelescope<CR>' if you prefer Telescope.

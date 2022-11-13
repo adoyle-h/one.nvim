@@ -389,23 +389,42 @@ require('one').setup {
 
 ![cmdline.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/cmdline.png)
 
-### 默认禁用的插件
+### 未加载的插件
 
-下面这些插件是可用的，但默认禁用。为了减少安装和加载插件的时间。你可以按需开启它们。
+为了减少安装和加载插件的时间，有些插件虽然可用但默认禁用了。
+你可以按需开启它们。
 
 ```lua
 require('one').setup {
-  plugins = {
-    { 'zk', disable = false },
-    { 'node', disable = false },
-    { 'curl', disable = false },
-    { 'latex', disable = false },
-    { 'calendar', disable = false },
-    { 'todo', disable = false },
-    { 'zen', disable = false },
-    { 'funny', disable = false },
-    { 'noice', disable = false },
-  }
+  plugins = function(load, config)
+    -- Load the builtin plugins
+    return {
+      load('profiling'),
+      load('funny', { disable = true }), -- You can pass options to override the default options of plugin.
+      load('noice'),
+    }
+  end
+}
+```
+
+未加载的插件列表[在这](./doc/available-but-not-loaded-plugins.md)。
+
+### 扩展你自己的插件、高亮、命令等配置
+
+```lua
+local my = {}
+
+my.highlights = function(config)
+  local c = config.colors
+  return { CmpGhostText = { fg = c.grey4, bg = c.darkBlue } }
+end
+
+my.commands = {
+  Hello = ':echo world'
+}
+
+require('one').setup {
+  plugins = { my },
 }
 ```
 

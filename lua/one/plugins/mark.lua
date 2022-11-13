@@ -3,8 +3,6 @@ return {
 
 	requires = { 'chentoast/marks.nvim' },
 
-	disable = true,
-
 	config = function(config)
 		require'marks'.setup(config.mark)
 	end,

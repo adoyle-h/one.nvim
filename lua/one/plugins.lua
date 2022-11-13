@@ -1,3 +1,4 @@
+---@diagnostic disable-next-line: unused-local
 return function(Plug, Load, config)
 	------- Basic required plugins -------
 	Load 'vim-options'
@@ -81,17 +82,17 @@ return function(Plug, Load, config)
 
 	------ Default disabled plugins ------
 	-- User can enable them on demand
-	Load 'profiling'
-	Load 'zk'
-	Load 'node'
-	Load 'curl'
-	Load 'funny'
-	Load 'latex'
-	Load 'calendar'
-	Load 'todo'
-	Load 'zen'
-	Load 'mark'
-	Load 'bookmark'
+	-- Load 'profiling'
+	-- Load 'zk'
+	-- Load 'node'
+	-- Load 'curl'
+	-- Load 'funny'
+	-- Load 'latex'
+	-- Load 'calendar'
+	-- Load 'todo'
+	-- Load 'zen'
+	-- Load 'mark'
+	-- Load 'bookmark'
 	--------------------------------------
 
 	Plug 'ryanoasis/vim-devicons' -- Devicons for old vimscript plugins. It should be put at last!!

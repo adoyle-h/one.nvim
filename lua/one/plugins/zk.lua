@@ -1,6 +1,5 @@
 return {
 	'zk',
-	disable = true,
 
 	requires = { 'mickael-menu/zk-nvim', 'prncss-xyz/neo-tree-zk.nvim' },
 

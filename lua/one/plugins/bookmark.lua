@@ -1,8 +1,7 @@
-local M = {
-	'bookmark',
-	requires = { 'MattesGroeger/vim-bookmarks' },
+local M = { --
+	'MattesGroeger/vim-bookmarks',
+	id = 'bookmark',
 	desc = 'bookmark',
-	disable = true,
 }
 
 M.highlights = {

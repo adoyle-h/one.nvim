@@ -1,8 +1,6 @@
 return {
 	'latex',
 
-	disable = true,
-
 	requires = { 'jbyuki/nabla.nvim' },
 
 	commands = {

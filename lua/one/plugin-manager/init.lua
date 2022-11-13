@@ -150,16 +150,24 @@ function PM.setP(P)
 	PM.P = P
 end
 
+-- @param path {string} require('one.plugins.' .. path)
+-- @param [plugOpts] {table} The plug opts defined by user. They will override plugin default opts.
+-- @return {table} Merged plug opts
+local loadBuiltinPlugForUser = function(path, plugOpts)
+	local opts = require('one.plugins.' .. path)
+	if plugOpts then
+		return vim.tbl_deep_extend('force', opts, plugOpts)
+	else
+		return opts
+	end
+end
+
 local function setupUserPlugins(optPlugins)
 	local userPlugins = PM.userPlugins
 	local userPluginList = {}
 
-	local builtin = function(path)
-		return require('one.plugins.' .. path)
-	end
-
 	if type(optPlugins) == 'function' then --
-		optPlugins = optPlugins(builtin, CM.config)
+		optPlugins = optPlugins(loadBuiltinPlugForUser, CM.config)
 	end
 
 	for i, p in pairs(optPlugins or {}) do
