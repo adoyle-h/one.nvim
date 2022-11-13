@@ -75,7 +75,11 @@ return {
 
   -- Parameters refer to ":h nvim_create_user_command"
   commands = {
+    TelescopeFiles = ':Telescope find_files' ,
     AerialTelescope = { ':Telescope aerial' },
+    TrailingSpaces = function()
+      require('whitespace-nvim').trim()
+    end,
     ClearPreviews = { function require('goto-preview').close_all_win end },
     TestLuaSpec = {
       function()

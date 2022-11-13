@@ -33,7 +33,11 @@ local plugOpts = {
 		name = 'commands',
 		iterator = function(props, name)
 			if not props then return end
-			set_cmd(name, props[1], props[2] or {})
+			if type(props) == 'table' then
+				set_cmd(name, props[1], props[2] or {})
+			else
+				set_cmd(name, props, {})
+			end
 		end,
 	},
 

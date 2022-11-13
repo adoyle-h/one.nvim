@@ -22,5 +22,5 @@ return {
 		vim.g.vmt_fence_closing_text = conf.fence_closing_text
 	end,
 
-	commands = { TocInsert = { 'GenTocGFM' }, TocUpdate = { 'UpdateToc' } },
+	commands = { TocInsert = 'GenTocGFM', TocUpdate = 'UpdateToc' },
 }
