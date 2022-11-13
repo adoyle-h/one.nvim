@@ -12,7 +12,6 @@ return function(Plug, Load, config)
 	------------- UI plugins -------------
 	Load 'dressing'
 	Load 'noice'
-	Load('themes.' .. config.theme.use)
 	Load 'colors'
 	Load 'lualine'
 	Load 'indent-line'
