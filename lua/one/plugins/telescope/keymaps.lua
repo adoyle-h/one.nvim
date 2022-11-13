@@ -132,7 +132,7 @@ return function()
 		{ 'n', '<space>b', ':Telescope buffers<cr>', opts }, -- Use neotree plugin will override it
 		{ 'n', '<space>d', ':Telescope diagnostics<cr>', opts }, -- Use trouble plugin will override it
 
-		-- Override lsp keymaps. If plugins/lsp/preview enabled, these keymaps will be overrided.
+		-- Override lsp keymaps. If plugins/lsp/preview enabled, these keymaps will be overridden.
 		{ 'n', 'gi', ':Telescope lsp_implementations<cr>', opts },
 		{ 'n', 'gd', ':Telescope lsp_definitions jump_type=split<cr>', opts },
 		{ 'n', 'gr', ':Telescope lsp_references<cr>', opts },

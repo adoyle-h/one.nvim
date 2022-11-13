@@ -260,7 +260,7 @@ If bufferline plugin enabled:
 - `<leader>9` = Select the 9th tab
 - `<leader>0` = Select the last tab
 
-If bufferline plugin enabled, some keymaps will be overrided. See [Buffer Line](#buffer-line).
+If bufferline plugin enabled, some keymaps will be overridden. See [Buffer Line](#buffer-line).
 
 ## Window
 

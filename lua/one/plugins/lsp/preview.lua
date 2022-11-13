@@ -61,7 +61,7 @@ return {
 
 		return {
 
-			-- If trouble plugin enabled, "gD" keymap will be overrided
+			-- If trouble plugin enabled, "gD" keymap will be overridden
 			{
 				'n',
 				'gD',

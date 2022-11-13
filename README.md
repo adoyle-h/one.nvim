@@ -1,12 +1,12 @@
 # One.nvim
 
-All-in-one neovim configuration framework implemented with Lua. It is high flexible to be customized and extended.
+All-in-one neovim configuration framework implemented with Lua. It is highly flexible to be customized and extended.
 
 中文文档 [./README.zh.md](./README.zh.md)
 
 ## Features
 
-- All in Lua. All configs can be overrided.
+- All in Lua. All configs can be overridden.
 - Use many Neovim features: Native LSP, Float Window, Winbar.
 - Lua-wrapped plugin manager based on [vim-plug](https://github.com/junegunn/vim-plug) or [packer](https://github.com/wbthomason/packer.nvim) at your choice. See [Plugin Manager](#plugin-manager).
 - Awesome UI and color schema. Dark Mode. Support True-Color, Smooth-Scroll, Scrollbar, Dashboard. You can change colors and highlights. See [doc/colors.md](doc/colors.md).
@@ -253,7 +253,7 @@ require('one').setup {
     local diagnostics = builtins.diagnostics
     local formatting = builtins.formatting
 
-    -- Do not return config, only return the overrided parts
+    -- Do not return config, only return the overridden parts
     return {
       nullLS = {
         sources = {
@@ -308,8 +308,8 @@ The plugins directory maneged by vim-plug is different from packer. When you mod
 
 ### Plugin
 
-All plugins can be turned off, overrided default config options, replaced with your favorites.
-It is high flexible to be customized and extended.
+All plugins can be turned off, overridden default config options, replaced with your favorites.
+It is highly flexible to be customized and extended.
 
 Read [./doc/plugin.md](./doc/plugin.md) for plugin definitions and references.
 

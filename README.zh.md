@@ -252,7 +252,7 @@ require('one').setup {
     local diagnostics = builtins.diagnostics
     local formatting = builtins.formatting
 
-    -- Do not return config, only return the overrided parts
+    -- Do not return config, only return the overridden parts
     return {
       nullLS = {
         sources = {

@@ -224,7 +224,7 @@ require('one').setup {
     local layout = config.alpha.layout
     layout[2] = { type = 'padding', val = 5 }
 
-    -- Do not return config, only return the overrided parts
+    -- Do not return config, only return the overridden parts
     return {
       alpha = { layout = layout },
     }
