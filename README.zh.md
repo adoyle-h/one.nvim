@@ -426,7 +426,7 @@ require('one').setup {
 │       ├── config.lua       // Config loader
 │       ├── consts.lua       // Constants
 │       ├── filetype.lua     // FileType autocmd
-│       ├── framework.lua    // The framework singleton
+│       ├── one.lua          // The one singleton
 │       ├── init.lua         // The lua required entry point (plugin way)
 │       ├── plugins.lua      // Plugin loading list
 │       ├── util.lua         // Utility functions

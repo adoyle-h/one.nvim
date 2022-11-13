@@ -4,7 +4,7 @@ local util = require('one.util')
 local CM = require('one.config')
 local consts = require('one.consts')
 local PM = require('one.plugin-manager')
-local One = require('one.framework')
+local One = require('one.one')
 local FT = require('one.filetype')
 local dynamic = require('one.plugins.completion.dynamic.source')
 

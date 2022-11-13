@@ -1,6 +1,6 @@
 local M = {}
 
-local One = require('one.framework')
+local One = require('one.one')
 local CM = require('one.config')
 local FT = require('one.filetype')
 local dynamic = require('one.plugins.completion.dynamic.source')

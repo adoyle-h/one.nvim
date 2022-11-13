@@ -15,7 +15,7 @@ return {
 		{
 			'adoyle-h/telescope-extension-maker.nvim',
 			config = function()
-				local One = require('one.framework')
+				local One = require('one.one')
 				One.telescope = require('telescope-extension-maker')
 			end,
 		},
