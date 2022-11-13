@@ -31,12 +31,6 @@ local function setupImpatient(config)
 end
 
 local function someFixes()
-	-- Fix undefined table.unpack
-	-- :lua print(_VERSION) returns "Lua 5.1"
-	-- See https://github.com/neovim/neovim/blob/v0.7.0/runtime/lua/vim/compat.lua
-	---@diagnostic disable-next-line: deprecated
-	table.unpack = unpack
-
 	vim.api.nvim_set_hl(0, 'Pmenu', { bg = 'grey' }) -- THe initial float window is too ugly
 end
 
