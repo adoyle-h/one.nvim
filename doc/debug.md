@@ -28,7 +28,7 @@ require('one').setup {
 	-- It's useful for debug. Defaults to nil.
 	-- If set empty table, all builtin and user-defined plugins are disabled.
 	-- If set non-empty table, only these plugins are not disabled.
-	onlyPlugins = {}, -- 
+	onlyPlugins = {},
 }
 ```
 

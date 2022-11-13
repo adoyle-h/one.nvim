@@ -150,7 +150,16 @@ Do [initialization](#initialization) and then press `nvim` to get started.
 
 ### Container
 
-You can use it in container.
+You can use it in container. It requires docker installed on your machine.
+
+#### Build container
+
+Invoke `./scripts/build-container`.
+(For users in China Mainland, it's add `-p` option to enable proxy for fasten building).
+
+**Note** for Mac users with Apple chip. Current nvim not provide releases building for Arm arch. So the container builds and runs with `--platform=linux/amd64` option. It's very slow when running it in container.
+
+#### Use container
 
 ```sh
 # Cache the nvim data in host
@@ -299,7 +308,12 @@ The plugins directory maneged by vim-plug is different from packer. When you mod
 
 ### Plugin
 
+All plugins can be turned off, overrided default config options, replaced with your favorites.
+It is high flexible to be customized and extended.
+
 Read [./doc/plugin.md](./doc/plugin.md) for plugin definitions and references.
+
+You can even set `onlyPlugins = {}` to disable all plugins. See [Debug - Disable other plugins](./doc/debug.md#disable-other-plugins).
 
 ### [Colors and Highlights](./doc/colors.md)
 

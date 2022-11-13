@@ -151,6 +151,17 @@ echo "require('one').setup {}" > "$NVIM_HOME"/init.lua
 
 ### 容器
 
+你可以在容器里运行它。这要求你的主机已安装 docker。
+
+#### 构建容器
+
+执行 `./scripts/build-container`。
+（建议中国地区用户加上 `-p` 参数使用代理，加快构建速度）。
+
+**苹果芯片的 Mac 用户注意**。当前 nvim 未提供 Arm 架构下的发行版。所以容器构建和运行都使用了 `--platform=linux/amd64` 选项。苹果芯片下运行容器会很卡。
+
+#### 使用容器
+
 ```sh
 # 在主机上缓存 nvim 数据
 docker volume create nvim-data
@@ -294,7 +305,11 @@ vim-plug 管理的插件目录和 packer 管理的是不一样的。当你改变
 
 ### 插件
 
+所有插件都可以被关闭，覆盖默认配置项，或者替换成你喜欢的插件。自定义配置和扩展非常方便。
+
 插件的定义和使用，详见[./doc/plugin.md](./doc/plugin.md)。
+
+你甚至可以设置 `onlyPlugins = {}` 来一键禁用所有插件（不禁用插件管理器）。详见 [Debug - Disable other plugins](./doc/debug.md#disable-other-plugins)。
 
 ### [颜色和高亮](./doc/colors.md)
 
