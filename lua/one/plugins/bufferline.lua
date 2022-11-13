@@ -7,9 +7,8 @@ M.keymaps = function()
 	return {
 		{ modes, '<M-[>', ':BufferLineCyclePrev<CR>', opts },
 		{ modes, '<M-]>', ':BufferLineCycleNext<CR>', opts },
-		-- BUG: https://github.com/akinsho/bufferline.nvim/pull/588#issuecomment-1304598656
-		{ modes, '<M-{>', ':BufferLineMovePrev<CR>', opts },
-		{ modes, '<M-}>', ':BufferLineMoveNext<CR>', opts },
+		{ modes, '<M-{>', ':tabmove-<CR>', opts },
+		{ modes, '<M-}>', ':tabmove+<CR>', opts },
 		{ modes, '<leader>1', ':BufferLineGoToBuffer 1<CR>', opts },
 		{ modes, '<leader>2', ':BufferLineGoToBuffer 2<CR>', opts },
 		{ modes, '<leader>3', ':BufferLineGoToBuffer 3<CR>', opts },
