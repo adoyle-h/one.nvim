@@ -6,11 +6,10 @@ All-in-one neovim configuration framework implemented with Lua. It is highly fle
 
 ## Features
 
-- All in Lua. All configs can be overridden.
+- All in Lua. All configs can be overridden. See [Configuration](#configuration).
 - Use many Neovim features: Native LSP, Float Window, Winbar.
 - Lua-wrapped plugin manager based on [vim-plug](https://github.com/junegunn/vim-plug) or [packer](https://github.com/wbthomason/packer.nvim) at your choice. See [Plugin Manager](#plugin-manager).
 - Awesome UI and color schema. Dark Mode. Support True-Color, Smooth-Scroll, Scrollbar, Dashboard. You can change colors and highlights. See [doc/colors.md](doc/colors.md).
-- [Configurable](#configuration).
 - Configurable proxy for fast git download in China Mainland. See [Proxy](#proxy).
 - Integrated 120+ powerful Vim/Nvim plugins. Enhancing the usage experience, and fixed some shortcomings of these plugins.
 
@@ -155,7 +154,7 @@ You can use it in container. It requires docker installed on your machine.
 #### Build container
 
 Invoke `./scripts/build-container`.
-(For users in China Mainland, it's add `-p` option to enable proxy for fasten building).
+(For users in China Mainland, it's recommended to add `-p` option to enable proxy for fasten building).
 
 **Note** for Mac users with Apple chip. Current nvim not provide releases building for Arm arch. So the container builds and runs with `--platform=linux/amd64` option. It's very slow when running it in container.
 
@@ -334,7 +333,7 @@ Proxy will not work for some plugins using "git submodule". It's recommended to 
 
 ## Notice
 
-`$VIMRUNTIME/filetype.vim` won't be loaded. Filetype detected in [./lua/plugins/filetype.lua](./lua/plugins/filetype.lua)。
+`$VIMRUNTIME/filetype.vim` won't be loaded. Filetype detected in [./lua/one/plugins/filetype.lua](./lua/one/plugins/filetype.lua)。
 
 ## Usage
 
@@ -399,7 +398,7 @@ It will hide cmdline. And popup window when `:`, `/`, `?` pressed.
 
 ![cmdline.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/cmdline.png)
 
-### Not-Loaded Plugins By Default
+### Not-Loaded Plugins
 
 For reduce installing and loading time, some plugins are available but disabled or not loaded by default.
 You can enable them as required.
@@ -480,7 +479,7 @@ require('one').setup {
 }
 ```
 
-Enable [profiling](./lua/plugins/profiling.lua) plugin, and invoke `:StartupTime` in nvim. It will print each time on startup.
+Enable [profiling](./lua/one/plugins/profiling.lua) plugin, and invoke `:StartupTime` in nvim. It will print each time on startup.
 
 ## Suggestion, Bug Reporting, Contributing
 

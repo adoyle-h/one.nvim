@@ -6,11 +6,10 @@ Click [./README.md](./README.md) to read English documents.
 
 ## 特性
 
-- 用 Lua 管理 nvim 配置。所有配置项都可覆盖。
+- 用 Lua 管理 nvim 配置。所有配置项都可覆盖。详见[配置章节](#配置)。
 - 充分使用 Neovim 功能：Native LSP、Float Window、Winbar。
 - 基于 [vim-plug](https://github.com/junegunn/vim-plug) 或 [packer](https://github.com/wbthomason/packer.nvim) 的插件框架，任你选择。详见[插件管理器](#插件管理器)。
 - 帅气的界面和配色。暗黑模式。支持真彩色、平滑滚动、滚动条、Dashboard。你可以修改配色，详见 [doc/colors.md](doc/colors.md)。
-- 可配置，详见[配置章节](#配置)。
 - 支持配置 github 代理，在中国大陆可加快插件下载速度。详见[代理](#代理)。
 - 集成了 120 多个 Vim/Nvim 插件。增强插件的使用体验，并且修复了一些插件的缺点。
 
@@ -330,7 +329,7 @@ require('one').setup {
 
 ## 注意
 
-`$VIMRUNTIME/filetype.vim` 不会被调用，文件类型设置请见 [./lua/plugins/filetype.lua](./lua/plugins/filetype.lua)。
+`$VIMRUNTIME/filetype.vim` 不会被调用，文件类型设置请见 [./lua/one/plugins/filetype.lua](./lua/one/plugins/filetype.lua)。
 
 ## 使用
 
@@ -485,7 +484,7 @@ require('one').setup {
 }
 ```
 
-启动 [profiling](./lua/plugins/profiling.lua) 插件，nvim 启动后调用 `:StartupTime`。将会输出启动阶段的用时。
+启动 [profiling](./lua/one/plugins/profiling.lua) 插件，nvim 启动后调用 `:StartupTime`。将会输出启动阶段的用时。
 
 ## 提建议，修 Bug，做贡献
 
