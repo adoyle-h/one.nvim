@@ -182,7 +182,7 @@ Do [initialization](#initialization) and then press `nvim` to get started.
   - If `config.pluginManager.use = packer`
     - Run `:PackerSync` in nvim, to install all plugins. Repeat it util all plugins installed successfully.
     - All plugines installed in `~/.local/share/nvim/pack/packer`. **DO NOT MODIFY** the `config.pluginManager.packer.package_root` option, unless you completely know what you are doing. If the option modified and get any error, please don't ask me anything.
-    - These are two cached mechanisms created by [packer.nvim][] and [impatient.nvim][]. You may be trapped in weird exceptions. Try `:lua one.reset()` to remove all plugins and cached files.
+    - These are two cache mechanisms created by [packer.nvim][] and [impatient.nvim][]. You may be trapped in weird exceptions. Try `:lua one.reset()` to remove all plugins and cached files.
 - It will auto download treesitter parsers, which defined in `config.treesitter.ensure_installed` and `config.treesitter.ignore_install`.
   - If failed, restart nvim or run `:TSInstall all` to install them.
 - It will auto download LSP/DAP/Formatter/Linter, which defined in `config['mason-installer'].ensureInstalled`.
@@ -336,6 +336,8 @@ Proxy will not work for some plugins using "git submodule". It's recommended to 
 
 `$VIMRUNTIME/filetype.vim` won't be loaded. Filetype detected in [./lua/one/plugins/filetype.lua](./lua/one/plugins/filetype.lua)。
 
+Read [./doc/note.md](./doc/note.md) for other notes.
+
 ## Usage
 
 ### [Debug](./doc/debug.md)
@@ -438,7 +440,7 @@ require('one').setup {
 }
 ```
 
-### Operate with `one` in runtime
+### Global variable
 
 You can call the properties of one.nvim in runtime.
 
@@ -458,6 +460,7 @@ You can call the properties of one.nvim in runtime.
 
 By default, it is assigned to global variable `one`. (See config option `config.global = 'one'`)
 You can change it to other variable name as you like.
+Or set `false` or `nil` to prevent creating this global variable.
 
 That's cool, isn't it?
 
@@ -482,6 +485,7 @@ Just read [codes](./lua/one/init.lua).
 │       ├── config.lua       // Config loader
 │       ├── consts.lua       // Constants
 │       ├── filetype.lua     // FileType autocmd
+│       ├── impatient.lua    // Cache lua modules
 │       ├── one.lua          // The one singleton
 │       ├── init.lua         // The lua required entry point
 │       ├── plugins.lua      // Plugin loading list

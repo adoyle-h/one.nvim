@@ -332,6 +332,8 @@ require('one').setup {
 
 `$VIMRUNTIME/filetype.vim` 不会被调用，文件类型设置请见 [./lua/one/plugins/filetype.lua](./lua/one/plugins/filetype.lua)。
 
+其他注意事项见 [./doc/note.md](./doc/note.md)。
+
 ## 使用
 
 ### [Debug](./doc/debug.md)
@@ -443,7 +445,7 @@ require('one').setup {
 }
 ```
 
-### 在运行时操作 `one`
+### 全局变量
 
 你可以在运行时操作 one.nvim 的属性。
 
@@ -461,8 +463,8 @@ require('one').setup {
 :lua one.
 ```
 
-它默认分配到全局变量 `one`。（看配置项 `config.global ='one'`）
-你可以改成其他变量名，随你喜欢。
+它默认分配到全局变量 `one`。（看配置项 `config.global = 'one'`）
+可以改成其他变量名，随你喜欢。或者设置 `false` 或 `nil`，不创建该全局变量。
 
 这很酷，不是吗？
 
@@ -487,6 +489,7 @@ require('one').setup {
 │       ├── config.lua       // Config loader
 │       ├── consts.lua       // Constants
 │       ├── filetype.lua     // FileType autocmd
+│       ├── impatient.lua    // Cache lua modules
 │       ├── one.lua          // The one singleton
 │       ├── init.lua         // The lua required entry point
 │       ├── plugins.lua      // Plugin loading list
