@@ -15,22 +15,7 @@ One.consts = consts
 One.util = util
 One.cmp = { add = dynamic.add }
 
-local function setupImpatient(config)
-	local impatient = config.impatient
-
-	if impatient.enable then
-		local isNew = util.ensurePkg { --
-			url = impatient.src,
-			dist = impatient.dist,
-		}
-
-		if isNew then util.packadd(impatient.dist) end
-
-		require(impatient.pkgName)
-	end
-end
-
-local function someFixes()
+local function preset()
 	table.unpack = unpack
 	vim.api.nvim_set_hl(0, 'Pmenu', { bg = 'grey' }) -- THe initial float window is too ugly
 end
@@ -48,7 +33,7 @@ end
 -- If passed a function, the first parameter is used to get the builtin PlugOpts.
 -- The second parameter is the config of framework.
 One.setup = function(opts)
-	someFixes()
+	preset()
 
 	CM.setup(opts.config or {})
 	local config = CM.config
@@ -58,7 +43,7 @@ One.setup = function(opts)
 	-- Do not set mapleader in vim-options plugin. Because user may use `onlyPlugins` to disable all plugins.
 	vim.g.mapleader = config.leaderKey
 
-	setupImpatient(config)
+	require('one.impatient')(One)
 	PM.setup(opts)
 	FT.setup()
 end
