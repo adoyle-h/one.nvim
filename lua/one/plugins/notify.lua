@@ -31,6 +31,11 @@ return {
 				stages = 'fade_in_slide_out',
 				timeout = 2000, -- Default timeout for notification
 				top_down = true,
+
+				on_open = function(win)
+					-- Always wrap text in Notify popup window
+					vim.api.nvim_win_set_option(win, 'wrap', true)
+				end,
 			},
 		}
 	end,
