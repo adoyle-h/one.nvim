@@ -6,5 +6,6 @@ return {
 		require('one.plugins.window.resize'),
 		require('one.plugins.window.maximize'),
 		require('one.plugins.window.winshift'),
+		require('one.plugins.window.border'),
 	},
 }

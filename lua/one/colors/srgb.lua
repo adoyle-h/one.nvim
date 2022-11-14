@@ -29,7 +29,7 @@ return require('one.colors.util').make({
 }, {
 	-- functional colors
 	NC_BG = '#0E0E0E',
-	WinSeparatorBG = '#020202',
+	WinSeparatorBG = '#0E0E0E', -- '#020202',
 	ColorColumnBG = '#191919',
 	linkFG = '#00B479',
 	scrollbarBG = '#022954',

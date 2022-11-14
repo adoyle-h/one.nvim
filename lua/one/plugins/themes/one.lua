@@ -10,13 +10,13 @@ M.defaultConfig = {
 	'one-theme',
 	{
 		fillchars = { -- :h 'fcs'
-			horiz = ' ',
-			horizup = ' ',
-			horizdown = ' ',
-			vert = ' ',
-			vertleft = ' ',
-			vertright = ' ',
-			verthoriz = ' ',
+			horiz = '━',
+			horizup = '┻',
+			horizdown = '┳',
+			vert = '┃',
+			vertleft = '┫',
+			vertright = '┣',
+			verthoriz = '╋',
 		},
 	},
 }
@@ -135,7 +135,7 @@ M.highlights = function(config)
 			bg = c.NC_BG,
 			fg = c.white,
 		},
-		WinSeparator = { bg = c.WinSeparatorBG, fg = c.grey }, -- the column separating windows
+		WinSeparator = { bg = c.WinSeparatorBG, fg = c.grey2 }, -- the column separating windows
 		Whitespace = { fg = c.yellow }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
 		WildMenu = { bg = c.blue, fg = c.black }, -- current match in 'wildmenu' completion
 
