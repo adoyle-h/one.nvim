@@ -1,4 +1,4 @@
-local M = { 'stevearc/aerial.nvim', desc = 'Outline - aerial', requires = {} }
+local M = { 'stevearc/aerial.nvim', desc = 'Outline - aerial' }
 
 local config = require('one.config').config
 local keymap = vim.keymap.set

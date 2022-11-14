@@ -60,7 +60,7 @@ local function formatSessions(sessions)
 end
 
 local function getSessions(conf)
-	if PM.isDisabled('olimorris/persisted.nvim') then return { type = 'padding', val = 0 } end
+	if PM.isPlugDisabled('olimorris/persisted.nvim') then return { type = 'padding', val = 0 } end
 
 	local pwd = vim.fn.getcwd()
 	local sessionLimit = conf.sessionLimit
@@ -256,6 +256,7 @@ end
 M.defaultConfig = function()
 	local dashboard = require('alpha.themes.dashboard')
 	local button = dashboard.button
+	local listMsg = PM.isPlugDisabled('noice') and ':Telescope message<CR>' or ':Noice history<CR>'
 
 	local buttons = {
 		type = 'group',
@@ -270,7 +271,7 @@ M.defaultConfig = function()
 			button('<SPACE>p', 'גּ  Run Command', ':Telescope commands<CR>'),
 			button('<SPACE>P', '  List Plugin Status', string.format(':%s<CR>', PM.P.cmds.status)),
 			button('<SPACE>v', '  List Vim Options', ':Telescope vim_options<CR>'),
-			button('<SPACE>n', '  List Messages', ':Noice history<CR>'),
+			button('<SPACE>n', '  List Messages', listMsg),
 			button('<SPACE>N', '  List Notifications', ':Telescope notify<CR>'),
 			button('<SPACE>h', 'ﲉ  Find Help', ':Telescope help_tags<CR>'),
 			button('q', '  Quit', ':qa<CR>'),

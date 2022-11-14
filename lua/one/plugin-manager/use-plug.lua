@@ -35,7 +35,7 @@ local function usePlug(pm, loadPlug, repo, opts)
 			local depPlug = usePlug(pm, loadPlug, dep)
 			opts.requires[index] = depPlug
 
-			if depPlug.isDisabled then
+			if depPlug.disable then
 				opts.disable = true
 				opts.reason = string.format('Its required plugin "%s" is disabled', depPlug.id)
 			end
