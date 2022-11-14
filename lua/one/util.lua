@@ -74,10 +74,13 @@ end
 function util.existDir(path)
 	return fn.isdirectory(path) == 1
 end
+util.isDir = util.existDir
 
+-- directory is a file
 function util.existFile(path)
 	return fn.empty(fn.glob(path)) == 0
 end
+util.isFile = util.existFile
 
 function util.getFolderName(repo)
 	local s = vim.fn.split(repo, '/')
@@ -378,6 +381,42 @@ function util.subNum(number)
 		return getDigraph(number .. 's')
 	else
 		return util.subNum(math.floor(number / 10)) .. getDigraph((number % 10) .. 's')
+	end
+end
+
+function util.rm(path)
+	if string.find(path, '/') ~= 1 then
+		error(string.format('The path must be an absolute path. Current: "%s"', path))
+	end
+
+	local forbidden_chars = { '../', './', '*', '"', '\'', ' ' }
+	for _, char in pairs(forbidden_chars) do
+		if string.find(path, char:gsub('%.', '%%.')) ~= nil then
+			error(string.format('The path must not contain "%s". Current: "%s"', char, path))
+		end
+	end
+
+	local protected_paths = {
+		-- LuaFormatter off
+		-- Linux
+		'/', '/bin', '/boot', '/dev', '/etc', '/home', '/initrd', '/lib', '/lib32', '/lib64', '/proc',
+		'/root', '/sbin', '/sys', '/usr', '/usr/bin', '/usr/include', '/usr/lib', '/usr/local',
+		'/usr/local/bin', '/usr/local/include', '/usr/local/sbin', '/usr/local/share', '/usr/sbin',
+		'/usr/share', '/usr/src', '/var',
+		-- MacOS
+		'/Applications', '/cores', '/Library', '/System', '/System/Applications', '/System/Developer',
+		'/System/DriverKit', '/System/iOSSupport', '/System/Library', '/System/Volumes', '/Users',
+		'/Users/Shared', '/Volumes', '/private',
+		-- LuaFormatter on
+	}
+	if vim.tbl_contains(protected_paths, path) then
+		error(string.format('The path is protected that cannot be deleted. Current: "%s"', path))
+	end
+
+	local cmd = string.format('rm -rf "%s"', path)
+	local exitCode = os.execute(cmd)
+	if exitCode > 0 then
+		return error(string.format('Failed to execute command "%s". exit code=%s', cmd, exitCode))
 	end
 end
 

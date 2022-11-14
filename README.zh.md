@@ -8,7 +8,7 @@ Click [./README.md](./README.md) to read English documents.
 
 - 用 Lua 管理 nvim 配置。所有配置项都可覆盖。详见[配置章节](#配置)。
 - 充分使用 Neovim 功能：Native LSP、Float Window、Winbar。
-- 基于 [vim-plug](https://github.com/junegunn/vim-plug) 或 [packer](https://github.com/wbthomason/packer.nvim) 的插件框架，任你选择。详见[插件管理器](#插件管理器)。
+- 基于 [vim-plug](https://github.com/junegunn/vim-plug) 或 [packer.nvim][] 的插件框架，任你选择。详见[插件管理器](#插件管理器)。
 - 帅气的界面和配色。暗黑模式。支持真彩色、平滑滚动、滚动条、Dashboard。你可以修改配色，详见 [doc/colors.md](doc/colors.md)。
 - 支持配置 github 代理，在中国大陆可加快插件下载速度。详见[代理](#代理)。
 - 集成了 120 多个 Vim/Nvim 插件。增强插件的使用体验，并且修复了一些插件的缺点。
@@ -54,7 +54,7 @@ Click [./README.md](./README.md) to read English documents.
   - Curl: [rest.nvim](lua/one/plugins/curl.lua)
   - Icons: [devicons](lua/one/plugins/devicons.lua) 与 [icon-picker](lua/one/plugins/icon-picker.lua)
   - UI 增强: [dressing](lua/one/plugins/dressing.lua) 和 [noice](lua/one/plugins/noice.lua)
-  - 启动加速: [impatient.nvim](https://github.com/lewis6991/impatient.nvim)
+  - 启动加速: [impatient.nvim][]
   - 跳出输入模式的快捷键: [better-escape.nvim](lua/one/plugins/escape.lua)
   - Increment: [increment-activator](lua/one/plugins/increment.lua)
   - Filetype: [filetype.nvim](lua/one/plugins/filetype.lua)
@@ -183,6 +183,7 @@ alias nvim='docker run --rm -it --platform linux/amd64 -v "$HOME/.config/nvim:/r
   - 当 `config.pluginManager.use = packer`
     - 在 nvim 执行 `:PackerSync` 安装所有插件，重复直到全部安装成功。
     - 插件默认安装在 `~/.local/share/nvim/pack/packer`。**不要修改** `config.pluginManager.packer.package_root`，除非你十分明白自己在做什么。如果你修改后出了错，请不要来询问我。
+    - 在 [packer.nvim][] 和 [impatient.nvim][] 提供的两种缓存机制作用下，你可能会遇到古怪的错误。尝试 `:lua one.reset()` 来清空所有插件和缓存文件。
 - nvim 启动后会自动下载 treesitter parsers。它们定义在 `config.treesitter.ensure_installed` 和 `config.treesitter.ignore_install`。
   - 如果安装失败，重启 nvim 或执行 `:TSInstall all` 来重装。
 - nvim 启动后会自动下载 LSP/DAP/Formatter/Linter，它们定义在 `config['mason-installer'].ensureInstalled`.
@@ -547,3 +548,5 @@ See the [LICENSE][] file for the specific language governing permissions and lim
 [nvim-lspconfig]: https://github.com/neovim/nvim-lspconfig
 [NVIM v0.8]: https://github.com/neovim/neovim/releases/tag/v0.8.0
 [init.lua]: https://github.com/adoyle-h/neovim-config/blob/master/init.lua
+[packer.nvim]: https://github.com/wbthomason/packer.nvim
+[impatient.nvim]: https://github.com/lewis6991/impatient.nvim

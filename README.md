@@ -8,7 +8,7 @@ All-in-one neovim configuration framework implemented with Lua. It is highly fle
 
 - All in Lua. All configs can be overridden. See [Configuration](#configuration).
 - Use many Neovim features: Native LSP, Float Window, Winbar.
-- Lua-wrapped plugin manager based on [vim-plug](https://github.com/junegunn/vim-plug) or [packer](https://github.com/wbthomason/packer.nvim) at your choice. See [Plugin Manager](#plugin-manager).
+- Lua-wrapped plugin manager based on [vim-plug](https://github.com/junegunn/vim-plug) or [packer.nvim][] at your choice. See [Plugin Manager](#plugin-manager).
 - Awesome UI and color schema. Dark Mode. Support True-Color, Smooth-Scroll, Scrollbar, Dashboard. You can change colors and highlights. See [doc/colors.md](doc/colors.md).
 - Configurable proxy for fast git download in China Mainland. See [Proxy](#proxy).
 - Integrated 120+ powerful Vim/Nvim plugins. Enhancing the usage experience, and fixed some shortcomings of these plugins.
@@ -54,7 +54,7 @@ All-in-one neovim configuration framework implemented with Lua. It is highly fle
   - Curl: [rest.nvim](lua/one/plugins/curl.lua)
   - Icons: [devicons](lua/one/plugins/devicons.lua) and [icon-picker](lua/one/plugins/icon-picker.lua)
   - UI Enhancing: [dressing](lua/one/plugins/dressing.lua) and [noice](lua/one/plugins/noice.lua)
-  - Start Speed Up: [impatient.nvim](https://github.com/lewis6991/impatient.nvim)
+  - Start Speed Up: [impatient.nvim][]
   - Escape: [better-escape.nvim](lua/one/plugins/escape.lua)
   - Increment: [increment-activator](lua/one/plugins/increment.lua)
   - Filetype: [filetype.nvim](lua/one/plugins/filetype.lua)
@@ -182,6 +182,7 @@ Do [initialization](#initialization) and then press `nvim` to get started.
   - If `config.pluginManager.use = packer`
     - Run `:PackerSync` in nvim, to install all plugins. Repeat it util all plugins installed successfully.
     - All plugines installed in `~/.local/share/nvim/pack/packer`. **DO NOT MODIFY** the `config.pluginManager.packer.package_root` option, unless you completely know what you are doing. If the option modified and get any error, please don't ask me anything.
+    - These are two cached mechanisms created by [packer.nvim][] and [impatient.nvim][]. You may be trapped in weird exceptions. Try `:lua one.reset()` to remove all plugins and cached files.
 - It will auto download treesitter parsers, which defined in `config.treesitter.ensure_installed` and `config.treesitter.ignore_install`.
   - If failed, restart nvim or run `:TSInstall all` to install them.
 - It will auto download LSP/DAP/Formatter/Linter, which defined in `config['mason-installer'].ensureInstalled`.
@@ -549,3 +550,5 @@ See the [NOTICE][] file distributed with this work for additional information re
 [nvim-lspconfig]: https://github.com/neovim/nvim-lspconfig
 [NVIM v0.8]: https://github.com/neovim/neovim/releases/tag/v0.8.0
 [init.lua]: https://github.com/adoyle-h/neovim-config/blob/master/init.lua
+[packer.nvim]: https://github.com/wbthomason/packer.nvim
+[impatient.nvim]: https://github.com/lewis6991/impatient.nvim
