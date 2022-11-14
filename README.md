@@ -437,6 +437,29 @@ require('one').setup {
 }
 ```
 
+### Operate with `one` in runtime
+
+You can call the properties of one.nvim in runtime.
+
+```
+    ╭─────────────────────╮
+    │ 𝕍 one.CM        CMD │
+    │ 𝕍 one.FT        CMD │
+    │ 𝕍 one.PM        CMD │
+    │ 𝕍 one.cmp       CMD │
+    │ 𝕍 one.util      CMD │
+    │ 𝕍 one.setup     CMD │
+    │ 𝕍 one.consts    CMD │
+    │ 𝕍 one.telescope CMD │
+    ╰─────────────────────╯
+:lua one.
+```
+
+By default, it is assigned to global variable `one`. (See config option `config.global = 'one'`)
+You can change it to other variable name as you like.
+
+That's cool, isn't it?
+
 ## API
 
 Just read [codes](./lua/one/init.lua).

@@ -24,9 +24,9 @@ return function(colors)
 			pkgName = 'impatient',
 		},
 
-		-- Global lua variable. So you can easily call the framework, like ":lua a.util"
+		-- Global lua variable. So you can easily call the framework, like ":lua one.util"
 		-- If set nil or false, do not create this variable.
-		global = 'a',
+		global = 'one',
 
 		pluginManager = {
 			use = 'vim-plug', -- 'vim-plug' or 'packer'

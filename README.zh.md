@@ -442,6 +442,29 @@ require('one').setup {
 }
 ```
 
+### 在运行时操作 `one`
+
+你可以在运行时操作 one.nvim 的属性。
+
+```
+    ╭─────────────────────╮
+    │ 𝕍 one.CM        CMD │
+    │ 𝕍 one.FT        CMD │
+    │ 𝕍 one.PM        CMD │
+    │ 𝕍 one.cmp       CMD │
+    │ 𝕍 one.util      CMD │
+    │ 𝕍 one.setup     CMD │
+    │ 𝕍 one.consts    CMD │
+    │ 𝕍 one.telescope CMD │
+    ╰─────────────────────╯
+:lua one.
+```
+
+它默认分配到全局变量 `one`。（看配置项 `config.global ='one'`）
+你可以改成其他变量名，随你喜欢。
+
+这很酷，不是吗？
+
 ## API
 
 直接看[代码](./lua/one/init.lua)。
