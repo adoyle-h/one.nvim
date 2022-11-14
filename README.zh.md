@@ -476,14 +476,18 @@ require('one').setup {
 ├── doc/                     // Documents
 ├── lua/
 │   └── one/
+│       ├── async.lua        // async library
 │       ├── config/          // Keymaps
-│       │   ├── color.lua    // Default color config
-│       │   └── default.lua  // Default config
+│       │   ├── colors.lua   // Default color config
+│       │   ├── default.lua  // Default config
+│       │   ├── packer.lua   // packer.nvim default config
+│       │   ├── symbol.lua   // symbols
+│       │   └── vim-plug.lua // vim-plug default config
 │       ├── config.lua       // Config loader
 │       ├── consts.lua       // Constants
 │       ├── filetype.lua     // FileType autocmd
 │       ├── one.lua          // The one singleton
-│       ├── init.lua         // The lua required entry point (plugin way)
+│       ├── init.lua         // The lua required entry point
 │       ├── plugins.lua      // Plugin loading list
 │       ├── util.lua         // Utility functions
 │       ├── util_spec.lua    // Unit test for util.lua
