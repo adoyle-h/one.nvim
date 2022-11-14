@@ -31,6 +31,7 @@ local function setupImpatient(config)
 end
 
 local function someFixes()
+	table.unpack = unpack
 	vim.api.nvim_set_hl(0, 'Pmenu', { bg = 'grey' }) -- THe initial float window is too ugly
 end
 

@@ -86,7 +86,7 @@ function P.setup(params)
 		rocks = packerOpts.rocks,
 	}
 
-	if isNew then
+	if isNew or (not util.existFile(packerConfig.compile_path)) then
 		vim.api.nvim_create_autocmd('User', {
 			pattern = 'PackerComplete',
 			callback = function()
