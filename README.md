@@ -521,11 +521,18 @@ Enable [profiling](./lua/one/plugins/profiling.lua) plugin, and invoke `:Startup
 
 ## Suggestion, Bug Reporting, Contributing
 
-Any comments and suggestions are always welcome. Please open an [issue][] to contact with me.
+Any comments and suggestions are always welcome.
 
-If you want to submit a new feature, please open an [issue][] for feature request to talk about your design.
+**Before open an issue/discussion/PR, You should search related [issue][]/[discussion][]/[PR][] first** for avoiding to create duplicated links.
 
-If you want to submit a bug fix, search related issues first, and then open a Pull Requst.
+- For new feature request, open an [discussion][], describe your demand concisely and clearly.
+- For new feature submit, open an [PR][], describe your demand and design concisely and clearly.
+- For bug report, open an [issue][], describe the bug concisely and clearly.
+- For bug fix, open a [PR][], concisely and clearly describe what you fixed.
+- For question and suggestion, open a [discussion][].
+- For anything not mentioned above, open a [discussion][].
+
+Do not post duplicated and useless contents like `+1`, `LOL`. React to comments with emoji instead of.
 
 And read [how to contribute](./doc/contribution.md).
 
@@ -536,7 +543,7 @@ The versions follows the rules of [SemVer 2.0.0](http://semver.org/).
 
 ## Copyright and License
 
-Copyright 2016-2022 ADoyle (adoyle.h@gmail.com) All Rights Reserved. The project is licensed under the **BSD 3-clause License**.
+Copyright 2016-2022 ADoyle (adoyle.h@gmail.com) Some Rights Reserved. The project is licensed under the **BSD 3-clause License**.
 
 Read the [LICENSE][] file for the specific language governing permissions and limitations under the License.
 
@@ -552,6 +559,8 @@ Read the [NOTICE][] file distributed with this work for additional information r
 [NOTICE]: ./NOTICE
 [tags]: https://github.com/adoyle-h/one.nvim/tags
 [issue]: https://github.com/adoyle-h/one.nvim/issues
+[discussion]: https://github.com/adoyle-h/one.nvim/discussions
+[PR]: https://github.com/adoyle-h/one.nvim/pulls
 [font]: https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/DejaVuSansMono
 [Nerd Font]: https://github.com/ryanoasis/nerd-fonts
 [default-config]: ./lua/one/config/default.lua
