@@ -9,12 +9,12 @@ Click [./README.md](./README.md) to read English documents.
 - 用 Lua 管理 nvim 配置。所有配置项都可覆盖。详见[配置章节](#配置)。
 - 充分使用 Neovim 功能：Native LSP、Float Window、Winbar。
 - 基于 [vim-plug](https://github.com/junegunn/vim-plug) 或 [packer.nvim][] 的插件框架，任你选择。详见[插件管理器](#插件管理器)。
-- 帅气的界面和配色。暗黑模式。支持真彩色、平滑滚动、滚动条、Dashboard。你可以修改配色，详见 [doc/colors.md](doc/colors.md)。
+- 帅气的界面和配色。暗黑模式。支持真彩色、平滑滚动、滚动条、Dashboard。你可以修改任意配色。详见 [颜色和高亮](#颜色和高亮)。
 - 支持配置 github 代理，在中国大陆可加快插件下载速度。详见[代理](#代理)。
 - 集成了 120 多个 Vim/Nvim 插件。增强插件的使用体验，并且修复了一些插件的缺点。
 
   <details close>
-  <summary>点击展开/折叠</summary>
+  <summary>点击展开/折叠插件列表</summary>
 
   - 插件管理器: [vim-plug](lua/one/plugin-manager/vim-plug.lua) (默认) 或 [packer](lua/one/plugin-manager/packer.lua)
   - 面板: [alpha.nvim](lua/one/plugins/alpha.lua)
@@ -30,7 +30,7 @@ Click [./README.md](./README.md) to read English documents.
   - 模糊查找: [telescope](lua/one/plugins/telescope/main.lua) 与 [ctrlsf](lua/one/plugins/search/ctrlsf.lua)
   - Diagnostics 窗口: [trouble](lua/one/plugins/trouble.lua)
   - 撤销: [vim-mundo](lua/one/plugins/undotree.lua)
-  - 语法高亮: [treesitter](https://github.com/nvim-treesitter/nvim-treesitter) 与 [nvim-ts-rainbow](lua/one/plugins/treesitter/rainbow.lua) 与 [nvim-treesitter-pairs](lua/one/plugins/treesitter/pairs.lua)
+  - 语法高亮: [treesitter][] 与 [nvim-ts-rainbow](lua/one/plugins/treesitter/rainbow.lua) 与 [nvim-treesitter-pairs](lua/one/plugins/treesitter/pairs.lua)
   - 单词高亮: [vim-interestingwords](lua/one/plugins/highlight-words.lua)
   - 注释代码: [Comment.nvim](lua/one/plugins/comment.lua) (默认) 或 [nerdcommenter](lua/one/plugins/comment_nerd.lua)
   - LSP: [nvim-lspconfig](lua/one/plugins/lsp/main.lua) 与 [treesitter](lua/one/plugins/treesitter/init.lua) 与 [null-ls](lua/one/plugins/lsp/null-ls.lua) 与 [nlsp](lua/one/plugins/lsp/nlsp.lua) 与 [goto-preview](lua/one/plugins/lsp/preview.lua) 与 [lsp-toggle](https://github.com/adoyle-h/lsp-toggle.nvim)
@@ -311,7 +311,13 @@ vim-plug 管理的插件目录和 packer 管理的是不一样的。当你改变
 
 你甚至可以设置 `onlyPlugins = {}` 来一键禁用所有插件（不禁用插件管理器）。详见 [Debug - Disable other plugins](./doc/debug.md#disable-other-plugins)。
 
-### [颜色和高亮](./doc/colors.md)
+### 颜色和高亮
+
+本项目高度依赖 [treesitter][]。如果语法高亮失效，检查你的 [treesitter parsers](https://github.com/nvim-treesitter/nvim-treesitter#language-parsers) 是否正常。
+阅读 [./doc/treesitter.md](./doc/treesitter.md) 查看如何排查。
+
+你可以修改默认配色和高亮。
+阅读 [./doc/colors.md](./doc/colors.md) 查看更多细节。
 
 ### 代理
 
@@ -553,3 +559,4 @@ See the [LICENSE][] file for the specific language governing permissions and lim
 [init.lua]: https://github.com/adoyle-h/neovim-config/blob/master/init.lua
 [packer.nvim]: https://github.com/wbthomason/packer.nvim
 [impatient.nvim]: https://github.com/lewis6991/impatient.nvim
+[treesitter]: https://github.com/nvim-treesitter/nvim-treesitter

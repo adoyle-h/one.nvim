@@ -6,15 +6,15 @@ All-in-one neovim configuration framework implemented with Lua. It is highly fle
 
 ## Features
 
-- All in Lua. All configs can be overridden. See [Configuration](#configuration).
+- All in Lua. All configs can be overridden. Read [Configuration](#configuration).
 - Use many Neovim features: Native LSP, Float Window, Winbar.
-- Lua-wrapped plugin manager based on [vim-plug](https://github.com/junegunn/vim-plug) or [packer.nvim][] at your choice. See [Plugin Manager](#plugin-manager).
-- Awesome UI and color schema. Dark Mode. Support True-Color, Smooth-Scroll, Scrollbar, Dashboard. You can change colors and highlights. See [doc/colors.md](doc/colors.md).
-- Configurable proxy for fast git download in China Mainland. See [Proxy](#proxy).
+- Lua-wrapped plugin manager based on [vim-plug](https://github.com/junegunn/vim-plug) or [packer.nvim][] at your choice. Read [Plugin Manager](#plugin-manager).
+- Awesome UI and color schema. Dark Mode. Support True-Color, Smooth-Scroll, Scrollbar, Dashboard. You can change colors and highlights. Read [Colors and Highlights](#colors-and-highlights).
+- Configurable proxy for fast git download in China Mainland. Read [Proxy](#proxy).
 - Integrated 120+ powerful Vim/Nvim plugins. Enhancing the usage experience, and fixed some shortcomings of these plugins.
 
   <details close>
-  <summary>Click to expend/collapse</summary>
+  <summary>Click to expend/collapse plugin list</summary>
 
   - Plugin Manager: [vim-plug](lua/one/plugin-manager/vim-plug.lua) (default) or [packer](lua/one/plugin-manager/packer.lua)
   - Dashboard: [alpha.nvim](lua/one/plugins/alpha.lua)
@@ -30,7 +30,7 @@ All-in-one neovim configuration framework implemented with Lua. It is highly fle
   - Fuzzy Finding: [telescope](lua/one/plugins/telescope/main.lua) and [ctrlsf](lua/one/plugins/search/ctrlsf.lua)
   - Diagnostics Window: [trouble](lua/one/plugins/trouble.lua)
   - Undo: [vim-mundo](lua/one/plugins/undotree.lua)
-  - Syntax Highlight: [treesitter](https://github.com/nvim-treesitter/nvim-treesitter) and [nvim-ts-rainbow](lua/one/plugins/treesitter/rainbow.lua) and [nvim-treesitter-pairs](lua/one/plugins/treesitter/pairs.lua)
+  - Syntax Highlight: [treesitter][] and [nvim-ts-rainbow](lua/one/plugins/treesitter/rainbow.lua) and [nvim-treesitter-pairs](lua/one/plugins/treesitter/pairs.lua)
   - Highlight Words: [vim-interestingwords](lua/one/plugins/highlight-words.lua)
   - Code Comment: [Comment.nvim](lua/one/plugins/comment.lua) (default) or [nerdcommenter](lua/one/plugins/comment_nerd.lua)
   - LSP: [nvim-lspconfig](lua/one/plugins/lsp/main.lua) and [treesitter](lua/one/plugins/treesitter/init.lua) and [null-ls](lua/one/plugins/lsp/null-ls.lua) and [nlsp](lua/one/plugins/lsp/nlsp.lua) and [goto-preview](lua/one/plugins/lsp/preview.lua) and [lsp-toggle](https://github.com/adoyle-h/lsp-toggle.nvim)
@@ -172,8 +172,8 @@ Do [initialization](#initialization) and then press `nvim` to get started.
 ## Initialization
 
 - Use your current editor to edit config in file `init.lua`. You can refer to [my init.lua][init.lua].
-  - `config.pluginManager.use` choose your favorite plugin manager. See [Plugin Manager](#plugin-manager) for details.
-  - It maybe be slow to download plugins. Modify `config.proxy.github` option to use proxy. See [Proxy](#proxy) for details.
+  - `config.pluginManager.use` choose your favorite plugin manager. Read [Plugin Manager](#plugin-manager) for details.
+  - It maybe be slow to download plugins. Modify `config.proxy.github` option to use proxy. Read [Proxy](#proxy) for details.
 - Open `nvim`. It will auto download dependent packages, like impatient.nvim, vim-plug or packer. And then auto download plugins.
 - When plugins installed failed.
   - If `config.pluginManager.use = vim-plug`
@@ -230,7 +230,7 @@ require('one').setup {
 
 You can refer to [my init.lua][init.lua] to write your config.
 
-You can override the default options of plugins. See [Plugin - Using Plugin](./doc/plugin.md#using-plugin).
+You can override the default options of plugins. Read [Plugin - Using Plugin](./doc/plugin.md#using-plugin).
 
 
 ### Default Config
@@ -287,7 +287,7 @@ Because using [inspect.lua](https://github.com/kikito/inspect.lua) to print conf
 you may see tags such as `<table id>`. It is for preventing infinite loops.
 You can search `--[[<table 28>--]]` to view its value for `<table 28>` in same buffer content.
 
-For `<table id>`, `<function id>`, `<metatable>` tag explanations, see [inspect.lua](https://github.com/kikito/inspect.lua#examples-of-use).
+For `<table id>`, `<function id>`, `<metatable>` tag explanations, read [inspect.lua](https://github.com/kikito/inspect.lua#examples-of-use).
 
 ### Plugin Manager
 
@@ -301,7 +301,7 @@ require('one').setup {
 }
 ```
 
-The plugins directory maneged by vim-plug is different from packer. When you modify `config.pluginManager.use`, the plugins need to be installed again. See [initialization](#initialization).
+The plugins directory maneged by vim-plug is different from packer. When you modify `config.pluginManager.use`, the plugins need to be installed again. Read [initialization](#initialization).
 
 - Packer [default config](./lua/one/config/packer.lua)
 - Vim-Plug [default config](./lua/one/config/vim-plug.lua)
@@ -313,9 +313,15 @@ It is highly flexible to be customized and extended.
 
 Read [./doc/plugin.md](./doc/plugin.md) for plugin definitions and references.
 
-You can even set `onlyPlugins = {}` to disable all plugins. See [Debug - Disable other plugins](./doc/debug.md#disable-other-plugins).
+You can even set `onlyPlugins = {}` to disable all plugins. Read [Debug - Disable other plugins](./doc/debug.md#disable-other-plugins).
 
-### [Colors and Highlights](./doc/colors.md)
+### Colors and Highlights
+
+It's highly dependent on [treesitter][]. If syntax highlights not work, check your [treesitter parsers](https://github.com/nvim-treesitter/nvim-treesitter#language-parsers) correct.
+Read [./doc/treesitter.md](./doc/treesitter.md) for troubleshooting.
+
+You can override the default colors and highlights.
+Read [./doc/colors.md](./doc/colors.md) for more details.
 
 ### Proxy
 
@@ -346,7 +352,7 @@ Tricks for debug. Such as disable all plugins.
 
 ### Keymaps
 
-For basic intro, see [./doc/keymaps.md](./doc/keymaps.md).
+For basic intro, read [./doc/keymaps.md](./doc/keymaps.md).
 
 Press `<space>k` to see all keymaps in nvim.
 
@@ -364,7 +370,7 @@ Using [nvim-lspconfig][] and [null-ls][] to manage LSP. And using [mason.nvim][]
 
 ### Code Format
 
-The code formatting is based on LSP. Using `lsp-format` instead of nvim builtin `vim.lsp.buf.format` to provide more flexible configurations. See [lsp-format options](https://github.com/lukas-reineke/lsp-format.nvim#special-format-options).
+The code formatting is based on LSP. Using `lsp-format` instead of nvim builtin `vim.lsp.buf.format` to provide more flexible configurations. Read [lsp-format options](https://github.com/lukas-reineke/lsp-format.nvim#special-format-options).
 
 You can set multi formatters to format codes at the same time. And you can also change the order of formatters by filetype.
 
@@ -373,7 +379,7 @@ Default to use the formatters defined in `nullLS.sources`, and then formatters d
 
 ### Telescope Extensions
 
-There are many useful telescope extensions. See [ad-telescope-extensions.nvim](https://github.com/adoyle-h/ad-telescope-extensions.nvim) and [./lua/one/plugins/telescope/extensions.lua](./lua/one/plugins/telescope/extensions.lua)
+There are many useful telescope extensions. Read [ad-telescope-extensions.nvim](https://github.com/adoyle-h/ad-telescope-extensions.nvim) and [./lua/one/plugins/telescope/extensions.lua](./lua/one/plugins/telescope/extensions.lua)
 
 Use `<space>;` to view all telescope extensions.
 
@@ -458,7 +464,7 @@ You can call the properties of one.nvim in runtime.
 :lua one.
 ```
 
-By default, it is assigned to global variable `one`. (See config option `config.global = 'one'`)
+By default, it is assigned to global variable `one`. (Read the option `config.global = 'one'`)
 You can change it to other variable name as you like.
 Or set `false` or `nil` to prevent creating this global variable.
 
@@ -525,16 +531,16 @@ And read [how to contribute](./doc/contribution.md).
 
 ## Versions
 
-See [tags][].
+Read [tags][].
 The versions follows the rules of [SemVer 2.0.0](http://semver.org/).
 
 ## Copyright and License
 
 Copyright 2016-2022 ADoyle (adoyle.h@gmail.com) All Rights Reserved. The project is licensed under the **BSD 3-clause License**.
 
-See the [LICENSE][] file for the specific language governing permissions and limitations under the License.
+Read the [LICENSE][] file for the specific language governing permissions and limitations under the License.
 
-See the [NOTICE][] file distributed with this work for additional information regarding copyright ownership.
+Read the [NOTICE][] file distributed with this work for additional information regarding copyright ownership.
 
 ## Other Projects
 
@@ -556,3 +562,4 @@ See the [NOTICE][] file distributed with this work for additional information re
 [init.lua]: https://github.com/adoyle-h/neovim-config/blob/master/init.lua
 [packer.nvim]: https://github.com/wbthomason/packer.nvim
 [impatient.nvim]: https://github.com/lewis6991/impatient.nvim
+[treesitter]: https://github.com/nvim-treesitter/nvim-treesitter
