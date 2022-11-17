@@ -400,6 +400,7 @@ If bufferline plugin enabled, some keymaps will be overridden. See [Buffer Line]
 ## Git
 
 - `<leader>G` = Open Gitsigns window
+- `<leader>gg` = Open lazygit window
 
 ## Gutter
 
