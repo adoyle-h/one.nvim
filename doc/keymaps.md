@@ -29,6 +29,7 @@ Press `<space>k` to see all keymaps in nvim.
 - `<M-I>` = Decrement word under cursor
 - `<leader>so` = Toggle scrolloff
 - `<leader>sp` = Toggle spell-checking
+- `<M-t>` = Translate text under cursor (support selection). You can also use `:Translate <lang>`. See [translate plugin](../lua/one/plugins/translate.lua).
 
 ## Edit and Write
 

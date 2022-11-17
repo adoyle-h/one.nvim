@@ -58,6 +58,7 @@ return function(Plug, Load, config)
 	Load 'js'
 	Load 'crontab'
 	Load 'live-cmd'
+	Load 'translate'
 
 	Plug {
 		'tyru/capture.vim',
@@ -79,21 +80,6 @@ return function(Plug, Load, config)
 	Plug { 'tpope/vim-repeat', desc = 'Enable repeating other supported plugins with the . command' }
 	Plug { 'mechatroner/rainbow_csv', desc = 'For .csv file', ft = 'csv' }
 	Plug 'rohanorton/lua-gf.nvim'
-
-	------ Default disabled plugins ------
-	-- User can enable them on demand
-	-- Load 'profiling'
-	-- Load 'zk'
-	-- Load 'node'
-	-- Load 'curl'
-	-- Load 'funny'
-	-- Load 'latex'
-	-- Load 'calendar'
-	-- Load 'todo'
-	-- Load 'zen'
-	-- Load 'mark'
-	-- Load 'bookmark'
-	--------------------------------------
 
 	Plug 'ryanoasis/vim-devicons' -- Devicons for old vimscript plugins. It should be put at last!!
 end

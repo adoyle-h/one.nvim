@@ -72,6 +72,7 @@ Click [./README.md](./README.md) to read English documents.
   - 笔记本: [zk](lua/one/plugins/zk.lua)
   - 实时命令: [live-command](https://github.com/smjonas/live-command.nvim)
   - 颜色着色: [nvim-colorizer](lua/one/plugins/colors/inline.lua)
+  - 翻译: [translate.nvim](lua/one/plugins/translate.lua)
   - [游戏](lua/one/plugins/funny.lua)
 
   </details>
