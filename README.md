@@ -71,7 +71,7 @@ All-in-one neovim configuration framework implemented with Lua. It is highly fle
   - Zen Mode: [twilight and zen-mode](lua/one/plugins/zen.lua)
   - Notebook: [zk](lua/one/plugins/zk.lua)
   - Live Command: [live-command](https://github.com/smjonas/live-command.nvim)
-  - Color Highlighter: [nvim-colorizer](lua/one/plugins/colors/inline.lua)
+  - Color Highlighter: [ccc.nvim](lua/one/plugins/colors/ccc.lua) (default) or [vim-hexokinase](lua/one/plugins/colors/hexokinase.lua) or [nvim-colorizer](lua/one/plugins/colors/colorizer.lua)
   - Translation: [translate.nvim](lua/one/plugins/translate.lua)
   - [Games](lua/one/plugins/funny.lua)
 

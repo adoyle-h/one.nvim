@@ -7,7 +7,7 @@ return {
 	deps = {
 		require('one.plugins.themes.' .. config.theme.use),
 		require 'one.plugins.colors.highlights',
-		require 'one.plugins.colors.inline',
+		require 'one.plugins.colors.ccc',
 
 		{
 			'guns/xterm-color-table.vim',

@@ -71,7 +71,7 @@ Click [./README.md](./README.md) to read English documents.
   - 禅模式: [twilight 与 zen-mode](lua/one/plugins/zen.lua)
   - 笔记本: [zk](lua/one/plugins/zk.lua)
   - 实时命令: [live-command](https://github.com/smjonas/live-command.nvim)
-  - 颜色着色: [nvim-colorizer](lua/one/plugins/colors/inline.lua)
+  - 颜色着色: [ccc.nvim](lua/one/plugins/colors/ccc.lua) (默认) 或 [vim-hexokinase](lua/one/plugins/colors/hexokinase.lua) 或 [nvim-colorizer](lua/one/plugins/colors/colorizer.lua)
   - 翻译: [translate.nvim](lua/one/plugins/translate.lua)
   - [游戏](lua/one/plugins/funny.lua)
 

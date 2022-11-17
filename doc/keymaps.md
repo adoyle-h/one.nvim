@@ -393,3 +393,4 @@ If bufferline plugin enabled, some keymaps will be overridden. See [Buffer Line]
 ## Uncategory
 
 - `<leader>cr` = Send request in HTTP file (NTBBloodbath/rest.nvim)
+- `<leader>cp` = Open a color picker
