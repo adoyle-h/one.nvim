@@ -28,6 +28,18 @@ local function usePlug(pm, loadPlug, repo, opts)
 		end
 	end
 
+	if opts.after then
+		local afters = opts.after
+		if type(afters) == 'string' then afters = { afters } end
+
+		for _, after in pairs(afters) do
+			if pm.isPlugDisabled(after) then
+				opts.disable = true
+				break
+			end
+		end
+	end
+
 	-- Must load dependent plugins first, then load current plugin.
 	-- If current plugin is disabled, no need to load dependent plugins.
 	if not opts.disable then

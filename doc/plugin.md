@@ -31,6 +31,8 @@ return {
   on = {'command'} -- string[] | nil. On-demand loading: Commands or <Plug>-mappings
   ft = {'lua'} -- string | string[] | nil. On-demand loading: File types
   lock = false, -- boolean | nil. Do not update unless explicitly specified
+  after = '', -- string | string[] | nil. If one of these plugins is disabled, current plugin will be disabled.
+              -- Specifies plugins to load before this plugin. (Only work for packer)
 
   -- Supporting more specifying options by plugin manager
   -- packer: https://github.com/wbthomason/packer.nvim#specifying-plugins

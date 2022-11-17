@@ -4,6 +4,7 @@ local colors = config.colors
 local M = {
 	'lukas-reineke/indent-blankline.nvim',
 	desc = 'Show indent line',
+	after = 'nvim-treesitter',
 
 	highlights = {
 		IndentBlanklineChar = { fg = colors.grey1 },
