@@ -1,9 +1,45 @@
 return {
 	'uga-rosa/translate.nvim',
 
+	commands = function(config)
+		return {
+			TranslateTargetLang = {
+				function(opts)
+					config.translate.targetLang = opts.args
+				end,
+				{
+					desc = 'Change default target language for translate plugin in runtime',
+					range = 0,
+					nargs = '+',
+					complete = require('translate.command').get_complete_list,
+				},
+			},
+
+			TranslateCommand = {
+				function(opts)
+					require('translate.config').config.default.command = opts.args
+				end,
+				{
+					desc = 'Change default command for translate plugin in runtime',
+					range = 0,
+					nargs = '+',
+					complete = function()
+						return { 'google', 'translate_shell', 'deepl_free', 'deepl_pro' }
+					end,
+				},
+			},
+		}
+	end,
+
 	keymaps = function(config)
 		return {
-			{ { 'n', 'x' }, '<M-t>', string.format(':Translate %s<CR>', config.translate.targetLang) },
+			{
+				{ 'n', 'x' },
+				'<M-t>',
+				function()
+					vim.cmd.Translate(config.translate.targetLang)
+				end,
+			},
 		}
 	end,
 
