@@ -38,17 +38,23 @@ local function makeKeymap(sess, load_session)
 	end
 end
 
-local function formatSessions(sessions)
+local function formatSessions(sessions, matched)
 	local load_session = require('persisted.utils').load_session
 
 	table.sort(sessions, function(prev, next)
 		return #prev.val < #next.val
 	end)
 
-	local longest = #sessions[#sessions].val
+	if matched then
+		-- Move matched session to first
+		for idx, sess in pairs(sessions) do if sess == matched then matched = idx end end
+		table.insert(sessions, 1, table.remove(sessions, matched))
+	end
+
+	local textWidth = #sessions[#sessions].val
 
 	for i, sess in pairs(sessions) do --
-		sess.val = sess.val .. string.rep(' ', longest - #sess.val)
+		sess.val = sess.val .. string.rep(' ', textWidth - #sess.val)
 		sess.on_press = makePressFn(i)
 
 		sess.opts.shortcut = printf(' %s ', i)
@@ -56,7 +62,7 @@ local function formatSessions(sessions)
 			{ buffer = 0, noremap = true, silent = true, nowait = true })
 	end
 
-	return longest
+	return textWidth
 end
 
 local function getSessions(conf)
@@ -70,55 +76,54 @@ local function getSessions(conf)
 
 	local sessions = {}
 
-	local branch = vim.fn.system('git rev-parse --abbrev-ref HEAD 2>/dev/null')
+	local branch = vim.fn.system('git rev-parse --abbrev-ref HEAD 2>/dev/null'):gsub('\n', '')
 	local matched
 
 	local i = 1
-	for index, session in pairs(persisted.list()) do
+	for _, session in pairs(persisted.list()) do
 		local path = session.file_path
 		local isContained = path:find(pwd:gsub('/', '%%'), 1, true)
 
 		if i > sessionLimit then break end
+		if not isContained then goto continue end
 
 		local str
 		if session.branch then
 			str = printf('%s (branch: %s)', session.dir_path, session.branch)
-			if session.branch == branch then matched = index end
 		else
 			str = session.dir_path
 		end
 
-		if isContained then
-			table.insert(sessions, {
-				type = 'button',
-				val = str,
-				path = path,
+		sessions[i] = {
+			type = 'button',
+			val = str,
+			path = path,
 
-				opts = {
-					position = 'center',
-					-- shortcut = printf(' %s ', i),
-					cursor = 2,
-					width = 50,
-					align_shortcut = 'left',
-					hl_shortcut = { { 'Keyword', 0, 2 } },
-				},
-			})
+			opts = {
+				position = 'center',
+				-- shortcut = printf(' %s ', i),
+				cursor = 2,
+				width = 50,
+				align_shortcut = 'left',
+				hl_shortcut = { { 'Keyword', 0, 2 } },
+			},
+		}
 
-			i = i + 1
-		end
+		if session.branch and session.branch == branch then matched = sessions[i] end
+
+		i = i + 1
+
+		::continue::
 	end
 
 	if i == 1 then return { type = 'padding', val = 0 } end
 
-	-- move matched session to first
-	if matched then table.insert(sessions, 1, table.remove(sessions, matched)) end
-
-	local longest = formatSessions(sessions)
+	local textWidth = formatSessions(sessions, matched)
 
 	if i > sessionLimit then
 		local text = '[More Sessions]'
 
-		if longest > #text then text = text .. string.rep(' ', longest - #text - 2) end
+		if textWidth > #text then text = text .. string.rep(' ', textWidth - #text - 2) end
 
 		table.insert(sessions, {
 			type = 'button',
