@@ -287,7 +287,7 @@ require('one').setup {
 会有例如 `<table id>` 这样的标记。这是为了避免重复，对于 `<table 28>` 搜索文件内对应的 `--[[<table 28>--]]` 即可找到相应的值。
 `<table id>`, `<function id>`, `<metatable>` 等标记的解释详见 [inspect.lua](https://github.com/kikito/inspect.lua#examples-of-use)。
 
-### 插件管理器
+## 插件管理器
 
 选择你喜欢的插件管理器，目前提供 `vim-plug` (默认) 和 `packer`。
 
@@ -304,7 +304,7 @@ vim-plug 管理的插件目录和 packer 管理的是不一样的。当你改变
 - Packer [默认配置](./lua/one/config/packer.lua)
 - Vim-Plug [默认配置](./lua/one/config/vim-plug.lua)
 
-### 插件
+## 插件
 
 所有插件都可以被关闭，覆盖默认配置项，或者替换成你喜欢的插件。自定义配置和扩展非常方便。
 
@@ -312,7 +312,7 @@ vim-plug 管理的插件目录和 packer 管理的是不一样的。当你改变
 
 你甚至可以设置 `onlyPlugins = {}` 来一键禁用所有插件（不禁用插件管理器）。详见 [Debug - Disable other plugins](./doc/debug.md#disable-other-plugins)。
 
-### 颜色和高亮
+## 颜色和高亮
 
 本项目高度依赖 [treesitter][]。如果语法高亮失效，检查你的 [treesitter parsers](https://github.com/nvim-treesitter/nvim-treesitter#language-parsers) 是否正常。
 阅读 [./doc/treesitter.md](./doc/treesitter.md) 查看如何排查。
@@ -320,7 +320,16 @@ vim-plug 管理的插件目录和 packer 管理的是不一样的。当你改变
 你可以修改默认配色和高亮。
 阅读 [./doc/colors.md](./doc/colors.md) 查看更多细节。
 
-### 代理
+### 色域
+
+本项目的颜色是根据 [Display P3](https://www.color.org/chardata/rgb/DisplayP3.xalter) 色域设计的。对于 MacOS 系统和 iTerm2 用户友好。
+
+如果你的 nvim 配色看起来跟下图有点不一样。你的终端应该不是处于 Display P3 色域。
+你可以尝试 [sRGB 配色](lua/one/colors/srgb.lua)。详见[颜色 - 色域](./doc/colors.md#color-gamut)。
+
+![colors.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/colors.png)
+
+## 代理
 
 ```lua
 require('one').setup {

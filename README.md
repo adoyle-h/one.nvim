@@ -290,7 +290,7 @@ You can search `--[[<table 28>--]]` to view its value for `<table 28>` in same b
 
 For `<table id>`, `<function id>`, `<metatable>` tag explanations, read [inspect.lua](https://github.com/kikito/inspect.lua#examples-of-use).
 
-### Plugin Manager
+## Plugin Manager
 
 Choose your favorite plugin manager. Now available: `vim-plug` (default) and `packer`.
 
@@ -307,7 +307,7 @@ The plugins directory maneged by vim-plug is different from packer. When you mod
 - Packer [default config](./lua/one/config/packer.lua)
 - Vim-Plug [default config](./lua/one/config/vim-plug.lua)
 
-### Plugin
+## Plugin
 
 All plugins can be turned off, overridden default config options, replaced with your favorites.
 It is highly flexible to be customized and extended.
@@ -316,7 +316,7 @@ Read [./doc/plugin.md](./doc/plugin.md) for plugin definitions and references.
 
 You can even set `onlyPlugins = {}` to disable all plugins. Read [Debug - Disable other plugins](./doc/debug.md#disable-other-plugins).
 
-### Colors and Highlights
+## Colors and Highlights
 
 It's highly dependent on [treesitter][]. If syntax highlights not work, check your [treesitter parsers](https://github.com/nvim-treesitter/nvim-treesitter#language-parsers) correct.
 Read [./doc/treesitter.md](./doc/treesitter.md) for troubleshooting.
@@ -324,7 +324,16 @@ Read [./doc/treesitter.md](./doc/treesitter.md) for troubleshooting.
 You can override the default colors and highlights.
 Read [./doc/colors.md](./doc/colors.md) for more details.
 
-### Proxy
+### Color Gamut
+
+The colors are desiged based on [Display P3](https://www.color.org/chardata/rgb/DisplayP3.xalter) color gamut. It works for MacOS and iTerm2 users.
+
+If your nvim colors looks different from below picture. Your terminal is not under Display P3 color gamut.
+You may try [sRGB colors](lua/one/colors/srgb.lua). Read [Colors - Color Gamut](./doc/colors.md#color-gamut) for details.
+
+![colors.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/colors.png)
+
+## Proxy
 
 ```lua
 require('one').setup {

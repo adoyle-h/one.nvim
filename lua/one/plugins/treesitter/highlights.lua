@@ -27,7 +27,7 @@ return function(config)
 
 		-- Literals
 		['@string'] = { link = 'String' },
-		['@string.regex'] = { fg = '#47A169' },
+		['@string.regex'] = { fg = '#47A169' }, -- #00A463
 		['@string.escape'] = { link = 'SpecialChar' }, -- For escape characters within a string.
 		['@string.special'] = { link = 'SpecialChar' }, -- For strings with special meaning that don't fit into the above categories.
 
@@ -42,7 +42,7 @@ return function(config)
 		-- Functions
 		['@function'] = { link = 'Function' },
 		['@function.call'] = { link = 'Function' },
-		['@function.builtin'] = { fg = '#3D84FF' }, -- For builtin functions: `pairs`, `pcall`, `table.insert` in Lua.
+		['@function.builtin'] = { fg = '#3D84FF' }, -- #1086FF -- For builtin functions: `pairs`, `pcall`, `table.insert` in Lua.
 		['@function.macro'] = { link = 'Macro' }, -- For macro defined functions (calls and definitions)
 		['@method'] = { link = 'Function' },
 		['@method.call'] = { link = 'Function' },
@@ -52,7 +52,7 @@ return function(config)
 
 		-- Keywords
 		['@keyword'] = { link = 'Keyword' },
-		['@keyword.function'] = { fg = '#2F66FF' },
+		['@keyword.function'] = { fg = '#2F66FF' }, -- #0F68FF
 		['@keyword.operator'] = { fg = c.purple, italic = true }, -- e.g. `and`, `as`, `or`.
 		['@keyword.return'] = { link = 'Keyword' },
 
@@ -65,13 +65,13 @@ return function(config)
 
 		-- Types
 		['@type'] = { link = 'Type' },
-		['@type.builtin'] = { fg = '#DB852C' },
+		['@type.builtin'] = { fg = '#DB852C' }, -- #E98000
 		['@type.qualifier'] = { link = 'Type' },
 		['@type.definition'] = { link = 'Typedef' },
 
 		['@storageclass'] = { link = 'StorageClass' },
-		['@field'] = { fg = '#B1A983' }, -- #A99C37 #75902F #90852F '#C75D14'
-		['@property'] = { fg = '#5098A3' },
+		['@field'] = { fg = '#B1A983' }, -- #B3A97E  #A99C37 #75902F #90852F '#C75D14'
+		['@property'] = { fg = '#5098A3' }, -- #2E9AA5
 
 		-- Identifiers
 		['@variable'] = { fg = c.white },
