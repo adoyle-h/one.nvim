@@ -30,6 +30,14 @@ M.defaultConfig = function(config)
 			},
 
 			marks = {
+				Cursor = { --
+					text = '•',
+					priority = 0,
+					color = nil,
+					cterm = nil,
+					highlight = 'Normal',
+				},
+
 				Search = {
 					text = { '-', '=' },
 					priority = 100,
@@ -101,6 +109,7 @@ M.defaultConfig = function(config)
 			},
 
 			handlers = {
+				cursor = false,
 				diagnostic = true,
 				search = has_hlslens, -- will auto run require('scrollbar.handlers.search').setup()
 			},
