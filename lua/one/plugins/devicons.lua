@@ -19,6 +19,7 @@ return {
 				['.editorconfig'] = { icon = '', color = '#BEC0C4', name = 'EditorConfig' },
 				['.eslintrc.yml'] = { icon = '', color = '#8080F2', name = 'EslintRC' },
 				['.prettierignore'] = { icon = '', color = '#C794C8', name = 'PrettierIgnore' },
+				['svg'] = { icon = '', color = '#BEC0C4', name = 'Svg' },
 			},
 		},
 	},
