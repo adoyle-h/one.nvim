@@ -139,3 +139,41 @@ require('one').setup {
   },
 }
 ```
+
+### Disable one.nvim theme
+
+You can disable theme by `config.theme.use = false`.
+
+If you prefer [tokyonight.nvim](https://github.com/folke/tokyonight.nvim), edit your `init.lua` like below codes.
+
+```lua
+require('one').setup {
+  config = {
+    theme = { use = false },
+  },
+
+  plugins = {
+    { 'onedarkpro', disable = true },
+
+    {
+      'folke/tokyonight.nvim',
+
+      config = function(config)
+        local conf = config.tokyonight
+        vim.cmd('colorscheme ' .. conf.colorscheme)
+        require('tokyonight').setup(conf.setup)
+      end,
+
+      defaultConfig = {
+        'tokyonight',
+        {
+          colorscheme = 'tokyonight', -- https://github.com/folke/tokyonight.nvim#-usage
+          setup = {}, -- https://github.com/folke/tokyonight.nvim#%EF%B8%8F-configuration
+        },
+      },
+    },
+  },
+}
+```
+
+But some places do not look good, that you need to solve them by yourself.
