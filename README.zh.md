@@ -271,6 +271,17 @@ require('one').setup {
 }
 ```
 
+**注意**：别在 `configFn` 里创建 keymap 或者命令，它可能会被插件覆盖。
+因为 `configFn` 在所有插件的 config/keymaps/commands/autocmds/filetypes/completions/signs/telescopes 之前调用。
+
+如果你需要调用 `vim.keymap.set` 和 `vim.api.nvim_create_user_command`，请把代码放在 one.nvim setup 函数之后。例如，
+
+```lua
+require('one').setup {}
+vim.keymap.set('n', 'w', 'WWW', { noremap = true })
+vim.api.nvim_create_user_command('Hellow', 'echo "world"', {})
+```
+
 ### 覆盖插件参数
 
 通过 `require('one').setup {plugins = {}}`，你可以覆盖任何[插件参数](./doc/plugin.zh.md#插件参数)。你可以覆盖配色和快捷键设置。

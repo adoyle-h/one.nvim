@@ -272,6 +272,17 @@ require('one').setup {
 }
 ```
 
+**Notice**: Do not create keymaps and commands in `configFn`, it may be overridden by plugins.
+Because `configFn` is invoked before all plugins' config/keymaps/commands/autocmds/filetypes/completions/signs/telescopes.
+
+If you need to invoke `vim.keymap.set` and `vim.api.nvim_create_user_command`, please put codes after one.nvim setup. For example,
+
+```lua
+require('one').setup {}
+vim.keymap.set('n', 'w', 'WWW', { noremap = true })
+vim.api.nvim_create_user_command('Hellow', 'echo "world"', {})
+```
+
 ### Override Plugin Options
 
 You can override any [plugin options](./doc/plugin.md#plugin-options) in `require('one').setup {plugins = {}}`. You can override highlights and keymaps.
