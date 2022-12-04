@@ -34,15 +34,34 @@ describe('usePlug()', function()
 		assert.are.same('g/g2', plugs[8].repo)
 		assert.are.same('g/g', plugs[9].repo)
 
-		assert.are.same({ id = 'g/h1', repo = 'g/h1' }, plugs[10])
+		assert.are.same({ _normalized = true, id = 'g/h1', repo = 'g/h1' }, plugs[10])
 
-		assert.are.same({ id = 'g/h2', repo = 'g/h2', disable = true }, plugs[11])
+		assert.are.same({ _normalized = true, id = 'g/h2', repo = 'g/h2', disable = true }, plugs[11])
 
 		assert.are.same({
+			_normalized = true,
 			id = 'g/h',
 			repo = 'g/h',
 			requires = { { id = 'g/h1', repo = 'g/h1' }, { id = 'g/h2', repo = 'g/h2', disable = true } },
 		}, plugs[12])
+
+	end)
+
+	it('requires and deps contain false', function()
+		local P = { count = 0, plugs = {}, plugMap = {}, userPlugins = {} }
+
+		usePlug(P, loadPlug, {
+			'p',
+			deps = { false, { 'd1' }, false, 'd2' },
+			requires = { false, { 'r1' }, false, { 'r2' } },
+		})
+
+		assert.are.same({
+			_normalized = true,
+			id = 'p',
+			deps = { { id = 'd1' }, { id = 'd2' } },
+			requires = { { id = 'r1' }, { id = 'r2' } },
+		}, P.plugs[1])
 
 	end)
 end)

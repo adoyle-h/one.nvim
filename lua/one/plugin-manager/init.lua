@@ -171,6 +171,8 @@ local function setupUserPlugins(optPlugins)
 	end
 
 	for i, p in pairs(optPlugins or {}) do
+		if not p then goto continue end
+
 		local ok, plugOpts = xpcall(normalizeOpts, debug.traceback, p)
 		if not ok then
 			notify(string.format('Invalid user plugin at opts.plugins[%s]. Reason: %s', i, plugOpts), 'error')
@@ -178,6 +180,8 @@ local function setupUserPlugins(optPlugins)
 
 		userPlugins[plugOpts.id] = plugOpts
 		userPluginList[#userPluginList + 1] = plugOpts -- For keeping plugins order
+
+		::continue::
 	end
 
 	return userPluginList

@@ -43,22 +43,34 @@ local function usePlug(pm, loadPlug, repo, opts)
 	-- Must load dependent plugins first, then load current plugin.
 	-- If current plugin is disabled, no need to load dependent plugins.
 	if not opts.disable then
-		for index, dep in pairs(opts.requires or {}) do
+		local requires = {}
+		for _, dep in pairs(opts.requires or {}) do
+			if not dep then goto continue end
+
 			local depPlug = usePlug(pm, loadPlug, dep)
-			opts.requires[index] = depPlug
+			requires[#requires + 1] = depPlug
 
 			if depPlug.disable then
 				opts.disable = true
 				opts.reason = string.format('Its required plugin "%s" is disabled', depPlug.id)
 			end
+
+			::continue::
 		end
+		opts.requires = requires
 	end
 
 	if not opts.disable then
-		for index, dep in pairs(opts.deps or {}) do
+		local deps = {}
+		for _, dep in pairs(opts.deps or {}) do
+			if not dep then goto continue end
+
 			local depPlug = usePlug(pm, loadPlug, dep)
-			opts.deps[index] = depPlug
+			deps[#deps + 1] = depPlug
+
+			::continue::
 		end
+		opts.deps = deps
 	end
 
 	plugMap[id] = opts
