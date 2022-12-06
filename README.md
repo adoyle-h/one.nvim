@@ -170,6 +170,16 @@ alias nvim='docker run --rm -it --platform linux/amd64 -v "$HOME/.config/nvim:/r
 
 Do [initialization](#initialization) and then press `nvim` to get started.
 
+## Update
+
+The source codes of one.nvim, impatient.nvim and plugin manager (vim-plug, packer.nvim) are not managed by plugin manager.
+You can update them by lua functions or commands.
+
+- Update one.nvim: `:OneUpdate one` or `:lua one.update('one')`
+- Update impatient: `:OneUpdate impatient` or `:lua one.update('impatient')`
+- Update pm: `:OneUpdate pm` or `:lua one.update('pm')`
+- Update all: `:OneUpdate` or `:OneUpdate all` or `:lua one.update()`
+
 ## Initialization
 
 - Use your current editor to edit config in file `init.lua`. You can refer to [my init.lua][init.lua].

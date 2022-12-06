@@ -22,6 +22,7 @@ return function(Plug, Load, config)
 	Load 'beacon'
 
 	---------- Enhanced plugins ----------
+	Load 'one'
 	Load 'filetype'
 	Load 'lsp' -- it must put after telescope plugin
 	Load 'dap'

@@ -171,6 +171,16 @@ alias nvim='docker run --rm -it --platform linux/amd64 -v "$HOME/.config/nvim:/r
 
 [初始化](#初始化)后，执行 `nvim` 启动。
 
+## 更新
+
+one.nvim, impatient.nvim 以及插件管理器 (vim-plug, packer.nvim) 的源码不由插件管理器管理。
+你可以使用 lua 函数或者命令来更新它们。
+
+- 更新 one.nvim: `:OneUpdate one` 或 `:lua one.update('one')`
+- 更新 impatient: `:OneUpdate impatient` 或 `:lua one.update('impatient')`
+- 更新 pm: `:OneUpdate pm` 或 `:lua one.update('pm')`
+- 更新所有: `:OneUpdate` 或 `:OneUpdate all` 或 `:lua one.update()`
+
 ## 初始化
 
 - 用你现有的编辑器修改 `init.lua` 文件的配置。你可以参考[我的 init.lua][init.lua]。
