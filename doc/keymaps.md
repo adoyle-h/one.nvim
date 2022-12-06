@@ -359,7 +359,12 @@ If bufferline plugin enabled, some keymaps will be overridden. See [Buffer Line]
 - `<leader>r` = Rename all references to the symbol under the cursor.
 - `gh` = Display hover information about the symbol under the cursor in a floating window. Calling the function twice will jump into the floating window.
 - `gs` = Display signature information about the symbol under the cursor in a floating window.
-- `gF` = Format a buffer using the attached (and optionally filtered) language server clients. (Autoformat will be trigger when write buffer to disk)
+
+## Format
+
+- `==` = vim default `==`. See `:h ==`
+- `<M-=>` = Format a buffer using the attached language server clients. (format will be trigger when write buffer to disk)
+- `<M-=>` in selection = Format selected texts using the attached language server clients.
 
 ## Diff
 

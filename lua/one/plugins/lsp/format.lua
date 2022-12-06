@@ -1,5 +1,7 @@
 return {
-	'lukas-reineke/lsp-format.nvim',
+	-- 'lukas-reineke/lsp-format.nvim',
+	'adoyle-h/lsp-format.nvim',
+	branch = 'a',
 
 	defaultConfig = {
 		{ 'lsp', 'format' },
@@ -7,12 +9,6 @@ return {
 			-- ['null-ls'] = {
 			--   sync = true
 			-- },
-
-			lua = {
-				exclude = { -- exclude is a table of LSP servers that should not format the buffer.
-					'sumneko_lua',
-				},
-			},
 
 			-- ":h lspconfig-all" for LSP configs provided by nvim-lspconfig
 			javascript = {
@@ -32,7 +28,23 @@ return {
 	end,
 
 	keymaps = { --
-		{ 'n', 'gF', vim.lsp.buf.format, { silent = true, desc = ':h vim.lsp.buf.format' } },
+		{
+			'n',
+			'<M-=>',
+			function()
+				require('lsp-format').format {}
+			end,
+			{ silent = true, desc = 'Format code' },
+		},
+
+		{
+			'v',
+			'<M-=>',
+			-- formatInRange use make_given_range_params which has bug. Add <ESC> for workaround.
+			-- See https://github.com/neovim/neovim/issues/15905
+			'<ESC>:lua require("lsp-format").format_in_range()<CR>',
+			{ silent = true, desc = 'Format code in selection' },
+		},
 	},
 
 	autocmds = {
