@@ -1,6 +1,6 @@
 -- null-ls is an attempt to bridge that gap and simplify the process of creating,
 -- sharing, and setting up LSP sources using pure Lua.
-local M = { 'jose-elias-alvarez/null-ls.nvim', requires = { 'jayp0521/mason-null-ls.nvim' } }
+local M = { 'jose-elias-alvarez/null-ls.nvim', deps = { 'jayp0521/mason-null-ls.nvim' } }
 
 local config = require('one.config').config
 local util = require('one.util')
@@ -32,6 +32,19 @@ M.defaultConfig = {
 	},
 }
 
+local function defaultOnAttach()
+	local ok, lspFormat = pcall(require, 'lsp-format')
+	if not ok then return nil end
+
+	return function(client, bufnr)
+		if client.supports_method('textDocument/formatting') then
+			-- If null-ls client is a formatter, register the client to lsp-format.
+			-- So we can use lsp-format to trigger null-ls formatter when execute ":w".
+			lspFormat.on_attach(client, bufnr)
+		end
+	end
+end
+
 function M.config()
 	local nullLS = require('null-ls')
 	local conf = config.nullLS
@@ -42,36 +55,16 @@ function M.config()
 
 	if pcall(require, 'gitsigns') then table.insert(sources, nullLS.builtins.code_actions.gitsigns) end
 
-	local lspFormat = require('lsp-format')
-
 	-- print(vim.inspect(sources))
 
-	local opts = util.merge(conf, {
-		sources = sources,
-		on_attach = function(client, bufnr)
-			if client.supports_method('textDocument/formatting') then
-				-- If null-ls client is a formatter, register the client to lsp-format.
-				-- So we can use lsp-format to trigger null-ls formatter when execute ":w".
-				lspFormat.on_attach(client, bufnr)
-			end
-		end,
-	})
+	local opts = util.merge(conf, { sources = sources })
+	if not opts.on_attach then opts.on_attach = defaultOnAttach() end
 
 	nullLS.setup(opts)
 
-	require('mason-null-ls').setup { automatic_installation = conf.automatic_installation }
+	local ok, masonNullLS = pcall(require, 'mason-null-ls')
+	if ok then masonNullLS.setup { automatic_installation = conf.automatic_installation } end
 end
-
-M.autocmds = {
-	User = {
-		pattern = 'MasonNullLsUpdateCompleted',
-		callback = function()
-			vim.schedule(function()
-				print 'mason-null-ls has finished'
-			end)
-		end,
-	},
-}
 
 M.filetypes = {
 	['null-ls-info'] = function()
