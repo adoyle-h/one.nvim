@@ -33,15 +33,4 @@ return {
 	config = function(config)
 		require('mason-tool-installer').setup(config['mason-installer'])
 	end,
-
-	autocmds = {
-		User = {
-			pattern = 'MasonToolsUpdateCompleted',
-			callback = function()
-				vim.schedule(function()
-					print 'mason-tool-installer has finished'
-				end)
-			end,
-		},
-	},
 }
