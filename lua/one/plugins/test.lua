@@ -1,5 +1,8 @@
 return {
 	'klen/nvim-test',
+
+	after = 'nvim-treesitter', -- it requires 'nvim-treesitter.ts_utils'
+
 	config = function(config)
 		require('nvim-test').setup(config.test)
 	end,

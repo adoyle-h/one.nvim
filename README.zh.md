@@ -10,7 +10,7 @@ Click [./README.md](./README.md) to read English documents.
 - 充分使用 Neovim 功能：Native LSP、Float Window、Winbar。
 - 基于 [vim-plug](https://github.com/junegunn/vim-plug) 或 [packer.nvim][] 的插件框架，任你选择。详见[插件管理器](#插件管理器)。
 - 帅气的界面和配色。暗黑模式。支持真彩色、平滑滚动、滚动条、Dashboard。你可以修改任意配色。详见 [颜色和高亮](#颜色和高亮)。
-- 支持配置 github 代理，在中国大陆可加快插件下载速度。详见[代理](#代理)。
+- 支持配置 github 代理，在中国大陆可加快插件下载速度。详见[代理](./doc/usage/proxy.zh.md)。
 - 集成了 120 多个 Vim/Nvim 插件。增强插件的使用体验，并且修复了一些插件的缺点。
 
   <details close>
@@ -117,188 +117,28 @@ Click [./README.md](./README.md) to read English documents.
 
 </details>
 
-## 依赖
+## [安装](./doc/install-and-init.zh.md)
 
-- [NVIM v0.8][] 及以上版本
-- python3、pip3
-- nvim python provider
-  - `pip3 install --upgrade --user pynvim`
-  - `pip2 install --upgrade --user pynvim` (这是可选的)
-- Git 与 curl
-- C 编译器与 libstdc++。([treesitter](https://github.com/nvim-treesitter/nvim-treesitter#requirements) 需要)
-- [Nerd Font 字体][Nerd Font]。推荐 [DejaVuSansMonoForPowerline Nerd Font][font]。记得修改你的终端的字体设置。
-- [ripgrep(rg)](https://github.com/BurntSushi/ripgrep)
-- 支持 Linux 和 MacOS，不支持 Windows
+## 更新
 
-## 安装
+one.nvim, impatient.nvim 以及插件管理器 (vim-plug, packer.nvim) 的源码不由插件管理器管理。
+你可以使用 lua 函数或者命令来更新它们。
 
-你可使用 git clone 安装本项目。或在容器中运行 nvim。
-
-### git clone
-
-```sh
-PACK_DIR=${XDG_DATA_HOME:-$HOME/.local/share}/nvim/site/pack/user/start
-mkdir -p "$PACK_DIR"
-git clone --depth 1 --single-branch https://github.com/adoyle-h/one.nvim.git "$PACK_DIR"/one.nvim
-
-# Set your nvim config directory
-NVIM_HOME=${XDG_CONFIG_HOME:-$HOME/.config}/nvim
-mkdir -p "$NVIM_HOME"
-echo "require('one').setup {}" > "$NVIM_HOME"/init.lua
-```
-
-[初始化](#初始化)后，执行 `nvim` 启动。
-
-### 容器
-
-你可以在容器里运行它。这要求你的主机已安装 docker。
-
-#### 构建容器
-
-执行 `./scripts/build-container`。
-（建议中国地区用户加上 `-p` 参数使用代理，加快构建速度）。
-
-**苹果芯片的 Mac 用户注意**。当前 nvim 未提供 Arm 架构下的发行版。所以容器构建和运行都使用了 `--platform=linux/amd64` 选项。苹果芯片下运行容器会很卡。
-
-#### 使用容器
-
-```sh
-# 在主机上缓存 nvim 数据
-docker volume create nvim-data
-# 建议把这行 alias 加到 ~/.bashrc
-alias nvim='docker run --rm -it --platform linux/amd64 -v "$HOME/.config/nvim:/root/.config/nvim" -v "nvim-data:/root/.local/share/nvim" -v "$PWD:/workspace" adoyle/one.nvim:v0.8.0'
-```
-
-[初始化](#初始化)后，执行 `nvim` 启动。
-
-## 初始化
-
-- 用你现有的编辑器修改 `init.lua` 文件的配置。你可以参考[我的 init.lua][init.lua]。
-  - `config.pluginManager.use` 选择你喜欢的插件管理器。详见[插件管理器](#插件管理器)章节。
-  - 下载插件可能会比较慢。通过配置项 `config.proxy.github` 设置代理加速。详见[代理](#代理)。
-- 打开 `nvim`。它会自动下载所需依赖包，比如 impatient.nvim, vim-plug 或 packer。然后自动下载插件。
-- 如果下载插件失败。
-  - 当 `config.pluginManager.use = vim-plug`。
-    - 在 nvim 执行 `:PlugInstall` 安装所有插件，重复直到全部安装成功。
-    - 插件默认安装在 `~/.local/share/nvim/plugins`。你可以通过配置项 `CM.config.pluginManager['vim-plug'].pluginDir` 修改插件目录。
-  - 当 `config.pluginManager.use = packer`
-    - 在 nvim 执行 `:PackerSync` 安装所有插件，重复直到全部安装成功。
-    - 插件默认安装在 `~/.local/share/nvim/pack/packer`。**不要修改** `config.pluginManager.packer.package_root`，除非你十分明白自己在做什么。如果你修改后出了错，请不要来询问我。
-    - 在 [packer.nvim][] 和 [impatient.nvim][] 提供的两种缓存机制作用下，你可能会遇到古怪的错误。尝试 `:lua one.reset()` 来清空所有插件和缓存文件。
-- nvim 启动后会自动下载 treesitter parsers。它们定义在 `config.treesitter.ensure_installed` 和 `config.treesitter.ignore_install`。
-  - 如果安装失败，重启 nvim 或执行 `:TSInstall all` 来重装。
-- nvim 启动后会自动下载 LSP/DAP/Formatter/Linter，它们定义在 `config['mason-installer'].ensureInstalled`.
-  - 如果安装失败，重启 nvim 或执行 `:MasonToolsInstall` 来重装。
-  - 也可以按 `<M-m>` 打开 Mason 窗口，选择要安装的 LSP/DAP/Formatter/Linter。
+- 更新 one.nvim: `:OneUpdate one` 或 `:lua one.update('one')`
+- 更新 impatient: `:OneUpdate impatient` 或 `:lua one.update('impatient')`
+- 更新 pm: `:OneUpdate pm` 或 `:lua one.update('pm')`
+- 更新所有: `:OneUpdate` 或 `:OneUpdate all` 或 `:lua one.update()`
 
 ## 配置
 
-所有配置项都是可选的。
-
 ```lua
 require('one').setup {}
 ```
 
-### 用户配置
+所有配置项都是可选的。你可以覆盖默认配置。
+请看[用户配置](./doc/user-config.zh.md)。
 
-你可以传入自定义配置来覆盖默认配置。
-
-```lua
-require('one').setup {
-  config = {
-    colors = { -- basic colors
-      white = '#BEC0C4', -- frontground
-      black = '#15181D', -- background
-      cursorLine = '#252931',
-    },
-
-    ['mason-installer'] = {
-      ensureInstalled = {
-        'lua-language-server',
-        'luaformatter',
-        'bash-language-server',
-      }
-    }
-  },
-
-  -- Add your plugins or override plugin default options.
-  -- More examples in ./lua/one/plugins.lua
-  plugins = {
-    -- { 'profiling', disable = false },
-    -- { 'psliwka/vim-smoothie', disable = false },
-  },
-}
-```
-
-你可参考[我的 init.lua][init.lua] 来编写你的配置。
-
-你可以覆盖插件的默认选项。详见 [插件 - 使用插件](./doc/plugin.zh.md#使用插件)。
-
-### 默认配置
-
-部分默认配置写在 [./lua/one/config/default.lua](./lua/one/config/default.lua)，部分写在插件的 `defaultConfig` 里。
-
-部分默认颜色配置写在 [./lua/one/config/color.lua](./lua/one/config/color.lua) 与 [./lua/one/themes/onedarkpro.lua](./lua/one/themes/onedarkpro.lua)，另一部分写在插件的 `highlights` 参数里。
-
-### configFn(config)
-
-有些插件配置需要用到对应的模块。例如 `null-ls` 的 `sources` 配置项。你必须定义在 `configFn(config)` 函数。
-函数的返回值必须是一个 table，它会被合并到 `config` 变量。
-
-```lua
-require('one').setup {
-  configFn = function(config)
-    local builtins = require('null-ls').builtins
-    local codeActions = builtins.code_actions
-    local diagnostics = builtins.diagnostics
-    local formatting = builtins.formatting
-
-    -- Do not return config, only return the overridden parts
-    return {
-      nullLS = {
-        sources = {
-          codeActions.eslint_d,
-          codeActions.shellcheck,
-          diagnostics.eslint_d,
-          formatting.eslint_d.with {
-            prefer_local = 'node_modules/.bin',
-          },
-          formatting.lua_format,
-        },
-      },
-    }
-  end,
-}
-```
-
-**注意**：别在 `configFn` 里创建 keymap 或者命令，它可能会被插件覆盖。
-因为 `configFn` 在所有插件的 config/keymaps/commands/autocmds/filetypes/completions/signs/telescopes 之前调用。
-
-如果你需要调用 `vim.keymap.set` 和 `vim.api.nvim_create_user_command`，请把代码放在 one.nvim setup 函数之后。例如，
-
-```lua
-require('one').setup {}
-vim.keymap.set('n', 'w', 'WWW', { noremap = true })
-vim.api.nvim_create_user_command('Hellow', 'echo "world"', {})
-```
-
-### 覆盖插件参数
-
-通过 `require('one').setup {plugins = {}}`，你可以覆盖任何[插件参数](./doc/plugin.zh.md#插件参数)。你可以覆盖配色和快捷键设置。
-
-### 查看配置
-
-你可以通过编写 lua 脚本访问 `require('one.config').config` 或 `a.CM.config` 获取配置信息.
-
-同时，这里提供了两个命令来查看配置：
-`:ShowConfig` 查看最终合并的配置。
-`:ShowPlugins` 查看加载的和未加载的插件。
-
-因为使用了 [inspect.lua](https://github.com/kikito/inspect.lua) 打印配置，
-会有例如 `<table id>` 这样的标记。这是为了避免重复，对于 `<table 28>` 搜索文件内对应的 `--[[<table 28>--]]` 即可找到相应的值。
-`<table id>`, `<function id>`, `<metatable>` 等标记的解释详见 [inspect.lua](https://github.com/kikito/inspect.lua#examples-of-use)。
-
-### 插件管理器
+## 插件管理器
 
 选择你喜欢的插件管理器，目前提供 `vim-plug` (默认) 和 `packer`。
 
@@ -310,20 +150,22 @@ require('one').setup {
 }
 ```
 
-vim-plug 管理的插件目录和 packer 管理的是不一样的。当你改变了 `config.pluginManager.use` 的值，需要重装插件。详见[初始化](#初始化)流程。
+vim-plug 管理的插件目录和 packer 管理的是不一样的。当你改变了 `config.pluginManager.use` 的值，需要重装插件。详见[初始化](./doc/install-and-init.zh.md#初始化)流程。
 
 - Packer [默认配置](./lua/one/config/packer.lua)
 - Vim-Plug [默认配置](./lua/one/config/vim-plug.lua)
 
-### 插件
+## 插件
 
 所有插件都可以被关闭，覆盖默认配置项，或者替换成你喜欢的插件。自定义配置和扩展非常方便。
 
 插件的定义和使用，详见[./doc/plugin.md](./doc/plugin.md)。
 
-你甚至可以设置 `onlyPlugins = {}` 来一键禁用所有插件（不禁用插件管理器）。详见 [Debug - Disable other plugins](./doc/debug.md#disable-other-plugins)。
+你甚至可以设置 `onlyPlugins = {}` 来一键禁用所有插件（不禁用插件管理器）。详见 [Debug - Disable other plugins](./doc/usage/debug.md#disable-other-plugins)。
 
-### 颜色和高亮
+你可以调用 `:OneShowPlugins` 查看加载的和未加载的插件。
+
+## 颜色和高亮
 
 本项目高度依赖 [treesitter][]。如果语法高亮失效，检查你的 [treesitter parsers](https://github.com/nvim-treesitter/nvim-treesitter#language-parsers) 是否正常。
 阅读 [./doc/treesitter.md](./doc/treesitter.md) 查看如何排查。
@@ -331,20 +173,14 @@ vim-plug 管理的插件目录和 packer 管理的是不一样的。当你改变
 你可以修改默认配色和高亮。
 阅读 [./doc/colors.md](./doc/colors.md) 查看更多细节。
 
-### 代理
+### 色域
 
-```lua
-require('one').setup {
-  config = {
-    proxy = {
-      -- 如果你在中国大陆，推荐使用 'https://ghproxy.com'。否则，不要设置该配置项。
-      github = 'https://ghproxy.com',
-    },
-  },
-}
-```
+本项目的颜色是根据 [Display P3](https://www.color.org/chardata/rgb/DisplayP3.xalter) 色域设计的。对于 MacOS 系统和 iTerm2 用户友好。
 
-有些插件使用了 git submodule，代理无法起作用。建议你执行 `git config --global http.https://github.com.proxy https://ghproxy.com` 设置全局代理。
+如果你的 nvim 配色看起来跟下图有点不一样。你的终端应该不是处于 Display P3 色域。
+你可以尝试 [sRGB 配色](lua/one/colors/srgb.lua)。详见[颜色 - 色域](./doc/colors.md#color-gamut)。
+
+<img src="https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/colors.png" height="400px" />
 
 ## 注意
 
@@ -352,139 +188,21 @@ require('one').setup {
 
 其他注意事项见 [./doc/note.md](./doc/note.md)。
 
-## 使用
+## [使用](./doc/usage/README.zh.md)
 
-### [Debug](./doc/debug.md)
-
-Debug 技巧。例如禁用所有插件。
-
-### 快捷键
-
-[./doc/keymaps.md](./doc/keymaps.md) 文档记录了常用的快捷键。
-
-在 nvim 按下 `<space>k` 查询所有快捷键。
-
-### [命令](./doc/commands.md)
-
-### [代码片段](./doc/snippet.md)
-
-### LSP
-
-本项目使用 [nvim-lspconfig][] 和 [null-ls][] 来配置 LSP，管理 LSP 与 Nvim 的连接。
-使用 [mason.nvim][] 来安装与管理 lsp，dap 和 null-ls 的第三方包。
-
-- 执行 `:Mason` 或者按 `<Alt-m>` 查看 LSP 安装情况。
-- 执行 `:LspInfo` 查看当前文件使用的 LSP。
-- 执行 `:NullLsInfo` 查看当前文件使用的 LSP。
-
-[nvim-lspconfig][] 封装了一系列 LSP 客户端配置，能够开箱即用。它提供灵活的配置项便于用户自定义，详见[官方文档](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md)。
-
-[null-ls][] 是一个虚拟 LSP 客户端，可以将 eslint、prettier 这类非 LSP 的普通命令行转化为 LSP。
-它提供统一灵活的配置项便于用户自定义，详见 [null-ls 官方配置文档](https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTIN_CONFIG.md)。
-
-本项目框架配置默认只安装了 Lua LSP 和 Formatter。本项目配置安装了一系列 LSP。用户可以参考 [config/lsp](./lua/one/config/lsp.lua) 和 [init.lua](./init.lua) 来定制自己的。
-
-### 格代化码式
-
-本项目基于 LSP 来格式化代码。
-使用 `lsp-format` 代替 nvim 内置的 `vim.lsp.buf.format`，提供更灵活的自定义配置。详见 [lsp-format 选项](https://github.com/lukas-reineke/lsp-format.nvim#special-format-options)。
-
-你可以指定多个 Formatter 同时格式化代码。你也可以根据 filetype 调整 Formatter 的调用顺序。
-
-Formatter 配置在 `lsp.format` 与 `nullLS.sources`。
-默认先使用定义在 `nullLS.sources` 的 Formatter，后使用定义在 `lsp.format` 的 Formatter。Formatter 执行顺序按定义顺序.
-
-### Telescope 插件
-
-本项目实现了很多有用的 Telescope 插件，详见 [ad-telescope-extensions.nvim](https://github.com/adoyle-h/ad-telescope-extensions.nvim) 和 [./lua/one/plugins/telescope/extensions.lua](./lua/one/plugins/telescope/extensions.lua)。
-
-可使用 `<space>;` 快捷键查询所有 Telescope 插件。
-
-### 窗口选择器
-
-![window-picker.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/window-picker.png)
-
-按下 `<C-w><C-w>` 打开选择器浏览所有 Tab 和窗口。
-按下 `<CR>` 跳转到对应的窗口或者 Tab。
-
-### 浮动命令栏
-
-该功能默认未开启，因为还不稳定。
-你可以依照下面的代码启用。
-
-```lua
-require('one').setup {
-  plugins = {
-    { 'noice', disable = false },
-  },
-}
-```
-
-它会隐藏命令栏。当 `:`, `/`, `?` 按下会弹出窗口。
-
-![cmdline.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/cmdline.png)
-
-### 未加载的插件
-
-为了减少安装和加载插件的时间，有些插件虽然可用但默认禁用了。
-你可以按需开启它们。
-
-```lua
-require('one').setup {
-  plugins = function(load, config)
-    -- Load the builtin plugins
-    return {
-      load('profiling'),
-      load('funny', { disable = true }), -- You can pass options to override the default options of plugin.
-      load('noice'),
-    }
-  end
-}
-```
-
-未加载的插件列表[在这](./doc/available-but-not-loaded-plugins.md)。
-
-### 扩展你自己的插件、高亮、命令等配置
-
-```lua
-local my = {}
-
-my.highlights = function(config)
-  local c = config.colors
-  return { CmpGhostText = { fg = c.grey4, bg = c.darkBlue } }
-end
-
-my.commands = {
-  Hello = ':echo world'
-}
-
-require('one').setup {
-  plugins = { my },
-}
-```
-
-### 全局变量
-
-你可以在运行时操作 one.nvim 的属性。
-
-```
-    ╭─────────────────────╮
-    │ 𝕍 one.CM        CMD │
-    │ 𝕍 one.FT        CMD │
-    │ 𝕍 one.PM        CMD │
-    │ 𝕍 one.cmp       CMD │
-    │ 𝕍 one.util      CMD │
-    │ 𝕍 one.setup     CMD │
-    │ 𝕍 one.consts    CMD │
-    │ 𝕍 one.telescope CMD │
-    ╰─────────────────────╯
-:lua one.
-```
-
-它默认分配到全局变量 `one`。（看配置项 `config.global = 'one'`）
-可以改成其他变量名，随你喜欢。或者设置 `false` 或 `nil`，不创建该全局变量。
-
-这很酷，不是吗？
+- [Debug](./doc/usage/debug.md)
+- [快捷键](./doc/usage/keymaps.zh.md)
+- [命令](./doc/usage/commands.md)
+- [代码片段 (Snippets)](./doc/usage/snippet.md)
+- [LSP](./doc/usage/README.zh.md#lsp)
+- [代码格式化](./doc/usage/README.zh.md#代码格式化)
+- [Telescope 插件](./doc/usage/README.zh.md#telescope-插件)
+- [窗口选择器](./doc/usage/README.zh.md#窗口选择器)
+- [浮动命令栏](./doc/usage/README.zh.md#浮动命令栏)
+- [未加载的插件](./doc/usage/README.zh.md#未加载的插件)
+- [扩展你自己的插件、高亮、命令等配置](./doc/usage/README.zh.md#扩展你自己的插件高亮命令等配置)
+- [全局变量](./doc/usage/README.zh.md#全局变量)
+- [代理](./doc/usage/proxy.zh.md)
 
 ## API
 
@@ -573,14 +291,6 @@ See the [LICENSE][] file for the specific language governing permissions and lim
 [issue]: https://github.com/adoyle-h/one.nvim/issues
 [discussion]: https://github.com/adoyle-h/one.nvim/discussions
 [PR]: https://github.com/adoyle-h/one.nvim/pulls
-[font]: https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/DejaVuSansMono
-[Nerd Font]: https://github.com/ryanoasis/nerd-fonts
-[default-config]: ./lua/one/config/default.lua
-[mason.nvim]: https://github.com/williamboman/mason.nvim
-[null-ls]: https://github.com/jose-elias-alvarez/null-ls.nvim
-[nvim-lspconfig]: https://github.com/neovim/nvim-lspconfig
-[NVIM v0.8]: https://github.com/neovim/neovim/releases/tag/v0.8.0
-[init.lua]: https://github.com/adoyle-h/neovim-config/blob/master/init.lua
 [packer.nvim]: https://github.com/wbthomason/packer.nvim
 [impatient.nvim]: https://github.com/lewis6991/impatient.nvim
 [treesitter]: https://github.com/nvim-treesitter/nvim-treesitter

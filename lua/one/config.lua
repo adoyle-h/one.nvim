@@ -15,7 +15,7 @@ end
 -- @param conf {table} user config
 function CM.setup(conf)
 	local defaultConfigFn = require('one.config.default')
-	local defaultColors = require('one.config.colors')
+	local defaultColors = require('one.colors.display-p3')
 
 	local colors = util.merge(defaultColors, conf.colors)
 	local defaultConfig = defaultConfigFn(colors)

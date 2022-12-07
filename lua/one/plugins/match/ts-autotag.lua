@@ -1,7 +1,7 @@
 return {
 	'windwp/nvim-ts-autotag',
 
-	after = 'nvim-treesitter', -- for PackerSync
+	after = 'nvim-treesitter',
 
 	config = function(config)
 		require('nvim-ts-autotag').setup(config.autotag)

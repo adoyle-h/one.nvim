@@ -110,20 +110,22 @@ function util.ensurePkg(params)
 	return false
 end
 
+function util.downloadFile(url, dist)
+	local cmd = string.format('curl --create-dirs -sSLo "%s" "%s" 2>&1 >/dev/null', dist, url)
+	local str = fn.system(cmd)
+	if vim.v.shell_error > 0 then
+		error(string.format('util.ensureFile failed. exit code=%s. Reason: %s', vim.v.shell_error, str))
+	end
+end
+
 -- @return {boolean} whether is new file
 function util.ensureFile(params)
 	local url = util.proxyGithub(params.url)
 	local dist = params.dist
 
 	if not util.existFile(dist) then
-		local cmd = string.format('curl --create-dirs -sSLo "%s" "%s" 2>&1 >/dev/null', dist, url)
-		notify(string.format('Not found %s\nTo run: %s', dist, cmd))
-
-		local str = fn.system(cmd)
-		if vim.v.shell_error > 0 then
-			error(string.format('util.ensureFile failed. exit code=%s. Reason: %s', vim.v.shell_error, str))
-		end
-
+		notify(string.format('Not found %s\nTo download file from %s', dist, url))
+		util.downloadFile(url, dist)
 		return true
 	end
 
@@ -321,17 +323,23 @@ function util.packadd(dist)
 	vim.cmd.packadd(name)
 end
 
-function util.floatWindow()
+function util.floatWindow(opts)
+	opts = vim.tbl_deep_extend('keep', opts or {}, { --
+		buf = true,
+		width = 0.8,
+		height = 0.8,
+	})
+
 	-- local last_win = vim.api.nvim_get_current_win()
 	-- local last_pos = vim.api.nvim_win_get_cursor(last_win)
 	local columns = vim.o.columns
 	local lines = vim.o.lines
-	local width = math.ceil(columns * 0.8)
-	local height = math.ceil(lines * 0.8 - 4)
+	local width = math.ceil(columns * opts.width)
+	local height = math.ceil(lines * opts.height - 4)
 	local left = math.ceil((columns - width) * 0.5)
 	local top = math.ceil((lines - height) * 0.5)
 
-	local opts = {
+	local winOpts = {
 		relative = 'editor',
 		style = 'minimal',
 		width = width,
@@ -351,7 +359,7 @@ function util.floatWindow()
 	}
 
 	local buf = vim.api.nvim_create_buf(false, true)
-	local win = vim.api.nvim_open_win(buf, true, opts)
+	local win = vim.api.nvim_open_win(buf, true, winOpts)
 
 	vim.api.nvim_win_set_option(win, 'winhighlight', 'NormalFloat:Normal')
 

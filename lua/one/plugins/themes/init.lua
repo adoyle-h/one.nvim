@@ -10,7 +10,6 @@ return {
 		'theme',
 		{
 			background = 'dark', -- Dark theme. DO NOT CHANGE THIS OPTION.
-			theme = 'onedark',
 		},
 	},
 }

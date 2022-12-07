@@ -1,10 +1,16 @@
 # 插件
 
+所有插件都可以被关闭，覆盖默认配置项，或者替换成你喜欢的插件。自定义配置和扩展非常方便。
+
+你甚至可以设置 `onlyPlugins = {}` 来一键禁用所有插件（不禁用插件管理器）。详见 [Debug - Disable other plugins](./usage/debug.md#disable-other-plugins)。
+
+你可以调用 `:OneShowPlugins` 查看加载的和未加载的插件。
+
 ## 内置插件
 
-内置插件都放在目录 [./lua/one/plugins](./lua/one/plugins)。
+内置插件都放在目录 [lua/one/plugins](../lua/one/plugins)。
 
-内置插件在文件 [./lua/one/plugins.lua](./lua/one/plugins.lua) 中加载。
+内置插件在文件 [lua/one/plugins.lua](../lua/one/plugins.lua) 中加载。
 
 ## 创建插件
 
@@ -31,6 +37,8 @@ return {
   on = {'command'} -- string[] | nil. On-demand loading: Commands or <Plug>-mappings
   ft = {'lua'} -- string | string[] | nil. On-demand loading: File types
   lock = false, -- boolean | nil. Do not update unless explicitly specified
+  after = '', -- string | string[] | nil. If one of these plugins is disabled, current plugin will be disabled.
+              -- Specifies plugins to load before this plugin. (Only work for packer)
 
   -- Supporting more specifying options by plugin manager
   -- packer: https://github.com/wbthomason/packer.nvim#specifying-plugins

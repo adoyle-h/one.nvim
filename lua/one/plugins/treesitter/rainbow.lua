@@ -1,7 +1,7 @@
 return {
 	'p00f/nvim-ts-rainbow',
 	desc = 'Rainbow brackets',
-	after = 'nvim-treesitter', -- for PackerSync
+	after = 'nvim-treesitter',
 
 	config = function(config)
 		require('nvim-treesitter.configs').setup { rainbow = config.rainbow }

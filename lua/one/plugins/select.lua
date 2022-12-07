@@ -49,8 +49,8 @@ M.deps = {
 
 	{
 		'nvim-treesitter/nvim-treesitter-textobjects',
-		disable = PM.isPlugDisabled('nvim-treesitter/nvim-treesitter'),
-		after = 'nvim-treesitter', -- for PackerSync
+
+		after = 'nvim-treesitter',
 
 		config = function(config)
 			require('nvim-treesitter.configs').setup { textobjects = config.select.textobjects }

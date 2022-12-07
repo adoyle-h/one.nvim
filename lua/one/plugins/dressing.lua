@@ -38,10 +38,12 @@ return {
 				max_width = { 80, 0.8 },
 				min_width = { 10, 0.2 },
 
-				-- Window transparency (0-100)
-				winblend = 0,
-				-- Change default highlight groups (see :help winhl)
-				winhighlight = '',
+				win_options = {
+					-- Window transparency (0-100)
+					winblend = 0,
+					-- Change default highlight groups (see :help winhl)
+					winhighlight = '',
+				},
 
 				-- Set to `false` to disable
 				mappings = {
@@ -107,10 +109,12 @@ return {
 					-- 'editor' and 'win' will default to being centered
 					relative = 'editor',
 
-					-- Window transparency (0-100)
-					winblend = 0,
-					-- Change default highlight groups (see :help winhl)
-					winhighlight = '',
+					win_options = {
+						-- Window transparency (0-100)
+						winblend = 0,
+						-- Change default highlight groups (see :help winhl)
+						winhighlight = '',
+					},
 
 					-- These can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
 					-- the min_ and max_ options can be a list of mixed types.
