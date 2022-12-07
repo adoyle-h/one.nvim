@@ -1,10 +1,17 @@
 # Plugin
 
+All plugins can be turned off, overridden default config options, replaced with your favorites.
+It is highly flexible to be customized and extended.
+
+You can even set `onlyPlugins = {}` to disable all plugins. Read [Debug - Disable other plugins](./usage/debug.md#disable-other-plugins).
+
+You can invoke `:OneShowPlugins` to view disabled and enabled plugins.
+
 ## Builtin Plugins
 
-Builtin plugins list in [./lua/one/plugins](./lua/one/plugins).
+Builtin plugins list in [lua/one/plugins](../lua/one/plugins).
 
-Loaded builtin plugins list in [./lua/one/plugins.lua](./lua/one/plugins.lua)
+Loaded builtin plugins list in [lua/one/plugins.lua](../lua/one/plugins.lua)
 
 ## Create New Plugin
 

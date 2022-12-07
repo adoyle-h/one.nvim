@@ -14,8 +14,8 @@ The priority from high to low:
 
 - [`config.colors`](../lua/one/colors/display-p3.lua)
 - colors and highlights defined in each plugin
-- [`colors/highlights`](lua/one/plugins/colors/highlights.lua)
--  colors and highlights defined in [theme plugin](lua/one/plugins/themes/init.lua)
+- [`colors/highlights`](../lua/one/plugins/colors/highlights.lua)
+-  colors and highlights defined in [theme plugin](../lua/one/plugins/themes/init.lua)
 - syntax highlights by nvim-treesitter
 
 ## Color Gamut
@@ -25,7 +25,7 @@ The colors are desiged based on [Display P3](https://www.color.org/chardata/rgb/
 If your nvim colors looks different from below picture. Your terminal is not under Display P3 color gamut.
 You may try [sRGB colors](../lua/one/colors/srgb.lua).
 
-![colors.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/colors.png)
+<img src="https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/colors.png" height="100px" />
 
 The color gamut is managed by your terminal application and operator system.
 You should choose the right color gamut for your environment.
@@ -83,7 +83,7 @@ require('one').setup {
 
 ## The syntax highlights
 
-The syntax is parsed by [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter). The nvim-treesitter will set highlights for each syntax. See the [treesitter highlights](../lua/one/plugins/treesitter/highlights.lua) and [colors/highlights](lua/one/plugins/colors/highlights.lua).
+The syntax is parsed by [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter). The nvim-treesitter will set highlights for each syntax. See the [treesitter highlights](../lua/one/plugins/treesitter/highlights.lua) and [colors/highlights](../lua/one/plugins/colors/highlights.lua).
 
 Use `:TSHighlightCapturesUnderCursor` to view the highlight group of word under cursor.
 
@@ -91,13 +91,13 @@ Use `:TSHighlightCapturesUnderCursor` to view the highlight group of word under 
 
 The `markdown` syntax highlights are disabled for treesitter (See `config.treesitter.highlight.disable`).
 But its syntax parser is still working.
-Its syntax highlights are defined in [lua/one/plugins/markdown/highlights.lua](lua/one/plugins/markdown/highlights.lua) .
+Its syntax highlights are defined in [lua/one/plugins/markdown/highlights.lua](../lua/one/plugins/markdown/highlights.lua) .
 
 The `help` syntax highlights are disabled for treesitter, while using nvim builtin highlights.
 
 ## Theme
 
-Default theme is ['onedarkpro'](./lua/one/plugins/themes/onedarkpro.lua).
+Default theme is ['onedarkpro'](../lua/one/plugins/themes/onedarkpro.lua).
 
 ### Theme: onedarkpro
 

@@ -10,7 +10,7 @@ All-in-one neovim configuration framework implemented with Lua. It is highly fle
 - Use many Neovim features: Native LSP, Float Window, Winbar.
 - Lua-wrapped plugin manager based on [vim-plug](https://github.com/junegunn/vim-plug) or [packer.nvim][] at your choice. Read [Plugin Manager](#plugin-manager).
 - Awesome UI and color schema. Dark Mode. Support True-Color, Smooth-Scroll, Scrollbar, Dashboard. You can change colors and highlights. Read [Colors and Highlights](#colors-and-highlights).
-- Configurable proxy for fast git download in China Mainland. Read [Proxy](#proxy).
+- Configurable proxy for fast git download in China Mainland. Read [Proxy](./doc/usage/proxy.md).
 - Integrated 120+ powerful Vim/Nvim plugins. Enhancing the usage experience, and fixed some shortcomings of these plugins.
 
   <details close>
@@ -116,59 +116,7 @@ Function signature completion
 
 </details>
 
-## Dependencies
-
-- [NVIM v0.8][] or later
-- python3、pip3
-- nvim python provider
-  - `pip3 install --upgrade --user pynvim`
-  - `pip2 install --upgrade --user pynvim` (it is optional)
-- Git and curl
-- A C compiler in your path and libstdc++ installed. (Required by [treesitter](https://github.com/nvim-treesitter/nvim-treesitter#requirements))
-- [Nerd Font][]. Recommend [DejaVuSansMonoForPowerline Nerd Font][font]. Remember to change your terminal font setting.
-- [ripgrep(rg)](https://github.com/BurntSushi/ripgrep)
-- Linux and MacOS are supported. Windows not.
-
-## Installation
-
-You can use git clone to install. Or run nvim in container.
-
-### git clone
-
-```sh
-PACK_DIR=${XDG_DATA_HOME:-$HOME/.local/share}/nvim/site/pack/user/start
-mkdir -p "$PACK_DIR"
-git clone --depth 1 --single-branch https://github.com/adoyle-h/one.nvim.git "$PACK_DIR"/one.nvim
-
-# Set your nvim config directory
-NVIM_HOME=${XDG_CONFIG_HOME:-$HOME/.config}/nvim
-mkdir -p "$NVIM_HOME"
-echo "require('one').setup {}" > "$NVIM_HOME"/init.lua
-```
-
-Do [initialization](#initialization) and then press `nvim` to get started.
-
-### Container
-
-You can use it in container. It requires docker installed on your machine.
-
-#### Build container
-
-Invoke `./scripts/build-container`.
-(For users in China Mainland, it's recommended to add `-p` option to enable proxy for fasten building).
-
-**Note** for Mac users with Apple chip. Current nvim not provide releases building for Arm arch. So the container builds and runs with `--platform=linux/amd64` option. It's very slow when running it in container.
-
-#### Use container
-
-```sh
-# Cache the nvim data in host
-docker volume create nvim-data
-# It's recommended to add this line to ~/.bashrc
-alias nvim='docker run --rm -it --platform linux/amd64 -v "$HOME/.config/nvim:/root/.config/nvim" -v "nvim-data:/root/.local/share/nvim" -v "$PWD:/workspace" adoyle/one.nvim:v0.8.0'
-```
-
-Do [initialization](#initialization) and then press `nvim` to get started.
+## [Installation](./doc/install-and-init.md)
 
 ## Update
 
@@ -180,136 +128,14 @@ You can update them by lua functions or commands.
 - Update pm: `:OneUpdate pm` or `:lua one.update('pm')`
 - Update all: `:OneUpdate` or `:OneUpdate all` or `:lua one.update()`
 
-## Initialization
-
-- Use your current editor to edit config in file `init.lua`. You can refer to [my init.lua][init.lua].
-  - `config.pluginManager.use` choose your favorite plugin manager. Read [Plugin Manager](#plugin-manager) for details.
-  - It maybe be slow to download plugins. Modify `config.proxy.github` option to use proxy. Read [Proxy](#proxy) for details.
-- Open `nvim`. It will auto download dependent packages, like impatient.nvim, vim-plug or packer. And then auto download plugins.
-- When plugins installed failed.
-  - If `config.pluginManager.use = vim-plug`
-    - Run `:PlugInstall` in nvim, to install all plugins. Repeat it util all plugins installed successfully.
-    - All plugines installed in `~/.local/share/nvim/plugins`. You can modify the plugin directory with the `CM.config.pluginManager['vim-plug'].pluginDir` option.
-  - If `config.pluginManager.use = packer`
-    - Run `:PackerSync` in nvim, to install all plugins. Repeat it util all plugins installed successfully.
-    - All plugines installed in `~/.local/share/nvim/pack/packer`. **DO NOT MODIFY** the `config.pluginManager.packer.package_root` option, unless you completely know what you are doing. If the option modified and get any error, please don't ask me anything.
-    - These are two cache mechanisms created by [packer.nvim][] and [impatient.nvim][]. You may be trapped in weird exceptions. Try `:lua one.reset()` to remove all plugins and cached files.
-- It will auto download treesitter parsers, which defined in `config.treesitter.ensure_installed` and `config.treesitter.ignore_install`.
-  - If failed, restart nvim or run `:TSInstall all` to install them.
-- It will auto download LSP/DAP/Formatter/Linter, which defined in `config['mason-installer'].ensureInstalled`.
-  - If failed, restart nvim or run `:MasonToolsInstall` to install them.
-  - Or press `<M-m>` to open Mason window to choose LSP/DAP/Formatter/Linter.
-
 ## Configuration
 
-All config options are optional.
-
 ```lua
 require('one').setup {}
 ```
 
-### User Config
-
-Set your config to override default configs.
-
-```lua
-require('one').setup {
-  config = {
-    colors = { -- basic colors
-      white = '#BEC0C4', -- frontground
-      black = '#15181D', -- background
-      cursorLine = '#252931',
-    },
-
-    ['mason-installer'] = {
-      ensureInstalled = {
-        'lua-language-server',
-        'luaformatter',
-        'bash-language-server',
-      }
-    }
-  },
-
-  -- Add your plugins or override plugin default options.
-  -- More examples in ./lua/one/plugins.lua
-  plugins = {
-    -- { 'profiling', disable = false },
-    -- { 'psliwka/vim-smoothie', disable = false },
-  },
-}
-```
-
-You can refer to [my init.lua][init.lua] to write your config.
-
-You can override the default options of plugins. Read [Plugin - Using Plugin](./doc/plugin.md#using-plugin).
-
-
-### Default Config
-
-Parts of default config written in [./lua/one/config/default.lua](./lua/one/config/default.lua), and other parts written in `defaultConfig` option of each plugin.
-
-Parts of default highlights written in [./lua/one/config/color.lua](./lua/one/config/color.lua) and [./lua/one/themes/onedarkpro.lua](./lua/one/themes/onedarkpro.lua), and other parts written in `highlights` option of each plugin.
-
-### configFn(config)
-
-Some plugin configs need the module required. Such as `sources` option for `null-ls`.
-It must be defined in `configFn(config)` function.
-The function must return a table that will be merged into `config` variable.
-
-```lua
-require('one').setup {
-  configFn = function(config)
-    local builtins = require('null-ls').builtins
-    local codeActions = builtins.code_actions
-    local diagnostics = builtins.diagnostics
-    local formatting = builtins.formatting
-
-    -- Do not return config, only return the overridden parts
-    return {
-      nullLS = {
-        sources = {
-          codeActions.eslint_d,
-          codeActions.shellcheck,
-          diagnostics.eslint_d,
-          formatting.eslint_d.with {
-            prefer_local = 'node_modules/.bin',
-          },
-          formatting.lua_format,
-        },
-      },
-    }
-  end,
-}
-```
-
-**Notice**: Do not create keymaps and commands in `configFn`, it may be overridden by plugins.
-Because `configFn` is invoked before all plugins' config/keymaps/commands/autocmds/filetypes/completions/signs/telescopes.
-
-If you need to invoke `vim.keymap.set` and `vim.api.nvim_create_user_command`, please put codes after one.nvim setup. For example,
-
-```lua
-require('one').setup {}
-vim.keymap.set('n', 'w', 'WWW', { noremap = true })
-vim.api.nvim_create_user_command('Hellow', 'echo "world"', {})
-```
-
-### Override Plugin Options
-
-You can override any [plugin options](./doc/plugin.md#plugin-options) in `require('one').setup {plugins = {}}`. You can override highlights and keymaps.
-
-### View Config
-
-You can get config via `require('one.config').config` or `a.CM.config` in lua.
-
-Also, there are two commands to view configs.
-`:ShowConfig` to view final merged config.
-`:ShowPlugins` to view disabled and enabled plugins.
-
-Because using [inspect.lua](https://github.com/kikito/inspect.lua) to print configuration,
-you may see tags such as `<table id>`. It is for preventing infinite loops.
-You can search `--[[<table 28>--]]` to view its value for `<table 28>` in same buffer content.
-
-For `<table id>`, `<function id>`, `<metatable>` tag explanations, read [inspect.lua](https://github.com/kikito/inspect.lua#examples-of-use).
+All config options are optional. You can override default configs.
+Please read [User Config](./doc/user-config.md).
 
 ## Plugin Manager
 
@@ -323,7 +149,7 @@ require('one').setup {
 }
 ```
 
-The plugins directory maneged by vim-plug is different from packer. When you modify `config.pluginManager.use`, the plugins need to be installed again. Read [initialization](#initialization).
+The plugins directory maneged by vim-plug is different from packer. When you modify `config.pluginManager.use`, the plugins need to be installed again. Read [initialization](./doc/install-and-init.md#initialization).
 
 - Packer [default config](./lua/one/config/packer.lua)
 - Vim-Plug [default config](./lua/one/config/vim-plug.lua)
@@ -335,7 +161,9 @@ It is highly flexible to be customized and extended.
 
 Read [./doc/plugin.md](./doc/plugin.md) for plugin definitions and references.
 
-You can even set `onlyPlugins = {}` to disable all plugins. Read [Debug - Disable other plugins](./doc/debug.md#disable-other-plugins).
+You can even set `onlyPlugins = {}` to disable all plugins. Read [Debug - Disable other plugins](./doc/usage/debug.md#disable-other-plugins).
+
+You can invoke `:OneShowPlugins` to view disabled and enabled plugins.
 
 ## Colors and Highlights
 
@@ -352,22 +180,7 @@ The colors are desiged based on [Display P3](https://www.color.org/chardata/rgb/
 If your nvim colors looks different from below picture. Your terminal is not under Display P3 color gamut.
 You may try [sRGB colors](lua/one/colors/srgb.lua). Read [Colors - Color Gamut](./doc/colors.md#color-gamut) for details.
 
-![colors.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/colors.png)
-
-## Proxy
-
-```lua
-require('one').setup {
-  config = {
-    proxy = {
-      -- If you are in China Mainland, it is suggested to set 'https://ghproxy.com'. Otherwise, remove this option.
-      github = 'https://ghproxy.com',
-    },
-  },
-}
-```
-
-Proxy will not work for some plugins using "git submodule". It's recommended to execute `git config --global http.https://github.com.proxy https://ghproxy.com` to set global git proxy.
+<img src="https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/colors.png" height="400px" />
 
 ## Notice
 
@@ -375,131 +188,21 @@ Proxy will not work for some plugins using "git submodule". It's recommended to 
 
 Read [./doc/note.md](./doc/note.md) for other notes.
 
-## Usage
+## [Usage](./doc/usage/README.md)
 
-### [Debug](./doc/debug.md)
-
-Tricks for debug. Such as disable all plugins.
-
-### Keymaps
-
-For basic intro, read [./doc/keymaps.md](./doc/keymaps.md).
-
-Press `<space>k` to see all keymaps in nvim.
-
-### [Commands](./doc/commands.md)
-
-### [Snippets](./doc/snippet.md)
-
-### LSP
-
-Using [nvim-lspconfig][] and [null-ls][] to manage LSP. And using [mason.nvim][] to manege lsp, dap and null-ls packages.
-
-- Call `:Mason` or press `<Alt-m>` to view LSP installations.
-- Call `:LspInfo` to show LSP for current file.
-- Call `:NullLsInfo` to show LSP for current file.
-
-### Code Format
-
-The code formatting is based on LSP. Using `lsp-format` instead of nvim builtin `vim.lsp.buf.format` to provide more flexible configurations. Read [lsp-format options](https://github.com/lukas-reineke/lsp-format.nvim#special-format-options).
-
-You can set multi formatters to format codes at the same time. And you can also change the order of formatters by filetype.
-
-The configs of formatter are at `lsp.format` and `nullLS.sources`.
-Default to use the formatters defined in `nullLS.sources`, and then formatters defined in `lsp.format`.
-
-### Telescope Extensions
-
-There are many useful telescope extensions. Read [ad-telescope-extensions.nvim](https://github.com/adoyle-h/ad-telescope-extensions.nvim) and [./lua/one/plugins/telescope/extensions.lua](./lua/one/plugins/telescope/extensions.lua)
-
-Use `<space>;` to view all telescope extensions.
-
-### Window Picker
-
-![window-picker.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/window-picker.png)
-
-Press `<C-w><C-w>` to open a picker to view all tabpages and windows.
-Press `<CR>` to goto selected window or tabpage.
-
-### Float Cmdline
-
-This feature is disabled by default. Because it seems not stable.
-You can enable it by below codes.
-
-```lua
-require('one').setup {
-  plugins = {
-    { 'noice', disable = false },
-  },
-}
-```
-
-It will hide cmdline. And popup window when `:`, `/`, `?` pressed.
-
-![cmdline.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/cmdline.png)
-
-### Not-Loaded Plugins
-
-For reduce installing and loading time, some plugins are available but disabled or not loaded by default.
-You can enable them as required.
-
-```lua
-require('one').setup {
-  plugins = function(load, config)
-    -- Load the builtin plugins
-    return {
-      load('profiling'),
-      load('funny', { disable = true }), -- You can pass options to override the default options of plugin.
-      load('noice'),
-    }
-  end
-}
-```
-
-The not-loaded plugins list in [here](./doc/available-but-not-loaded-plugins.md).
-
-### Extend your plugins/highlights/commands and so on
-
-```lua
-local my = {}
-
-my.highlights = function(config)
-  local c = config.colors
-  return { CmpGhostText = { fg = c.grey4, bg = c.darkBlue } }
-end
-
-my.commands = {
-  Hello = ':echo world'
-}
-
-require('one').setup {
-  plugins = { my },
-}
-```
-
-### Global variable
-
-You can call the properties of one.nvim in runtime.
-
-```
-    ╭─────────────────────╮
-    │ 𝕍 one.CM        CMD │
-    │ 𝕍 one.FT        CMD │
-    │ 𝕍 one.PM        CMD │
-    │ 𝕍 one.cmp       CMD │
-    │ 𝕍 one.util      CMD │
-    │ 𝕍 one.setup     CMD │
-    │ 𝕍 one.consts    CMD │
-    │ 𝕍 one.telescope CMD │
-    ╰─────────────────────╯
-:lua one.
-```
-
-By default, it is assigned to global variable `one`. (Read the option `config.global = 'one'`)
-You can change it to other variable name as you like.
-Or set `false` or `nil` to prevent creating this global variable.
-
-That's cool, isn't it?
+- [Debug](./doc/usage/debug.md)
+- [Keymaps](./doc/usage/keymaps.md)
+- [Commands](./doc/usage/commands.md)
+- [Snippets](./doc/usage/snippet.md)
+- [LSP](./doc/usage/README.md#lsp)
+- [Code Format](./doc/usage/README.md#code-format)
+- [Telescope Extensions](./doc/usage/README.md#telescope-extensions)
+- [Window Picker](./doc/usage/README.md#window-picker)
+- [Float Cmdline](./doc/usage/README.md#float-cmdline)
+- [Unloaded Plugins](./doc/usage/README.md#unloaded-plugins)
+- [Extend your plugins/highlights/commands and so on](./doc/usage/README.md#extend-your-pluginshighlightscommands-and-so-on)
+- [Global Variable](./doc/usage/README.md#global-variable)
+- [Proxy](./doc/usage/proxy.md)
 
 ## API
 
@@ -567,11 +270,6 @@ Do not post duplicated and useless contents like `+1`, `LOL`. React to comments 
 
 And read [how to contribute](./doc/contribution.md).
 
-## Versions
-
-Read [tags][].
-The versions follows the rules of [SemVer 2.0.0](http://semver.org/).
-
 ## Copyright and License
 
 Copyright 2016-2022 ADoyle (adoyle.h@gmail.com) Some Rights Reserved. The project is licensed under the **BSD 3-clause License**.
@@ -588,18 +286,9 @@ Read the [NOTICE][] file distributed with this work for additional information r
 
 [LICENSE]: ./LICENSE
 [NOTICE]: ./NOTICE
-[tags]: https://github.com/adoyle-h/one.nvim/tags
 [issue]: https://github.com/adoyle-h/one.nvim/issues
 [discussion]: https://github.com/adoyle-h/one.nvim/discussions
 [PR]: https://github.com/adoyle-h/one.nvim/pulls
-[font]: https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/DejaVuSansMono
-[Nerd Font]: https://github.com/ryanoasis/nerd-fonts
-[default-config]: ./lua/one/config/default.lua
-[mason.nvim]: https://github.com/williamboman/mason.nvim
-[null-ls]: https://github.com/jose-elias-alvarez/null-ls.nvim
-[nvim-lspconfig]: https://github.com/neovim/nvim-lspconfig
-[NVIM v0.8]: https://github.com/neovim/neovim/releases/tag/v0.8.0
-[init.lua]: https://github.com/adoyle-h/neovim-config/blob/master/init.lua
 [packer.nvim]: https://github.com/wbthomason/packer.nvim
 [impatient.nvim]: https://github.com/lewis6991/impatient.nvim
 [treesitter]: https://github.com/nvim-treesitter/nvim-treesitter
