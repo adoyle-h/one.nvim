@@ -25,7 +25,7 @@ The colors are desiged based on [Display P3](https://www.color.org/chardata/rgb/
 If your nvim colors looks different from below picture. Your terminal is not under Display P3 color gamut.
 You may try [sRGB colors](../lua/one/colors/srgb.lua).
 
-<img src="https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/colors.png" height="100px" />
+<img src="https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/colors.png" height="400px" />
 
 The color gamut is managed by your terminal application and operator system.
 You should choose the right color gamut for your environment.
