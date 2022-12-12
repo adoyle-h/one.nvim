@@ -9,8 +9,6 @@ M.keymaps = {
 
 	{ 'n', 'Q', '<NOP>', { noremap = true, silent = true, desc = 'disable Ex mode' } },
 
-	{ 'n', 't', 'xp', { noremap = true, silent = true, desc = 'swap adjacent characters' } },
-
 	{ 'n', '<leader>sa', 'ggVG', { noremap = true, silent = true, desc = 'select all texts' } },
 
 	{ 'v', '.', ':normal .<CR>', { silent = true, desc = 'enable . command in visual mode' } },

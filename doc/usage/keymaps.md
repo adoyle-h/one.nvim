@@ -121,7 +121,6 @@ Press `<space>k` to see all keymaps in nvim.
 - `<M-l>` = Swap current symbol under cursor with next node (Note: cursor position affects swap position
 - `<M-j>` = Swap current line with next line
 - `<M-k>` = Swap current line with previous line
-- `t` = Swap next character under cursor
 
 ## Search
 
