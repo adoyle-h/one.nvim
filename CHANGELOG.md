@@ -10,6 +10,21 @@ The versions follow the rules of [Semantic Versioning 2.0.0](http://semver.org/s
 
 [Full Changes](https://github.com/adoyle-h/one.nvim/compare/master...develop)
 
+<a name="v1.1.1"></a>
+## v1.1.1 (2022-12-15 13:52:01 +08:00)
+
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v1.1.0...v1.1.1)
+
+### Bug Fixes
+
+- plugins using "after" option are not loaded [[3e28652](https://github.com/adoyle-h/one.nvim/commit/3e286526d2afd505dbed628021c28985dc4dbee2)]
+- remove keymap "t" [[00cd3ac](https://github.com/adoyle-h/one.nvim/commit/00cd3aca322f930d171281676f45a19d755bbb08)]
+  ```
+  Keep "t" to default motion for user.
+  ```
+
+- **onedarkpro**: colorscheme onedarkpro is deprecated for latest plugin [[62316bc](https://github.com/adoyle-h/one.nvim/commit/62316bcdb7009dee9336723f1ce4c68b3ff783dc)]
+
 <a name="v1.1.0"></a>
 ## v1.1.0 (2022-12-07 18:41:13 +08:00)
 
