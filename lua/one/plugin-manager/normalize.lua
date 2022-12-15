@@ -48,6 +48,8 @@ function M.normalizeOpts(repo, opts)
 		opts.repo = M.getRepo(repo)
 	end
 
+	if opts.repo then opts.repoName = opts.repo:match('^[^/]+/([^/]+)$') end
+
 	opts._normalized = true
 
 	return opts

@@ -74,6 +74,7 @@ local function usePlug(pm, loadPlug, repo, opts)
 	end
 
 	plugMap[id] = opts
+	if opts.repoName then plugMap[opts.repoName] = opts end
 	table.insert(plugs, opts)
 
 	if opts.disable == true then
