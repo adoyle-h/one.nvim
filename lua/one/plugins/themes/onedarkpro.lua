@@ -5,7 +5,7 @@ local M = {
 
 	config = function(config)
 		require('onedarkpro').setup(config.onedarkpro)
-		vim.cmd('colorscheme onedarkpro')
+		vim.cmd('colorscheme onedark')
 	end,
 }
 
