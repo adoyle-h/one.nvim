@@ -21,8 +21,8 @@ Have {{ $noteIdx }} breaking changes. Check below logs with ⚠️ .
 
 {{ range .Commits -}}
 - {{ if .Notes }}⚠️  {{ end }}{{ if .Scope }}**{{ .Scope }}**: {{ end }}
-  {{- regexReplaceAll "([^`]<.*>[^`])" .Subject "`$1`" }} ([{{.Hash.Short}}]({{$.Info.RepositoryURL}}/commit/{{.Hash.Long}})
-{{- if .Refs }} {{ range .Refs }}[#{{ .Ref }}]({{$.Info.RepositoryURL}}/issues/{{ .Ref }}) {{- end }}{{- end }})
+  {{- regexReplaceAll "([^`]<.*>[^`])" .Subject "`$1`" }} ([{{.Hash.Short}}]({{$.Info.RepositoryURL}}/commit/{{.Hash.Long}}))
+{{- if .Refs }} {{ range .Refs }}[#{{ .Ref }}]({{$.Info.RepositoryURL}}/issues/{{ .Ref }}) {{- end }}{{- end }}
 {{- if not (empty .Body) }}
   > {{ regexReplaceAll "\n" .Body "\n  > " | abbrev 960 }}
 
