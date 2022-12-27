@@ -2,11 +2,8 @@ local config = require('one.config').config
 local colors = config.colors
 
 return {
-	-- 's1n7ax/nvim-window-picker',
-	-- tag = 'v1.*',
-	-- TODO: Wait https://github.com/s1n7ax/nvim-window-picker/pulls?q=is%3Aopen+is%3Apr+author%3Aadoyle-h
-	'adoyle-h/nvim-window-picker',
-	branch = 'a',
+	's1n7ax/nvim-window-picker',
+	tag = 'v1.*',
 
 	config = function()
 		require'window-picker'.setup(config['window-picker'])
