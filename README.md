@@ -268,7 +268,7 @@ Any comments and suggestions are always welcome.
 
 Do not post duplicated and useless contents like `+1`, `LOL`. React to comments with emoji instead of.
 
-And read [how to contribute](./doc/contribution.md).
+And read [how to contribute](CONTRIBUTING.md).
 
 ## Copyright and License
 
