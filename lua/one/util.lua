@@ -428,4 +428,43 @@ function util.rm(path)
 	end
 end
 
+local function at(s, i)
+	return string.sub(s, i, i)
+end
+
+-- Modify based https://github.com/lunarmodules/Penlight/blob/7e67bcb1c4d95e7ca817356533419b4a72049b96/lua/pl/path.lua#L457
+function util.relative(start, to)
+	local split, min, append = vim.split, math.min, table.insert
+	local compare
+
+	if IS_WINDOWS then
+		to = to:gsub('/', PATH_SEPARATOR)
+		start = start:gsub('/', PATH_SEPARATOR)
+		compare = function(v)
+			return v:lower()
+		end
+	else
+		compare = function(v)
+			return v
+		end
+	end
+
+	local startl, tol = split(start, PATH_SEPARATOR), split(to, PATH_SEPARATOR)
+
+	local n = min(#startl, #tol)
+	if IS_WINDOWS and n > 0 and at(tol[1], 2) == ':' and tol[1] ~= startl[1] then return to end
+
+	local k = n -- default value if this loop doesn't bail out!
+	for i = 1, n do
+		if compare(startl[i]) ~= compare(tol[i]) then
+			k = i
+			break
+		end
+	end
+	local rell = {}
+	if #startl > k then for i = 1, #startl - k do rell[i] = '..' end end
+	if k <= #tol then for i = k, #tol do append(rell, tol[i]) end end
+	return table.concat(rell, PATH_SEPARATOR)
+end
+
 return util

@@ -50,6 +50,8 @@ local function keymapCopy(state)
 end
 
 M.defaultConfig = function()
+	local highlights = require('neo-tree.ui.highlights')
+
 	local conf = {
 		'neotree',
 		{
@@ -108,6 +110,41 @@ M.defaultConfig = function()
 						unstaged = symbols.GIT_UNSTAGED,
 						staged = symbols.GIT_STAGED,
 						conflict = symbols.GIT_CONFLICT,
+					},
+				},
+			},
+
+			renderers = {
+				directory = {
+					{ 'indent' },
+					{ 'icon' },
+					{ 'current_filter' },
+					{
+						'container',
+						content = {
+							{ 'name', zindex = 10 },
+							{ 'symlink', zindex = 10, highlight = 'NeoTreeSymbolicLinkTarget' },
+							{ 'clipboard', zindex = 10 },
+							{ 'diagnostics', errors_only = true, zindex = 20, align = 'right', hide_when_expanded = true },
+							{ 'git_status', zindex = 20, align = 'right', hide_when_expanded = true },
+						},
+					},
+				},
+
+				file = {
+					{ 'indent' },
+					{ 'icon' },
+					{
+						'container',
+						content = {
+							{ 'name', zindex = 10 },
+							{ 'symlink', zindex = 10, highlight = 'NeoTreeSymbolicLinkTarget' },
+							{ 'clipboard', zindex = 10 },
+							{ 'bufnr', zindex = 10 },
+							{ 'modified', zindex = 20, align = 'right' },
+							{ 'diagnostics', zindex = 20, align = 'right' },
+							{ 'git_status', zindex = 20, align = 'right' },
+						},
 					},
 				},
 			},
@@ -227,6 +264,19 @@ M.defaultConfig = function()
 						['[g'] = 'prev_git_modified',
 						[']g'] = 'next_git_modified',
 					},
+				},
+
+				components = {
+					symlink = function(conf, node, state)
+						if node.is_link then
+							return {
+								text = string.format(conf.format or '→ %s', util.relative(node.path, node.link_to)),
+								highlight = conf.highlight or highlights.SYMBOLIC_LINK_TARGET,
+							}
+						else
+							return {}
+						end
+					end,
 				},
 			},
 
