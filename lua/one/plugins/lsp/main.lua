@@ -1,6 +1,14 @@
 local util = require('one.util')
+local symbolMap = require('one.config').config.symbolMap
 
 local M = { 'neovim/nvim-lspconfig' }
+
+local SeverityMap = {
+	[vim.diagnostic.severity.ERROR] = symbolMap.ERROR,
+	[vim.diagnostic.severity.WARN] = symbolMap.WARN,
+	[vim.diagnostic.severity.INFO] = symbolMap.INFO,
+	[vim.diagnostic.severity.HINT] = symbolMap.HINT,
+}
 
 M.highlights = function(config)
 	local c = config.colors
@@ -57,9 +65,13 @@ M.defaultConfig = {
 				max_width = 120,
 				max_height = 20,
 				focusable = false,
-				source = 'always', -- 'always' or 'if_many'. -- Show source in diagnostics
+				source = false, -- (boolean or string) Show source in diagnostics. Values: 'always' or 'if_many'
 				prefix = ' ',
 				scope = 'cursor',
+				format = function(d)
+					return string.format('%s %s %s: [%s] %s', SeverityMap[d.severity], d.col, d.source, d.code,
+						d.message)
+				end,
 
 				close_events = { 'BufLeave', 'CursorMoved', 'InsertEnter', 'FocusLost' },
 
@@ -135,8 +147,7 @@ function M.config(config)
 	end
 end
 
-M.signs = function(config)
-	local symbolMap = config.symbolMap
+M.signs = function()
 	local map = {
 		Error = symbolMap.ERROR,
 		Warn = symbolMap.WARN,

@@ -14,7 +14,9 @@ M.defaultConfig = {
 		default_timeout = 3000,
 
 		-- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/CONFIG.md#diagnostics_format-string
-		diagnostics_format = '[#{c}] #{m}',
+		-- No #{s} and #{c} in format. because source and code are showing by vim.diagnostic.
+		-- See the config.lsp.diagnostic.float.format at lua/one/plugins/lsp/main.lua
+		diagnostics_format = '#{m}',
 
 		-- should_attach = function(bufnr)
 		--   return not vim.api.nvim_buf_get_name(bufnr):match('^gitsigns://')
