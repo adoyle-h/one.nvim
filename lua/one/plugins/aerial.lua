@@ -114,6 +114,10 @@ M.defaultConfig = {
 		},
 
 		autoFoldLevel = 1,
+
+		ignore = {
+			buftypes = false, -- do not ignore man buffers
+		},
 	},
 }
 
