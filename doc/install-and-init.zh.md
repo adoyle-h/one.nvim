@@ -18,6 +18,7 @@
 ## 版本
 
 推荐使用 `master` 分支。它是稳定的。
+你也可以尝试 `develop` 分支来获取最新代码，但可能不稳定。
 
 版本详见 [tags][]。
 版本命名遵守 [Semantic Versioning 2.0.0](http://semver.org/spec/v2.0.0.html)。

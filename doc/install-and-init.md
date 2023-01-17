@@ -18,6 +18,7 @@ You can use git clone to install. Or run nvim in container.
 ## Versions
 
 It's recommended to use `master` branch which should be always stable.
+You can try `develop` branch for latest update but may be unstable.
 
 Read [tags][] for verions.
 The versions follow the rules of [Semantic Versioning 2.0.0](http://semver.org/spec/v2.0.0.html).
