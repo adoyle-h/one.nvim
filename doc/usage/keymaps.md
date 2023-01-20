@@ -204,7 +204,10 @@ Press `<space>k` to see all keymaps in nvim.
 - `<space>N` = Find notifications
 - `<space>n` = List messages
 - `<space>T` = List todo comments
-- `<space>l` = List lsp symbols in current buffer
+- `<space>ls` = Lists LSP document symbols in the current buffer
+- `<space>lf` = List LSP document symbols which filtered by kinds in current buffer
+- `<space>lS` = List LSP document symbols in the current workspace
+- `<space>lF` = List LSP document symbols which filtered by kinds in current workspace
 
 ### Telescope Window
 

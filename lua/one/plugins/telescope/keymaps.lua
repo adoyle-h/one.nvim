@@ -120,7 +120,10 @@ return function()
 		{ 'n', '<space>j', ':Telescope jumplist<cr>', opts },
 		{ 'n', '<space>v', ':Telescope vim_options<cr>', opts },
 		{ 'n', '<space>R', ':Telescope registers<cr>', opts },
-		{ 'n', '<space>l', ':Telescope lsp_document_symbols<cr>', opts },
+		{ 'n', '<space>ls', ':Telescope lsp_document_symbols<cr>', opts },
+		{ 'n', '<space>lf', ':Telescope lsp_document_symbols_filter<cr>', opts },
+		{ 'n', '<space>lS', ':Telescope lsp_workspace_symbols<cr>', opts },
+		{ 'n', '<space>lF', ':Telescope lsp_workspace_symbols_filter<cr>', opts },
 
 		{
 			'n',
