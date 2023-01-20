@@ -2,6 +2,7 @@
 return function(Plug, Load, config)
 	------- Basic required plugins -------
 	Load 'vim-options'
+	Plug 'lunarmodules/Penlight'
 	Load 'plenary'
 	Load 'devicons' -- Devicons for nvim plugins
 	Plug 'MunifTanjim/nui.nvim'

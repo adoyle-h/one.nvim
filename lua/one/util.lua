@@ -467,4 +467,27 @@ function util.relative(start, to)
 	return table.concat(rell, PATH_SEPARATOR)
 end
 
+function util.inspect(tbl)
+	return vim.inspect(tbl):gsub('<table %d+>', '"%1"'):gsub('<(%d+)>{', '--[[<table %1>--]]{'):gsub(
+		'<function %d+>', '"%1"'):gsub('<metatable>', '["%1"]')
+end
+
+function util.inspect2Lines(tbl)
+	local lines = vim.split(vim.inspect(tbl), '\n')
+	lines = vim.tbl_map(function(line)
+		return line:gsub('<table %d+>', '"%1"'):gsub('<(%d+)>{', '--[[<table %1>--]]{'):gsub(
+			'<function %d+>', '"%1"'):gsub('<metatable>', '["%1"]')
+	end, lines)
+
+	return lines
+end
+
+function util.dump(tbl)
+	return require('pl.pretty').write(tbl)
+end
+
+function util.dump2Lines(tbl)
+	return vim.split(require('pl.pretty').write(tbl), '\n')
+end
+
 return util
