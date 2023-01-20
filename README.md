@@ -17,6 +17,8 @@ All-in-one neovim configuration framework implemented with Lua. It is highly fle
   <summary>Click to expend/collapse plugin list</summary>
 
   - Plugin Manager: [vim-plug](lua/one/plugin-manager/vim-plug.lua) (default) or [packer](lua/one/plugin-manager/packer.lua)
+  - Vim Options: [vim-options](lua/one/plugins/vim-options.lua)
+  - Utilities: [plenary](https://github.com/nvim-lua/plenary.nvim) and [Penlight](https://github.com/lunarmodules/Penlight) and [nui](https://github.com/MunifTanjim/nui.nvim)
   - Dashboard: [alpha.nvim](lua/one/plugins/alpha.lua)
   - Outline: [aerial](lua/one/plugins/aerial.lua) (default) or [majutsushi/tagbar](lua/one/plugins/tagbar.lua)
   - File Explorer: [neo-tree](lua/one/plugins/neo-tree.lua) (default) or [nerdtree](lua/one/plugins/nerdtree.lua) or [nvim-tree](lua/one/plugins/nvim-tree.lua)
@@ -74,6 +76,7 @@ All-in-one neovim configuration framework implemented with Lua. It is highly fle
   - Color Highlighter: [ccc.nvim](lua/one/plugins/colors/ccc.lua) (default) or [vim-hexokinase](lua/one/plugins/colors/hexokinase.lua) or [nvim-colorizer](lua/one/plugins/colors/colorizer.lua)
   - Translation: [translate.nvim](lua/one/plugins/translate.lua)
   - [Games](lua/one/plugins/funny.lua)
+  - one.nvim enhanced plugin: [one](lua/one/plugins/one.lua)
 
   </details>
 
@@ -255,20 +258,7 @@ Enable [profiling](./lua/one/plugins/profiling.lua) plugin, and invoke `:Startup
 
 ## Suggestion, Bug Reporting, Contributing
 
-Any comments and suggestions are always welcome.
-
-**Before open an issue/discussion/PR, You should search related [issue][]/[discussion][]/[PR][] first** for avoiding to create duplicated links.
-
-- For new feature request, open a [discussion][], describe your demand concisely and clearly.
-- For new feature submit, open a [PR][], describe your demand and design concisely and clearly.
-- For bug report, open an [issue][], describe the bug concisely and clearly.
-- For bug fix, open a [PR][], concisely and clearly describe what you fixed.
-- For question and suggestion, open a [discussion][].
-- For anything not mentioned above, open a [discussion][].
-
-Do not post duplicated and useless contents like `+1`, `LOL`. React to comments with emoji instead of.
-
-And read [how to contribute](CONTRIBUTING.md).
+Please read [./CONTRIBUTING.md](./CONTRIBUTING.md) before opening new Issue/Discussion/PR and posting any comments.
 
 ## Copyright and License
 

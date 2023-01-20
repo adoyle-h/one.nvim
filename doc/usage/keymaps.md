@@ -278,8 +278,8 @@ If bufferline plugin enabled, some keymaps will be overridden. See [Buffer Line]
 - `<M-W>` = Focus to previous window
 - `<C-w>p` = Focus to last accessed window.
 - `<C-w>q` = Close current window
-- `<C-w>|` = Open split window
-- `<C-w>\` or `<C-w>n` = Open vsplit window
+- `<C-w>|` = Open window (vsplit)
+- `<C-w>\` or `<C-w>n` = Open window (split)
 - `<C-w>r` = Enter window resize mode
 - `<C-w>h` = Focus to left window
 - `<C-w>j` = Focus to bottom window

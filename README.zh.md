@@ -17,6 +17,8 @@ Click [./README.md](./README.md) to read English documents.
   <summary>点击展开/折叠插件列表</summary>
 
   - 插件管理器: [vim-plug](lua/one/plugin-manager/vim-plug.lua) (默认) 或 [packer](lua/one/plugin-manager/packer.lua)
+  - Vim 选项: [vim-options](lua/one/plugins/vim-options.lua)
+  - 工具函数: [plenary](https://github.com/nvim-lua/plenary.nvim) 和 [Penlight](https://github.com/lunarmodules/Penlight) 和 [nui](https://github.com/MunifTanjim/nui.nvim)
   - 面板: [alpha.nvim](lua/one/plugins/alpha.lua)
   - 大纲: [aerial](lua/one/plugins/aerial.lua) (默认) 或 [majutsushi/tagbar](lua/one/plugins/tagbar.lua)
   - 文件浏览器: [neo-tree](lua/one/plugins/neo-tree.lua) (默认) 或 [nerdtree](lua/one/plugins/nerdtree.lua) 或 [nvim-tree](lua/one/plugins/nvim-tree.lua)
@@ -74,6 +76,7 @@ Click [./README.md](./README.md) to read English documents.
   - 颜色着色: [ccc.nvim](lua/one/plugins/colors/ccc.lua) (默认) 或 [vim-hexokinase](lua/one/plugins/colors/hexokinase.lua) 或 [nvim-colorizer](lua/one/plugins/colors/colorizer.lua)
   - 翻译: [translate.nvim](lua/one/plugins/translate.lua)
   - [游戏](lua/one/plugins/funny.lua)
+  - One.nvim 增强插件: [one](lua/one/plugins/one.lua)
 
   </details>
 
@@ -255,23 +258,7 @@ require('one').setup {
 
 ## 提建议，修 Bug，做贡献
 
-欢迎提供任何建议或者意见。
-
-**在开 issue/discussion/PR 之前，你必须先搜索相关 [issue][]/[discussion][]/[PR][]**，避免创建重复的链接。
-
-- 请求新功能。请开一个 [discussion][]，简短且清晰地描述你的需求。
-- 提交新功能。请开一个 [PR][]，简短且清晰地描述你的需求和设计。
-- 报告 BUG。请开一个 [issue][]，简短且清晰地描述你发现的问题。
-- 修复 BUG。请开一个 [PR][]，简短且清晰地描述你修了什么。
-- 提问和建议。请开一个 [discussion][]。
-- 其他上面未提到的内容，请开一个 [discussion][] 来讨论。
-
-不要发重复或无用的内容，比如 `+1`，`哈哈`。请贴 emoji 标签反馈到评论上。
-
-你可以使用中文反馈意见。但希望你尽可能使用英文，不要中英文混杂，而是写下完整的英文语句。
-因为我们处于国际社区，英文更通用，方便外国人阅读理解你的意见。
-
-请阅读[如何为本项目贡献](./CONTRIBUTING.md)。
+在创建新的 Issue/Discussion/PR，以及发表评论之前，请先阅读 [./CONTRIBUTING.zh.md](./CONTRIBUTING.zh.md)。
 
 ## 版权声明
 
