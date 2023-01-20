@@ -209,7 +209,9 @@ Press `<space>k` to see all keymaps in nvim.
 - `<space>lS` = List LSP document symbols in the current workspace
 - `<space>lF` = List LSP document symbols which filtered by kinds in current workspace
 
-### Telescope Window
+## Telescope
+
+In Telescope picker window.
 
 - `?` in normal mode = Show keymaps of telescope
 - `<C-j>` = Move to next selection
@@ -222,6 +224,9 @@ Press `<space>k` to see all keymaps in nvim.
 - `<C-d>` = Scroll preview window page down
 - `<C-y>` = Copy name of current selection
 - `<M-y>` = Copy path of current selection
+- `<M-a>` = Multi select all entries
+- `<M-A>` = Drop all entries from the current multi selection
+- `<Tab>` = Toggle current entry status for multi select
 
 ## Word Case
 

@@ -50,6 +50,24 @@ M.defaultConfig = function(config)
 	local copySelection = genCopy(actions, action_state, { 'filename', 'display' })
 	local copySelectionPath = genCopy(actions, action_state, { 'path', 'display' })
 
+	local mappingsCommon = {
+		['<C-j>'] = 'move_selection_next',
+		['<C-k>'] = 'move_selection_previous',
+		['<C-s>'] = 'select_horizontal',
+		['<C-b>'] = 'results_scrolling_up',
+		['<C-f>'] = 'results_scrolling_down',
+		['<C-y>'] = copySelection,
+		['<M-y>'] = copySelectionPath,
+		['<M-a>'] = 'select_all',
+		['<M-A>'] = 'drop_all',
+	}
+
+	-- https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/mappings.lua
+	local mappings = {
+		i = vim.tbl_extend('force', {}, mappingsCommon),
+		n = vim.tbl_extend('force', {}, mappingsCommon),
+	}
+
 	return {
 		{ 'telescope', 'main' },
 		{
@@ -134,27 +152,7 @@ M.defaultConfig = function(config)
 					},
 				},
 
-				mappings = {
-					i = {
-						-- https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/mappings.lua
-						['<C-s>'] = 'select_horizontal',
-						['<C-j>'] = 'move_selection_next',
-						['<C-k>'] = 'move_selection_previous',
-						-- ['<C-u>'] = false,
-						-- ['<C-d>'] = false,
-						['<C-b>'] = 'results_scrolling_up',
-						['<C-f>'] = 'results_scrolling_down',
-						['<C-y>'] = copySelection,
-						['<M-y>'] = copySelectionPath,
-					},
-
-					n = {
-						['<C-b>'] = 'results_scrolling_up',
-						['<C-f>'] = 'results_scrolling_down',
-						['<C-y>'] = copySelection,
-						['<M-y>'] = copySelectionPath,
-					},
-				},
+				mappings = mappings,
 			},
 
 			file_previewer = previewers.vim_buffer_cat.new({
