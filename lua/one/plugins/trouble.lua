@@ -9,7 +9,7 @@ return {
 			TroubleCount = { fg = c.yellow },
 			TroubleFile = { fg = c.blue },
 			TroubleFoldIcon = { fg = c.grey4 },
-			TroubleLocation = { fg = c.grey4 },
+			TroubleLocation = { fg = c.grey },
 			TroubleError = { fg = c.red },
 			TroubleWarning = { fg = c.yellow },
 			TroubleInformation = { fg = c.blue },
@@ -62,8 +62,42 @@ return {
 		-- { 'n', '<leader>iq', ':TroubleToggle quickfix<cr>', { silent = true } },
 	},
 
-	config = function(config)
-		require('trouble').setup(config.trouble)
+	config = function(c)
+		require('trouble').setup(c.trouble)
+
+		local renderer = require('trouble.renderer')
+		local config = require('trouble.config')
+
+		renderer.render_diagnostics = function(view, text, items)
+			local diagnostic_format = config.options.render.diagnostics.format
+
+			for _, diag in ipairs(items) do
+				view.items[text.lineNr + 1] = diag
+
+				local sign = diag.sign or renderer.signs[string.lower(diag.type)]
+				if not sign then sign = diag.type end
+
+				local indent = '     '
+				if config.options.indent_lines then
+					indent = ' │   '
+				elseif config.options.group == false then
+					indent = ' '
+				end
+
+				local sign_hl = diag.sign_hl or ('TroubleSign' .. diag.type)
+
+				local sections = diagnostic_format(diag, {
+					text = text,
+					indent = indent,
+					sign = sign,
+					sign_hl = sign_hl,
+				})
+
+				for _, sec in pairs(sections) do if sec then text:render(unpack(sec)) end end
+
+				text:nl()
+			end
+		end
 	end,
 
 	defaultConfig = function(config)
@@ -116,6 +150,20 @@ return {
 					other = symbolMap.OTHER,
 				},
 				use_diagnostic_signs = false, -- enabling this will use the signs defined in your lsp client
+				render = {
+					diagnostics = {
+						format = function(diag, ctx)
+							return {
+								{ ctx.indent, 'Indent' },
+								{ ctx.sign .. ' ', ctx.sign_hl, { exact = true } },
+								{ '' .. diag.lnum .. ' ' .. diag.col .. ' ', 'Location' },
+								diag.source and { diag.source .. ': ', 'Source' },
+								diag.code and diag.code ~= vim.NIL and { '[' .. diag.code .. '] ', 'Code' },
+								{ diag.text, 'Text' .. diag.type, ' ' },
+							}
+						end,
+					},
+				},
 			},
 		}
 	end,
