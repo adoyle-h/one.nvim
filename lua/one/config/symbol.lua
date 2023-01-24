@@ -32,6 +32,7 @@ return {
 		COLLAPSED = '▸',
 		EXPANDED_L = '',
 		COLLAPSED_L = '',
+		EXECUTABLE = '✦',
 	},
 
 	kindSymbolMap = {

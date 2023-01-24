@@ -2,6 +2,8 @@ local config = require('one.config').config
 local symbols = config.symbolMap
 local util = require('one.util')
 
+local executable = vim.fn.executable
+
 local M = {
 	'nvim-neo-tree/neo-tree.nvim',
 	branch = 'v2.x',
@@ -138,6 +140,7 @@ M.defaultConfig = function()
 						'container',
 						content = {
 							{ 'name', zindex = 10 },
+							{ 'exectuable', zindex = 10, align = 'right' },
 							{ 'symlink', zindex = 10, highlight = 'NeoTreeSymbolicLinkTarget' },
 							{ 'clipboard', zindex = 10 },
 							{ 'bufnr', zindex = 10 },
@@ -277,6 +280,14 @@ M.defaultConfig = function()
 							return {}
 						end
 					end,
+
+					exectuable = function(conf, node)
+						local path = node.path
+						if node.is_link then path = node.link_to end
+						local text = ''
+						if executable(path) == 1 then text = conf.symbol or symbols.EXECUTABLE end
+						return { text = text, highlight = conf.highlight or 'NeoTreeFileExecutable' }
+					end,
 				},
 			},
 
@@ -373,6 +384,7 @@ M.highlights = function(config)
 	local activeBG = '#240845'
 
 	return {
+		NeoTreeFileExecutable = { fg = c.blue },
 		NeoTreeGitUntracked = { fg = c.green },
 		NeoTreeFileIcon = { fg = c.white },
 		NeoTreeGitUnstaged = { fg = c.yellow },
