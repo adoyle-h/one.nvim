@@ -1,3 +1,5 @@
+local CONSTS = require('one.consts')
+
 return {
 	'cmp-snippet',
 
@@ -29,4 +31,20 @@ return {
 		},
 	},
 
+	commands = {
+		SnippyCreate = {
+			function(opts)
+				vim.cmd.vs(string.format('%s/%s/%s.snippets', CONSTS.CONFIG_DIR, 'snippets', opts.args))
+				vim.cmd.set('ft=snippets')
+				vim.api.nvim_buf_set_lines(0, 0, 0, false,
+					{ 'priority 100', '', 'snippet key "desc"', '  content', '' })
+			end,
+			{
+				range = 0,
+				nargs = 1,
+				desc = 'Create new snippet file. :SnippyCreate <filetype>',
+				complete = 'filetype',
+			},
+		},
+	},
 }
