@@ -131,6 +131,8 @@ You can update them by lua functions or commands.
 - Update pm: `:OneUpdate pm` or `:lua one.update('pm')`
 - Update all: `:OneUpdate` or `:OneUpdate all` or `:lua one.update()`
 
+## [FAQ](./doc/faq/README.md)
+
 ## Configuration
 
 ```lua

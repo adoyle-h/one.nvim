@@ -132,6 +132,8 @@ one.nvim, impatient.nvim 以及插件管理器 (vim-plug, packer.nvim) 的源码
 - 更新 pm: `:OneUpdate pm` 或 `:lua one.update('pm')`
 - 更新所有: `:OneUpdate` 或 `:OneUpdate all` 或 `:lua one.update()`
 
+## [常见问题](./doc/faq/README.md)
+
 ## 配置
 
 ```lua
