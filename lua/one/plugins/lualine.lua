@@ -86,8 +86,6 @@ local function theme(colors)
 			z = { fg = black, bg = green },
 		},
 
-		winbar = { c = { fg = colors.sec_c_fg, bg = 'green' } },
-
 		insert = { a = { fg = black, bg = colors.blue, gui = 'bold' } },
 
 		visual = { a = { fg = black, bg = colors.orange, gui = 'bold' } },
