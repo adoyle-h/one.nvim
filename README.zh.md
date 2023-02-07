@@ -2,7 +2,7 @@
 
 用 Lua 编写的 Neovim 一体化配置框架。易配置，可扩展。
 
-Click [./README.md](./README.md) to read English documents.
+English Document [./README.md](./README.md)
 
 ## 特性
 
@@ -260,26 +260,25 @@ require('one').setup {
 
 ## 提建议，修 Bug，做贡献
 
-在创建新的 Issue/Discussion/PR，以及发表评论之前，请先阅读 [./CONTRIBUTING.zh.md](./CONTRIBUTING.zh.md)。
+**在创建新的 Issue/Discussion/PR，以及发表评论之前**，请先阅读 [./CONTRIBUTING.zh.md](./CONTRIBUTING.zh.md)。
 
 ## 版权声明
 
 Copyright 2016-2023 ADoyle (adoyle.h@gmail.com) Some Rights Reserved. The project is licensed under the **BSD 3-clause License**.
 
-See the [LICENSE][] file for the specific language governing permissions and limitations under the License.
+Read the [LICENSE][] file for the specific language governing permissions and limitations under the License.
+
+Read the [NOTICE][] file distributed with this work for additional information regarding copyright ownership.
 
 ## 其他项目
 
 我创建的[其他 nvim 项目](https://github.com/adoyle-h?tab=repositories&q=&type=source&language=lua&sort=stargazers)。
 
+
 <!-- links -->
 
 [LICENSE]: ./LICENSE
 [NOTICE]: ./NOTICE
-[tags]: https://github.com/adoyle-h/one.nvim/tags
-[issue]: https://github.com/adoyle-h/one.nvim/issues
-[discussion]: https://github.com/adoyle-h/one.nvim/discussions
-[PR]: https://github.com/adoyle-h/one.nvim/pulls
 [packer.nvim]: https://github.com/wbthomason/packer.nvim
 [impatient.nvim]: https://github.com/lewis6991/impatient.nvim
 [treesitter]: https://github.com/nvim-treesitter/nvim-treesitter

@@ -260,7 +260,7 @@ Enable [profiling](./lua/one/plugins/profiling.lua) plugin, and invoke `:Startup
 
 ## Suggestion, Bug Reporting, Contributing
 
-Please read [./CONTRIBUTING.md](./CONTRIBUTING.md) before opening new Issue/Discussion/PR and posting any comments.
+**Before opening new Issue/Discussion/PR and posting any comments**, please read [./CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ## Copyright and License
 
@@ -274,13 +274,11 @@ Read the [NOTICE][] file distributed with this work for additional information r
 
 [Other nvim projects](https://github.com/adoyle-h?tab=repositories&q=&type=source&language=lua&sort=stargazers) created by me.
 
+
 <!-- links -->
 
 [LICENSE]: ./LICENSE
 [NOTICE]: ./NOTICE
-[issue]: https://github.com/adoyle-h/one.nvim/issues
-[discussion]: https://github.com/adoyle-h/one.nvim/discussions
-[PR]: https://github.com/adoyle-h/one.nvim/pulls
 [packer.nvim]: https://github.com/wbthomason/packer.nvim
 [impatient.nvim]: https://github.com/lewis6991/impatient.nvim
 [treesitter]: https://github.com/nvim-treesitter/nvim-treesitter
