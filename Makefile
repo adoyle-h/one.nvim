@@ -16,3 +16,12 @@ bump-minor:
 
 bump-patch:
 	./tools/bump patch
+
+.PHONY: check-links
+check-links:
+	# https://github.com/tcort/markdown-link-check
+	ag --md -l | xargs -n1 markdown-link-check
+
+.PHONY: check-style
+check-style:
+	editorconfig-checker
