@@ -37,7 +37,7 @@ require('one').setup {
 
 部分默认配置写在 [lua/one/config/default.lua](../lua/one/config/default.lua)，部分写在插件的 `defaultConfig` 里。
 
-部分默认颜色配置写在 [lua/one/config/colors.lua](../lua/one/config/colors.lua) 与 [lua/one/plugins/themes/onedarkpro.lua](../lua/one/plugins/themes/onedarkpro.lua)，另一部分写在插件的 `highlights` 参数里。
+部分默认颜色配置写在 [lua/one/colors/util.lua](../lua/one/colors/util.lua) 与 [lua/one/plugins/themes/onedarkpro.lua](../lua/one/plugins/themes/onedarkpro.lua)，另一部分写在插件的 `highlights` 参数里。
 
 ## configFn(config)
 

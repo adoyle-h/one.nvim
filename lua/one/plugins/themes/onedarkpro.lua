@@ -39,6 +39,11 @@ M.defaultConfig = function(config)
 				comment = c.comment,
 				selection = c.darkOrange,
 
+				-- https://github.com/olimorris/onedarkpro.nvim/blob/dd5e37cacfc4aa1949766b5a1b5a9b0b2bbc75b2/lua/onedarkpro/themes/onedark.lua#L39-L42
+				git_add = c.git.add,
+				git_change = c.git.change,
+				git_delete = c.git.delete,
+
 				diff_add = c.diff.add.bg,
 				diff_delete = c.diff.delete.bg,
 				diff_change = c.diff.change.bg,

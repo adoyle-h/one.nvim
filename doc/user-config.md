@@ -37,7 +37,7 @@ You can override the default options of plugins. Read [Plugin - Using Plugin](./
 
 Parts of default config written in [lua/one/config/default.lua](../lua/one/config/default.lua), and other parts written in `defaultConfig` option of each plugin.
 
-Parts of default highlights written in [lua/one/config/colors.lua](../lua/one/config/colors.lua) and [lua/one/plugins/themes/onedarkpro.lua](../lua/one/plugins/themes/onedarkpro.lua), and other parts written in `highlights` option of each plugin.
+Parts of default highlights written in [lua/one/colors/util.lua](../lua/one/colors/util.lua) and [lua/one/plugins/themes/onedarkpro.lua](../lua/one/plugins/themes/onedarkpro.lua), and other parts written in `highlights` option of each plugin.
 
 ## configFn(config)
 

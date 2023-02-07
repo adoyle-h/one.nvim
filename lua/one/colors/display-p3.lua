@@ -1,4 +1,5 @@
-local colors = { -- basic colors
+return require('one.colors.util').make({
+	-- basic colors
 	black = '#101012',
 	grey1 = '#18191B',
 	grey2 = '#242629',
@@ -25,27 +26,9 @@ local colors = { -- basic colors
 	darkYellow = '#212100',
 	darkOrange = '#371B00',
 	darkPurple = '#180225',
-}
-
-local functionsColors = { --
-	cursorLine = colors.darkBlue,
-	cursorLineNrFG = colors.blue,
-	cursorLineNrBG = colors.darkBlue,
-
+}, {
+	-- functional colors
 	linkFG = '#30B17D',
-	comment = colors.grey,
 	scrollbarBG = '#0E2851',
-
-	match = { fg = colors.orange },
-
-	diff = {
-		add = { bg = colors.darkGreen },
-		delete = { fg = colors.red, bg = colors.darkRed },
-		change = { bg = colors.darkYellow },
-		text = { bg = '#353513' },
-	},
-}
-
-for k, v in pairs(functionsColors) do colors[k] = v end
-
-return colors
+	diff = { text = { bg = '#353513' } },
+})
