@@ -257,6 +257,8 @@ If bufferline plugin enabled:
 
 - `<C-t>n` = Open new tab
 - `<C-t>x` = Close tab
+- `<C-t>o` = Close all other tabs
+- `<C-t>-` = Go to previously focused tab
 - `<M-[>` or `<C-t>k` = Select previous tab
 - `<M-]>` or `<C-t>j` = Select next tab
 - `<M-{>` or `<C-t>h` = Move current tab to previous
@@ -278,6 +280,7 @@ If bufferline plugin enabled, some keymaps will be overridden. See [Buffer Line]
 - `<M-W>` = Focus to previous window
 - `<C-w>p` = Focus to last accessed window.
 - `<C-w>q` = Close current window
+- `<C-w>o` = Close all other windows
 - `<C-w>|` = Open window (vsplit)
 - `<C-w>\` or `<C-w>n` = Open window (split)
 - `<C-w>r` = Enter window resize mode
@@ -365,6 +368,7 @@ If bufferline plugin enabled, some keymaps will be overridden. See [Buffer Line]
 - `gc` = Selects a code action available at the current cursor position.
 - `<leader>r` = Rename all references to the symbol under the cursor.
 - `gh` = Display hover information about the symbol under the cursor in a floating window. Calling the function twice will jump into the floating window.
+  - `gh` in markdown files = Open a telescope picker to select a heading
 - `gs` = Display signature information about the symbol under the cursor in a floating window.
 
 ## Format

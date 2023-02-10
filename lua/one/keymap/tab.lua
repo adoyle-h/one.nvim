@@ -16,6 +16,7 @@ M.keymaps = function()
 	local opts = { noremap = true, silent = true }
 
 	return {
+		{ modes, '<C-t>o', ':tabonly<CR>', opts },
 		{ modes, '<C-t>-', ':execute "tabn ".g:lasttab<CR>', opts },
 		{ modes, '<M-]>', ':tabnext<CR>', opts },
 		{ modes, '<M-[>', ':tabprev<CR>', opts },
