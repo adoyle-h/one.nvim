@@ -63,8 +63,7 @@ local function getPlugFolderName(repo)
 end
 
 local function isPlugDownloaded(repo)
-	local folderPath = PM.P.getPluginFolderPath(getPlugFolderName(repo))
-
+	local folderPath = PM.getPluginFolderPath(repo)
 	return util.existDir(folderPath)
 end
 
@@ -234,6 +233,10 @@ function PM.clean()
 	PM.plugs = {}
 	PM.plugMap = {}
 	PM.userPlugins = {}
+end
+
+function PM.getPluginFolderPath(repo)
+	return PM.P.getPluginFolderPath(getPlugFolderName(repo))
 end
 
 return PM
