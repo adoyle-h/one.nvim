@@ -32,6 +32,7 @@ M.defaultConfig = {
 			{'ToDo', 'Done'},
 			{'low', 'normal', 'high'},
 			{'open', 'close'},
+			{'enable', 'disable'},
 			-- LuaFormatter on
 		},
 	},
