@@ -61,11 +61,11 @@ M.defaultConfig = {
 
 		guides = {
 			-- When the child item has a sibling below it
-			mid_item = '├─ ',
+			mid_item = '├─',
 			-- When the child item is the last in the list
-			last_item = '└─ ',
+			last_item = '└─',
 			-- When there are nested child guides to the right
-			nested_top = '│ ',
+			nested_top = '│  ',
 			-- Raw indentation
 			whitespace = '  ',
 		},
@@ -113,8 +113,6 @@ M.defaultConfig = {
 				{ Interface = '', InterfaceCollapsed = Collapsed .. ' ' }),
 		},
 
-		autoFoldLevel = 1,
-
 		ignore = {
 			buftypes = false, -- do not ignore man buffers
 		},
@@ -142,8 +140,6 @@ M.filetypes = {
 	aerial = function(args)
 		local aerial = require('aerial')
 		local bufnr = args.buf
-
-		aerial.tree_set_collapse_level(bufnr, config.aerial.autoFoldLevel)
 
 		keymap('n', '<C-h>', function()
 			aerial.up(-1, 1)
