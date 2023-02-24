@@ -31,11 +31,13 @@ return function(colors)
 		global = 'one',
 
 		pluginManager = {
-			use = 'vim-plug', -- 'vim-plug' or 'packer'
+			use = 'lazy', -- 'vim-plug' or 'packer' or 'lazy'
 
 			['vim-plug'] = require('one.config.vim-plug'),
 
 			packer = require('one.config.packer'),
+
+			lazy = require('one.config.lazy'),
 		},
 
 		proxy = {
@@ -53,7 +55,7 @@ return function(colors)
 				-- LuaFormatter off
 				'TelescopePrompt', 'TelescopeResults', 'lsp-installer', 'null-ls-info', 'lspinfo', 'aerial',
 				'nerdtree', 'NvimTree', 'neo-tree', 'notify', 'Trouble', 'Mundo', 'mason', 'man', 'alpha', 'calendar',
-				'PlenaryTestPopup', 'noice',
+				'PlenaryTestPopup', 'noice', 'lazy',
 				-- LuaFormatter on
 			},
 		},

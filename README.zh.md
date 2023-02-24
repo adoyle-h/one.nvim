@@ -8,7 +8,7 @@ English Document [./README.md](./README.md)
 
 - 用 Lua 管理 nvim 配置。所有配置项都可覆盖。详见[配置章节](#配置)。
 - 充分使用 Neovim 功能：Native LSP、Float Window、Winbar。
-- 基于 [vim-plug](https://github.com/junegunn/vim-plug) 或 [packer.nvim][] 的插件框架，任你选择。详见[插件管理器](#插件管理器)。
+- 支持的插件管理器：[lazy.nvim][], [vim-plug](https://github.com/junegunn/vim-plug), [packer.nvim][]。详见[插件管理器](#插件管理器)。
 - 帅气的界面和配色。暗黑模式。支持真彩色、平滑滚动、滚动条、Dashboard。你可以修改任意配色。详见 [颜色和高亮](#颜色和高亮)。
 - 支持配置 github 代理，在中国大陆可加快插件下载速度。详见[代理](./doc/usage/proxy.zh.md)。
 - 集成了 120 多个 Vim/Nvim 插件。增强插件的使用体验，并且修复了一些插件的缺点。
@@ -16,7 +16,7 @@ English Document [./README.md](./README.md)
   <details close>
   <summary>点击展开/折叠插件列表</summary>
 
-  - 插件管理器: [vim-plug](lua/one/plugin-manager/vim-plug.lua) (默认) 或 [packer](lua/one/plugin-manager/packer.lua)
+  - 插件管理器: [lazy](lua/one/plugin-manager/lazy.lua) (默认) 或 [vim-plug](lua/one/plugin-manager/vim-plug.lua) 或 [packer](lua/one/plugin-manager/packer.lua)
   - Vim 选项: [vim-options](lua/one/plugins/vim-options.lua)
   - 工具函数: [plenary](https://github.com/nvim-lua/plenary.nvim) 和 [Penlight](https://github.com/lunarmodules/Penlight) 和 [nui](https://github.com/MunifTanjim/nui.nvim)
   - 面板: [alpha.nvim](lua/one/plugins/alpha.lua)
@@ -124,7 +124,7 @@ English Document [./README.md](./README.md)
 
 ## 更新
 
-one.nvim, impatient.nvim 以及插件管理器 (vim-plug, packer.nvim) 的源码不由插件管理器管理。
+one.nvim, impatient.nvim 以及[插件管理器](#插件管理器)的源码不由插件管理器管理。
 你可以使用 lua 函数或者命令来更新它们。
 
 - 更新 one.nvim: `:OneUpdate one` 或 `:lua one.update('one')`
@@ -145,20 +145,24 @@ require('one').setup {}
 
 ## 插件管理器
 
-选择你喜欢的插件管理器，目前提供 `vim-plug` (默认) 和 `packer`。
+选择你喜欢的插件管理器，目前提供 `lazy` (默认)，`vim-plug` 和 `packer`。
 
 ```lua
 require('one').setup {
   config = {
-    pluginManager = { use = 'packer' }, -- 'vim-plug' or 'packer'
+    pluginManager = { use = 'packer' }, -- 'lazy' or 'vim-plug' or 'packer'
   },
 }
 ```
 
-vim-plug 管理的插件目录和 packer 管理的是不一样的。当你改变了 `config.pluginManager.use` 的值，需要重装插件。详见[初始化](./doc/install-and-init.zh.md#初始化)流程。
+|              | lazy                    | vim-plug                    | packer                                      |
+|--------------|-------------------------|-----------------------------|---------------------------------------------|
+| 插件目录     | {DATA_DIR}/lazy.nvim    | {DATA_DIR}/lazy.nvim        | {DATA_DIR}/site/pack/user/start/packer.nvim |
+| 默认配置文件 | lua/one/config/lazy.lua | lua/one/config/vim-plug.lua | lua/one/config/packer.lua                   |
 
-- Packer [默认配置](./lua/one/config/packer.lua)
-- Vim-Plug [默认配置](./lua/one/config/vim-plug.lua)
+`{DATA_DIR}` 的值见 `:lua print(vim.fn.stdpath('data'))`。
+
+当你从 vim-plug 或者 lazy 切换到 packer，就需要重装插件。详见[初始化](./doc/install-and-init.zh.md#初始化)流程。
 
 ## 插件
 
@@ -241,6 +245,7 @@ vim-plug 管理的插件目录和 packer 管理的是不一样的。当你改变
 │       │   └── themes/      // Color schemas
 │       └── plugin-manager/
 │           ├── init.lua     // Plugin Manager
+│           ├── lazy.lua     // Wrapper for lazy.nvim
 │           ├── vim-plug.lua // Wrapper for vim-plug
 │           └── packer.lua   // Wrapper for packer.nvim
 └── scripts/                 // scripts for building project
@@ -283,3 +288,4 @@ Read the [NOTICE][] file distributed with this work for additional information r
 [packer.nvim]: https://github.com/wbthomason/packer.nvim
 [impatient.nvim]: https://github.com/lewis6991/impatient.nvim
 [treesitter]: https://github.com/nvim-treesitter/nvim-treesitter
+[lazy.nvim]: https://github.com/folke/lazy.nvim

@@ -54,6 +54,7 @@ local HOME_DIR = util.pathJoin(consts.HOME_DIR)
 local CACHE_DIR = util.pathJoin(consts.CACHE_DIR)
 local DATA_DIR = util.pathJoin(consts.DATA_DIR)
 local CONFIG_DIR = util.pathJoin(consts.CONFIG_DIR)
+local STATE_DIR = util.pathJoin(consts.STATE_DIR)
 
 function util.path(path)
 	return HOME_DIR .. PATH_SEPARATOR .. util.pathJoin(path)
@@ -69,6 +70,10 @@ end
 
 function util.configPath(path)
 	return CONFIG_DIR .. PATH_SEPARATOR .. util.pathJoin(path)
+end
+
+function util.statePath(path)
+	return STATE_DIR .. PATH_SEPARATOR .. util.pathJoin(path)
 end
 
 function util.existDir(path)

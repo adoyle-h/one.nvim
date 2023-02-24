@@ -1,20 +1,22 @@
 local util = require('one.util')
+local pUtil = require('one.plugin-manager.util')
 
 local P = {}
 
+P.cmds = { install = ':PackerSync<CR>', status = ':PackerStatus<CR>' }
+
+-- Some fields is ignored. Because PluginManager has implemented these functions.
+local fields = {
+	-- LuaFormatter off
+	'after', 'as', 'branch', 'bufread', 'cmd', 'commit', 'cond', --[[ 'config', ]] 'disable',
+	'event', 'fn', 'ft', 'installer', 'keys', 'lock', 'module', 'module_pattern', 'opt',
+	--[[ 'requires', ]] 'rocks', 'rtp', --[[ 'setup', ]] 'tag', 'updater',
+	-- LuaFormatter on
+	run = 'do',
+}
+
 local function parseOpts(repo, opts)
-	local plugOpts = { repo }
-
-	-- Some fields is ignored. Because PluginManager has implemented these functions.
-	local fields = {
-		-- LuaFormatter off
-		'after', 'as', 'branch', 'bufread', 'cmd', 'commit', 'cond', --[[ 'config', ]] 'disable',
-		'event', 'fn', 'ft', 'installer', 'keys', 'lock', 'module', 'module_pattern', 'opt',
-		--[[ 'requires', ]] 'rocks', 'rtp', 'run', --[[ 'setup', ]] 'tag', 'updater',
-		-- LuaFormatter on
-	}
-
-	for _, v in pairs(fields) do plugOpts[v] = opts[v] end
+	local plugOpts = pUtil.parseOpts(fields, opts, { repo })
 
 	local after = {}
 	for _, depPkg in pairs(opts.requires or {}) do
@@ -72,8 +74,6 @@ function P.setup(params)
 
 	P.packerConfig = packerConfig
 
-	vim.keymap.set('n', '<SPACE>P', ':PackerStatus<CR>', { desc = 'Show Plugin Status' })
-
 	-- https://github.com/wbthomason/packer.nvim#the-startup-function
 	packer.startup {
 		function()
@@ -122,7 +122,5 @@ function P.getPluginFolderPath(folderName)
 		return util.pathJoin(root, plugin_package, 'opt', folderName)
 	end
 end
-
-P.cmds = { install = 'PackerSync', status = 'PackerStatus' }
 
 return P

@@ -1,9 +1,10 @@
 -- The packer.nvim is terrible. Use vim-plug! https://github.com/junegunn/vim-plug
 local util = require('one.util')
+local pUtil = require('one.plugin-manager.util')
 
 local P = {}
 
-P.cmds = { install = 'PlugInstall', status = 'PlugStatus' }
+P.cmds = { install = ':PlugInstall<CR>', status = ':PlugStatus<CR>' }
 
 function P.setup(params)
 	local conf = params.config.pluginManager['vim-plug']
@@ -24,8 +25,6 @@ function P.setup(params)
 	params.loadPlugs()
 	vim.call('plug#end')
 
-	vim.keymap.set('n', '<SPACE>P', ':PlugStatus<CR>', { desc = 'Show Plugin Status' })
-
 	if isNew then vim.cmd('PlugInstall') end
 
 	params.run(isNew)
@@ -44,31 +43,33 @@ end
 --            frozen : Do not update unless explicitly specified
 
 -- @param params see lua/one/plugin-manager/init.lua
-local function parseOpts(opts)
-	local plugOpts = {}
-	local fields = {
-		'branch',
-		'tag',
-		'commit',
-		'rtp',
-		'dir',
-		'as',
-		run = 'do',
-		cmd = 'on',
-		ft = 'for',
-		lock = 'frozen',
-	}
-	for k, v in pairs(fields) do
-		plugOpts[v] = opts[v]
-		if type(k) == 'string' then plugOpts[v] = opts[k] end
-	end
+local fields = {
+	'branch',
+	'tag',
+	'commit',
+	'rtp',
+	'dir',
+	'as',
+	run = 'do',
+	cmd = 'on',
+	ft = 'for',
+	lock = 'frozen',
+}
 
-	return plugOpts
+function P.notifyInvalidOpts(repo)
+	vim.notify(string.format(
+		'[vim-plug][repo %s] Not support a lua function as "run" parameter. Please call the "run" funciton by yourself.',
+		repo), 'warn')
 end
 
 function P.loadPlug(repo, opts)
-	local plugOpts = parseOpts(opts)
+	local plugOpts = pUtil.parseOpts(fields, opts)
 	local loadPlug = vim.fn['plug#']
+
+	if type(plugOpts['do']) == 'function' then
+		plugOpts['do'] = string.format(
+			':lua require("one.plugin-manager.vim-plug").notifyInvalidOpts("%s")', repo)
+	end
 
 	if vim.tbl_isempty(plugOpts) then
 		loadPlug(repo)

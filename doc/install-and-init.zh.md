@@ -11,7 +11,7 @@
   - `pip2 install --upgrade --user pynvim` (这是可选的)
 - Git 与 curl
 - C 编译器与 libstdc++。([treesitter](https://github.com/nvim-treesitter/nvim-treesitter#requirements) 需要)
-- [Nerd Font 字体][Nerd Font]。推荐 [DejaVuSansMonoForPowerline Nerd Font][font]。记得修改你的终端的字体设置。
+- [Nerd Font 字体][Nerd Font]。推荐 [DejaVuSansMonoForPowerline Nerd Font][font]。记得修改你的终端的字体设置。(图标可能看起来很小。这是 [nerd-fonts 的 BUG](https://github.com/ryanoasis/nerd-fonts/issues/1061))。
 - [ripgrep(rg)](https://github.com/BurntSushi/ripgrep)
 - 支持 Linux 和 MacOS，不支持 Windows
 
@@ -62,21 +62,29 @@ alias nvim='docker run --rm -it --platform linux/amd64 -v "$HOME/.config/nvim:/r
 
 ## 初始化
 
-- 用你现有的编辑器修改 `init.lua` 文件的配置。你可以参考[我的 init.lua][init.lua]。
+1. 用你现有的编辑器修改 `init.lua` 文件的配置。你可以参考[我的 init.lua][init.lua]。
   - `config.pluginManager.use` 选择你喜欢的插件管理器。详见[插件管理器](../README.zh.md#插件管理器)章节。
   - 下载插件可能会比较慢。通过配置项 `config.proxy.github` 设置代理加速。详见[代理](./usage/proxy.zh.md)。
-- 打开 `nvim`。它会自动下载所需依赖包，比如 impatient.nvim, vim-plug 或 packer。然后自动下载插件。
-- 如果下载插件失败。
+
+2. 打开 `nvim`。它会自动下载所需依赖包，比如 impatient.nvim, lazy.nvim, vim-plug 或 packer.nvim。然后自动下载插件。
+
+3. 如果下载插件失败。
+
   - 当 `config.pluginManager.use = vim-plug`。
     - 在 nvim 执行 `:PlugInstall` 安装所有插件，重复直到全部安装成功。
     - 插件默认安装在 `~/.local/share/nvim/plugins`。你可以通过配置项 `CM.config.pluginManager['vim-plug'].pluginDir` 修改插件目录。
+  - 当 `config.pluginManager.use = lazy`。
+    - 在 nvim 执行 `:Lazy install` 安装所有插件，重复直到全部安装成功。
+    - 如果 .git 目录已经下载，但是中途报错。插件目录会变成空的，里面只有 .git 目录。这种情况 lazy.nvim 无法自治。你需要按 `:Lazy home` 打开 lazy 窗口。然后光标移到对应的插件按 `x` 删除，再按 `i` 重新安装。参考[这个 lazy.nvim issue](https://github.com/folke/lazy.nvim/issues/224#issuecomment-1367108251)。
   - 当 `config.pluginManager.use = packer`
     - 在 nvim 执行 `:PackerSync` 安装所有插件，重复直到全部安装成功。
     - 插件默认安装在 `~/.local/share/nvim/pack/packer`。**不要修改** `config.pluginManager.packer.package_root`，除非你十分明白自己在做什么。如果你修改后出了错，请不要来询问我。
     - 在 [packer.nvim][] 和 [impatient.nvim][] 提供的两种缓存机制作用下，你可能会遇到古怪的错误。尝试 `:lua one.reset()` 来清空所有插件和缓存文件。
-- nvim 启动后会自动下载 treesitter parsers。它们定义在 `config.treesitter.ensure_installed` 和 `config.treesitter.ignore_install`。
+
+4. nvim 启动后会自动下载 treesitter parsers。它们定义在 `config.treesitter.ensure_installed` 和 `config.treesitter.ignore_install`。
   - 如果安装失败，重启 nvim 或执行 `:TSInstall all` 来重装。
-- nvim 启动后会自动下载 LSP/DAP/Formatter/Linter，它们定义在 `config['mason-installer'].ensureInstalled`.
+
+5. nvim 启动后会自动下载 LSP/DAP/Formatter/Linter，它们定义在 `config['mason-installer'].ensureInstalled`.
   - 如果安装失败，重启 nvim 或执行 `:MasonToolsInstall` 来重装。
   - 也可以按 `<M-m>` 打开 Mason 窗口，选择要安装的 LSP/DAP/Formatter/Linter。
 

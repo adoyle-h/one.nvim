@@ -14,6 +14,7 @@ local function make()
 		DATA_DIR = vim.fn.stdpath('data'),
 		CACHE_DIR = vim.fn.stdpath('cache'),
 		CONFIG_DIR = vim.fn.stdpath('config'),
+		STATE_DIR = vim.fn.stdpath('state'),
 
 		log = {
 			levelMap = {

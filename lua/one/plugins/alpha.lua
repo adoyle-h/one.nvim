@@ -172,7 +172,7 @@ local function should_skip_alpha()
 		-- blacklisted arguments
 		-- always skip
 		if arg == '-b' -- commands, typically used for scripting
-		or arg == '-c' or vim.startswith(arg, '+') or arg == '-S' then return true end
+				or arg == '-c' or vim.startswith(arg, '+') or arg == '-S' then return true end
 	end
 
 	-- base case: don't skip
@@ -274,7 +274,7 @@ M.defaultConfig = function()
 			button('<SPACE>k', '  List Keymaps', ':Telescope keymaps<CR>'),
 			button('<SPACE>s', '  List Sessions', ':ListSessions<CR>'),
 			button('<SPACE>p', 'גּ  Run Command', ':Telescope commands<CR>'),
-			button('<SPACE>P', '  List Plugin Status', string.format(':%s<CR>', PM.P.cmds.status)),
+			button('<SPACE>P', '  List Plugin Status', PM.P.cmds.status),
 			button('<SPACE>v', '  List Vim Options', ':Telescope vim_options<CR>'),
 			button('<SPACE>n', '  List Messages', listMsg),
 			button('<SPACE>N', '  List Notifications', ':Telescope notify<CR>'),

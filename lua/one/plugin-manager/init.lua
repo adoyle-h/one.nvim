@@ -35,7 +35,7 @@ function PM.Plug(repo, opts)
 		if type(repo) == 'string' then
 			notify(string.format('Failed to load plug "%s". Reason: %s', repo, reason), 'error')
 		else
-			notify(string.format('Failed to load plug "%s". Reason: %s', opts[1], reason), 'error')
+			notify(string.format('Failed to load plug "%s". Reason: %s', opts and opts[1], reason), 'error')
 		end
 	end
 end
@@ -203,11 +203,15 @@ function PM.setup(opts)
 		P = require('one.plugin-manager.vim-plug')
 	elseif use == 'packer' then
 		P = require('one.plugin-manager.packer')
+	elseif use == 'lazy' then
+		P = require('one.plugin-manager.lazy')
 	else
 		error(string.format('Invalid value of config.pluginManager.use = %s', use))
 	end
 
 	PM.setP(P)
+
+	vim.keymap.set('n', '<SPACE>P', P.cmds.status, { desc = 'Show Plugin Status' })
 
 	P.setup {
 		config = config,

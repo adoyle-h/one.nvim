@@ -17,7 +17,10 @@ One.cmp = { add = dynamic.add }
 
 local function preset()
 	table.unpack = unpack
-	vim.api.nvim_set_hl(0, 'Pmenu', { bg = 'grey' }) -- THe initial float window is too ugly
+
+	-- Set default highlights before plugins loaded
+	vim.cmd [[ colorscheme habamax ]] -- habamax is the nvim builtin colorscheme.
+	vim.api.nvim_set_hl(0, 'Pmenu', { bg = 'black' }) -- The default background is ugly. (NormalFloat -> Pmenu)
 end
 
 -- @type PlugOpts see ../../doc/types.md

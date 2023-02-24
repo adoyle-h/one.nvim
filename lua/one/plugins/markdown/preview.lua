@@ -1,7 +1,9 @@
 return {
 	'iamcco/markdown-preview.nvim',
 	ft = 'markdown',
-	run = 'mkdp#util#install()',
+	run = function()
+		vim.fn['mkdp#util#install']()
+	end,
 
 	config = function(config)
 		for key, value in pairs(config.markdown.preview) do vim.g[key] = value end

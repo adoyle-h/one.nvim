@@ -8,7 +8,7 @@ All-in-one neovim configuration framework implemented with Lua. It is highly fle
 
 - All in Lua. All configs can be overridden. Read [Configuration](#configuration).
 - Use many Neovim features: Native LSP, Float Window, Winbar.
-- Lua-wrapped plugin manager based on [vim-plug](https://github.com/junegunn/vim-plug) or [packer.nvim][] at your choice. Read [Plugin Manager](#plugin-manager).
+- The supported plugin managers: [lazy.nvim][], [vim-plug](https://github.com/junegunn/vim-plug) and [packer.nvim][]. Read [Plugin Manager](#plugin-manager).
 - Awesome UI and color schema. Dark Mode. Support True-Color, Smooth-Scroll, Scrollbar, Dashboard. You can change colors and highlights. Read [Colors and Highlights](#colors-and-highlights).
 - Configurable proxy for fast git download in China Mainland. Read [Proxy](./doc/usage/proxy.md).
 - Integrated 120+ powerful Vim/Nvim plugins. Enhancing the usage experience, and fixed some shortcomings of these plugins.
@@ -16,7 +16,7 @@ All-in-one neovim configuration framework implemented with Lua. It is highly fle
   <details close>
   <summary>Click to expend/collapse plugin list</summary>
 
-  - Plugin Manager: [vim-plug](lua/one/plugin-manager/vim-plug.lua) (default) or [packer](lua/one/plugin-manager/packer.lua)
+  - Plugin Manager: [lazy](lua/one/plugin-manager/lazy.lua) (default) or [vim-plug](lua/one/plugin-manager/vim-plug.lua) or [packer](lua/one/plugin-manager/packer.lua)
   - Vim Options: [vim-options](lua/one/plugins/vim-options.lua)
   - Utilities: [plenary](https://github.com/nvim-lua/plenary.nvim) and [Penlight](https://github.com/lunarmodules/Penlight) and [nui](https://github.com/MunifTanjim/nui.nvim)
   - Dashboard: [alpha.nvim](lua/one/plugins/alpha.lua)
@@ -123,7 +123,7 @@ Function signature completion
 
 ## Update
 
-The source codes of one.nvim, impatient.nvim and plugin manager (vim-plug, packer.nvim) are not managed by plugin manager.
+The source codes of one.nvim, impatient.nvim and [plugin manager](#plugin-manager) are not managed by plugin manager.
 You can update them by lua functions or commands.
 
 - Update one.nvim: `:OneUpdate one` or `:lua one.update('one')`
@@ -144,20 +144,24 @@ Please read [User Config](./doc/user-config.md).
 
 ## Plugin Manager
 
-Choose your favorite plugin manager. Now available: `vim-plug` (default) and `packer`.
+Choose your favorite plugin manager. Now available: `lazy` (default), `vim-plug` and `packer`.
 
 ```lua
 require('one').setup {
   config = {
-    pluginManager = { use = 'packer' }, -- 'vim-plug' or 'packer'
+    pluginManager = { use = 'packer' }, -- 'lazy' or 'vim-plug' or 'packer'
   },
 }
 ```
 
-The plugins directory maneged by vim-plug is different from packer. When you modify `config.pluginManager.use`, the plugins need to be installed again. Read [initialization](./doc/install-and-init.md#initialization).
+|                   | lazy                    | vim-plug                    | packer                                      |
+|-------------------|-------------------------|-----------------------------|---------------------------------------------|
+| Plugins Directory | {DATA_DIR}/plugins      | {DATA_DIR}/plugins          | {DATA_DIR}/site/pack/user/start/packer.nvim |
+| Default Config    | lua/one/config/lazy.lua | lua/one/config/vim-plug.lua | lua/one/config/packer.lua                   |
 
-- Packer [default config](./lua/one/config/packer.lua)
-- Vim-Plug [default config](./lua/one/config/vim-plug.lua)
+The value of `{DATA_DIR}` is `:lua print(vim.fn.stdpath('data'))`.
+
+When you change to packer from lazy or vim-plug, the plugins should be reinstalled. Read [initialization](./doc/install-and-init.md#initialization) for details.
 
 ## Plugin
 
@@ -241,6 +245,7 @@ Just read [codes](./lua/one/init.lua).
 │       │   └── themes/      // Color schemas
 │       └── plugin-manager/
 │           ├── init.lua     // Plugin Manager
+│           ├── lazy.lua     // Wrapper for lazy.nvim
 │           ├── vim-plug.lua // Wrapper for vim-plug
 │           └── packer.lua   // Wrapper for packer.nvim
 └── scripts/                 // scripts for building project
@@ -283,3 +288,4 @@ Read the [NOTICE][] file distributed with this work for additional information r
 [packer.nvim]: https://github.com/wbthomason/packer.nvim
 [impatient.nvim]: https://github.com/lewis6991/impatient.nvim
 [treesitter]: https://github.com/nvim-treesitter/nvim-treesitter
+[lazy.nvim]: https://github.com/folke/lazy.nvim
