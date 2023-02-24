@@ -25,5 +25,5 @@ indent_style = tab
 [*.{diff,md}]
 trim_trailing_whitespace = false
 
-[Makefile]
+[{Makefile,*.mk}]
 indent_style = tab

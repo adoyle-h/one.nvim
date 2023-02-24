@@ -2,7 +2,7 @@
 
 ## First of all
 
-- Your IDE must support [editorconfig](http://editorconfig.org/) and recognize the [`.editorconfig`](./.editorconfig) file in project.
+- Your IDE must support [editorconfig](http://editorconfig.org/) and recognize the [`.editorconfig`](../../.editorconfig) file in project.
 - All code and text must be written in English.
 
 ## File naming

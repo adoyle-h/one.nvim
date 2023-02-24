@@ -1,3 +1,6 @@
+/makefile-utils/*
+!/makefile-utils/*.mk
+
 .DS_Store
 .netrwhist
 /tmp/*
