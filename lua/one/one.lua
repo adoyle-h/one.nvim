@@ -98,12 +98,17 @@ function One.showPlugins()
 		end
 	end
 
-	local omitFields = { 'config', 'id' }
+	local omitFields = { 'config', 'defaultConfig', 'id' }
 	local writePlug = function(p)
 		write({ '', '-- id: ' .. p.id })
 
 		local result = {}
-		for key, val in pairs(p) do if not vim.tbl_contains(omitFields, key) then result[key] = val end end
+		for key, val in pairs(p) do
+			if not vim.tbl_contains(omitFields, key) then
+				if type(val) == 'function' then val = val(One.CM.config) end
+				result[key] = val
+			end
+		end
 
 		write(util.dump2Lines(result))
 	end
