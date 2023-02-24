@@ -6,7 +6,7 @@ local M = {
 		local conf = config.material
 		vim.g.material_style = conf.style
 		require('material').setup(conf)
-		vim.cmd 'colorscheme material' -- this line must put after require('material').setup
+		vim.cmd.colorscheme 'material'
 	end,
 }
 

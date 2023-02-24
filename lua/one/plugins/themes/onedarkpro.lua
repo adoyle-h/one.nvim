@@ -1,11 +1,10 @@
 local M = {
-	'onedarkpro',
-
-	requires = { 'olimorris/onedarkpro.nvim' },
+	'olimorris/onedarkpro.nvim',
+	id = 'onedarkpro',
 
 	config = function(config)
 		require('onedarkpro').setup(config.onedarkpro)
-		vim.cmd('colorscheme onedark')
+		vim.cmd.colorscheme 'onedark'
 	end,
 }
 
