@@ -51,6 +51,27 @@ local function keymapCopy(state)
 	end
 end
 
+local components = {
+	symlink = function(conf, node, state)
+		if node.is_link then
+			return {
+				text = string.format(conf.format or '→ %s', util.relative(node.path, node.link_to)),
+				highlight = conf.highlight or highlights.SYMBOLIC_LINK_TARGET,
+			}
+		else
+			return {}
+		end
+	end,
+
+	exectuable = function(conf, node)
+		local path = node.path
+		if node.is_link then path = node.link_to end
+		local text = ''
+		if executable(path) == 1 then text = conf.symbol or symbols.EXECUTABLE end
+		return { text = text, highlight = conf.highlight or 'NeoTreeFileExecutable' }
+	end,
+}
+
 M.defaultConfig = function()
 	local highlights = require('neo-tree.ui.highlights')
 
@@ -269,26 +290,7 @@ M.defaultConfig = function()
 					},
 				},
 
-				components = {
-					symlink = function(conf, node, state)
-						if node.is_link then
-							return {
-								text = string.format(conf.format or '→ %s', util.relative(node.path, node.link_to)),
-								highlight = conf.highlight or highlights.SYMBOLIC_LINK_TARGET,
-							}
-						else
-							return {}
-						end
-					end,
-
-					exectuable = function(conf, node)
-						local path = node.path
-						if node.is_link then path = node.link_to end
-						local text = ''
-						if executable(path) == 1 then text = conf.symbol or symbols.EXECUTABLE end
-						return { text = text, highlight = conf.highlight or 'NeoTreeFileExecutable' }
-					end,
-				},
+				components = components,
 			},
 
 			buffers = {
@@ -300,6 +302,7 @@ M.defaultConfig = function()
 					position = 'float',
 					mappings = { ['d'] = 'buffer_delete', ['<ESC>'] = 'close_window' },
 				},
+				components = components,
 			},
 
 			git_status = {
@@ -314,6 +317,7 @@ M.defaultConfig = function()
 						['<ESC>'] = 'close_window',
 					},
 				},
+				components = components,
 			},
 
 			source_selector = {
@@ -372,7 +376,11 @@ M.defaultConfig = function()
 
 	if pcall(require, 'neo-tree/sources/zk') then
 		table.insert(conf[2].sources, 'zk')
-		conf[2].zk = { follow_current_file = true, window = { mappings = { ['n'] = 'change_query' } } }
+		conf[2].zk = {
+			follow_current_file = true,
+			window = { mappings = { ['n'] = 'change_query' } },
+			components = components,
+		}
 	end
 
 	return conf
