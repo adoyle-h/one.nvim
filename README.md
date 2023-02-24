@@ -2,7 +2,7 @@
 
 All-in-one neovim configuration framework implemented with Lua. It is highly flexible to be customized and extended.
 
-中文文档 [./README.zh.md](./README.zh.md)
+[English](./README.md) | [中文](./README.zh.md)
 
 ## Features
 

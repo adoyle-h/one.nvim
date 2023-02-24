@@ -1,5 +1,7 @@
 # Contributing
 
+[English](./CONTRIBUTING.md) | [中文](./CONTRIBUTING.zh.md)
+
 ## 欢迎提供任何建议或者意见
 
 **在创建新的 Issue/Discussion/PR 之前，你必须先搜索相关内容，避免重复。**
@@ -11,7 +13,7 @@
 - 提问和建议。请开一个 [discussion][]。
 - 其他上面未提到的内容，请开一个 [discussion][] 来讨论。
 
-### 禁止 +1
+## 禁止 +1
 
 不要发重复或无用的内容，比如 `+1`，`哈哈`，`附议`，`我希望这问题能够得到修复`，`这问题啥时候修好？`。
 
@@ -19,16 +21,28 @@
 
 请[贴 emoji 标签反馈到评论上](https://github.blog/2016-03-10-add-reactions-to-pull-requests-issues-and-comments/)。
 
-### 尽量用英文
+## 尽量用英文
 
-我们希望所有的通信交流以及代码都用英文。
+### 公开的交流
 
-对于非英语母语的用户，推荐使用 [DeepL Translator](https://www.deepl.com/translator)。
+我希望所有公开的通信交流以及代码都用英文。
 
 因为我们处于国际社区，英文更通用，方便外国人阅读理解你的意见。
 
 如果你非常着急解决棘手的问题，也可以使用中文反馈意见。
-注意不要中英文混杂（专业词汇除外），请写完整的英文或中文语句。
+
+### 如果书写或阅读英文困难
+
+推荐使用 [DeepL 翻译器](https://www.deepl.com/translator)。
+
+### 非公开的交流
+
+比如私信，建议你用中文与我交流。
+
+### 如果你使用中文
+
+注意不要中英文混杂（专业词汇除外），请写完整的中文或英文语句。
+如果不遵循，我可能会无视你写的内容。
 
 ## 编码之前，请先学习规则
 
@@ -64,5 +78,5 @@
 [discussion]: https://github.com/adoyle-h/one.nvim/discussions
 [PR]: https://github.com/adoyle-h/one.nvim/pulls
 [github-reaction]: https://github.blog/2016-03-10-add-reactions-to-pull-requests-issues-and-comments/
-[DCO]: https://gcg.adoyle.me/doc/dco/
+[DCO]: https://gcg.adoyle.me/doc/dco.zh/
 [git-style]: https://gcg.adoyle.me/doc/git-style.zh/

@@ -1,5 +1,7 @@
 # Contributing
 
+[English](./CONTRIBUTING.md) | [中文](./CONTRIBUTING.zh.md)
+
 ## Any comments and suggestions are always welcome
 
 **Before opening new Issue/Discussion/PR, you should search the existing to avoid duplicates.**
@@ -11,7 +13,7 @@
 - For question and suggestion, open a [discussion][].
 - For anything not mentioned above, open a [discussion][].
 
-### No +1
+## No +1
 
 Do not post duplicated and useless comments like `+1`, `LOL`, `Me too`, `I too would like to see this issue fixed.`, `When is this issue going to be fixed?`.
 
@@ -19,7 +21,7 @@ Such comments do not help fix issues. Please don't be offended if project admins
 
 Please [react to comments with emoji][github-reaction] instead of.
 
-### Use English
+## Use English
 
 We prefer all communications and codes to be in English.
 

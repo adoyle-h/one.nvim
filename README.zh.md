@@ -2,7 +2,7 @@
 
 用 Lua 编写的 Neovim 一体化配置框架。易配置，可扩展。
 
-English Document [./README.md](./README.md)
+[English](./README.md) | [中文](./README.zh.md)
 
 ## 特性
 
