@@ -1,5 +1,6 @@
 return {
 	'iamcco/markdown-preview.nvim',
+	disable = true,
 	ft = 'markdown',
 	run = function()
 		vim.fn['mkdp#util#install']()
