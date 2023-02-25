@@ -82,7 +82,7 @@ All-in-one neovim configuration framework implemented with Lua. It is highly fle
 
 ## Screenshots
 
-<details close>
+<details open>
 <summary>Click to expend/collapse</summary>
 
 ### Dashboard
@@ -93,21 +93,37 @@ All-in-one neovim configuration framework implemented with Lua. It is highly fle
 
 ![UI.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/UI.png)
 
+![UI-2.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/UI-2.png)
+
 ### Outline
 
 ![outline.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/outline.png)
 
-### Finder
+Press `<space>o` to open the outline.
+
+### File Finder
 
 ![finder.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/finder.png)
+
+Press `<space>f` to open the file finder.
 
 ### Keymaps
 
 ![keymaps.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/keymaps.png)
 
+Press `<space>k` to open the keymap finder.
+
+### Command Finder
+
+![cmd-finder.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/cmd-finder.png)
+
+Press `<space>p` to open the keymap finder.
+
 ### Diagnostic
 
 ![diagnostic.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/diagnostic.png)
+
+Press `<space>d` or `<space>D` to open the diagnostic list. See [Diagnostic keymaps](./doc/usage/keymaps.md#diagnostic).
 
 ### Completion
 

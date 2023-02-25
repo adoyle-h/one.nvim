@@ -83,7 +83,7 @@
 
 ## 截图
 
-<details close>
+<details open>
 <summary>点击展开/折叠</summary>
 
 ### Dashboard
@@ -94,23 +94,39 @@
 
 ![UI.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/UI.png)
 
-### Outline
+![UI-2.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/UI-2.png)
+
+### 大纲
 
 ![outline.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/outline.png)
 
-### Finder
+按 `<space>o` 打开大纲。
+
+### 文件列表
 
 ![finder.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/finder.png)
 
-### Keymaps
+按 `<space>f` 打开文件列表。
+
+### 快捷键列表
 
 ![keymaps.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/keymaps.png)
 
-### Diagnostic
+按 `<space>k` 打开快捷键列表。
+
+### 命令列表
+
+![cmd-finder.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/cmd-finder.png)
+
+按 `<space>p` 打开命令列表。
+
+### 诊断列表
 
 ![diagnostic.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/diagnostic.png)
 
-### Completion
+按 `<space>d` 或 `<space>D` 打开诊断列表。详见 [Diagnostic 快捷键](./doc/usage/keymaps.md#diagnostic)。
+
+### 补全
 
 ![completion.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/completion.png)
 
