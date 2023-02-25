@@ -19,6 +19,21 @@ M.highlights = function(config)
 		LspInfoFiletype = { fg = c.purple }, -- `filetypes` area
 		LspInfoTip = { link = 'Comment' }, -- Tip
 		LspInfoBorder = { fg = c.blue }, -- Window border
+
+		DiagnosticError = { fg = c.red },
+		DiagnosticWarn = { fg = c.yellow },
+		DiagnosticInfo = { fg = c.blue },
+		DiagnosticHint = { fg = c.cyan },
+
+		DiagnosticSignError = { fg = c.red },
+		DiagnosticSignWarn = { fg = c.yellow },
+		DiagnosticSignInfo = { fg = c.blue },
+		DiagnosticSignHint = { fg = c.cyan },
+
+		DiagnosticUnderlineError = { fg = c.red, undercurl = true },
+		DiagnosticUnderlineWarn = { fg = c.yellow, undercurl = true },
+		DiagnosticUnderlineInfo = { fg = c.blue, undercurl = true },
+		DiagnosticUnderlineHint = { fg = c.cyan, undercurl = true },
 	}
 end
 

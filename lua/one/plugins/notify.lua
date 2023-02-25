@@ -60,4 +60,24 @@ return {
 		},
 	},
 
+	highlights = function(config)
+		local c = config.colors
+		return {
+			NotifyERRORBorder = { fg = c.red },
+			NotifyERRORIcon = { fg = c.red },
+			NotifyERRORTitle = { fg = c.red },
+			NotifyWARNBorder = { fg = c.yellow },
+			NotifyWARNIcon = { fg = c.yellow },
+			NotifyWARNTitle = { fg = c.yellow },
+			NotifyINFOBorder = { fg = c.blue },
+			NotifyINFOIcon = { fg = c.blue },
+			NotifyINFOTitle = { fg = c.blue },
+			NotifyDEBUGBorder = { fg = c.purple },
+			NotifyDEBUGIcon = { fg = c.purple },
+			NotifyDEBUGTitle = { fg = c.purple },
+			NotifyTRACEBorder = { fg = c.orange },
+			NotifyTRACEIcon = { fg = c.orange },
+			NotifyTRACETitle = { fg = c.orange },
+		}
+	end,
 }

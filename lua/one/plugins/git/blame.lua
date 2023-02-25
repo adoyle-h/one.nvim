@@ -15,6 +15,6 @@ end
 
 M.highlights = function(config)
 	local colors = config.colors
-	return { GitBlameVirtualText = { fg = colors.grey, bg = colors.cursorLineBG, italic = true } }
+	return { GitBlameVirtualText = { fg = colors.grey, bg = colors.cursorLine, italic = true } }
 end
 return M

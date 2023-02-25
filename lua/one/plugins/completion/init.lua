@@ -197,16 +197,10 @@ local M = {
 		require('one.plugins.completion.tabnine'),
 		require('one.plugins.completion.hover'),
 		require('one.plugins.completion.snippet'),
+
 	},
 
-	highlights = function(config)
-		local c = config.colors
-		return {
-			MenuSelectLine = { bg = '#012867' },
-			CmpFloatBorder = { fg = c.blue, bg = c.black },
-			PmenuThumb = { bg = '#004CC8' }, -- cmp scrollbar thumb
-		}
-	end,
+	highlights = require('one.plugins.completion.highlights'),
 }
 
 function M.config(config)
@@ -217,6 +211,7 @@ function M.config(config)
 	local function addNormalSrc(src, group_index)
 		normalSources[#normalSources + 1] = { name = src, group_index = group_index or 1 }
 	end
+
 	local snippet = {}
 
 	if pcall(require, 'cmp_tabnine') then addNormalSrc('tabnine') end
@@ -234,17 +229,7 @@ function M.config(config)
 		sources = normalSources,
 		snippet = snippet,
 		experimental = conf.experimental,
-
-		window = {
-			-- https://github.com/hrsh7th/nvim-cmp/blob/main/lua/cmp/config/window.lua
-			completion = cmp.config.window.bordered({
-				winhighlight = 'Normal:Normal,FloatBorder:CmpFloatBorder,CursorLine:MenuSelectLine,Search:None',
-			}),
-
-			documentation = cmp.config.window.bordered({
-				winhighlight = 'Normal:Normal,FloatBorder:CmpFloatBorder,CursorLine:MenuSelectLine,Search:None',
-			}),
-		},
+		window = conf.window,
 	}
 
 	for _, cmd_type in pairs({ '/', '?' }) do
@@ -318,6 +303,17 @@ M.defaultConfig = function(config)
 						{ name = 'path', group_index = 1 },
 					},
 				},
+			},
+
+			window = {
+				-- https://github.com/hrsh7th/nvim-cmp/blob/main/lua/cmp/config/window.lua
+				completion = cmp.config.window.bordered({
+					winhighlight = 'Normal:CmpNormal,FloatBorder:CmpFloatBorder,CursorLine:CmpCursorLine,Search:None',
+				}),
+
+				documentation = cmp.config.window.bordered({
+					winhighlight = 'Normal:CmpNormal,FloatBorder:CmpFloatBorder,CursorLine:CmpCursorLine,Search:None',
+				}),
 			},
 
 			menu = {

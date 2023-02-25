@@ -7,7 +7,7 @@ local executable = vim.fn.executable
 local M = {
 	'nvim-neo-tree/neo-tree.nvim',
 	branch = 'v2.x',
-	config = function()
+	config = function(config)
 		require('neo-tree').setup(config.neotree)
 	end,
 }
@@ -388,18 +388,33 @@ end
 
 M.highlights = function(config)
 	local c = config.colors
-	local bg = c.grey1
-	local activeBG = '#240845'
+	local activeBG = c.darkBlue
 
 	return {
+		NeoTreeNormalNC = { bg = c.NC_BG },
+		NeoTreeSymbolicLinkTarget = { fg = c.cyan },
+		NeoTreeDirectoryName = { fg = c.blue },
+		NeoTreeDirectoryIcon = { fg = c.purple },
+		NeoTreeRootName = { fg = c.purple },
+		NeoTreeFileIcon = { fg = c.blue },
+		NeoTreeFileName = { fg = c.white },
+		NeoTreeFileNameOpened = { fg = c.purple },
+		NeoTreeIndentMarker = { fg = c.grey4 },
+		NeoTreeTitleBar = { fg = c.BG, bg = c.purple },
+		NeoTreeFloatTitle = { fg = c.BG, bg = c.purple },
+		NeoTreeGitAdded = { fg = c.green },
+		NeoTreeGitConflict = { fg = c.blue },
+		NeoTreeGitDeleted = { fg = c.red },
+		NeoTreeGitModified = { fg = c.yellow },
+		NeoTreeGitIgnored = { fg = c.grey4 },
+		NeoTreeGitUntracked = { fg = c.grey4 },
+		NeoTreeModified = { fg = c.red },
 		NeoTreeFileExecutable = { fg = c.blue },
-		NeoTreeGitUntracked = { fg = c.green },
-		NeoTreeFileIcon = { fg = c.white },
 		NeoTreeGitUnstaged = { fg = c.yellow },
-		NeoTreeTabActive = { fg = c.purple, bg = activeBG, bold = true },
-		NeoTreeTabInactive = { fg = c.grey4, bg = bg, bold = true },
+		NeoTreeTabActive = { fg = c.blue, bg = activeBG, bold = true },
+		NeoTreeTabInactive = { fg = c.grey4, bg = c.grey1, bold = true },
 		NeoTreeTabSeparatorActive = { fg = c.black, bg = activeBG },
-		NeoTreeTabSeparatorInactive = { fg = c.black, bg = bg },
+		NeoTreeTabSeparatorInactive = { fg = c.black, bg = c.grey1 },
 	}
 end
 

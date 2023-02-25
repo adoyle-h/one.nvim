@@ -1,6 +1,27 @@
 return {
 	'folke/trouble.nvim',
 
+	highlights = function(config)
+		local c = config.colors
+
+		return {
+			TroubleNormal = {},
+			TroubleCount = { fg = c.yellow },
+			TroubleFile = { fg = c.blue },
+			TroubleFoldIcon = { fg = c.grey4 },
+			TroubleLocation = { fg = c.grey4 },
+			TroubleError = { fg = c.red },
+			TroubleWarning = { fg = c.yellow },
+			TroubleInformation = { fg = c.blue },
+			TroubleHint = { fg = c.cyan },
+			TroubleTextError = { fg = c.red },
+			TroubleTextWarning = { fg = c.yellow },
+			TroubleTextInformation = { fg = c.blue },
+			TroubleTextHint = { fg = c.cyan },
+			TroubleText = { fg = c.white },
+		}
+	end,
+
 	keymaps = {
 		{
 			'n',
