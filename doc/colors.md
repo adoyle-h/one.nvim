@@ -18,17 +18,17 @@ The priority from high to low:
 -  colors and highlights defined in [theme plugin](../lua/one/plugins/themes/init.lua)
 - syntax highlights by nvim-treesitter
 
-## Color Gamut
+## Color Space
 
-The colors are desiged based on [Display P3](https://www.color.org/chardata/rgb/DisplayP3.xalter) color gamut. It works for MacOS and iTerm2 users.
+The colors are desiged based on [Display P3](https://www.color.org/chardata/rgb/DisplayP3.xalter) color space. It works for MacOS and iTerm2 users.
 
-If your nvim colors looks different from below picture. Your terminal is not under Display P3 color gamut.
+If your nvim colors looks different from below picture. Your terminal is not under Display P3 color space.
 You may try [sRGB colors](../lua/one/colors/srgb.lua).
 
 <img src="https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/colors.png" height="400px" />
 
-The color gamut is managed by your terminal application and operator system.
-You should choose the right color gamut for your environment.
+The color space is managed by your terminal application and operator system.
+You should choose the right color space for your environment.
 
 Current one.nvim provides [Display P3](../lua/one/colors/display-p3.lua) and [sRGB](../lua/one/colors/srgb.lua) color presets.
 And use Display P3 presets by default. You can use sRGB presets like below codes.

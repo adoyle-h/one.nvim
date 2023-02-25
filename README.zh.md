@@ -182,14 +182,16 @@ require('one').setup {
 你可以修改默认配色和高亮。
 阅读 [./doc/colors.md](./doc/colors.md) 查看更多细节。
 
-### 色域
+### 色彩空间
 
-本项目的颜色是根据 [Display P3](https://www.color.org/chardata/rgb/DisplayP3.xalter) 色域设计的。对于 MacOS 系统和 iTerm2 用户友好。
+本项目的颜色是根据 [Display P3](https://www.color.org/chardata/rgb/DisplayP3.xalter) 色彩空间设计的。对于 MacOS 系统和 iTerm2 用户友好。
 
-如果你的 nvim 配色看起来跟下图有点不一样。你的终端应该不是处于 Display P3 色域。
-你可以尝试 [sRGB 配色](lua/one/colors/srgb.lua)。详见[颜色 - 色域](./doc/colors.md#color-gamut)。
+如果你的 nvim 配色看起来跟下图有点不一样。你的终端应该不是处于 Display P3 色彩空间。
+你可以尝试 [sRGB 配色](lua/one/colors/srgb.lua)。详见[颜色 - 色彩空间](./doc/colors.md#color-space)。
 
 <img src="https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/colors.png" height="400px" />
+
+什么是色彩空间？可参考[这篇文章](https://adoyle.me/Today-I-Learned/design/color-space.html)。
 
 ## 注意
 

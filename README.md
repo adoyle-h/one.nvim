@@ -182,12 +182,12 @@ Read [./doc/treesitter.md](./doc/treesitter.md) for troubleshooting.
 You can override the default colors and highlights.
 Read [./doc/colors.md](./doc/colors.md) for more details.
 
-### Color Gamut
+### Color Space
 
-The colors are desiged based on [Display P3](https://www.color.org/chardata/rgb/DisplayP3.xalter) color gamut. It works for MacOS and iTerm2 users.
+The colors are desiged based on [Display P3](https://www.color.org/chardata/rgb/DisplayP3.xalter) color space. It works for MacOS and iTerm2 users.
 
-If your nvim colors looks different from below picture. Your terminal is not under Display P3 color gamut.
-You may try [sRGB colors](lua/one/colors/srgb.lua). Read [Colors - Color Gamut](./doc/colors.md#color-gamut) for details.
+If your nvim colors looks different from below picture. Your terminal is not under Display P3 color space.
+You may try [sRGB colors](lua/one/colors/srgb.lua). Read [Colors - Color Space](./doc/colors.md#color-space) for details.
 
 <img src="https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/colors.png" height="400px" />
 
