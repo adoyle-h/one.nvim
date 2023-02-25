@@ -294,11 +294,12 @@ M.defaultConfig = function()
 			lualine_y = {},
 			lualine_z = {},
 		},
-		inactive_winbar = {},
 
 		tabline = {},
 		extensions = {},
 	}
+
+	lualineConfig.inactive_winbar = lualineConfig.winbar
 
 	local has_navic, navic = pcall(require, 'nvim-navic')
 	if has_navic then
