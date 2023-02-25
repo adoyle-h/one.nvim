@@ -104,7 +104,7 @@ M.highlights = function(config)
 		Normal = { bg = c.BG, fg = c.white }, -- normal text
 		NormalNC = { bg = c.NC_BG, fg = c.white }, -- normal text in non-current windows
 		NormalFloat = { bg = c.floatWinBG, fg = c.white }, -- Normal text in floating windows.
-		FloatBorder = { bg = c.floatWinBG, fg = c.grey },
+		FloatBorder = { bg = c.floatWinBG, fg = c.blue },
 		Pmenu = { link = 'NormalFloat' }, -- Popup menu: normal item.
 		PmenuSel = { bg = c.menuItemBG }, -- Popup menu: selected item.
 		PmenuSbar = { bg = c.scrollbarBG }, -- Popup menu: scrollbar.
