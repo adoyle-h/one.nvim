@@ -6,7 +6,6 @@ return {
 
 	deps = {
 		config.theme.use and require('one.plugins.themes.' .. config.theme.use),
-		require 'one.plugins.colors.highlights',
 		require 'one.plugins.colors.ccc',
 
 		{

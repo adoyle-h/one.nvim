@@ -96,7 +96,10 @@ local function handlePlugOptions(list, opt)
 	local iterator = opt.iterator
 	if iterator then
 		for key, val in pairs(list or {}) do --
-			iterator(val, key)
+			local ok, msg = pcall(iterator, val, key)
+			if not ok then
+				vim.notify(string.format('[Invalid plug option][%s: %s] %s', opt.name, key, msg), 'error')
+			end
 		end
 	end
 end

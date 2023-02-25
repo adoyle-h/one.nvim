@@ -1,6 +1,6 @@
 return require('one.colors.util').make({
 	-- basic colors
-	black = '#101012',
+	black = '#131316',
 	grey1 = '#18191B',
 	grey2 = '#242629',
 	grey3 = '#34373B',
@@ -20,7 +20,7 @@ return require('one.colors.util').make({
 	lightPurple = '#B696DB',
 
 	darkGreen = '#0D2409',
-	darkBlue = '#181929',
+	darkBlue = '#141E35',
 	darkCyan = '#081821',
 	darkRed = '#220708',
 	darkYellow = '#212100',
@@ -28,6 +28,9 @@ return require('one.colors.util').make({
 	darkPurple = '#1B0127',
 }, {
 	-- functional colors
+	NC_BG = '#0E0E0E',
+	WinSeparatorBG = '#020202',
+	ColorColumnBG = '#191919',
 	linkFG = '#00B479',
 	scrollbarBG = '#022954',
 	diff = { text = { bg = '#35350C' } },

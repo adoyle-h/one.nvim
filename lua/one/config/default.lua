@@ -14,7 +14,7 @@ return function(colors)
 		kindSymbolMap = symbol.kindSymbolMap,
 
 		theme = {
-			use = 'onedarkpro', -- 'onedarkpro' or 'material',
+			use = 'one', -- See the filaname in ../plugins/themes/
 		},
 
 		impatient = { -- Speed up require lua modules to improve startup time.
