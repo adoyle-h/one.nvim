@@ -8,7 +8,87 @@ The versions follow the rules of [Semantic Versioning 2.0.0](http://semver.org/s
 
 ## [Unreleased]
 
-[Full Changes](https://github.com/adoyle-h/one.nvim/compare/master...develop)
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v2.0.0...HEAD)
+
+
+<a name="v2.0.0"></a>
+## v2.0.0 (2023-02-25 18:22:55 +08:00)
+
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v1.1.1...v2.0.0)
+
+### Breaking Changes
+
+Have 1 breaking changes. Check below logs with ⚠️ .
+
+### New Features
+
+- use new color theme "one" as default ([77c7faf](https://github.com/adoyle-h/one.nvim/commit/77c7faf269d02dd588b20b284ab823cbc11c636d))
+- add themes "tokyonight", "catppuccin" and "nightfox" ([e23e054](https://github.com/adoyle-h/one.nvim/commit/e23e05498deb089c1e3029b9861f288f28d15f45))
+- support lazy.nvim && use lazy as default plugin manager ([0ac4265](https://github.com/adoyle-h/one.nvim/commit/0ac4265df87db19d52bc9fbf55473972a94755ed))
+  > - fix the "run" function not be callbacked with packer.nvim
+- add new telescope pickers: ts-parsers and plugins ([7e5aa7a](https://github.com/adoyle-h/one.nvim/commit/7e5aa7a181e79317ab3b6fb0c7aa349f1a473e20))
+- ⚠️  add keymaps for lsp_document_symbols_filter and lsp_workspace_symbols_filter ([827c82d](https://github.com/adoyle-h/one.nvim/commit/827c82dc18c08bb9d57228a3d3a57ff5b889e66a))
+  > Breaking Change:
+  > 
+  > The keymap `<space>l` changed to `<space>ls` for `:Telescope lsp_document_symbols`
+- add plugin Penlight && use pl.pretty instead of vim.inspect in OneShowConfig and OneShowPlugins ([6900704](https://github.com/adoyle-h/one.nvim/commit/690070451c7c07f052e4c041b92bef0d727a34a9))
+- better diagnostic message in float window when hover ([4b45aee](https://github.com/adoyle-h/one.nvim/commit/4b45aee2cf870c95f6ece3292379cdf6b981fef6))
+  > Preview:
+  > 
+  > ```
+  > ╭──────────────────────────────────────────────────────────────────────────────────╮
+  > │Diagnostics:                                                                      │
+  > │  8 shellcheck: [SC2001] See if you can use ${variable//search/replace} instead.│
+  > ╰──────────────────────────────────────────────────────────────────────────────────╯
+  > ```
+  > 
+  > - : The diagnostic severity
+  > - 8: diagnostic at column number 8
+  > - shellcheck: diagnostic source
+  > - [SC2001]: diagnostic code
+  > - diagnostic message at last
+- **keymaps**: add `<C-t>o`, `<C-t>-`, `<C-w>o` ([96b8fbc](https://github.com/adoyle-h/one.nvim/commit/96b8fbc731ad9734315cab8ac7dd82ae16d5e6f6))
+- **neo-tree**: use ✦ to show file executable ([d63a127](https://github.com/adoyle-h/one.nvim/commit/d63a1277ab2f9e4fd5c005a232c2bed0cb722581))
+- **neo-tree**: show symlink with relative path ([a238889](https://github.com/adoyle-h/one.nvim/commit/a23888980986f763b9664b6ac0dea1e6eda1b544))
+- **snippet**: add command SnippyCreate ([53af02e](https://github.com/adoyle-h/one.nvim/commit/53af02ea156df3919408abd4e5a9a5711ea664b7))
+  > to create new snippet file.
+
+### Bug Fixes
+
+- git diff colors for latest onedarkpro ([2f800ab](https://github.com/adoyle-h/one.nvim/commit/2f800ab84fa07482e653f86ceb5edf8f1f9bf4fa))
+  > - refactoring color codes
+  > - add lua/one/colors/util.lua : improve color codes
+  > - remove lua/one/config/colors.lua : it is useless.
+- disable markdown-preview plugin as default ([779d35d](https://github.com/adoyle-h/one.nvim/commit/779d35d5864d6d48354e6bbcab712c179d1f5b77))
+  > - Because it will download files from github release in mkdp#util#install function. That will hang up for Chinese users.
+  > - You can enable it in your config, if you have proxy or just be out of China.
+- OneShowPlugins will show calculated result instead of function address when option is a function ([9921bda](https://github.com/adoyle-h/one.nvim/commit/9921bdac5b8492264306a7c87f0a1d605310597d))
+- remove keymaps of table-mode && add commands TableModeToggleGFM and TableModeToggleNormal ([6077cfb](https://github.com/adoyle-h/one.nvim/commit/6077cfb22cc603ec33181f75da6e7e65f500cbee))
+- update plugins highlight groups ([7edefb5](https://github.com/adoyle-h/one.nvim/commit/7edefb5ebdc7faf6945934f0f0aaa3ba79b8538c))
+- **aerial**: aerial hang up && remove option "autoFoldLevel" && change guides spaces ([b965f3e](https://github.com/adoyle-h/one.nvim/commit/b965f3e7fadff81c353382cf59215e634aebbd34))
+- **aerial**: do not ignore man buffers ([1de70ff](https://github.com/adoyle-h/one.nvim/commit/1de70ff6e75680de23589e94223930d0586f7b71))
+- **neo-tree**: components not found in buffers, git_status and zk panes ([535f3eb](https://github.com/adoyle-h/one.nvim/commit/535f3eba8f4b4386176e5b07de536f79ab90e283))
+- **nvim-window-picker**: changes repo from fork to origin ([8c1a745](https://github.com/adoyle-h/one.nvim/commit/8c1a74510142c2bfe870cf90a4f2ed0ba75a3b4d))
+- **persisted.nvim**: move some deprecated options to autocmds for latest version of persisted.nvim ([e933ebf](https://github.com/adoyle-h/one.nvim/commit/e933ebf524054fb6ab05e0ec288d4530833439b9))
+  > - https://github.com/olimorris/persisted.nvim/issues/51
+- **plugin**: markdown toc support all options ([57e6118](https://github.com/adoyle-h/one.nvim/commit/57e6118429c4d30dd87877adaedc9deff1f2f142))
+- **plugin**: increment add candidates "enable/disable" ([125e9a4](https://github.com/adoyle-h/one.nvim/commit/125e9a4f43e3e76343a8878a0e8f599e305e38d4))
+- **rainbow**: update colors ([49459cf](https://github.com/adoyle-h/one.nvim/commit/49459cf0f5a12d1c63a7018ac40bb138db9eac18))
+
+### Document Changes
+
+- Color Gamut -> Color Space ([cf20008](https://github.com/adoyle-h/one.nvim/commit/cf2000869d379caced94fbecb336c4252c8ec3d4))
+- update CONTRIBUTING ([b28686e](https://github.com/adoyle-h/one.nvim/commit/b28686eec80d93d184b18c83c8e29b066a46e809))
+- improve CONTRIBUTING docs ([f9bd7c7](https://github.com/adoyle-h/one.nvim/commit/f9bd7c7448bb820f2a6028b761180d99175a892f))
+- add FAQ ([79fbc2e](https://github.com/adoyle-h/one.nvim/commit/79fbc2efcc90214ac2d354f581ea6030e931c77d))
+- add FAQ ([70e3049](https://github.com/adoyle-h/one.nvim/commit/70e3049589d66a5ace87a3d6dc00e28cbd70ea15))
+- renew license date ([948e446](https://github.com/adoyle-h/one.nvim/commit/948e4463ee5c6bb5fc149fcefc4a3e0db9b23c19))
+- update documents for CONTRIBUTING ([2510a2a](https://github.com/adoyle-h/one.nvim/commit/2510a2a6c3818563fbc2d59615bc4a36b3160ce1))
+  > And fix keymap typo
+- update doc/install-and-init.md ([950c1e8](https://github.com/adoyle-h/one.nvim/commit/950c1e84823ba919a30681884d6d8396add36896))
+- renew license date ([c302677](https://github.com/adoyle-h/one.nvim/commit/c30267754c21145e7da389fbf307c722f6221247))
+- move ./doc/contribution.md to CONTRIBUTING.md ([6216d0d](https://github.com/adoyle-h/one.nvim/commit/6216d0da09566849548bc16b1abd960a4d021f40))
+
 
 <a name="v1.1.1"></a>
 ## v1.1.1 (2022-12-15 13:52:01 +08:00)
