@@ -1,5 +1,6 @@
 return {
 	'nvim-lua/plenary.nvim',
+	id = 'plenary',
 
 	commands = {
 		TestLuaSpec = {
