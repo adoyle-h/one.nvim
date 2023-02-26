@@ -114,7 +114,8 @@ M.highlights = function(config)
 		QuickFixLineNC = { bg = c.NC_BG }, -- QuickFixLine, for inactive windows
 		Search = { bg = c.darkOrange, fg = c.yellow }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
 		SpecialKey = { fg = c.cyan, undercurl = true, bold = true }, -- Unprintable characters: Text displayed differently from what it really is. But not 'listchars' whitespace.
-		IncSearch = { bg = c.darkOrange, fg = c.yellow }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+		IncSearch = { link = 'Search' }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+		CurSearch = { link = 'Search' }, -- Used for highlighting a search pattern under the cursor
 		StatusLine = { bg = c.black, fg = c.white, bold = true }, -- status line of current window
 		StatusLineNC = { bg = c.NC_BG, fg = c.white }, -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
 		TabLine = { bg = c.black }, -- tab pages line, not active tab page label
