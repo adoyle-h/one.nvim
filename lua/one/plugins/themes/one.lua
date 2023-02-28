@@ -33,9 +33,9 @@ M.highlights = function(config)
 		Character = { link = 'String' }, -- single character constant: 'c', '\n'
 		Number = { fg = c.orange }, -- a number constant: 234, 0xff
 		Float = { link = 'Number' }, -- a floating point constant: 2.3e10
-		Boolean = { fg = '#79C0FF' }, -- a boolean constant: TRUE, false
+		Boolean = { fg = c.cyan }, -- a boolean constant: TRUE, false
 		Identifier = { fg = '#B64F2E' }, -- (preferred) any variable name
-		Function = { fg = '#5395F9' }, -- function name (also: methods for classes)
+		Function = { fg = c.blue }, -- function name (also: methods for classes)
 		Statement = { fg = c.purple }, -- (preferred) any statement
 		Conditional = { link = 'Keyword' }, --  if, then, else, endif, switch, etc
 		Repeat = { link = 'Keyword' }, -- keywords related to loops. e.g. for, do, while, etc

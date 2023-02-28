@@ -10,7 +10,7 @@ return require('one.colors.util').make({
 	green = '#00DB1B',
 	orange = '#E85500',
 	blue = '#589CFF',
-	cyan = '#A4CCE3',
+	cyan = '#5FC2FF',
 	purple = '#7B59E2',
 	yellow = '#C7B000',
 	red = '#D01A00',
