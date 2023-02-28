@@ -8,7 +8,29 @@ The versions follow the rules of [Semantic Versioning 2.0.0](http://semver.org/s
 
 ## [Unreleased]
 
-[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v2.0.0...HEAD)
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v2.1.0...HEAD)
+
+
+<a name="v2.1.0"></a>
+## v2.1.0 (2023-02-28 20:46:40 +08:00)
+
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v2.0.0...v2.1.0)
+
+### New Features
+
+- **trouble**: change the diagnostics format ([91bb9a6](https://github.com/adoyle-h/one.nvim/commit/91bb9a6166cb7d68427d5ea42edd5e6bebbe3e88))
+  > - User should update trouble.nvim to latest
+
+### Bug Fixes
+
+- update lazygit config ([d064837](https://github.com/adoyle-h/one.nvim/commit/d064837588cea77839b7bb98057f223221da51e9))
+- show winbar in inactive windows ([968f435](https://github.com/adoyle-h/one.nvim/commit/968f43578b1c63cce1c993151fdb9c0e32c90f86))
+- show winbar in inactive windows ([8ce6b0c](https://github.com/adoyle-h/one.nvim/commit/8ce6b0c402cdac562c661388581d213c8207e89e))
+- change ColorColumn and FloatBorder colors ([a697e62](https://github.com/adoyle-h/one.nvim/commit/a697e6207a24a54d70fb4d278d7252b3583c8199))
+
+### Document Changes
+
+- update Screenshots ([87bb5d6](https://github.com/adoyle-h/one.nvim/commit/87bb5d6b921a2b5e774a637eee4f212e97a0c631))
 
 
 <a name="v2.0.0"></a>
