@@ -71,7 +71,7 @@ return function(config)
 
 		['@storageclass'] = { link = 'StorageClass' },
 		['@field'] = { fg = '#B1A983' }, -- #B3A97E  #A99C37 #75902F #90852F '#C75D14'
-		['@property'] = { fg = '#5098A3' }, -- #2E9AA5
+		['@property'] = { link = '@field' }, -- #2E9AA5
 
 		-- Identifiers
 		['@variable'] = { fg = c.white },

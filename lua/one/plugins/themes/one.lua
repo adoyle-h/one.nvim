@@ -34,7 +34,7 @@ M.highlights = function(config)
 		Number = { fg = c.orange }, -- a number constant: 234, 0xff
 		Float = { link = 'Number' }, -- a floating point constant: 2.3e10
 		Boolean = { fg = '#79C0FF' }, -- a boolean constant: TRUE, false
-		Identifier = { fg = '#B63636' }, -- (preferred) any variable name
+		Identifier = { fg = '#B64F2E' }, -- (preferred) any variable name
 		Function = { fg = '#5395F9' }, -- function name (also: methods for classes)
 		Statement = { fg = c.purple }, -- (preferred) any statement
 		Conditional = { link = 'Keyword' }, --  if, then, else, endif, switch, etc
