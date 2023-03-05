@@ -10,7 +10,7 @@ local fields = {
 	-- LuaFormatter off
 	--[[ 'config','dependencies', ]]
 	'dir', 'url', 'name', 'dev', 'lazy', 'enabled', 'cond', setup = 'init', 'opts',
-	run = 'build', 'branch', 'tag', 'commit', 'version', 'pin', 'submodules',
+	run = 'build', 'branch', tag = 'version', 'commit', 'version', 'pin', 'submodules',
 	'event', 'cmd', 'ft', 'keys', 'module', 'priority',
 	-- LuaFormatter on
 }
