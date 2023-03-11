@@ -58,15 +58,7 @@ return function()
 		},
 
 		{ 'n', '<space>p', ':Telescope commands<cr>', opts },
-		{
-			'v',
-			'<space>p',
-			function()
-				local text = util.getVisualSelection()
-				tb.commands({ default_text = text })
-			end,
-			{ silent = true, desc = 'List commands with selection' },
-		},
+		{ 'v', '<space>p', tb.commands, { silent = true, desc = 'List commands with selection' } },
 
 		-- Press '<Enter>' to execute command immediately.
 		-- Press '<Ctrl-e>' to edit command in terminal mode.
@@ -75,10 +67,7 @@ return function()
 		{
 			'v',
 			'<space>C',
-			function()
-				local text = util.getVisualSelection()
-				tb.command_history({ default_text = text })
-			end,
+			tb.command_history,
 			{ silent = true, desc = 'List command history with selection' },
 		},
 
