@@ -24,7 +24,7 @@ M.defaultConfig = {
 M.highlights = function(config)
 	local c = config.colors
 	return {
-		MyCursor = { bg = c.blue }, -- No work for current
+		MyCursor = { bg = c.blue }, -- It works from neovim v0.8.3
 
 		-- Syntax Highlights
 		Comment = { fg = c.comment }, -- Comments
