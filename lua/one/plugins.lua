@@ -82,6 +82,7 @@ return function(Plug, Load, config)
 	Plug { 'tpope/vim-repeat', desc = 'Enable repeating other supported plugins with the . command' }
 	Plug { 'mechatroner/rainbow_csv', desc = 'For .csv file', ft = 'csv' }
 	Plug 'rohanorton/lua-gf.nvim'
+	Plug { 'hotoo/pangu.vim', ft = { 'markdown', 'vimwiki', 'text' } }
 
 	Plug 'ryanoasis/vim-devicons' -- Devicons for old vimscript plugins. It should be put at last!!
 end
