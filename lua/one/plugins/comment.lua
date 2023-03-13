@@ -40,7 +40,7 @@ return {
 				---Add comment on the line below
 				below = '<leader>co',
 				---Add comment at the end of line
-				eol = '<leader>ca',
+				eol = '<leader>cl',
 			},
 			---Enable keybindings
 			---NOTE: If given `false` then the plugin won't create any mappings

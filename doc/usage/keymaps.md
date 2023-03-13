@@ -331,9 +331,11 @@ If bufferline plugin enabled, some keymaps will be overridden. See [Buffer Line]
 
 - `<leader>cc` or `<space>c` = Comment toggle current line
 - `<leader>cb` = Comment toggle current block
-- `<leader>ca` = Comment insert end of line
-- `<leader>cO` = Comment insert below
-- `<leader>co` = Comment insert above
+- `<leader>cl` = Comment insert at the end of line
+- `<leader>cO` = Comment insert on the line above
+- `<leader>co` = Comment insert on the line below
+- `<leader>c<Enter>` = Comment toggle in current scope
+- `<leader>c<Motion>` = Comment toggle in `<Motion>` scope (see `:h text-objects`)
 
 ### Completion
 
