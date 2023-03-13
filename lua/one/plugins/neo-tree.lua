@@ -424,6 +424,8 @@ M.keymaps = {
 	{ 'n', '<space>g', ':Neotree toggle show git_status<CR>', { silent = true } },
 
 	{ 'n', '<space>m', ':Neotree toggle reveal<CR>', { silent = true } },
+
+	{ 'n', '<space>M', ':Neotree focus reveal<CR>', { silent = true } },
 }
 
 return M

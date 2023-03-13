@@ -147,7 +147,8 @@ Press `<space>k` to see all keymaps in nvim.
 
 ## File Explorer
 
-- `<space>m` = Reveal current buffer in file explorer. Or close file explorer.
+- `<space>m` = Close file explorer when it is opened. Otherwise, reveal current buffer in file explorer.
+- `<space>M` = Reveal current buffer in file explorer.
 - `<space>b` = Toggle buffers window
   - `?` in buffers window = Show buffers window keymaps
 - `<space>g` = Toggle git files window
@@ -190,7 +191,6 @@ Press `<space>k` to see all keymaps in nvim.
 ## Pickers and Windows
 
 - `<space>;` = Choose Telescope pickers
-- `<space>M` = Find man page
 - `<space>p` = Find commands
 - `<space>C` = Find command history
   - `<CR>` in picker = Execute command immediately.

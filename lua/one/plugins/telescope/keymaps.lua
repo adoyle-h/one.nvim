@@ -7,8 +7,6 @@ return function()
 
 		{ 'n', '<space>;', require('telescope').extensions.find_pickers.find_pickers },
 
-		{ 'n', '<space>M', ':Telescope man_pages<cr>', opts },
-
 		{ 'n', '<space>f', ':Telescope find_files<cr>', opts },
 
 		{ 'n', '<space>n', ':Telescope message<cr>', opts },
