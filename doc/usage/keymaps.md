@@ -161,8 +161,8 @@ Press `<space>k` to see all keymaps in nvim.
 - `q` = Close file explorer window
 - `H` = Toggle hidden and git-ignored files
 - `f` = Enter filter pattern
-- `/` = Enter live filter patter
-- `<c-x>` = Clear filter
+- `/` = Enter live filter pattern
+- `F` or `<C-/>` = Clear filter
 - `C` = Close node
 - `D` = Fuzzy_finder_directory
 - `O` = Open file in system finder

@@ -73,7 +73,7 @@ local components = {
 }
 
 M.defaultConfig = function()
-	local highlights = require('neo-tree.ui.highlights')
+	local filter = require('neo-tree.sources.filesystem.lib.filter')
 
 	local conf = {
 		'neotree',
@@ -281,10 +281,13 @@ M.defaultConfig = function()
 						['<C-h>'] = 'navigate_up',
 						['<C-l>'] = 'set_root',
 						['H'] = 'toggle_hidden',
-						['/'] = 'fuzzy_finder',
+						['/'] = function(state)
+							filter.show_filter(state, true) -- let fuzzy_finder search as you type
+						end,
+						['<C-/>'] = 'clear_filter',
 						['D'] = 'fuzzy_finder_directory',
 						['f'] = 'filter_on_submit',
-						['<c-x>'] = 'clear_filter',
+						['F'] = 'clear_filter',
 						['[g'] = 'prev_git_modified',
 						[']g'] = 'next_git_modified',
 					},
