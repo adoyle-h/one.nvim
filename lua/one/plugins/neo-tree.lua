@@ -72,6 +72,54 @@ local components = {
 	end,
 }
 
+local moveToLastSibling = function(state)
+	local tree = state.tree
+	local node = tree:get_node()
+	local siblings = tree:get_nodes(node:get_parent_id())
+	require('neo-tree.ui.renderer').focus_node(state, siblings[#siblings]:get_id())
+end
+
+local moveToFirstSibling = function(state)
+	local tree = state.tree
+	local node = tree:get_node()
+	local siblings = tree:get_nodes(node:get_parent_id())
+	require('neo-tree.ui.renderer').focus_node(state, siblings[1]:get_id())
+end
+
+local moveToPreviousSibling = function(state)
+	local tree = state.tree
+	local node = tree:get_node()
+	local siblings = tree:get_nodes(node:get_parent_id())
+
+	local idx = 0
+	for i, v in pairs(siblings) do
+		if v == node then
+			idx = i - 1
+			break
+		end
+	end
+	if idx > 0 then --
+		require('neo-tree.ui.renderer').focus_node(state, siblings[idx]:get_id())
+	end
+end
+
+local moveToNextSibling = function(state)
+	local tree = state.tree
+	local node = tree:get_node()
+	local siblings = tree:get_nodes(node:get_parent_id())
+
+	local idx = 0
+	for i, v in pairs(siblings) do
+		if v == node then
+			idx = i + 1
+			break
+		end
+	end
+	if idx > 0 and idx <= #siblings then --
+		require('neo-tree.ui.renderer').focus_node(state, siblings[idx]:get_id())
+	end
+end
+
 M.defaultConfig = function()
 	local filter = require('neo-tree.sources.filesystem.lib.filter')
 
@@ -240,6 +288,10 @@ M.defaultConfig = function()
 					},
 					['<'] = 'prev_source',
 					['>'] = 'next_source',
+					['<c-j>'] = moveToNextSibling,
+					['<c-k>'] = moveToPreviousSibling,
+					['J'] = moveToLastSibling,
+					['K'] = moveToFirstSibling,
 				},
 			},
 

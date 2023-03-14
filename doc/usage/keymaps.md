@@ -154,9 +154,15 @@ Press `<space>k` to see all keymaps in nvim.
 - `<space>g` = Toggle git files window
   - `?` in git files window = Show git files window keymaps
 - `?` = Show file explorer keymaps
+- `j` = move cursor to next node
+- `k` = move cursor to previous node
+- `J` = move cursor to last sibling node
+- `K` = move cursor to first sibling node
+- `<C-j>` = move cursor to next sibling node
+- `<C-k>` = move cursor to previous sibling node
 - `<C-h>` = Change current work directory to upper
 - `<C-l>` = Change current work directory to the folder under cursor
-- `<c-r>` = Refresh
+- `<C-r>` = Refresh
 - `<cr>` or `o` = Open file in current window, or toggle folder opened/collapsed
 - `q` = Close file explorer window
 - `H` = Toggle hidden and git-ignored files
