@@ -1,17 +1,7 @@
 local M = {
-	'alpha',
-
+	'goolord/alpha-nvim',
+	id = 'alpha',
 	desc = 'Dashboard when nvim opened without arguments',
-
-	requires = {
-		-- {
-		-- 	'goolord/alpha-nvim'
-		-- },
-		{
-			'adoyle-h/alpha-nvim', -- TODO: https://github.com/goolord/alpha-nvim/pull/152
-			branch = 'adoyle',
-		},
-	},
 }
 
 local PM = require('one.plugin-manager')
@@ -170,9 +160,8 @@ local function should_skip_alpha()
 		if arg == '--startuptime' then return false end
 
 		-- blacklisted arguments
-		-- always skip
-		if arg == '-b' -- commands, typically used for scripting
-				or arg == '-c' or vim.startswith(arg, '+') or arg == '-S' then return true end
+		-- always skip commands, typically used for scripting
+		if vim.tbl_contains({ '-b', '-c', '-S' }, arg) or vim.startswith(arg, '+') then return true end
 	end
 
 	-- base case: don't skip
