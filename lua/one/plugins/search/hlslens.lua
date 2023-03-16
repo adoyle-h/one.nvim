@@ -2,10 +2,12 @@ return {
 	'kevinhwang91/nvim-hlslens',
 	desc = 'Highlight search floating',
 
-	-- setup hlslens in nvim-scrollbar
-	-- config = function(config)
-	-- 	require('hlslens').setup(config.hlslens)
-	-- end,
+	config = function(config)
+		-- When nvim-scrollbar is enabled, call hlslens.setup in nvim-scrollbar
+		if require('one').PM.isPlugDisabled('petertriho/nvim-scrollbar') then
+			require('hlslens').setup(config.hlslens)
+		end
+	end,
 
 	defaultConfig = {
 		'hlslens',

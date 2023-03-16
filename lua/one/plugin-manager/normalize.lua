@@ -50,6 +50,7 @@ function M.normalizeOpts(repo, opts)
 
 	if opts.repo then opts.repoName = opts.repo:match('^[^/]+/([^/]+)$') end
 
+	opts.disable = opts.disable or false
 	opts._normalized = true
 
 	return opts
