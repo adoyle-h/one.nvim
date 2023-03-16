@@ -1,5 +1,6 @@
 local M = {
 	'petertriho/nvim-scrollbar',
+
 	config = function(config)
 		require('scrollbar').setup(config.scrollbar)
 
@@ -24,6 +25,7 @@ M.defaultConfig = function(config)
 				text = ' ',
 				priority = 100,
 				color = c.scrollbarBG,
+				blend = 30,
 				cterm = nil,
 				highlight = 'ScrollbarHandle',
 				hide_if_all_visible = true, -- Hides handle if all lines are visible
