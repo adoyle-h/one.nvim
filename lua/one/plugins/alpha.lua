@@ -28,7 +28,7 @@ local function makeKeymap(sess, load_session)
 	end
 end
 
-local function formatSessions(sessions, matched)
+local function formatSessions(sessions, matched, sessionLimit)
 	local load_session = require('persisted.utils').load_session
 
 	table.sort(sessions, function(prev, next)
@@ -41,6 +41,8 @@ local function formatSessions(sessions, matched)
 		table.insert(sessions, 1, table.remove(sessions, matched))
 	end
 
+	sessions = vim.list_slice(sessions, 0, sessionLimit)
+
 	local textWidth = #sessions[#sessions].val
 
 	for i, sess in pairs(sessions) do --
@@ -52,7 +54,7 @@ local function formatSessions(sessions, matched)
 			{ buffer = 0, noremap = true, silent = true, nowait = true })
 	end
 
-	return textWidth
+	return { sessions, textWidth }
 end
 
 local function getSessions(conf)
@@ -74,7 +76,6 @@ local function getSessions(conf)
 		local path = session.file_path
 		local isContained = path:find(pwd:gsub('/', '%%'), 1, true)
 
-		if i > sessionLimit then break end
 		if not isContained then goto continue end
 
 		local str
@@ -93,7 +94,6 @@ local function getSessions(conf)
 				position = 'center',
 				-- shortcut = printf(' %s ', i),
 				cursor = 2,
-				width = 50,
 				align_shortcut = 'left',
 				hl_shortcut = { { 'Keyword', 0, 2 } },
 			},
@@ -108,12 +108,14 @@ local function getSessions(conf)
 
 	if i == 1 then return { type = 'padding', val = 0 } end
 
-	local textWidth = formatSessions(sessions, matched)
+	local results = formatSessions(sessions, matched, sessionLimit)
+	sessions = results[1]
+	local textWidth = results[2]
 
 	if i > sessionLimit then
 		local text = '[More Sessions]'
 
-		if textWidth > #text then text = text .. string.rep(' ', textWidth - #text - 2) end
+		if textWidth > #text then text = text .. string.rep(' ', textWidth - #text) end
 
 		table.insert(sessions, {
 			type = 'button',
@@ -126,7 +128,6 @@ local function getSessions(conf)
 				position = 'center',
 				shortcut = ' 0 ',
 				cursor = 2,
-				width = 50,
 				align_shortcut = 'left',
 				hl_shortcut = { { 'Keyword', 0, 2 } },
 			},
