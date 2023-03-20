@@ -1,5 +1,3 @@
-local config = require('one.config').config
-local symbols = config.symbolMap
 local util = require('one.util')
 
 local executable = vim.fn.executable
@@ -11,10 +9,6 @@ local M = {
 		require('neo-tree').setup(config.neotree)
 	end,
 }
-
-local hide_by_name = {}
-util.tbl_concat(hide_by_name, config.ignore.fileSearch.directories)
-util.tbl_concat(hide_by_name, config.ignore.fileSearch.files)
 
 local function keymapCopy(state)
 	-- NeoTree is based on [NuiTree](https://github.com/MunifTanjim/nui.nvim/tree/main/lua/nui/tree)
@@ -50,27 +44,6 @@ local function keymapCopy(state)
 		vim.fn.setreg('"', result)
 	end
 end
-
-local components = {
-	symlink = function(conf, node, state)
-		if node.is_link then
-			return {
-				text = string.format(conf.format or '→ %s', util.relative(node.path, node.link_to)),
-				highlight = conf.highlight or highlights.SYMBOLIC_LINK_TARGET,
-			}
-		else
-			return {}
-		end
-	end,
-
-	exectuable = function(conf, node)
-		local path = node.path
-		if node.is_link then path = node.link_to end
-		local text = ''
-		if executable(path) == 1 then text = conf.symbol or symbols.EXECUTABLE end
-		return { text = text, highlight = conf.highlight or 'NeoTreeFileExecutable' }
-	end,
-}
 
 local moveToLastSibling = function(state)
 	local tree = state.tree
@@ -120,8 +93,35 @@ local moveToNextSibling = function(state)
 	end
 end
 
-M.defaultConfig = function()
+M.defaultConfig = function(config)
+	local symbols = config.symbolMap
+
 	local filter = require('neo-tree.sources.filesystem.lib.filter')
+
+	local hide_by_name = {}
+	util.tbl_concat(hide_by_name, config.ignore.fileSearch.directories)
+	util.tbl_concat(hide_by_name, config.ignore.fileSearch.files)
+
+	local components = {
+		symlink = function(conf, node, state)
+			if node.is_link then
+				return {
+					text = string.format(conf.format or '→ %s', util.relative(node.path, node.link_to)),
+					highlight = conf.highlight or 'NeoTreeSymbolicLinkTarget',
+				}
+			else
+				return {}
+			end
+		end,
+
+		exectuable = function(conf, node)
+			local path = node.path
+			if node.is_link then path = node.link_to end
+			local text = ''
+			if executable(path) == 1 then text = conf.symbol or symbols.EXECUTABLE end
+			return { text = text, highlight = conf.highlight or 'NeoTreeFileExecutable' }
+		end,
+	}
 
 	local conf = {
 		'neotree',
@@ -134,6 +134,7 @@ M.defaultConfig = function()
 			enable_diagnostics = true,
 			sort_case_insensitive = false, -- used when sorting files and directories in the tree
 			sort_function = nil, -- use a custom function for sorting files and directories in the tree
+			use_popups_for_input = true,
 
 			default_component_configs = {
 				container = {
@@ -334,7 +335,7 @@ M.defaultConfig = function()
 						['<C-l>'] = 'set_root',
 						['H'] = 'toggle_hidden',
 						['/'] = function(state)
-							filter.show_filter(state, true) -- let fuzzy_finder search as you type
+							filter.show_filter(state, true, true) -- let fuzzy_finder search as you type
 						end,
 						['<C-/>'] = 'clear_filter',
 						['D'] = 'fuzzy_finder_directory',
@@ -342,6 +343,15 @@ M.defaultConfig = function()
 						['F'] = 'clear_filter',
 						['[g'] = 'prev_git_modified',
 						[']g'] = 'next_git_modified',
+					},
+
+					fuzzy_finder_mappings = { -- use a custom function for defining keymaps in popup input window
+						['<down>'] = 'move_cursor_down',
+						['<C-n>'] = 'move_cursor_down',
+						['<up>'] = 'move_cursor_up',
+						['<C-p>'] = 'move_cursor_up',
+						['<C-j>'] = 'move_cursor_down',
+						['<C-k>'] = 'move_cursor_up',
 					},
 				},
 
@@ -401,7 +411,7 @@ M.defaultConfig = function()
 
 			diagnostics = {
 				components = {
-					linenr = function(config, node)
+					linenr = function(_config, node)
 						local lnum = tostring(node.extra.diag_struct.lnum + 1)
 						local pad = string.rep(' ', 4 - #lnum)
 						return {
