@@ -15,9 +15,22 @@ local M = {
 	highlights = require('one.plugins.treesitter.highlights'),
 }
 
+local function register_lang(lang, ft)
+	local ts = vim.treesitter
+	if ts.language.register ~= nil then
+		-- vim.treesitter.language.register added in https://github.com/neovim/neovim/pull/22207
+		ts.language.register(lang, ft)
+		return
+	end
+	-- nvim version <= 0.8.3
+	require('nvim-treesitter.parsers').filetype_to_parsername[ft] = lang
+end
+
 M.defaultConfig = {
 	'treesitter',
 	{
+		parserConf = {},
+		registerLang = {},
 		prefer_git = false,
 		-- https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
 		ensure_installed = {}, -- A list of parser names, or "all",
@@ -86,20 +99,29 @@ M.defaultConfig = {
 
 function M.config(config)
 	local util = require('one.util')
+	local conf = config.treesitter
 
-	require('nvim-treesitter.install').prefer_git = config.treesitter.prefer_git
+	require('nvim-treesitter.install').prefer_git = conf.prefer_git
 
 	if config.proxy.github then
-		for _, parserConf in pairs(require('nvim-treesitter.parsers').get_parser_configs()) do
+		for name, parserConf in pairs(require('nvim-treesitter.parsers').get_parser_configs()) do
 			parserConf.install_info.url = parserConf.install_info.url:gsub('https://github.com/',
 				util.proxyGithub('https://github.com/'))
+			local fn = conf.parserConf[name]
+			if fn then fn(parserConf) end
 		end
 	end
 
 	vim.opt.foldmethod = 'expr'
 	vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 
-	require('nvim-treesitter.configs').setup(config.treesitter)
+	require('nvim-treesitter.configs').setup(conf)
+
+	for parserName, fts in pairs(conf.registerLang) do
+		for _, ft in pairs(fts) do --
+			register_lang(parserName, ft)
+		end
+	end
 end
 
 return M
