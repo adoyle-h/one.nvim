@@ -208,7 +208,8 @@ Press `<space>k` to see all keymaps in nvim.
 - `<space>v` = Find vim options
 - `<space>r` = Show recently opened files
 - `<space>N` = Find notifications
-- `<space>n` = List messages
+- `<space>n` = Toggle messages (Default use telescope, if you enabled noice plugin, it will use noice)
+- `<space>t` = List all terminal windows
 - `<space>T` = List todo comments
 - `<space>ls` = Lists LSP document symbols in the current buffer
 - `<space>lf` = List LSP document symbols which filtered by kinds in current buffer
@@ -325,7 +326,7 @@ If bufferline plugin enabled, some keymaps will be overridden. See [Buffer Line]
 ## Terminal
 
 - `jk` = Exit from terminal mode
-- `<space>t` = Show all terminal windows
+- `<space>t` = List all terminal windows
 - `<leader>tn` = Create a terminal
 - `<leader>tt` = Toggle terminal
 - `<leader>tk` = Kill terminal

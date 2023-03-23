@@ -8,8 +8,12 @@ local M = {
 			'n',
 			'<space>n',
 			function()
-				require('noice').cmd('history')
-				vim.api.nvim_feedkeys('G', 'n', false)
+				if vim.bo.filetype == 'noice' then
+					vim.api.nvim_feedkeys('q', '', false)
+				else
+					require('noice').cmd('history')
+					vim.api.nvim_feedkeys('G', 'n', false)
+				end
 			end,
 		},
 	},
@@ -17,8 +21,9 @@ local M = {
 	highlights = function(config)
 		local c = config.colors
 		return { --
+			-- NoiceMini = { fg = c.grey, bg = c.darkBlue },
 			NoiceMini = { fg = c.grey, bg = c.darkBlue },
-			NoiceMiniBorder = { bg = c.darkBlue },
+			NoiceMiniBorder = { fg = c.blue, bg = c.black },
 			NoiceCmdlineIconSearch = { fg = c.match.fg },
 			NoiceFormatEvent = { fg = c.green },
 			NoiceFormatKind = { fg = c.yellow },
@@ -35,6 +40,34 @@ local M = {
 }
 
 M.defaultConfig = function()
+	local viewFormat = {
+		'{date} ',
+		'{event}',
+		{ '{kind}', before = { '.', hl_group = 'NoiceFormatKind' } },
+		' ',
+		-- '{level} ',
+		-- '{cmdline} ',
+		'{title} ',
+		'| {message}',
+	}
+
+	local historyViewOpts = {
+		-- options for the message history that you get with `:Noice`
+		-- view = 'split',
+		view = 'popup',
+		opts = { enter = true, format = viewFormat },
+		filter = {
+			any = {
+				{ event = '' },
+				{ event = 'notify' },
+				{ error = true },
+				{ warning = true },
+				{ event = 'msg_show' },
+				{ event = 'lsp', kind = 'message' },
+			},
+		},
+	}
+
 	return {
 		'noice',
 		{
@@ -51,13 +84,13 @@ M.defaultConfig = function()
 					-- opts: any options passed to the view
 					-- icon_hl_group: optional hl_group for the icon
 					-- title: set to anything or empty string to hide
-					cmdline = { pattern = '^:', icon = '', lang = 'vim' },
+					cmdline = { pattern = '^:', icon = ':', lang = 'vim' },
 					search_down = { kind = 'search', pattern = '^/', icon = '', lang = 'regex' },
 					search_up = { kind = 'search', pattern = '^%?', icon = ' ', lang = 'regex' },
-					filter = { pattern = '^:%s*!', icon = '$', lang = 'bash' },
+					filter = { pattern = '^:%s*!', icon = '', lang = 'bash' },
 					man = { pattern = '^:%s*Man%s+', icon = '龎', lang = 'bash' },
 					lua = { pattern = '^:%s*lua%s+', icon = '', lang = 'lua' },
-					help = { pattern = '^:%s*he?l?p?%s+', icon = 'ﲉ' },
+					help = { pattern = '^:%s*he?l?p?%s+', icon = '󰱼' },
 					input = {}, -- Used by input()
 					-- lua = false, -- to disable a format, set to `false`
 				},
@@ -83,45 +116,22 @@ M.defaultConfig = function()
 				kind_icons = {}, -- set to `false` to disable icons
 			},
 
+			-- default options for require('noice').redirect
+			-- see the section on Command Redirection
+			redirect = { view = 'popup', filter = { event = 'msg_show' } },
+
 			-- You can add any custom commands below that will be available with `:Noice command`
 			commands = {
-				history = {
-					-- options for the message history that you get with `:Noice`
-					-- view = 'split',
-					view = 'popup',
-					opts = { enter = true, format = 'details' },
-					filter = {
-						any = {
-							{ event = 'notify' },
-							{ error = true },
-							{ warning = true },
-							{ event = 'msg_show' },
-							{ event = 'lsp', kind = 'message' },
-						},
-					},
-				},
+				history = historyViewOpts,
 
 				-- :Noice last
-				last = {
-					view = 'popup',
-					opts = { enter = true, format = 'details' },
-					filter = {
-						any = {
-							{ event = 'notify' },
-							{ error = true },
-							{ warning = true },
-							{ event = 'msg_show' },
-							{ event = 'lsp', kind = 'message' },
-						},
-					},
-					filter_opts = { count = 1 },
-				},
+				last = vim.tbl_extend('force', historyViewOpts, { filter_opts = { count = 10 } }),
 
 				-- :Noice errors
 				errors = {
 					-- options for the message history that you get with `:Noice`
 					view = 'popup',
-					opts = { enter = true, format = 'details' },
+					opts = { enter = true, format = viewFormat },
 					filter = { error = true },
 					filter_opts = { reverse = true },
 				},
@@ -240,26 +250,32 @@ M.defaultConfig = function()
 				['mini'] = {
 					reverse = false,
 					align = 'message-left',
-					timeout = 3000,
+					timeout = 5000,
 					position = { row = -2, col = -2 },
+
 					size = {
 						max_height = math.ceil(0.8 * vim.o.lines),
-						max_width = math.ceil(0.8 * vim.o.columns),
+						max_width = math.ceil(0.5 * vim.o.columns),
+						min_width = 30,
 						width = 'auto',
 						height = 'auto',
 					},
+
 					border = {
+						text = { top = '', top_align = 'left', bottom = '' },
 						style = {
-							{ ' ', 'NoiceMiniBorder' },
-							{ ' ', 'NoiceMiniBorder' },
-							{ ' ', 'NoiceMiniBorder' },
-							{ ' ', 'NoiceMiniBorder' },
-							{ ' ', 'NoiceMiniBorder' },
-							{ ' ', 'NoiceMiniBorder' },
-							{ ' ', 'NoiceMiniBorder' },
-							{ ' ', 'NoiceMiniBorder' },
+							{ '▐', 'NoiceMiniBorder' },
+							{ ' ', 'NoiceMini' },
+							{ ' ', 'NoiceMini' },
+							{ ' ', 'NoiceMini' },
+							{ ' ', 'NoiceMini' },
+							{ ' ', 'NoiceMini' },
+							{ '▐', 'NoiceMiniBorder' },
+							{ '▐', 'NoiceMiniBorder' },
 						},
+						padding = { top = 0, bottom = 0, left = 1, right = 0 },
 					},
+
 					win_options = { winblend = 0 },
 				},
 
@@ -294,40 +310,49 @@ M.defaultConfig = function()
 				},
 			},
 
-			routes = { --- @see section on routes
-				{ -- Hide written messages
-					filter = { event = 'msg_show', kind = '', find = 'written' },
+			routes = {
+
+				{ -- Hide diagnostics messages
+					filter = { event = 'lsp', find = ' diagnostics_on_open ' },
 					opts = { skip = true },
 				},
 
-				{ -- Hide read messages
+				-- Hide read messages
+				{
 					filter = { event = 'msg_show', kind = '', find = '^".+"  ?%d+ lines? %-%-%d+%%%-%-$' },
 					opts = { skip = true },
 				},
-
-				{ -- Hide read messages
+				{
 					filter = { event = 'msg_show', kind = '', find = '^".+"  ?%[.+%] %d+ lines? %-%-%d+%%%-%-$' },
 					opts = { skip = true },
 				},
-
-				{ -- Hide read messages
+				{
 					filter = { event = 'msg_show', kind = '', find = '^".+"  ?%d+L, %d+B$' },
 					opts = { skip = true },
 				},
-
-				{ -- Hide read messages
+				{
 					filter = { event = 'msg_show', kind = '', find = '^".+"  ?%[.+%] %d+L, %d+B$' },
 					opts = { skip = true },
 				},
 
-				-- Hide Search
-				{ filter = { event = 'msg_show', kind = 'search_count' }, opts = { skip = true } },
+				{ -- Hide Search
+					filter = { event = 'msg_show', kind = 'search_count' },
+					opts = { skip = true },
+				},
 
-				{ filter = { event = 'msg_show', kind = '', find = '^<' }, opts = { skip = true } },
+				-- { -- Hide Search
+				-- 	filter = { event = 'msg_show', kind = '', find = '^[/?].+ +%[%d+/%d+%]' },
+				-- 	opts = { skip = true },
+				-- },
+
+				{ -- Hide Search
+					filter = { event = 'msg_show', kind = '', find = '^[/?].+' },
+					opts = { skip = true },
+				},
+
 			},
 
 			status = {}, --- @see section on statusline components
-
 			format = {}, --- @see section on formatting
 		},
 	}
