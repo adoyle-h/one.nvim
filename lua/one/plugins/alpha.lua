@@ -251,24 +251,23 @@ end
 M.defaultConfig = function()
 	local dashboard = require('alpha.themes.dashboard')
 	local button = dashboard.button
-	local listMsg = PM.isPlugDisabled('noice') and ':Telescope message<CR>' or ':Noice history<CR>'
 
 	local buttons = {
 		type = 'group',
 		val = {
 			button('e', '  New File', ':ene <BAR> <CR>'),
-			button('<SPACE>m', '  File Explorer', ':Neotree toggle<CR>'),
-			button('<SPACE>r', '  Recently Opened Files', ':Telescope oldfiles<CR>'),
-			button('<SPACE>f', '  Search File', ':Telescope find_files<CR>'),
-			button('<SPACE>/', '  Search Contents', ':Telescope live_grep<CR>'),
-			button('<SPACE>k', '  List Keymaps', ':Telescope keymaps<CR>'),
-			button('<SPACE>s', '  List Sessions', ':ListSessions<CR>'),
-			button('<SPACE>p', 'גּ  Run Command', ':Telescope commands<CR>'),
-			button('<SPACE>P', '  List Plugin Status', PM.P.cmds.status),
-			button('<SPACE>v', '  List Vim Options', ':Telescope vim_options<CR>'),
-			button('<SPACE>n', '  List Messages', listMsg),
-			button('<SPACE>N', '  List Notifications', ':Telescope notify<CR>'),
-			button('<SPACE>h', 'ﲉ  Find Help', ':Telescope help_tags<CR>'),
+			button('<SPACE>m', '  File Explorer'),
+			button('<SPACE>r', '  Recently Opened Files'),
+			button('<SPACE>f', '  Search File'),
+			button('<SPACE>/', '  Search Contents'),
+			button('<SPACE>k', '  List Keymaps'),
+			button('<SPACE>s', '  List Sessions'),
+			button('<SPACE>p', 'גּ  Run Command'),
+			button('<SPACE>P', '  List Plugin Status'),
+			button('<SPACE>v', '  List Vim Options'),
+			button('<SPACE>n', '  List Messages'),
+			button('<SPACE>N', '  List Notifications'),
+			button('<SPACE>h', 'ﲉ  Find Help'),
 			button('q', '  Quit', ':qa<CR>'),
 		},
 		opts = { spacing = 0 },
