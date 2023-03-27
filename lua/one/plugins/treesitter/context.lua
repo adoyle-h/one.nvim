@@ -1,7 +1,6 @@
 return {
 	'nvim-treesitter/nvim-treesitter-context',
 	desc = 'Shows the context of the currently visible buffer contents.',
-	disable = true, -- BUG: https://github.com/nvim-treesitter/nvim-treesitter-context/issues/163
 
 	highlights = function(config)
 		local c = config.colors
