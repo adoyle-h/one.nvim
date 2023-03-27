@@ -416,6 +416,25 @@ If bufferline plugin enabled, some keymaps will be overridden. See [Buffer Line]
 - `<leader>N` = Toggle relative/absolute number gutter
 - `<leader>L` = Toggle linenumber gutter
 
+## Marks
+
+- `mm` = Set mark
+- `m,<character>` = Set mark with character
+- `ml` = List marks in current buffer
+- `mL` = List all marks
+- `md` = Remove marks in current cursor line
+- `mD` = Remove all marks in current buffer
+- `mj` = Move to next mark
+- `mk` = Move to previous mark
+- `m0` ~ `m9` = Set bookmarks
+- `mbl` = List bookmarks
+- `mbd` = Remove bookmark
+
+## Trouble
+
+- `<Enter>` in trouble window = jump to file
+- `o` in trouble window = jump to file and auto close trouble window (See https://github.com/folke/trouble.nvim/issues/15)
+
 ## Uncategory
 
 - `<leader>cr` = Send request in HTTP file (NTBBloodbath/rest.nvim)

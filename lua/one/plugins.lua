@@ -61,6 +61,7 @@ return function(Plug, Load, config)
 	Load 'crontab'
 	Load 'live-cmd'
 	Load 'translate'
+	Load 'mark'
 
 	Plug {
 		'tyru/capture.vim',
