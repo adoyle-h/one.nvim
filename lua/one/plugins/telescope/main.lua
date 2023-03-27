@@ -215,10 +215,16 @@ M.defaultConfig = function(config)
 				spell_suggest = { layout_strategy = 'cursor' },
 
 				diagnostics = {},
-
 			},
 
-			extensions = {},
+			extensions = {
+				heading = {
+					picker_opts = {
+						layout_config = { width = 0.8, preview_width = 0.5, preview_cutoff = 80 },
+						layout_strategy = 'horizontal',
+					},
+				},
+			},
 		},
 	}
 end
