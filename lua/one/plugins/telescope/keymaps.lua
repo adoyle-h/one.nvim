@@ -2,10 +2,11 @@ return function()
 	local util = require('one.util')
 	local tb = require('telescope.builtin')
 	local opts = { silent = true }
+	local tbExts = require('telescope').extensions
 
 	local map = {
 
-		{ 'n', '<space>;', require('telescope').extensions.find_pickers.find_pickers },
+		{ 'n', '<space>;', tbExts.find_pickers.find_pickers },
 
 		{ 'n', '<space>f', ':Telescope find_files<cr>', opts },
 

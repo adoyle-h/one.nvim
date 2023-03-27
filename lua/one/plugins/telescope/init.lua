@@ -49,6 +49,8 @@ return {
 				require('telescope').load_extension('heading')
 			end,
 		},
+
+		require('one.plugins.telescope.menu'),
 	},
 
 	keymaps = require('one.plugins.telescope.keymaps'),
