@@ -8,7 +8,74 @@ The versions follow the rules of [Semantic Versioning 2.0.0](http://semver.org/s
 
 ## [Unreleased]
 
-[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v2.1.0...HEAD)
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v3.0.0...HEAD)
+
+
+<a name="v3.0.0"></a>
+## v3.0.0 (2023-03-27 17:32:44 +08:00)
+
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v2.1.0...v3.0.0)
+
+### Breaking Changes
+
+Have 2 breaking changes. Check below logs with ⚠️ .
+
+### New Features
+
+- add plugin marks.nvim ([017947d](https://github.com/adoyle-h/one.nvim/commit/017947d88e6c34ed5563037fa69e8784b4e3a6c6))
+  > The config `force_write_shada` must be `true`. See https://github.com/chentoast/marks.nvim/issues/13
+- enable plugin nvim-treesitter-context ([9e8aa19](https://github.com/adoyle-h/one.nvim/commit/9e8aa198059888e2859659eb78ce37d44c5c5418))
+  > You can disable it by `require('one').setup { plugins = { { 'nvim-treesitter/nvim-treesitter-context', disable = true } } }`
+- make the scrollbar transparent ([e0ec273](https://github.com/adoyle-h/one.nvim/commit/e0ec27355e111205a886314c2cec9779ef614c25))
+  > - User should upgrade nvim-scrollbar plugin to latest
+  > - The scrollbar config add new option "handle.blend"
+  > - Move nvim-scrollbar to plugins/scrollbar/ folder
+- add plugin scrollbar/satellite ([8c85211](https://github.com/adoyle-h/one.nvim/commit/8c85211bf9954a83bead4ec159d725365716bd11))
+  > This plugin is an alternative to nvim-scrollbar. But it is still WIP.
+- add plugin hotoo/pangu.vim ([cd932a1](https://github.com/adoyle-h/one.nvim/commit/cd932a1ee9acb76b80867b3c03142ecce62c7a3c))
+- **neo-tree**: add keymaps to move cursor ([6feb493](https://github.com/adoyle-h/one.nvim/commit/6feb493d687bf8f5e0294205a20a025017dc7911))
+  > - `<c-j>` = moveToNextSibling
+  > - `<c-k>` = moveToPreviousSibling
+  > - `J` = moveToLastSibling
+  > - `K` = moveToFirstSibling
+- **neo-tree**: let fuzzy_finder search as you type && chagne keymaps ([0325820](https://github.com/adoyle-h/one.nvim/commit/0325820782de9d09b776322fde7a76dbcfc1dbe4))
+  > - add keymap `F` and `<C-/>` to clear filter
+  > - remove keymap `<C-x>`
+- **noice**: better config for latest noice.nvim ([9230def](https://github.com/adoyle-h/one.nvim/commit/9230def42fb6d83e59c17d7aea08b2e60e4a059f))
+  > But it is still disabled by default, because the messages may be noisy.
+  > You can enable it by `require('one').setup { plugins = { { 'noice', disable = false } } }`.
+- **telescope**: change the layout of heading extension ([12af9d6](https://github.com/adoyle-h/one.nvim/commit/12af9d66499a505428046e486d118945c3595bed))
+  > - Change the layout of heading extension from vertical to horizontal.
+  > - User should upgrade the plugin telescope-heading.nvim to latest.
+- **treesitter**: add new options "parserConf" and "registerLang" ([7076ded](https://github.com/adoyle-h/one.nvim/commit/7076ded41fea8acaac132b3d1472aef677f4f55e))
+  > Usage:
+  > 
+  > ```lua
+  > {
+  > 	parserConf = {
+  > 		glimmer = function(parserConf) end
+  > 	},
+  > 
+  > 	registerLang = {
+  > 		glimmer = { 'hbs' },
+  > 	},
+  > }
+  > ```
+
+### Bug Fixes
+
+- hlslens not setup when disable nvim-scrollbar ([c869b49](https://github.com/adoyle-h/one.nvim/commit/c869b49424b5c2028f734d55e4b1e9f7a93dc47d))
+- **alpha**: the first item is not best matched when matched session sum > 9 ([32898b4](https://github.com/adoyle-h/one.nvim/commit/32898b464c303bef2354d26b1896f51b6223189a))
+- **dashboard**: revert plugin alpha-nvim to origin repo from my fork ([255ca95](https://github.com/adoyle-h/one.nvim/commit/255ca95f1279544b78bc3fdf95d76d732ffec792))
+- ⚠️  **keymap**: Change keymap of comment plugin and add keymap usages ([373ba4e](https://github.com/adoyle-h/one.nvim/commit/373ba4e6240ae24fe7f1b5abdf5823bd1e96601e))
+  > Breaking Change:
+  > 
+  > - Move `<leader>ca` to `<leader> cl`
+- ⚠️  **keymap**: Change the keymap of "`<space>`M". ([8be6b30](https://github.com/adoyle-h/one.nvim/commit/8be6b3020630be8f375d66d44b15283d6b2c2347))
+  > Breaking Change:
+  > 
+  > The keymap "<space>M": To open reveal current buffer in file explorer instead of Man page finder.
+- **telescope**: don't fill visual selected text when press `<space>p` and `<space>C` ([9795337](https://github.com/adoyle-h/one.nvim/commit/979533743635cc97f3875f3544c2f3749f7f0545))
 
 
 <a name="v2.1.0"></a>
