@@ -1,5 +1,7 @@
 # 插件
 
+[English](./plugin.md) | [中文](./plugin.zh.md)
+
 所有插件都可以被关闭，覆盖默认配置项，或者替换成你喜欢的插件。自定义配置和扩展非常方便。
 
 你甚至可以设置 `onlyPlugins = {}` 来一键禁用所有插件（不禁用插件管理器）。详见 [Debug - Disable other plugins](./usage/debug.md#disable-other-plugins)。

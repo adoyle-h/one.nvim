@@ -1,5 +1,7 @@
 # User Config
 
+[English](./user-config.md) | [中文](./user-config.zh.md)
+
 Set your config to override default configs.
 
 ```lua

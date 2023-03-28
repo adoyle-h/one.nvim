@@ -173,7 +173,7 @@ require('one').setup {
 
 |              | lazy                    | vim-plug                    | packer                                      |
 |--------------|-------------------------|-----------------------------|---------------------------------------------|
-| 插件目录     | {DATA_DIR}/lazy.nvim    | {DATA_DIR}/lazy.nvim        | {DATA_DIR}/site/pack/user/start/packer.nvim |
+| 插件目录     | {DATA_DIR}/plugins      | {DATA_DIR}/plugins          | {DATA_DIR}/site/pack/user/start/packer.nvim |
 | 默认配置文件 | lua/one/config/lazy.lua | lua/one/config/vim-plug.lua | lua/one/config/packer.lua                   |
 
 `{DATA_DIR}` 的值见 `:lua print(vim.fn.stdpath('data'))`。

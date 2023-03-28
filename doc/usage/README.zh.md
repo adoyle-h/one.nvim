@@ -1,5 +1,7 @@
 # 使用
 
+[English](./README.md) | [中文](./README.zh.md)
+
 ## [Debug](./debug.md)
 
 Debug 技巧。例如禁用所有插件。

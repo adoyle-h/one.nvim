@@ -1,5 +1,7 @@
 # 安装
 
+[English](./install-and-init.md) | [中文](./install-and-init.zh.md)
+
 你可使用 git clone 安装本项目。或在容器中运行 nvim。
 
 ## 依赖
@@ -29,18 +31,41 @@
 PACK_DIR=${XDG_DATA_HOME:-$HOME/.local/share}/nvim/site/pack/user/start
 mkdir -p "$PACK_DIR"
 git clone --depth 1 --single-branch https://github.com/adoyle-h/one.nvim.git "$PACK_DIR"/one.nvim
-
-# Set your nvim config directory
-NVIM_HOME=${XDG_CONFIG_HOME:-$HOME/.config}/nvim
-mkdir -p "$NVIM_HOME"
-echo "require('one').setup {}" > "$NVIM_HOME"/init.lua
 ```
 
 [初始化](#初始化)后，执行 `nvim` 启动。
 
+## 初始化
+
+1. 创建 [neovim `init.lua` 初始化文件](https://neovim.io/doc/user/lua-guide.html#lua-guide-config)。
+
+    - 若要使用最简配置，只需运行
+
+      ```sh
+      NVIM_HOME=$HOME/.config/nvim
+      mkdir -p "$NVIM_HOME"
+      echo "require('one').setup {}" > "$NVIM_HOME/init.lua"
+      ```
+
+    - One.nvim 用 [lazy.nvim][] 当默认的插件管理器。你可以修改配置项 `config.pluginManager.use` 选择其他插件管理器。详见[插件管理器](../README.zh.md#插件管理器)章节。
+    - 下载插件可能会比较慢。通过配置项 `config.proxy.github` 设置代理加速。详见[代理](./usage/proxy.zh.md)。
+    - 你也可以参考[我的 init.lua][init.lua] 写更复杂的配置。
+
+2. 执行 `nvim` 打开 neovim。它会自动下载所需依赖包，包括 impatient.nvim 和 lazy.nvim/vim-plug/packer.nvim。然后自动下载插件。
+
+3. 如果下载插件失败。详见 [FAQ - 插件安装失败](./faq/install-failed.zh.md#插件安装失败)。
+
+4. nvim 启动后会自动下载 treesitter parsers。它们定义在 `config.treesitter.ensure_installed` 和 `config.treesitter.ignore_install`。如果安装失败，重启 nvim 或执行 `:TSInstall all` 来重装。
+
+5. nvim 启动后会自动下载 LSP/DAP/Formatter/Linter，它们定义在 `config['mason-installer'].ensureInstalled`.
+
+    - 如果安装失败，重启 nvim 或执行 `:MasonToolsInstall` 来重装。
+    - 也可以按 `<M-m>` 打开 Mason 窗口，选择要安装的 LSP/DAP/Formatter/Linter。
+
+
 ## 容器
 
-你可以在容器里运行它。这要求你的主机已安装 docker。
+你也可以在容器里运行它。这要求你的主机已安装 docker。
 
 ### 构建容器
 
@@ -60,34 +85,6 @@ alias nvim='docker run --rm -it --platform linux/amd64 -v "$HOME/.config/nvim:/r
 
 [初始化](#初始化)后，执行 `nvim` 启动。
 
-## 初始化
-
-1. 用你现有的编辑器修改 `init.lua` 文件的配置。你可以参考[我的 init.lua][init.lua]。
-  - `config.pluginManager.use` 选择你喜欢的插件管理器。详见[插件管理器](../README.zh.md#插件管理器)章节。
-  - 下载插件可能会比较慢。通过配置项 `config.proxy.github` 设置代理加速。详见[代理](./usage/proxy.zh.md)。
-
-2. 打开 `nvim`。它会自动下载所需依赖包，比如 impatient.nvim, lazy.nvim, vim-plug 或 packer.nvim。然后自动下载插件。
-
-3. 如果下载插件失败。
-
-  - 当 `config.pluginManager.use = vim-plug`。
-    - 在 nvim 执行 `:PlugInstall` 安装所有插件，重复直到全部安装成功。
-    - 插件默认安装在 `~/.local/share/nvim/plugins`。你可以通过配置项 `CM.config.pluginManager['vim-plug'].pluginDir` 修改插件目录。
-  - 当 `config.pluginManager.use = lazy`。
-    - 在 nvim 执行 `:Lazy install` 安装所有插件，重复直到全部安装成功。
-    - 如果 .git 目录已经下载，但是中途报错。插件目录会变成空的，里面只有 .git 目录。这种情况 lazy.nvim 无法自治。你需要按 `:Lazy home` 打开 lazy 窗口。然后光标移到对应的插件按 `x` 删除，再按 `i` 重新安装。参考[这个 lazy.nvim issue](https://github.com/folke/lazy.nvim/issues/224#issuecomment-1367108251)。
-  - 当 `config.pluginManager.use = packer`
-    - 在 nvim 执行 `:PackerSync` 安装所有插件，重复直到全部安装成功。
-    - 插件默认安装在 `~/.local/share/nvim/pack/packer`。**不要修改** `config.pluginManager.packer.package_root`，除非你十分明白自己在做什么。如果你修改后出了错，请不要来询问我。
-    - 在 [packer.nvim][] 和 [impatient.nvim][] 提供的两种缓存机制作用下，你可能会遇到古怪的错误。尝试 `:lua one.reset()` 来清空所有插件和缓存文件。
-
-4. nvim 启动后会自动下载 treesitter parsers。它们定义在 `config.treesitter.ensure_installed` 和 `config.treesitter.ignore_install`。
-  - 如果安装失败，重启 nvim 或执行 `:TSInstall all` 来重装。
-
-5. nvim 启动后会自动下载 LSP/DAP/Formatter/Linter，它们定义在 `config['mason-installer'].ensureInstalled`.
-  - 如果安装失败，重启 nvim 或执行 `:MasonToolsInstall` 来重装。
-  - 也可以按 `<M-m>` 打开 Mason 窗口，选择要安装的 LSP/DAP/Formatter/Linter。
-
 
 <!-- links -->
 
@@ -102,3 +99,4 @@ alias nvim='docker run --rm -it --platform linux/amd64 -v "$HOME/.config/nvim:/r
 [packer.nvim]: https://github.com/wbthomason/packer.nvim
 [impatient.nvim]: https://github.com/lewis6991/impatient.nvim
 [treesitter]: https://github.com/nvim-treesitter/nvim-treesitter
+[lazy.nvim]: https://github.com/folke/lazy.nvim

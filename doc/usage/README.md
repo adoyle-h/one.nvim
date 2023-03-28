@@ -1,5 +1,7 @@
 # Usage
 
+[English](./README.md) | [中文](./README.zh.md)
+
 ## [Debug](./debug.md)
 
 Tricks for debug. Such as disable all plugins.

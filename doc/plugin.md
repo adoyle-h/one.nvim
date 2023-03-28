@@ -1,5 +1,7 @@
 # Plugin
 
+[English](./plugin.md) | [中文](./plugin.zh.md)
+
 All plugins can be turned off, overridden default config options, replaced with your favorites.
 It is highly flexible to be customized and extended.
 
