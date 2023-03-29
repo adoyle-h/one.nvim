@@ -54,6 +54,7 @@ M.commands = {
 	OpenGithub = {
 		function()
 			local text = vim.fn.expand('<cfile>')
+			text = text:gsub('^https?://github.com/', ''):gsub('^github.com/', '')
 			vim.fn.OpenBrowser('https://github.com/' .. text)
 		end,
 		{ desc = 'Open github url in browser' },
