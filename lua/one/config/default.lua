@@ -47,7 +47,7 @@ return function(colors)
 
 		ignore = {
 			fileSearch = { --
-				directories = { 'node_modules', '.git', 'vendor' },
+				directories = { 'node_modules', '.git' },
 				files = {},
 			},
 
