@@ -389,12 +389,16 @@ M.defaultConfig = function(config)
 				winbar = true, -- toggle to show selector on winbar
 				statusline = false, -- toggle to show selector on statusline
 				show_scrolled_off_parent_node = false, -- boolean
-				tab_labels = {
-					filesystem = '  File', -- string | nil
-					buffers = '﬘ Buf',
-					git_status = ' Git',
-					diagnostics = '裂Diag',
-					zk = '﬷ ZK',
+				sources = {
+					-- {
+					-- 	source = '', -- string
+					-- 	display_name = '', -- string | nil
+					-- },
+					{ source = 'filesystem', display_name = '  File' },
+					{ source = 'buffers', display_name = '﬘ Buf' },
+					{ source = 'git_status', display_name = ' Git' },
+					{ source = 'diagnostics', display_name = '裂Diag' },
+					{ source = 'zk', display_name = '﬷ ZK' },
 				},
 				content_layout = 'start', -- string
 				tabs_layout = 'equal', -- string
