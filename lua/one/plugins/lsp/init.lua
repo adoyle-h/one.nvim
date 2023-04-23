@@ -1,12 +1,14 @@
 return {
 	'lsp',
 
-	requires = { require('one.plugins.lsp.main') },
-
-	deps = {
+	requires = {
 		require('one.plugins.lsp.mason'),
 		require('one.plugins.lsp.mason-installer'),
 		'williamboman/mason-lspconfig.nvim',
+		require('one.plugins.lsp.main'),
+	},
+
+	deps = {
 		require('one.plugins.lsp.null-ls'),
 		require('one.plugins.lsp.preview'),
 		require('one.plugins.lsp.nlsp'),
