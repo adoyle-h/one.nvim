@@ -10,7 +10,30 @@ You can use `:OneUpdate` to update one.nvim to latest. Please read [the "Update"
 
 ## [Unreleased]
 
-[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v3.0.0...HEAD)
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v3.0.1...HEAD)
+
+
+<a name="v3.0.1"></a>
+## v3.0.1 (2023-04-23 15:29:13 +08:00)
+
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v3.0.0...v3.0.1)
+
+### Bug Fixes
+
+- do not ignore "vendor" folder in file-explorer ([465cac0](https://github.com/adoyle-h/one.nvim/commit/465cac0c6de116074ae7b1c042e6b7f1afcb600c))
+- OpenGithub command would be compatible with more formats ([a5b9f44](https://github.com/adoyle-h/one.nvim/commit/a5b9f448a255c183093e0e1fa95c5b9804b51291))
+  > - https://github.com/org/repo
+  > - github.com/org/repo
+  > - org/repo
+- **lsp**: lsp is being set up before mason.nvim is set up ([7ffdd51](https://github.com/adoyle-h/one.nvim/commit/7ffdd511856bf1ad7c242934904b5974b4dd1bf3))
+- **neo-tree**: change config for latest version of neo-tree.nvim ([4339be2](https://github.com/adoyle-h/one.nvim/commit/4339be2936386507a6e488342f3a5e07461d3f94))
+  > - replaces `source_selector.tab_labels` with `source_selector.sources`
+  > - see https://github.com/nvim-neo-tree/neo-tree.nvim/pull/877
+
+### Document Changes
+
+- update docs ([727c38f](https://github.com/adoyle-h/one.nvim/commit/727c38fb01f1a34a8c76e0a0cbf3d75a7a9dc010))
+- update Changelog ([12461fb](https://github.com/adoyle-h/one.nvim/commit/12461fb32888b6cc12434042e3a33978fbaa07aa))
 
 
 <a name="v3.0.0"></a>
