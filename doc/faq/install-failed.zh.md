@@ -2,6 +2,8 @@
 
 [English](./install-failed.md) | [中文](./install-failed.zh.md)
 
+总是运行 `:checkhealth` 来检查问题。
+
 ## ERROR [mason-tool-installer] luaformatter: failed to install
 
 如果你使用 MacOS，用 `brew install luarocks` 来安装 luarocks，或者把它升级到最新版本。
