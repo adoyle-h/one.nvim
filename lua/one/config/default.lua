@@ -31,13 +31,17 @@ return function(colors)
 		global = 'one',
 
 		pluginManager = {
-			use = 'lazy', -- 'vim-plug' or 'packer' or 'lazy'
+			use = 'lazy', -- 'vim-plug' or 'packer' or 'lazy' or 'local'
 
 			['vim-plug'] = require('one.config.vim-plug'),
 
 			packer = require('one.config.packer'),
 
 			lazy = require('one.config.lazy'),
+
+			['local'] = {
+				pluginDir = util.dataPath('plugins'), -- Plugin install directory.
+			},
 		},
 
 		proxy = {

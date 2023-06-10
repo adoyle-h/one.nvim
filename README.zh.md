@@ -166,7 +166,7 @@ require('one').setup {}
 ```lua
 require('one').setup {
   config = {
-    pluginManager = { use = 'packer' }, -- 'lazy' or 'vim-plug' or 'packer'
+    pluginManager = { use = 'packer' }, -- 'lazy' or 'vim-plug' or 'packer' or 'local'
   },
 }
 ```
@@ -179,6 +179,8 @@ require('one').setup {
 `{DATA_DIR}` 的值见 `:lua print(vim.fn.stdpath('data'))`。
 
 当你从 vim-plug 或者 lazy 切换到 packer，就需要重装插件。详见[初始化](./doc/install-and-init.zh.md#初始化)流程。
+
+当 `config.pluginManager.use = 'local`，插件管理器只能加载本地插件，无法从远端下载安装的插件。
 
 ## 插件
 

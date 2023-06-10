@@ -4,11 +4,10 @@ local util = require('one.util')
 local normalizeOpts = N.normalizeOpts
 
 -- NOTE: The plugin loaded order: "requires" plugins, "deps" plugins, current plugin.
-local function usePlug(pm, loadPlug, repo, opts)
-	local plugMap, plugs, userPlugins = pm.plugMap, pm.plugs, pm.userPlugins
+local function usePlug(pm, loadPlug, opts)
+	local plugMap, plugs, userPlugins, onlyPlugins = pm.plugMap, pm.plugs, pm.userPlugins,
+		pm.onlyPlugins
 
-	opts = normalizeOpts(repo, opts)
-	repo = opts.repo
 	local id = opts.id
 
 	local userPluginOpts = userPlugins[id]
@@ -20,9 +19,12 @@ local function usePlug(pm, loadPlug, repo, opts)
 		userPlugins[id] = nil -- Avoid repeat merge userPluginOpts. And for loading user added plugins in P.fin()
 	end
 
-	if pm.onlyPlugins then
-		if vim.tbl_contains(pm.onlyPlugins, id) then
-			opts.disable = false
+	local _onlyPlugins = false
+
+	if onlyPlugins then
+		if vim.tbl_contains(onlyPlugins, id) then
+			if opts.disable == nil then opts.disable = false end
+			_onlyPlugins = true
 		else
 			opts.disable = true
 		end
@@ -47,6 +49,9 @@ local function usePlug(pm, loadPlug, repo, opts)
 		for _, dep in pairs(opts.requires or {}) do
 			if not dep then goto continue end
 
+			dep = normalizeOpts(dep)
+			if _onlyPlugins == true then table.insert(pm.onlyPlugins, dep.id) end
+
 			local depPlug = usePlug(pm, loadPlug, dep)
 			requires[#requires + 1] = depPlug
 
@@ -58,12 +63,13 @@ local function usePlug(pm, loadPlug, repo, opts)
 			::continue::
 		end
 		opts.requires = requires
-	end
 
-	if not opts.disable then
 		local deps = {}
 		for _, dep in pairs(opts.deps or {}) do
 			if not dep then goto continue end
+
+			dep = normalizeOpts(dep)
+			if _onlyPlugins == true then table.insert(pm.onlyPlugins, dep.id) end
 
 			local depPlug = usePlug(pm, loadPlug, dep)
 			deps[#deps + 1] = depPlug
@@ -85,7 +91,7 @@ local function usePlug(pm, loadPlug, repo, opts)
 	-- Run setup before plugin is loaded.
 	if opts.setup then opts.setup() end
 
-	if repo then loadPlug(repo, opts) end
+	if opts.repo then loadPlug(opts.repo, opts) end
 
 	return opts
 end

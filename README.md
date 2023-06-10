@@ -165,7 +165,7 @@ Choose your favorite plugin manager. Now available: `lazy` (default), `vim-plug`
 ```lua
 require('one').setup {
   config = {
-    pluginManager = { use = 'packer' }, -- 'lazy' or 'vim-plug' or 'packer'
+    pluginManager = { use = 'packer' }, -- 'lazy' or 'vim-plug' or 'packer' or 'local'
   },
 }
 ```
@@ -178,6 +178,8 @@ require('one').setup {
 The value of `{DATA_DIR}` is `:lua print(vim.fn.stdpath('data'))`.
 
 When you change to packer from lazy or vim-plug, the plugins should be reinstalled. Read [initialization](./doc/install-and-init.md#initialization) for details.
+
+When `config.pluginManager.use = 'local`, this plugin manager can only load local plugins. It cannnot install packages from remote.
 
 ## Plugin
 

@@ -29,14 +29,12 @@ local executePlugOptions = Plug.executePlugOptions
 -- @param [opts] {PlugOpts}
 -- @example See examples at ./lua/one/plugins.lua
 function PM.Plug(repo, opts)
-	local ok, reason = xpcall(usePlug, debug.traceback, PM, PM.P.loadPlug, repo, opts)
+	opts = normalizeOpts(repo, opts)
+	repo = opts.repo
+	local ok, reason = xpcall(usePlug, debug.traceback, PM, PM.P.loadPlug, opts)
 
 	if not ok then
-		if type(repo) == 'string' then
-			notify(string.format('Failed to load plug "%s". Reason: %s', repo, reason), 'error')
-		else
-			notify(string.format('Failed to load plug "%s". Reason: %s', opts and opts[1], reason), 'error')
-		end
+		notify(string.format('Failed to load plug "%s". Reason: %s', opts.id, reason), 'error')
 	end
 end
 
@@ -199,14 +197,18 @@ function PM.setup(opts)
 	local userPluginList = setupUserPlugins(opts.plugins)
 
 	local P
-	if use == 'vim-plug' then
-		P = require('one.plugin-manager.vim-plug')
+	if use == 'lazy' then
+		P = require('one.plugin-manager.lazy')
 	elseif use == 'packer' then
 		P = require('one.plugin-manager.packer')
-	elseif use == 'lazy' then
-		P = require('one.plugin-manager.lazy')
+	elseif use == 'vim-plug' then
+		P = require('one.plugin-manager.vim-plug')
+	elseif use == 'local' then
+		P = require('one.plugin-manager.local')
 	else
-		error(string.format('Invalid value of config.pluginManager.use = %s', use))
+		error(string.format(
+			'Invalid value of config.pluginManager.use = %s . Available value: "lazy", "vim-plug", "packer", "local"',
+			use))
 	end
 
 	PM.setP(P)

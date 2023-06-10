@@ -146,7 +146,8 @@ return {
     today2 = false, -- false or nil. To cancel plugin default completion
   }
 
-  -- Add telescope extensions
+  -- Add telescope extensions. Format: { ['extension-name'] = MakerExtension } .
+  -- The MakerExtension refers to https://github.com/adoyle-h/telescope-extension-maker.nvim#types
   telescopes = {
     ls = { -- extension name
       command = '!ls', -- vimscript or lua function
