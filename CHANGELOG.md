@@ -10,7 +10,41 @@ You can use `:OneUpdate` to update one.nvim to latest. Please read [the "Update"
 
 ## [Unreleased]
 
-[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v3.0.1...HEAD)
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v4.0.0...HEAD)
+
+
+<a name="v4.0.0"></a>
+## v4.0.0 (2023-06-10 14:44:00 +08:00)
+
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v3.0.1...v4.0.0)
+
+### Breaking Changes
+
+Have 1 breaking changes. Check below logs with ⚠️ .
+
+### New Features
+
+- add new pluginManager "local" ([3c5d5d1](https://github.com/adoyle-h/one.nvim/commit/3c5d5d18697d6c533c48860f483e7518871c4938))
+- add codeium plugin ([f959a47](https://github.com/adoyle-h/one.nvim/commit/f959a47a42c4dfaa18e14c69a60792f422f37e47))
+  > - It is disabled by default.
+  > - Use codeium with nvim-cmp: `require('one').setup { plugins = { 'cmp-codeium', disable = false } }`
+  > - Use official codeium plugin: `require('one').setup { plugins = function(load) return { load('codeium') } end }`
+
+### Bug Fixes
+
+- ⚠️  filetype.nvim not support neovim 0.9 ([e9440d7](https://github.com/adoyle-h/one.nvim/commit/e9440d7f62546434934e64bde4810f0a46277210)) ([#14](https://github.com/adoyle-h/one.nvim/issues/14))
+  > - fix [#14](https://github.com/adoyle-h/one.nvim/issues/14)
+  > - use vim.filetype.add to replace nathom/filetype.nvim
+  > 
+  > Breaking Change:
+  > 
+  > The content of `config.filetype` is changed.
+  > From `{ overrides = { extensions = {}, literal = {}, complex = {} } }`,
+  > to `{ extension = {}, filename = {}, pattern = {} }`. See `:h vim.filetype.add` for details.
+
+### Document Changes
+
+- update FAQ ([c141839](https://github.com/adoyle-h/one.nvim/commit/c141839ee7b2bf9339087cf440658c10efac3dd2))
 
 
 <a name="v3.0.1"></a>
