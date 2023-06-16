@@ -8,7 +8,9 @@
 
 如果你使用 MacOS，用 `brew install luarocks` 来安装 luarocks，或者把它升级到最新版本。
 
-相关 Issues/Discussions: [#10](https://github.com/adoyle-h/one.nvim/issues/10)
+如果你的环境缺少 `cmake` 可能导致 luaformatter 安装失败。
+
+相关 Issues/Discussions: [#10](https://github.com/adoyle-h/one.nvim/issues/10) [#14](https://github.com/adoyle-h/one.nvim/issues/14)
 
 ## 默认主题不好看，tokyonight.nvim 更漂亮
 
