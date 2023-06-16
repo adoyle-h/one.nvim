@@ -17,7 +17,10 @@ function One.reset()
 		config.impatient.modpaths.path,
 	}
 
-	if pmUse == 'vim-plug' then
+	if pmUse == 'lazy' then
+		files[#files + 1] = pmConf.dist
+		files[#files + 1] = pmConf.config.root
+	elseif pmUse == 'vim-plug' then
 		files[#files + 1] = pmConf.dist
 		files[#files + 1] = pmConf.pluginDir
 	elseif pmUse == 'packer' then
@@ -124,7 +127,8 @@ end
 
 local updateMap = {
 	one = function(config, run)
-		run(string.format('git -C %s pull --progress --depth 1', vim.fn.stdpath('config')))
+		local oneDir = vim.env.HOME .. '/.local/share/nvim/site/pack/user/start/one.nvim'
+		run(string.format('git -C %s pull --progress --depth 1', oneDir))
 	end,
 
 	impatient = function(config, run)
@@ -133,13 +137,16 @@ local updateMap = {
 
 	pm = function(config, run)
 		local pmConf = config.pluginManager
+		local pmUse = pmConf.use
 
-		if pmConf.use == 'vim-plug' then
+		if pmUse == 'lazy' then
+			run(string.format('git -C %s pull --progress --depth 1', pmConf['lazy'].dist))
+		elseif pmUse == 'packer' then
+			run(string.format('git -C %s pull --progress --depth 1', pmConf['packer'].packerFolder))
+		elseif pmUse == 'vim-plug' then
 			local url = One.util.proxyGithub(pmConf['vim-plug'].src)
 			local cmd = string.format('curl --create-dirs -Lo "%s" "%s"', pmConf['vim-plug'].dist, url)
 			run(cmd)
-		else
-			run(string.format('git -C %s pull --progress --depth 1', pmConf['packer'].packerFolder))
 		end
 	end,
 }
