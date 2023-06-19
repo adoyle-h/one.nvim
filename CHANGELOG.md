@@ -10,7 +10,23 @@ You can use `:OneUpdate` to update one.nvim to latest. Please read [the "Update"
 
 ## [Unreleased]
 
-[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v4.0.0...HEAD)
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v4.0.1...HEAD)
+
+
+<a name="v4.0.1"></a>
+## v4.0.1 (2023-06-19 12:38:57 +08:00)
+
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v4.0.0...v4.0.1)
+
+### Bug Fixes
+
+- use legacy branch for fidget.nvim ([58fc549](https://github.com/adoyle-h/one.nvim/commit/58fc549024516f9612b11a849bf8c018e9bf77a0))
+  > see https://github.com/j-hui/fidget.nvim/issues/131
+- "OneUpdate one" not update one.nvim && "OneUpdate pm" not update lazy.nvim ([c3514c0](https://github.com/adoyle-h/one.nvim/commit/c3514c0efdaf7047a43bca03257cf671cec187b2))
+
+### Document Changes
+
+- **FAQ**: add suggestions for failed luarocks installation ([a3286b5](https://github.com/adoyle-h/one.nvim/commit/a3286b544f7b8d65c35cc2dbaea50b4146e294d6))
 
 
 <a name="v4.0.0"></a>
