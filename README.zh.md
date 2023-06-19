@@ -161,12 +161,12 @@ require('one').setup {}
 
 ## 插件管理器
 
-选择你喜欢的插件管理器，目前提供 `lazy` (默认)，`vim-plug` 和 `packer`。
+选择你喜欢的插件管理器，目前提供 `lazy` (默认)，`vim-plug`，`packer`，`local`。
 
 ```lua
 require('one').setup {
   config = {
-    pluginManager = { use = 'packer' }, -- 'lazy' or 'vim-plug' or 'packer' or 'local'
+    pluginManager = { use = 'lazy' }, -- 'lazy' or 'vim-plug' or 'packer' or 'local'
   },
 }
 ```
@@ -180,7 +180,7 @@ require('one').setup {
 
 当你从 vim-plug 或者 lazy 切换到 packer，就需要重装插件。详见[初始化](./doc/install-and-init.zh.md#初始化)流程。
 
-当 `config.pluginManager.use = 'local`，插件管理器只能加载本地插件，无法从远端下载安装的插件。
+当 `config.pluginManager.use = 'local'`，插件管理器只能加载本地插件，无法从远端下载安装的插件。
 
 ## 插件
 
@@ -266,6 +266,7 @@ require('one').setup {
 │       └── plugin-manager/
 │           ├── init.lua     // Plugin Manager
 │           ├── lazy.lua     // Wrapper for lazy.nvim
+│           ├── local.lua    // Only load local files
 │           ├── vim-plug.lua // Wrapper for vim-plug
 │           └── packer.lua   // Wrapper for packer.nvim
 └── scripts/                 // scripts for building project
