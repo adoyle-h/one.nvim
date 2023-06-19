@@ -2,6 +2,7 @@ local PM = require('one.plugin-manager')
 
 return {
 	'j-hui/fidget.nvim',
+	branch = 'legacy',
 	desc = 'nvim-lsp loading progress',
 	disable = not PM.isPlugDisabled('noice'), -- If noice enabled, disable this plugin.
 
