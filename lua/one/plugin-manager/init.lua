@@ -192,7 +192,18 @@ function PM.setup(opts)
 	PM.configFn = opts.configFn
 	PM.onlyPlugins = opts.onlyPlugins
 
-	if PM.onlyPlugins and vim.tbl_isempty(PM.onlyPlugins) then return end
+	if PM.onlyPlugins then
+		if vim.tbl_isempty(PM.onlyPlugins) then
+			return
+		else
+			for idx, p in pairs(PM.onlyPlugins) do
+				if type(p) ~= 'string' then
+					error(string.format(
+						'The opts.onlyPlugins[%s] is not a string type. Please check your require("one").setup{}', idx))
+				end
+			end
+		end
+	end
 
 	local userPluginList = setupUserPlugins(opts.plugins)
 
