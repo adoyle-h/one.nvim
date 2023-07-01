@@ -145,7 +145,7 @@ You can update them by lua functions or commands.
 - Update one.nvim: `:OneUpdate one` or `:lua one.update('one')`
 - Update impatient: `:OneUpdate impatient` or `:lua one.update('impatient')`
 - Update pm: `:OneUpdate pm` or `:lua one.update('pm')`
-- Update all: `:OneUpdate` or `:OneUpdate all` or `:lua one.update()`
+- Update all (one.nvim + impatient + pm): `:OneUpdate` or `:OneUpdate all` or `:lua one.update()`
 
 ## [FAQ](./doc/faq/README.md)
 

@@ -146,7 +146,7 @@ one.nvim, impatient.nvim 以及[插件管理器](#插件管理器)的源码不�
 - 更新 one.nvim: `:OneUpdate one` 或 `:lua one.update('one')`
 - 更新 impatient: `:OneUpdate impatient` 或 `:lua one.update('impatient')`
 - 更新 pm: `:OneUpdate pm` 或 `:lua one.update('pm')`
-- 更新所有: `:OneUpdate` 或 `:OneUpdate all` 或 `:lua one.update()`
+- 更新所有 (one.nvim + impatient + pm): `:OneUpdate` 或 `:OneUpdate all` 或 `:lua one.update()`
 
 ## [常见问题](./doc/faq/README.md)
 
