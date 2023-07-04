@@ -23,14 +23,15 @@ require('one').setup {
 - Disabled
   - [noice](../lua/one/plugins/noice.lua)
 - Not Included
-  - [profiling](../lua/one/plugins/profiling.lua)
   - [funny](../lua/one/plugins/funny.lua)
-  - [zk](../lua/one/plugins/zk.lua)
-  - [node](../lua/one/plugins/node/init.lua)
+  - [profiling](../lua/one/plugins/profiling.lua)
+  - [zk](../lua/one/plugins/zk.lua) : the [zk](https://github.com/mickael-menu/zk) plain text note-taking assistant.
+  - [node](../lua/one/plugins/node/init.lua): Plugins for nodejs develop
   - [curl](../lua/one/plugins/curl.lua)
   - [latex](../lua/one/plugins/latex.lua)
   - [calendar](../lua/one/plugins/calendar.lua)
   - [todo](../lua/one/plugins/todo.lua)
-  - [zen](../lua/one/plugins/zen.lua)
+  - [zen](../lua/one/plugins/zen.lua): Zen Mode
   - [mark](../lua/one/plugins/mark.lua)
   - [bookmark](../lua/one/plugins/bookmark.lua)
+  - [hex](../lua/one/plugins/hex.lua): hex dump and editing
