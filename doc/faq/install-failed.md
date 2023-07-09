@@ -10,6 +10,8 @@ If you are using MacOS, try to install luarocks by `brew install luarocks`, or u
 
 If missing `cmake`, may install luaformatter failed.
 
+If luarocks reports `Failed downloading manifest` when installing luaformatter, upgrade your local `wget` to the latest version and try again.
+
 Related Issues/Discussions: [#10](https://github.com/adoyle-h/one.nvim/issues/10) [#14](https://github.com/adoyle-h/one.nvim/issues/14)
 
 ## The default theme looks not so good, tokyonight is more beautiful.

@@ -10,6 +10,8 @@
 
 如果你的环境缺少 `cmake` 可能导致 luaformatter 安装失败。
 
+如果 luarocks 安装 luaformatter 时报错 `Failed downloading manifest`，把你本地的 wget 升级到最新后再试试。
+
 相关 Issues/Discussions: [#10](https://github.com/adoyle-h/one.nvim/issues/10) [#14](https://github.com/adoyle-h/one.nvim/issues/14)
 
 ## 默认主题不好看，tokyonight.nvim 更漂亮
