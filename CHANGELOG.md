@@ -10,7 +10,34 @@ You can use `:OneUpdate` to update one.nvim to latest. Please read [the "Update"
 
 ## [Unreleased]
 
-[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v4.0.1...HEAD)
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v4.1.0...HEAD)
+
+
+<a name="v4.1.0"></a>
+## v4.1.0 (2023-07-31 10:02:22 +08:00)
+
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v4.0.1...v4.1.0)
+
+### New Features
+
+- **neo-tree.nvim**: upgrade from v2 to v3 ([2cf8804](https://github.com/adoyle-h/one.nvim/commit/2cf8804b36ccc0f9a44fe1d030417a3eae7813d1))
+- **plugin**: add plugin hex.nvim ([14f2fa5](https://github.com/adoyle-h/one.nvim/commit/14f2fa500732a6ad1e1c2e0899e6635f1eb5c5ca))
+  > Default unloaded. To load it via `require('one').setup { plugins = function(load, config) return { load('hex') } end }`.
+
+### Bug Fixes
+
+- remove cursor motion keymaps W, B, E ([f4e5b13](https://github.com/adoyle-h/one.nvim/commit/f4e5b1333b2054b3e9b624cab6c3cf2355a4a5a5))
+  > Recover back to native keymaps
+- lazy.nvim should not notify error "Plugin ... is not installed" on startup ([ec03056](https://github.com/adoyle-h/one.nvim/commit/ec030562632c3ef250e6edcab22058ad2bac217f))
+- onlyPlugins must be an array of string ([6a2fb9b](https://github.com/adoyle-h/one.nvim/commit/6a2fb9b1b7708c68428ebcceded3c60654e73c7f))
+- **dressing**: deprecate the "anchor" config option ([374f646](https://github.com/adoyle-h/one.nvim/commit/374f64644d16f9877bf1444e74790f6f7ed7c9c1))
+  > See https://github.com/stevearc/dressing.nvim/issues/106#issuecomment-1656786195
+
+### Document Changes
+
+- update FAQ ([8521d0c](https://github.com/adoyle-h/one.nvim/commit/8521d0cd2719d6fd1cf1e16cb10b16af2e789d15))
+- better doc ([91e326e](https://github.com/adoyle-h/one.nvim/commit/91e326ed81d93e0991125a9e96310b507a8cbeb2))
+- fix typos in README ([0b9d0e9](https://github.com/adoyle-h/one.nvim/commit/0b9d0e9a0422d0ab22c6557067dff271f43aee8f))
 
 
 <a name="v4.0.1"></a>
