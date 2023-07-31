@@ -91,7 +91,7 @@ M.defaultConfig = function(config)
 end
 
 local function safeClose()
-	pcall(vim.cmd, 'NeoTreeClose')
+	pcall(vim.cmd, 'Neotree close')
 	pcall(vim.cmd, 'AerialClose')
 	pcall(vim.cmd, 'MundoHide')
 	pcall(vim.cmd, 'TroubleClose')
