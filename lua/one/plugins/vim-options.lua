@@ -41,7 +41,7 @@ default.opt = {
 	lazyredraw = true, -- don't update the display while executing macros
 	autoread = true, -- detect when a file is changed
 	backspace = { 'indent', 'eol', 'start' },
-	smartindent = true,
+	smartindent = false,
 	autoindent = true, -- Indent at the same level of the previous line
 	laststatus = 2, -- always show status line
 	-- If 0, move cursor line will not scroll window.
