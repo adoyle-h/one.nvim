@@ -87,7 +87,7 @@ M.highlights = function(config)
 		EndOfBuffer = { fg = c.black }, -- filler lines (~) after the end of the buffer.  By default, this is highlighted like |hl-NonText|.
 		ErrorMsg = { fg = c.red }, -- error messages on the command line
 		VertSplit = { link = 'WinSeparator' }, -- the column separating vertically split windows
-		Folded = { bg = c.grey3, fg = c.grey }, -- line used for closed folds
+		Folded = { bg = c.grey2, fg = c.grey, italic = true }, -- line used for closed folds
 		FoldedNC = { bg = c.NC_BG, fg = c.grey }, -- Folded for inactive windows
 		FoldColumn = { bg = c.BG, fg = c.grey }, -- 'foldcolumn'
 		SignColumn = { bg = c.BG }, -- column where |signs| are displayed

@@ -21,6 +21,7 @@ return function(Plug, Load, config)
 	Load 'scrollbar' -- scrollbar must put after search, it relies on nvim-hlslens
 	Load 'scroll'
 	Load 'beacon'
+	Load 'fold.pretty-fold'
 
 	---------- Enhanced plugins ----------
 	Load 'one'
