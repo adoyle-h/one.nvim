@@ -1,5 +1,8 @@
 return {
 	'nacro90/numb.nvim',
+
+	desc = 'Peeking the buffer while entering command :{number}',
+
 	config = function(config)
 		require('numb').setup(config.move.line)
 	end,
