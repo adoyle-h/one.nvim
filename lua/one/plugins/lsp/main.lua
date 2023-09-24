@@ -20,20 +20,21 @@ M.highlights = function(config)
 		LspInfoTip = { link = 'Comment' }, -- Tip
 		LspInfoBorder = { fg = c.blue }, -- Window border
 
-		DiagnosticError = { fg = c.red },
-		DiagnosticWarn = { fg = c.yellow },
-		DiagnosticInfo = { fg = c.blue },
-		DiagnosticHint = { fg = c.cyan },
+		DiagnosticError = { fg = c.red, undercurl = true },
+		DiagnosticWarn = { fg = c.yellow, undercurl = true },
+		DiagnosticInfo = { fg = c.blue, undercurl = true },
+		DiagnosticHint = { fg = c.cyan, undercurl = true },
+		DiagnosticUnnecessary = { fg = c.grey, undercurl = true },
 
 		DiagnosticSignError = { fg = c.red },
 		DiagnosticSignWarn = { fg = c.yellow },
 		DiagnosticSignInfo = { fg = c.blue },
 		DiagnosticSignHint = { fg = c.cyan },
 
-		DiagnosticUnderlineError = { fg = c.red, undercurl = true },
-		DiagnosticUnderlineWarn = { fg = c.yellow, undercurl = true },
-		DiagnosticUnderlineInfo = { fg = c.blue, undercurl = true },
-		DiagnosticUnderlineHint = { fg = c.cyan, undercurl = true },
+		DiagnosticUnderlineError = { fg = c.red, underline = true },
+		DiagnosticUnderlineWarn = { fg = c.yellow, underline = true },
+		DiagnosticUnderlineInfo = { fg = c.blue, underline = true },
+		DiagnosticUnderlineHint = { fg = c.cyan, underline = true },
 	}
 end
 
