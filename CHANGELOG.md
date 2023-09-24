@@ -10,7 +10,28 @@ You can use `:OneUpdate` to update one.nvim to latest. Please read [the "Update"
 
 ## [Unreleased]
 
-[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v4.1.0...HEAD)
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v4.2.0...HEAD)
+
+
+<a name="v4.2.0"></a>
+## v4.2.0 (2023-09-24 21:34:09 +08:00)
+
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v4.1.0...v4.2.0)
+
+### New Features
+
+- use flash.nvim instead of hop.nvim ([62345f0](https://github.com/adoyle-h/one.nvim/commit/62345f06f0dfffc81304e0ce21f0d22295e77e86))
+  > when you use `/` to search words, it will append a character trigger to the matches.
+- using pretty-fold.nvim to change the Folded style ([b97ebee](https://github.com/adoyle-h/one.nvim/commit/b97ebeea8367bcae93413ce4a7fefd98eb04eb49))
+
+### Bug Fixes
+
+- When using the ">>" command, lines starting with '#' are not shifted right. ([e5cdc9c](https://github.com/adoyle-h/one.nvim/commit/e5cdc9c9695eb8af364fbd5768ce471ba5474ed6))
+  > Turn off the smartindent. See ':h si'.
+
+### Document Changes
+
+- user should not install one.nvim by plugin manager ([77ed75e](https://github.com/adoyle-h/one.nvim/commit/77ed75e18aecdd3195014f486e6cdf288358b6a2))
 
 
 <a name="v4.1.0"></a>
