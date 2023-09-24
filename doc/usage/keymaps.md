@@ -82,15 +82,12 @@ Press `<space>k` to see all keymaps in nvim.
 
 - `fw` = Jump to the start of word (forward)
 - `fb` = Jump to the start of word (back forward)
-- `fe` = Jump to the end of word
-- `fl` = Jump to line (skip whitespace)
+- `fe` = Jump to the end of word (forward)
+- `fE` = Jump to the end of word (back forward)
+- `fl` = Jump to line (skip whitespace and empty line)
 - `fL` = Jump to line (include whitespace)
-- `fc` or `f1` = Jump to char prefixed which user type (1 char)
-- `f2` = Jump to chars prefixed which user type (2 chars)
-- `f` + single character = Jump to this character
-  - Support character:
-  - `',', '.', '/', '\\', '?', ';', ':', '\'', '"', '(', ')', '[', ']', '{', '}'`
-  - `'~','!', '@', '#', '$', '%', '^', '&', '*', '-', '_', '+', '='`
+- `fa` = Jump to word matches beginning of input
+- `fA` = Jump to word matches ending of input
 - `g[` = Jump to previous cursor position
 - `g]` = Jump to next cursor position
 - `<C-]>` = Jump to the definition of the keyword under the cursor. see `:h CTRL-]`

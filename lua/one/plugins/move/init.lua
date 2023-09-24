@@ -1,7 +1,7 @@
 local M = { 'move', desc = 'Plugins for fast cursor moving' }
 
 M.deps = {
-	require('one.plugins.move.jump'),
+	require('one.plugins.move.flash'),
 	-- require('one.plugins.move.choose-window'),
 	-- require('one.plugins.move.window-selector'),
 	require('one.plugins.move.window-picker'),
