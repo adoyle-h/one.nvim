@@ -161,6 +161,8 @@ require('one').setup {}
 
 ## 插件管理器
 
+**注意**: one.nvim 会在启动时自动安装插件管理器。所以用户请勿用自己的插件管理器去安装 one.nvim。
+
 选择你喜欢的插件管理器，目前提供 `lazy` (默认)，`vim-plug`，`packer`，`local`。
 
 ```lua

@@ -48,6 +48,7 @@ git clone --depth 1 --single-branch https://github.com/adoyle-h/one.nvim.git "$P
       ```
 
     - One.nvim 用 [lazy.nvim][] 当默认的插件管理器。你可以修改配置项 `config.pluginManager.use` 选择其他插件管理器。详见[插件管理器](../README.zh.md#插件管理器)章节。
+    - One.nvim 会在启动时自动安装插件管理器。所以用户请勿用自己的插件管理器去安装 one.nvim。
     - 下载插件可能会比较慢。通过配置项 `config.proxy.github` 设置代理加速。详见[代理](./usage/proxy.zh.md)。
     - 你也可以参考[我的 init.lua][init.lua] 写更复杂的配置。
 

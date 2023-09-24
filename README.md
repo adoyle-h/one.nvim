@@ -160,6 +160,8 @@ Please read [User Config](./doc/user-config.md).
 
 ## Plugin Manager
 
+**Note**: One.nvim will install plugin manager on start up. So user should not install one.nvim via plugin manager.
+
 Choose your favorite plugin manager. Now available: `lazy` (default), `vim-plug`, `packer`, `local`.
 
 ```lua
