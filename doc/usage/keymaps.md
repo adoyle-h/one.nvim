@@ -17,6 +17,7 @@ Press `<space>k` to see all keymaps in nvim.
 ## General
 
 - `<space>o` = Toggle outline
+- `<space>O` = Toggle outline nav window
   - `?` in outline = Show outline keymaps
 - `<space>P` = Show plugin status
 - `<leader>e` = Refresh current buffer

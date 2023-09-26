@@ -19,6 +19,13 @@ M.highlights = {
 
 M.keymaps = {
 	{ 'n', '<space>o', ':AerialToggle<CR>', { silent = true, desc = 'Toggle the outline window' } },
+
+	{
+		'n',
+		'<space>O',
+		':AerialNavToggle<CR>',
+		{ silent = true, desc = 'Toggle the outline nav window.' },
+	},
 }
 
 local icons = {}
