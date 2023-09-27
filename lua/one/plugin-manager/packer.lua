@@ -77,7 +77,7 @@ function P.setup(params)
 	-- https://github.com/wbthomason/packer.nvim#the-startup-function
 	packer.startup {
 		function()
-			-- packer.use 'wbthomason/packer.nvim' -- must add itself
+			packer.use 'wbthomason/packer.nvim' -- must add itself
 			params.loadPlugs()
 		end,
 
