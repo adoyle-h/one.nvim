@@ -10,7 +10,32 @@ You can use `:OneUpdate` to update one.nvim to latest. Please read [the "Update"
 
 ## [Unreleased]
 
-[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v4.2.0...HEAD)
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v4.3.0...HEAD)
+
+
+<a name="v4.3.0"></a>
+## v4.3.0 (2023-09-27 21:25:17 +08:00)
+
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v4.2.0...v4.3.0)
+
+### New Features
+
+- one.nvim and impatient.nvim are managed by plugin manager ([4cc9beb](https://github.com/adoyle-h/one.nvim/commit/4cc9beb3e33e388b331472d5d0fd708cb196ed6d))
+- add keymap "`<space>`O" to toggle the outline nav window ([5af612f](https://github.com/adoyle-h/one.nvim/commit/5af612fba045271382a7c2c575d93baf8ae4e3a5))
+
+### Bug Fixes
+
+- lazy.core.util.error should be reset ([20734f5](https://github.com/adoyle-h/one.nvim/commit/20734f5f0d328f169c56e9cd39d5e5588ce2e647))
+- packer.nvim should manage itself ([c6a1e66](https://github.com/adoyle-h/one.nvim/commit/c6a1e66bbf327f8a9223d09d2b580e46394d90bd))
+- use vim.loader.enable() instead of impatient.nvim ([979b48c](https://github.com/adoyle-h/one.nvim/commit/979b48c471febe031f8aa26a70db7b3c16408897))
+  > User should upgrade neovim to 0.9 at least.
+- add undercurl to Diagnostic highlight groups ([0f532e0](https://github.com/adoyle-h/one.nvim/commit/0f532e081a6572c8d21107760b892926268d7cce))
+  > DiagnosticUnderline* use underline instead of undercurl
+- **lazygit**: option 'floating_window_corner_chars' is deprecated ([8755c30](https://github.com/adoyle-h/one.nvim/commit/8755c30ff5ada915e39cdd46b87bacaa2416b457))
+
+### Document Changes
+
+- update README ([e7ead7f](https://github.com/adoyle-h/one.nvim/commit/e7ead7fe95e94125c47b33127ba34543ea5eb158))
 
 
 <a name="v4.2.0"></a>
