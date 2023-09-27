@@ -127,8 +127,7 @@ end
 
 local updateMap = {
 	one = function(config, run)
-		local oneDir = vim.env.HOME .. '/.local/share/nvim/site/pack/user/start/one.nvim'
-		run(string.format('git -C %s pull --progress --depth 1', oneDir))
+		run(string.format('git -C %s pull --progress --depth 1', config.ONE_DIR))
 	end,
 
 	impatient = function(config, run)

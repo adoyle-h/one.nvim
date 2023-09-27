@@ -1,4 +1,5 @@
 local util = require('one.util')
+local consts = require('one.consts')
 
 -- @class ConfigManager
 -- @field config {Config} The config for ConfigManager
@@ -31,6 +32,8 @@ function CM.setup(conf)
 		end
 		util.proxyGithub = makeProxyGithub(proxyGithub)
 	end
+
+	config.ONE_DIR = consts.ONE_DIR
 
 	CM.config = config
 	return CM
