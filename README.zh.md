@@ -140,13 +140,25 @@
 
 ## 更新
 
-one.nvim, impatient.nvim 以及[插件管理器](#插件管理器)的源码不由插件管理器管理。
-你可以使用 lua 函数或者命令来更新它们。
+one.nvim, [impatient.nvim][] 以及[插件管理器](#插件管理器)的源码由插件管理器管理。
+
+你也可以使用 lua 函数或者命令来更新它们。
 
 - 更新 one.nvim: `:OneUpdate one` 或 `:lua one.update('one')`
 - 更新 impatient: `:OneUpdate impatient` 或 `:lua one.update('impatient')`
 - 更新 pm: `:OneUpdate pm` 或 `:lua one.update('pm')`
 - 更新所有 (one.nvim + impatient + pm): `:OneUpdate` 或 `:OneUpdate all` 或 `:lua one.update()`
+
+如果你想要由自己控制它们的更新，设置下面的选项。
+
+```lua
+require('one').setup {
+  plugins = {
+    { 'adoyle-h/one.nvim', disable = true },
+    { 'lewis6991/impatient.nvim', disable = true },
+  }
+}
+```
 
 ## [常见问题](./doc/faq/README.md)
 

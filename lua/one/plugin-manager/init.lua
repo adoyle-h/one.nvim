@@ -60,8 +60,8 @@ local function getPlugFolderName(repo)
 	return name
 end
 
-local function isPlugDownloaded(repo)
-	local folderPath = PM.getPluginFolderPath(repo)
+local function isPlugDownloaded(plug)
+	local folderPath = PM.getPluginFolderPath(plug.repo, plug)
 	return util.existDir(folderPath)
 end
 
@@ -84,7 +84,7 @@ function PM.run(isNew)
 		if plug.disable ~= true then
 			-- plug.disable is false or nil
 			if plug.repo then
-				if isPlugDownloaded(plug.repo) then
+				if isPlugDownloaded(plug) then
 					pendings[#pendings + 1] = plug
 				else
 					plug.disable = true
@@ -252,7 +252,9 @@ function PM.clean()
 	PM.userPlugins = {}
 end
 
-function PM.getPluginFolderPath(repo)
+function PM.getPluginFolderPath(repo, plug)
+	if plug and plug.rtp then return plug.rtp end
+
 	return PM.P.getPluginFolderPath(getPlugFolderName(repo))
 end
 

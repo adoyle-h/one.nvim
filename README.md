@@ -139,13 +139,25 @@ Function signature completion
 
 ## Update
 
-The source codes of one.nvim, impatient.nvim and [plugin manager](#plugin-manager) are not managed by plugin manager.
-You can update them by lua functions or commands.
+The source codes of one.nvim, [impatient.nvim][] and [plugin manager](#plugin-manager) are managed by plugin manager.
+
+You can also update them by lua functions or commands.
 
 - Update one.nvim: `:OneUpdate one` or `:lua one.update('one')`
 - Update impatient: `:OneUpdate impatient` or `:lua one.update('impatient')`
 - Update pm: `:OneUpdate pm` or `:lua one.update('pm')`
 - Update all (one.nvim + impatient + pm): `:OneUpdate` or `:OneUpdate all` or `:lua one.update()`
+
+If you want to control their updates by yourself, set the options below.
+
+```lua
+require('one').setup {
+  plugins = {
+    { 'adoyle-h/one.nvim', disable = true },
+    { 'lewis6991/impatient.nvim', disable = true },
+  }
+}
+```
 
 ## [FAQ](./doc/faq/README.md)
 
