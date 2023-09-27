@@ -30,16 +30,23 @@ local function parseOpts(repo, opts)
 	return plugOpts
 end
 
+local errorNotify
+
 -- Lazy.nvim always notify "Plugin ... is not installed" on startup.
 -- https://github.com/folke/lazy.nvim/blob/f8611632d0f9c6818e8eb54f9bcd1dad122b5a7f/lua/lazy/core/loader.lua#L297
 -- I want to trigger the notification via nvim-notify after startup.
 local function silentNotifyPluginUninstall()
 	local lazyUtil = require('lazy.core.util')
-	local errorNotify = lazyUtil.error
+	errorNotify = lazyUtil.error
 
 	lazyUtil.error = function(msg, opts)
 		if not string.match(msg, '^Plugin [-._a-zA-Z0-9]+ is not installed$') then errorNotify(msg, opts) end
 	end
+end
+
+local function unsilentNotifyPluginUninstall()
+	local lazyUtil = require('lazy.core.util')
+	lazyUtil.error = errorNotify
 end
 
 -- @param params see lua/one/plugin-manager/init.lua
@@ -84,6 +91,8 @@ function P.setup(params)
 	})
 
 	lazy.setup(plugins, lazyConfig)
+
+	unsilentNotifyPluginUninstall()
 
 	return isNew
 end
