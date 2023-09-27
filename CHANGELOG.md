@@ -10,7 +10,18 @@ You can use `:OneUpdate` to update one.nvim to latest. Please read [the "Update"
 
 ## [Unreleased]
 
-[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v4.3.0...HEAD)
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v4.3.1...HEAD)
+
+
+<a name="v4.3.1"></a>
+## v4.3.1 (2023-09-27 23:16:16 +08:00)
+
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v4.3.0...v4.3.1)
+
+### Bug Fixes
+
+- it's unable that one.nvim be managed by plugin manager ([0c102a2](https://github.com/adoyle-h/one.nvim/commit/0c102a21d43a213273e8629cb377da9cb82fc658))
+- change Diagnostic* highlight groups ([24608e6](https://github.com/adoyle-h/one.nvim/commit/24608e6e065eebf993cfda5181fd2e10b87630fa))
 
 
 <a name="v4.3.0"></a>
