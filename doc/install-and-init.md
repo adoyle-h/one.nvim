@@ -52,7 +52,7 @@ Do [initialization](#initialization) and then press `nvim` to get started.
     - It maybe be slow to download plugins. Modify `config.proxy.github` option to use proxy. Read [Proxy](./usage/proxy.md) for details.
     - You can refer to [my init.lua][init.lua] for more complex config.
 
-2. Call `nvim` to open neovim. It will auto download dependent packages, including impatient.nvim and lazy.nvim/vim-plug/packer.nvim. And then auto download plugins.
+2. Call `nvim` to open neovim. It will auto download dependent packages, including plugin manager (lazy.nvim/vim-plug/packer.nvim). And then auto download plugins.
 
 3. When plugins installed failed. See [FAQ - Plugins Installed Failed](./faq/install-failed.md#plugins-installed-failed).
 
@@ -98,6 +98,5 @@ Do [initialization](#initialization) and then press `nvim` to get started.
 [NVIM v0.8]: https://github.com/neovim/neovim/releases/tag/v0.8.0
 [init.lua]: https://github.com/adoyle-h/neovim-config/blob/master/init.lua
 [packer.nvim]: https://github.com/wbthomason/packer.nvim
-[impatient.nvim]: https://github.com/lewis6991/impatient.nvim
 [treesitter]: https://github.com/nvim-treesitter/nvim-treesitter
 [lazy.nvim]: https://github.com/folke/lazy.nvim

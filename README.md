@@ -56,7 +56,6 @@ All-in-one neovim configuration framework implemented with Lua. It is highly fle
   - Curl: [rest.nvim](lua/one/plugins/curl.lua)
   - Icons: [devicons](lua/one/plugins/devicons.lua) and [icon-picker](lua/one/plugins/icon-picker.lua)
   - UI Enhancing: [dressing](lua/one/plugins/dressing.lua) and [noice](lua/one/plugins/noice.lua)
-  - Start Speed Up: [impatient.nvim][]
   - Escape: [better-escape.nvim](lua/one/plugins/escape.lua)
   - Increment: [increment-activator](lua/one/plugins/increment.lua)
   - Filetype: [filetype.nvim](lua/one/plugins/filetype.lua)
@@ -139,14 +138,13 @@ Function signature completion
 
 ## Update
 
-The source codes of one.nvim, [impatient.nvim][] and [plugin manager](#plugin-manager) are managed by plugin manager.
+The source codes of one.nvim and [plugin manager](#plugin-manager) are managed by plugin manager.
 
 You can also update them by lua functions or commands.
 
 - Update one.nvim: `:OneUpdate one` or `:lua one.update('one')`
-- Update impatient: `:OneUpdate impatient` or `:lua one.update('impatient')`
 - Update pm: `:OneUpdate pm` or `:lua one.update('pm')`
-- Update all (one.nvim + impatient + pm): `:OneUpdate` or `:OneUpdate all` or `:lua one.update()`
+- Update all (one.nvim + pm): `:OneUpdate` or `:OneUpdate all` or `:lua one.update()`
 
 If you want to control their updates by yourself, set the options below.
 
@@ -154,7 +152,6 @@ If you want to control their updates by yourself, set the options below.
 require('one').setup {
   plugins = {
     { 'adoyle-h/one.nvim', disable = true },
-    { 'lewis6991/impatient.nvim', disable = true },
   }
 }
 ```
@@ -266,7 +263,6 @@ Just read [codes](./lua/one/init.lua).
 │       ├── config.lua       // Config loader
 │       ├── consts.lua       // Constants
 │       ├── filetype.lua     // FileType autocmd
-│       ├── impatient.lua    // Cache lua modules
 │       ├── one.lua          // The one singleton
 │       ├── init.lua         // The lua required entry point
 │       ├── plugins.lua      // Plugin loading list
@@ -319,6 +315,5 @@ Read the [NOTICE][] file distributed with this work for additional information r
 [LICENSE]: ./LICENSE
 [NOTICE]: ./NOTICE
 [packer.nvim]: https://github.com/wbthomason/packer.nvim
-[impatient.nvim]: https://github.com/lewis6991/impatient.nvim
 [treesitter]: https://github.com/nvim-treesitter/nvim-treesitter
 [lazy.nvim]: https://github.com/folke/lazy.nvim

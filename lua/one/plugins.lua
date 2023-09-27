@@ -2,7 +2,6 @@
 return function(Plug, Load, config)
 	------- External plugins -------
 	Plug { 'adoyle-h/one.nvim', rtp = config.ONE_DIR }
-	Plug { 'lewis6991/impatient.nvim', rtp = config.impatient.dist }
 
 	------- Basic required plugins -------
 	Load 'vim-options'

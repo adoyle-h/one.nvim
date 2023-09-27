@@ -40,10 +40,9 @@ Related Issues/Discussions: [#6](https://github.com/adoyle-h/one.nvim/discussion
 
 - Run `:PackerSync` to install all plugins in nvim. Repeat it util all plugins installed successfully.
 - All plugines installed in `~/.local/share/nvim/pack/packer`. **DO NOT MODIFY** the `config.pluginManager.packer.package_root` option, unless you completely know what you are doing. If the option modified and get any error, please don't ask me anything.
-- These are two cache mechanisms created by [packer.nvim][] and [impatient.nvim][]. You may be trapped in weird exceptions. Try `:lua one.reset()` to remove all plugins and cached files.
+- With the cache mechanisms by [packer.nvim][], you may be trapped in weird exceptions. Try `:lua one.reset()` to remove all plugins and cached files.
 
 
 <!-- links -->
 
 [packer.nvim]: https://github.com/wbthomason/packer.nvim
-[impatient.nvim]: https://github.com/lewis6991/impatient.nvim

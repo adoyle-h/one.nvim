@@ -7,10 +7,6 @@
 
 https://github.com/nanotee/nvim-lua-guide/blob/master/README.md#debugging-lua-mappingscommandsautocommands
 
-## Disable impatient.nvim
-
-impatient.nvim is not loaded by plugin manager. You can disable it by `config.impatient.enable = false`.
-
 ## Disable other plugins
 
 Use the `onlyPlugins` option.
@@ -18,7 +14,6 @@ Use the `onlyPlugins` option.
 ### NOTE
 
 - plugin manager will be not disabled by `onlyPlugins`.
-- impatient.nvim is not loaded by plugin manager. So it is not affected by `onlyPlugins`. See [Disable impatient.nvim](#disable-impatientnvim).
 
 ### To disable all plugins
 

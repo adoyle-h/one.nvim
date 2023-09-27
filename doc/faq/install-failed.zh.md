@@ -40,10 +40,9 @@
 
 - 在 nvim 执行 `:PackerSync` 安装所有插件，重复直到全部安装成功。
 - 插件默认安装在 `~/.local/share/nvim/pack/packer`。**不要修改** `config.pluginManager.packer.package_root`，除非你十分明白自己在做什么。如果你修改后出了错，请不要来询问我。
-- 在 [packer.nvim][] 和 [impatient.nvim][] 提供的两种缓存机制作用下，你可能会遇到古怪的错误。尝试 `:lua one.reset()` 来清空所有插件和缓存文件。
+- 在 [packer.nvim][] 提供的缓存机制作用下，你可能会遇到古怪的错误。尝试 `:lua one.reset()` 来清空所有插件和缓存文件。
 
 
 <!-- links -->
 
 [packer.nvim]: https://github.com/wbthomason/packer.nvim
-[impatient.nvim]: https://github.com/lewis6991/impatient.nvim

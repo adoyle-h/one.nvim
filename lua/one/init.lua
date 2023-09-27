@@ -16,6 +16,8 @@ One.util = util
 One.cmp = { add = dynamic.add }
 
 local function preset()
+	if vim.loader then vim.loader.enable() end
+
 	table.unpack = unpack
 
 	-- Set default highlights before plugins loaded
@@ -46,7 +48,6 @@ One.setup = function(opts)
 	-- Do not set mapleader in vim-options plugin. Because user may use `onlyPlugins` to disable all plugins.
 	vim.g.mapleader = config.leaderKey
 
-	require('one.impatient')(One)
 	PM.setup(opts)
 	FT.setup()
 end

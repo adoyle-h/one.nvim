@@ -12,9 +12,6 @@ function One.reset()
 	local pmConf = config.pluginManager[pmUse]
 
 	local files = { --
-		config.impatient.dist,
-		config.impatient.chunks.path,
-		config.impatient.modpaths.path,
 	}
 
 	if pmUse == 'lazy' then
@@ -128,10 +125,6 @@ end
 local updateMap = {
 	one = function(config, run)
 		run(string.format('git -C %s pull --progress --depth 1', config.ONE_DIR))
-	end,
-
-	impatient = function(config, run)
-		run(string.format('git -C %s pull --progress --depth 1', config.impatient.dist))
 	end,
 
 	pm = function(config, run)

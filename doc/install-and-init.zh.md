@@ -52,7 +52,7 @@ git clone --depth 1 --single-branch https://github.com/adoyle-h/one.nvim.git "$P
     - 下载插件可能会比较慢。通过配置项 `config.proxy.github` 设置代理加速。详见[代理](./usage/proxy.zh.md)。
     - 你也可以参考[我的 init.lua][init.lua] 写更复杂的配置。
 
-2. 执行 `nvim` 打开 neovim。它会自动下载所需依赖包，包括 impatient.nvim 和 lazy.nvim/vim-plug/packer.nvim。然后自动下载插件。
+2. 执行 `nvim` 打开 neovim。它会自动下载所需依赖包，包括插件管理器 (lazy.nvim/vim-plug/packer.nvim)。然后自动下载插件。
 
 3. 如果下载插件失败。详见 [FAQ - 插件安装失败](./faq/install-failed.zh.md#插件安装失败)。
 
@@ -98,6 +98,5 @@ alias nvim='docker run --rm -it --platform linux/amd64 -v "$HOME/.config/nvim:/r
 [NVIM v0.8]: https://github.com/neovim/neovim/releases/tag/v0.8.0
 [init.lua]: https://github.com/adoyle-h/neovim-config/blob/master/init.lua
 [packer.nvim]: https://github.com/wbthomason/packer.nvim
-[impatient.nvim]: https://github.com/lewis6991/impatient.nvim
 [treesitter]: https://github.com/nvim-treesitter/nvim-treesitter
 [lazy.nvim]: https://github.com/folke/lazy.nvim

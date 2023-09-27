@@ -17,15 +17,6 @@ return function(colors)
 			use = 'one', -- See the filaname in ../plugins/themes/
 		},
 
-		impatient = { -- Speed up require lua modules to improve startup time.
-			enable = true,
-			src = 'https://github.com/lewis6991/impatient.nvim',
-			dist = util.dataPath('site/pack/user/start/impatient.nvim'),
-			pkgName = 'impatient',
-			chunks = { enable = true, path = util.cachePath('luacache_chunks') },
-			modpaths = { enable = true, path = util.cachePath('luacache_modpaths') },
-		},
-
 		-- Global lua variable. So you can easily call the framework, like ":lua one.util"
 		-- If set nil or false, do not create this variable.
 		global = 'one',

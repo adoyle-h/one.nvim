@@ -78,7 +78,6 @@ function P.setup(params)
 	packer.startup {
 		function()
 			-- packer.use 'wbthomason/packer.nvim' -- must add itself
-			-- if config.impatient.enable then packer.use 'lewis6991/impatient.nvim' end
 			params.loadPlugs()
 		end,
 
