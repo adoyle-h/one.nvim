@@ -138,23 +138,13 @@ Function signature completion
 
 ## Update
 
-The source codes of one.nvim and [plugin manager](#plugin-manager) are managed by plugin manager.
+The source codes of one.nvim is not managed by plugin manager.
 
-You can also update them by lua functions or commands.
+You can update them by lua functions or commands.
 
 - Update one.nvim: `:OneUpdate one` or `:lua one.update('one')`
 - Update pm: `:OneUpdate pm` or `:lua one.update('pm')`
 - Update all (one.nvim + pm): `:OneUpdate` or `:OneUpdate all` or `:lua one.update()`
-
-If you want to control their updates by yourself, set the options below.
-
-```lua
-require('one').setup {
-  plugins = {
-    { 'adoyle-h/one.nvim', disable = true },
-  }
-}
-```
 
 ## [FAQ](./doc/faq/README.md)
 

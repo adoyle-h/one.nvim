@@ -20,7 +20,7 @@ You can use `:OneUpdate` to update one.nvim to latest. Please read [the "Update"
 
 ### New Features
 
-- one.nvim and impatient.nvim are managed by plugin manager ([4cc9beb](https://github.com/adoyle-h/one.nvim/commit/4cc9beb3e33e388b331472d5d0fd708cb196ed6d))
+- ~~one.nvim and impatient.nvim are managed by plugin manager~~ (Sorry, it can't) ([4cc9beb](https://github.com/adoyle-h/one.nvim/commit/4cc9beb3e33e388b331472d5d0fd708cb196ed6d))
 - add keymap "`<space>`O" to toggle the outline nav window ([5af612f](https://github.com/adoyle-h/one.nvim/commit/5af612fba045271382a7c2c575d93baf8ae4e3a5))
 
 ### Bug Fixes

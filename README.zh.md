@@ -139,23 +139,13 @@
 
 ## 更新
 
-one.nvim 以及[插件管理器](#插件管理器)的源码由插件管理器管理。
+one.nvim 源码不由插件管理器管理。
 
-你也可以使用 lua 函数或者命令来更新它们。
+你可以使用 lua 函数或者命令来更新它们。
 
 - 更新 one.nvim: `:OneUpdate one` 或 `:lua one.update('one')`
 - 更新 pm: `:OneUpdate pm` 或 `:lua one.update('pm')`
 - 更新所有 (one.nvim + pm): `:OneUpdate` 或 `:OneUpdate all` 或 `:lua one.update()`
-
-如果你想要由自己控制它们的更新，设置下面的选项。
-
-```lua
-require('one').setup {
-  plugins = {
-    { 'adoyle-h/one.nvim', disable = true },
-  }
-}
-```
 
 ## [常见问题](./doc/faq/README.md)
 
