@@ -28,3 +28,8 @@ $(BUMP_TARGETS):
 # @desc Generate and update the CHANGELOG file
 changelog:
 	$(MAKE) CHANGELOG NEXT_VERSION=$(shell cat VERSION)
+
+.PHONY: vimdoctags
+vimdoctags:
+	@nvim --cmd 'helptags ./doc/' --cmd 'q!'
+	@echo Generated: ./doc/tags

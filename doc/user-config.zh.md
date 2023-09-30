@@ -2,6 +2,7 @@
 
 [English](./user-config.md) | [中文](./user-config.zh.md)
 
+所有配置选项都是可选的。
 你可以传入自定义配置来覆盖默认配置。
 
 ```lua

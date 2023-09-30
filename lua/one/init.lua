@@ -30,13 +30,14 @@ end
 -- @param [opts] {table}
 -- @param [opts.config] {table}
 -- @param [opts.configFn] {function(config):table}
+--   The returned table will be merged into config.
 -- @param [opts.onlyPlugins] {string[]|nil}
 --   It's useful for debug. Defaults to nil.
 --   If set empty table, all builtin and user-defined plugins are disabled.
 --   If set non-empty table, only these plugins are not disabled.
 -- @param [opts.plugins] {PlugOpts[]|function(builtin: function(path: string):PlugOpts, config: Config):PlugOpts[]}
--- If passed a function, the first parameter is used to get the builtin PlugOpts.
--- The second parameter is the config of framework.
+--   If passed a function, the first parameter is used to get the builtin PlugOpts.
+--     The second parameter is the config of framework.
 One.setup = function(opts)
 	preset()
 
@@ -50,6 +51,8 @@ One.setup = function(opts)
 
 	PM.setup(opts)
 	FT.setup()
+
+	vim.opt.rtp:append(consts.ONE_DIR)
 end
 
 return One

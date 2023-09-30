@@ -1,11 +1,127 @@
-# Default Keymaps
+*one.nvim*                            All-in-one neovim config framework in Lua.
+
+Author: ADoyle <adoyle.h@gmail.com>
+Source Code: https://github.com/adoyle-h/one.nvim
+
+================================================================================
+CONTENTS                                                          *one-contents*
+
+  1. Options                                                    |one-options|
+  2. Commands                                                   |one-commands|
+  3. Usages                                                     |one-usages|
+  4. Lua Variables and Functions                                |one-lua|
+  5. Keymaps                                                    |one-keymaps|
+
+================================================================================
+Options                                                            *one-options*
+
+  require('one').setup {
+    -- @param [opts.config] {table}
+    config = {},
+
+    -- @param [opts.configFn] {function(config):table}
+    -- The returned table will be merged into config.
+    configFn = function(config) return {} end
+
+    -- @param [opts.plugins] {PlugOpts[]|function(builtin: function(path: string):PlugOpts, config: Config):PlugOpts[]}
+    -- If passed a function, the first parameter is used to get the builtin PlugOpts.
+    -- The second parameter is the config of framework.
+    plugins = {},
+
+    -- @param [opts.onlyPlugins] {string[]|nil}
+    --   It's useful for debug. Defaults to nil.
+    --   If set empty table, all builtin and user-defined plugins are disabled.
+    --   If set non-empty table, only these plugins are not disabled.
+    onlyPlugins = {},
+  }
+
+  Parts of default config written in https://github.com/adoyle-h/one.nvim/blob/master/lua/one/config/default.lua
+  and other parts written in `defaultConfig` option of each plugin.
+
+================================================================================
+Usages                                                              *one-usages*
+
+Read https://github.com/adoyle-h/one.nvim/blob/master/README.md#usage
+
+================================================================================
+Commands                                                          *one-commands*
+
+:OneReset                                                            *:OneReset*
+
+  To remove all plugins and cached files.
+
+:OneUpdate                                                          *:OneUpdate*
+
+  `:OneUpdate one`: Update the source code of one.nvim.
+  `:OneUpdate pm`: Update the source code of plugin manager.
+  `:OneUpdate` or `:OneUpdate all`: Update all (one.nvim + pm).
+
+:OneShowConfig                                                  *:OneShowConfig*
+
+  Show the merged config of one.nvim.
+
+:OneShowPlugins                                                *:OneShowPlugins*
+
+  Show plugins of one.nvim.
+
+================================================================================
+Lua Variables and Functions                                            *one-lua*
+
+one.CM                                                                  *one.CM*
+
+  The config manager of one.nvim.
+
+one.CM.config                                                    *one.CM.config*
+
+  The config of one.nvim.
+
+one.FT                                                                  *one.FT*
+
+  The file type manager of one.nvim.
+
+one.PM                                                                  *one.PM*
+
+  The plugin manager of one.nvim.
+
+one.util                                                              *one.util*
+
+  The utility of one.nvim.
+
+one.consts                                                          *one.consts*
+
+  See `:lua vim.print(one.consts)`
+
+one.reset()                                                          *one.reset*
+
+  To remove all plugins and cached files.
+
+one.setup()                                                          *one.setup*
+
+  Setup one.nvim. The options refer to |one-options|.
+
+one.update()                                                        *one.update*
+
+  `:lua one.update('one')`: Update the source code of one.nvim.
+  `:lua one.update('pm')`: Update the source code of plugin manager.
+  `:lua one.update()`: Update all (one.nvim + pm).
+
+one.showConfig()                                                *one.showConfig*
+
+  Show the merged config of one.nvim.
+
+one.showPlugins()                                              *one.showPlugins*
+
+  Show plugins of one.nvim.
+
+================================================================================
+Keymaps                                                            *one-keymaps*
 
 This document only list basic keymaps for novices.
 
-Press `<space>k` to query all keymaps in nvim.
-Or press `:h one-keymaps` to see the keymaps document.
+Press `<space>k` to query all keymaps in nvim.                          *<space>k*
 
-## Keymaps Design Principles
+--------------------------------------------------------------------------------
+## Keymaps Design Principles                     *one-keymaps-design-principles*
 
 - Prefixed `<leader>` (defaults `;`) to functions.
 - Prefixed `<space>` to open/toggle window, and change mode.
@@ -16,7 +132,8 @@ Or press `:h one-keymaps` to see the keymaps document.
 - Prefixed `<C-w>` for windows.
 - Normal characters for general skilled usages.
 
-## General
+--------------------------------------------------------------------------------
+## General                                                 *one-keymaps-general*
 
 - `<space>o` = Toggle outline
 - `<space>O` = Toggle outline nav window
@@ -34,7 +151,8 @@ Or press `:h one-keymaps` to see the keymaps document.
 - `<leader>sp` = Toggle spell-checking
 - `<M-t>` = Translate text under cursor (support selection). You can also use `:Translate <lang>`. See [translate plugin](../../lua/one/plugins/translate.lua).
 
-## Edit and Write
+--------------------------------------------------------------------------------
+## Edit and Write                         *one-keymaps-edit* *one-keymaps-write*
 
 - `jk` = Exit from input mode
 - `u` = Undo
@@ -52,17 +170,20 @@ Or press `:h one-keymaps` to see the keymaps document.
 - `K` = Split current line on cursor
 - `<M-CR>` in insert mode = Move cursor to next line
 
-## Indent
+--------------------------------------------------------------------------------
+## Indent                                                   *one-keymaps-indent*
 
 - `>` = Increment indent
 - `<` = Decrement indent
 
-## Fold
+--------------------------------------------------------------------------------
+## Fold                                                       *one-keymaps-fold*
 
 - `<Tab>` = Toggle folding at current cursor
 - `<M-Tab>` = Toggle all foldings with fold level of current cursor
 
-## Copy and Paste
+--------------------------------------------------------------------------------
+## Copy and Paste                        *one-keymaps-copy*  *one-keymaps-paste*
 
 - `<leader>y` = Copy current line into system clipboard
 - `<leader>y` in visual mode = Copy selected text into system clipboard
@@ -74,14 +195,16 @@ Or press `:h one-keymaps` to see the keymaps document.
 - `<space>y` = List yank history
 - `<C-r>"` in insert mode = Paste from vim clipboard (:h i_CTRL-R)
 
-## Open
+--------------------------------------------------------------------------------
+## Open                                                       *one-keymaps-open*
 
 - `gx` = Open URL when cursor on link
 - `gf` = Open file when cursor on filepath
 - `<C-W>f` = Open file in split when cursor on filepath
 - `<C-W>gf` = Open file in new tab when cursor on filepath
 
-## Cursor Motion and Jump
+--------------------------------------------------------------------------------
+## Cursor Motion and Jump                *one-keymaps-motion* *one-keymaps-jump*
 
 - `fw` = Jump to the start of word (forward)
 - `fb` = Jump to the start of word (back forward)
@@ -105,7 +228,8 @@ Or press `:h one-keymaps` to see the keymaps document.
 - `cl` = Move cursor to child node (treesitter)
 - Emacs shortcuts like `<C-e>`, `<C-a>`, `<C-u>`, `<C-k>`, `<M-b>`, `<M-f>`...
 
-## Select
+--------------------------------------------------------------------------------
+## Select                                                   *one-keymaps-select*
 
 - `<leader>sa` = Select all texts
 - see `:h text-objects`
@@ -116,14 +240,16 @@ Or press `:h one-keymaps` to see the keymaps document.
 - `<M-v>` = Smart select the next closest text-objects
 - `<M-V>` = Reverse selection of `<M-v>`
 
-## Swap
+--------------------------------------------------------------------------------
+## Swap                                                       *one-keymaps-swap*
 
 - `<M-h>` = Swap current symbol under cursor with previous node (Note: cursor position affects swap position)
 - `<M-l>` = Swap current symbol under cursor with next node (Note: cursor position affects swap position
 - `<M-j>` = Swap current line with next line
 - `<M-k>` = Swap current line with previous line
 
-## Search
+--------------------------------------------------------------------------------
+## Search                                                   *one-keymaps-search*
 
 - `/` = Search next
 - `?` = Search previous
@@ -137,7 +263,8 @@ Or press `:h one-keymaps` to see the keymaps document.
 - `<space>/` = Fuzzy find content in workspace
 - `<leader>f` = Fuzzy find content in workspace (use CtrlSF)
 
-## Highlight
+--------------------------------------------------------------------------------
+## Highlight                                             *one-keymaps-highlight*
 
 - `<leader>k` = Toggle highlight of all matched words under cursor
 - `[k` = Move to previous user highlighted word (cursor must be on highlighted word)
@@ -146,7 +273,8 @@ Or press `:h one-keymaps` to see the keymaps document.
 - `<leader>h` = Show treesitter highlight group
 - `<space>H` = Find highlight groups
 
-## File Explorer
+--------------------------------------------------------------------------------
+## File Explorer                                     *one-keymaps-file-explorer*
 
 - `<space>m` = Close file explorer when it is opened. Otherwise, reveal current buffer in file explorer.
 - `<space>M` = Reveal current buffer in file explorer.
@@ -195,7 +323,8 @@ Or press `:h one-keymaps` to see the keymaps document.
 - `y` = Copy to clipboard
 - `z` = Close all nodes
 
-## Pickers and Windows
+--------------------------------------------------------------------------------
+## Pickers and Windows                                     *one-keymaps-pickers*
 
 - `<space>;` = Choose Telescope pickers
 - `<space>p` = Find commands
@@ -217,7 +346,8 @@ Or press `:h one-keymaps` to see the keymaps document.
 - `<space>lS` = List LSP document symbols in the current workspace
 - `<space>lF` = List LSP document symbols which filtered by kinds in current workspace
 
-## Telescope
+--------------------------------------------------------------------------------
+## Telescope                                             *one-keymaps-telescope*
 
 In Telescope picker window.
 
@@ -236,7 +366,8 @@ In Telescope picker window.
 - `<M-A>` = Drop all entries from the current multi selection
 - `<Tab>` = Toggle current entry status for multi select
 
-## Word Case
+--------------------------------------------------------------------------------
+## Word Case                                             *one-keymaps-word-case*
 
 - `crm` = MixedCase
 - `crc` = camelCase
@@ -247,7 +378,8 @@ In Telescope picker window.
 - `cr.` = dot.case
 - `cr<space>` = space case
 
-## Buffer Line
+--------------------------------------------------------------------------------
+## Buffer Line                                         *one-keymaps-buffer-line*
 
 If bufferline plugin enabled:
 
@@ -261,7 +393,8 @@ If bufferline plugin enabled:
 - `<leader>9` = Select 9th buffer
 - `<leader>0` = Select last buffer
 
-## Tabpage
+--------------------------------------------------------------------------------
+## Tabpage                                                 *one-keymaps-tabpage*
 
 - `<C-t>n` = Open new tab
 - `<C-t>x` = Close tab
@@ -280,7 +413,8 @@ If bufferline plugin enabled:
 
 If bufferline plugin enabled, some keymaps will be overridden. See [Buffer Line](#buffer-line).
 
-## Window
+--------------------------------------------------------------------------------
+## Window                                                   *one-keymaps-window*
 
 - `-` = Choose window in current tab
 - `<C-w><C-w>` = Choose window or tab via telescope picker
@@ -310,7 +444,8 @@ If bufferline plugin enabled, some keymaps will be overridden. See [Buffer Line]
 - `<C-w>_` = Maximize window height
 - `<C-w>=` = Make all windows (almost) equally high and wide, but use 'winheight' and 'winwidth' for the current window.
 
-## Scroll
+--------------------------------------------------------------------------------
+## Scroll                                                   *one-keymaps-scroll*
 
 - `G` = Scroll to top
 - `gg` = Scroll to buttom
@@ -324,7 +459,8 @@ If bufferline plugin enabled, some keymaps will be overridden. See [Buffer Line]
 - `zz` = Scroll to window middle
 - `zb` = Scroll to window buttom
 
-## Terminal
+--------------------------------------------------------------------------------
+## Terminal                                               *one-keymaps-terminal*
 
 - `jk` = Exit from terminal mode
 - `<space>t` = List all terminal windows
@@ -333,9 +469,11 @@ If bufferline plugin enabled, some keymaps will be overridden. See [Buffer Line]
 - `<leader>tk` = Kill terminal
 - `<leader>ts` = Send current line or selected texts to terminal
 
-## Coding
+--------------------------------------------------------------------------------
+## Coding                                                   *one-keymaps-coding*
 
-### Comments
+--------------------------------------------------------------------------------
+### Comments                                              *one-keymaps-comments*
 
 - `<leader>cc` or `<space>c` = Comment toggle current line
 - `<leader>cb` = Comment toggle current block
@@ -345,7 +483,8 @@ If bufferline plugin enabled, some keymaps will be overridden. See [Buffer Line]
 - `<leader>c<Enter>` = Comment toggle in current scope
 - `<leader>c<Motion>` = Comment toggle in `<Motion>` scope (see `:h text-objects`)
 
-### Completion
+--------------------------------------------------------------------------------
+### Completion                                          *one-keymaps-completion*
 
 - `<M-c>` = Abort completion
 -	`<CR>` or `<C-o>` = Confirm selection
@@ -358,14 +497,16 @@ If bufferline plugin enabled, some keymaps will be overridden. See [Buffer Line]
 -	`<C-u>` = Scroll preview up
 -	`<C-d>` = Scroll preview down
 
-### Diagnostic
+--------------------------------------------------------------------------------
+### Diagnostic                                          *one-keymaps-diagnostic*
 
 - `<space>d` = Find diagnostics in current buffer
 - `<space>D` = Find diagnostics in workspace
 - `[d` = Move to the previous diagnostic in the current buffer
 - `]d` = Move to the next diagnostic in the current buffer
 
-### LSP and Diagnostic
+--------------------------------------------------------------------------------
+### LSP and Diagnostic                                         *one-keymaps-lsp*
 
 - `<M-m>` = Toggle Mason window to install or uninstall lsp/dap/linter/formatter adapters
 - `gi` = Show implementation about the symbol under cursor
@@ -381,13 +522,15 @@ If bufferline plugin enabled, some keymaps will be overridden. See [Buffer Line]
   - `gh` in markdown files = Open a telescope picker to select a heading
 - `gs` = Display signature information about the symbol under the cursor in a floating window.
 
-## Format
+--------------------------------------------------------------------------------
+## Format                                                   *one-keymaps-format*
 
 - `==` = vim default `==`. See `:h ==`
 - `<M-=>` = Format a buffer using the attached language server clients. (format will be trigger when write buffer to disk)
 - `<M-=>` in selection = Format selected texts using the attached language server clients.
 
-## Diff
+--------------------------------------------------------------------------------
+## Diff                                                       *one-keymaps-diff*
 
 - `<leader>df` = :diffthis
 - `<leader>do` = :diffoff
@@ -395,7 +538,8 @@ If bufferline plugin enabled, some keymaps will be overridden. See [Buffer Line]
 - `<leader>d2` = :diffget REMOTE
 - `<leader>d3` = :diffget BASE
 
-## DAP
+--------------------------------------------------------------------------------
+## DAP                                                         *one-keymaps-dap*
 
 - `<F9>` = Continue
 - `<F10>` = Step over
@@ -407,17 +551,20 @@ If bufferline plugin enabled, some keymaps will be overridden. See [Buffer Line]
 - `<leader>dr` = Open REPL
 - `<leader>dl` = Run last
 
-## Git
+--------------------------------------------------------------------------------
+## Git                                                         *one-keymaps-git*
 
 - `<leader>G` = Open Gitsigns window
 - `<leader>gg` = Open lazygit window
 
-## Gutter
+--------------------------------------------------------------------------------
+## Gutter                                                   *one-keymaps-gutter*
 
 - `<leader>N` = Toggle relative/absolute number gutter
 - `<leader>L` = Toggle linenumber gutter
 
-## Marks
+--------------------------------------------------------------------------------
+## Marks                                                     *one-keymaps-marks*
 
 - `mm` = Set mark
 - `m,<character>` = Set mark with character
@@ -431,12 +578,17 @@ If bufferline plugin enabled, some keymaps will be overridden. See [Buffer Line]
 - `mbl` = List bookmarks
 - `mbd` = Remove bookmark
 
-## Trouble
+--------------------------------------------------------------------------------
+## Trouble                                                 *one-keymaps-trouble*
 
 - `<Enter>` in trouble window = jump to file
 - `o` in trouble window = jump to file and auto close trouble window (See https://github.com/folke/trouble.nvim/issues/15)
 
-## Uncategory
+--------------------------------------------------------------------------------
+## Uncategory                                           *one-keymaps-uncategory*
 
 - `<leader>cr` = Send request in HTTP file (NTBBloodbath/rest.nvim)
 - `<leader>cp` = Open a color picker
+
+================================================================================
+vim:tw=80:ts=2:ft=help:norl:syntax=help:

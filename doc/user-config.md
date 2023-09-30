@@ -2,7 +2,8 @@
 
 [English](./user-config.md) | [中文](./user-config.zh.md)
 
-Set your config to override default configs.
+All config options are optional.
+Set your options to override default configs.
 
 ```lua
 require('one').setup {
