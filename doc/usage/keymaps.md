@@ -89,6 +89,7 @@ Press `<space>k` to see all keymaps in nvim.
 - `fL` = Jump to line (include whitespace)
 - `fa` = Jump to word matches beginning of input
 - `fA` = Jump to word matches ending of input
+- `f/` = Jump to word as you type
 - `g[` = Jump to previous cursor position
 - `g]` = Jump to next cursor position
 - `<C-]>` = Jump to the definition of the keyword under the cursor. see `:h CTRL-]`

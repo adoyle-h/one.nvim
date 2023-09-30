@@ -10,7 +10,7 @@ M.highlights = function(config)
 	local c = config.colors
 	return {
 		FlashCurrent = { link = 'Search' },
-		FlashMatch = { fg = c.green, bg = c.black, bold = true },
+		FlashMatch = { fg = c.orange, bg = c.black },
 		FlashBackdrop = { fg = c.grey, bg = c.black },
 		FlashLabel = { fg = c.black, bg = c.orange, bold = true, italic = true },
 		FlashChar1 = { fg = c.orange, bg = c.black, bold = true },
@@ -175,7 +175,7 @@ M.defaultConfig = {
 			search = {
 				-- when `true`, flash will be activated during regular search by default.
 				-- You can always toggle when searching with `require("flash").toggle()`
-				enabled = true,
+				enabled = false,
 				jump = { history = true, register = true, nohlsearch = true },
 				search = {
 					-- `forward` will be automatically set to the search direction
@@ -390,6 +390,14 @@ M.keymaps = {
 		{ desc = 'Jump to word matches ending of input' },
 	},
 
+	{
+		'',
+		'f/',
+		function()
+			require('flash').jump();
+		end,
+		{ desc = 'Jump to word as you type' },
+	},
 }
 
 M.commands = {
