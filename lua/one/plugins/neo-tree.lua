@@ -28,21 +28,19 @@ local function keymapCopy(state)
 	}
 
 	-- absolute path to clipboard
-	local i = vim.fn.inputlist({
-		'Choose to copy to clipboard:',
+	vim.ui.select({
 		'1. Absolute path: ' .. results[1],
 		'2. Path relative to CWD: ' .. results[2],
 		'3. Path relative to HOME: ' .. results[3],
 		'4. Filename: ' .. results[4],
 		'5. Filename without extension: ' .. results[5],
 		'6. Extension of the filename: ' .. results[6],
-	})
-
-	if i > 0 then
+	}, { prompt = 'Choose to copy to clipboard:' }, function(choice)
+		local i = tonumber(choice:sub(1, 1))
 		local result = results[i]
-		if not result then return print('Invalid choice: ' .. i) end
 		vim.fn.setreg('"', result)
-	end
+		vim.notify('Copied: ' .. result)
+	end)
 end
 
 local moveToLastSibling = function(state)
