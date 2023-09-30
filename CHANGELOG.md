@@ -10,7 +10,27 @@ You can use `:OneUpdate` to update one.nvim to latest. Please read [the "Update"
 
 ## [Unreleased]
 
-[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v4.3.1...HEAD)
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v4.3.2...HEAD)
+
+
+<a name="v4.3.2"></a>
+## v4.3.2 (2023-09-30 17:00:32 +08:00)
+
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v4.3.1...v4.3.2)
+
+### Bug Fixes
+
+- **keymap**: reset "/" and "?" to regular search instead of flash.nvim ([78e2768](https://github.com/adoyle-h/one.nvim/commit/78e27681ba781cf1a0fbb57dc8e53228e939e8f5))
+  > Because the flash search mode binding to "/" and "?" may cause accidental touch for most vim users.
+  > 
+  > So I decide to reset it to original. And Use "f/" to enter the flash search mode.
+- **neo-tree**: For keymap "Y": use vim.ui.select instead of vim.fn.inputlist ([1c14ee1](https://github.com/adoyle-h/one.nvim/commit/1c14ee1623c48049055ed0771ef295af4491fa4f))
+  > And popup the Copied window after selection
+
+### Document Changes
+
+- add vimdoc ([aef3283](https://github.com/adoyle-h/one.nvim/commit/aef328346e9eb7bb6f9cf0b6b60779140a4572b7))
+  > `:h one.nvim`, `:h one-keymaps`
 
 
 <a name="v4.3.1"></a>
