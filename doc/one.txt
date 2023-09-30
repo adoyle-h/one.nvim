@@ -591,4 +591,4 @@ If bufferline plugin enabled, some keymaps will be overridden. See [Buffer Line]
 - `<leader>cp` = Open a color picker
 
 ================================================================================
-vim:tw=80:ts=2:ft=help:norl:syntax=help:
+vim:tw=80:ts=2:ft=help:norl:
