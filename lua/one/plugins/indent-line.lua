@@ -31,6 +31,7 @@ function M.config()
 	local conf = config.indentLine
 
 	vim.g.indent_blankline_char = conf.line
+	vim.g.indent_blankline_context_char = conf.line
 	vim.g.indent_blankline_filetype_exclude = conf.excludeFileType
 
 	require('indent_blankline').setup(conf.opts)
