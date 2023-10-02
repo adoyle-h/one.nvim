@@ -5,6 +5,7 @@ local M = {
 	'lukas-reineke/indent-blankline.nvim',
 	desc = 'Show indent line',
 	after = 'nvim-treesitter',
+	tag = 'v2.20.8',
 
 	highlights = {
 		IndentBlanklineChar = { fg = colors.grey1 },
