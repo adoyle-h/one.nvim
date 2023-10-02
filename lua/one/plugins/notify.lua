@@ -24,9 +24,10 @@ return {
 					DEBUG = symbolMap.DEBUG,
 					TRACE = symbolMap.TRACE,
 				},
-				level = 2, -- Minimum log level to display. See :h vim.log.levels
+				level = vim.log.levels.INFO, -- Minimum log level to display. See :h vim.log.levels
 				max_width = 100, -- Max number of columns for popup messages
 				minimum_width = 40, -- Minimum number of columns for popup message
+				max_height = 20,
 				render = 'default',
 				stages = 'fade_in_slide_out',
 				timeout = 2000, -- Default timeout for notification
