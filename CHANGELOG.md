@@ -10,7 +10,27 @@ You can use `:OneUpdate` to update one.nvim to latest. Please read [the "Update"
 
 ## [Unreleased]
 
-[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v4.3.2...HEAD)
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v4.3.3...HEAD)
+
+
+<a name="v4.3.3"></a>
+## v4.3.3 (2023-10-04 15:39:19 +08:00)
+
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v4.3.2...v4.3.3)
+
+### Bug Fixes
+
+- lock indent-blankline.nvim to v2.20.8 ([d9a6c5d](https://github.com/adoyle-h/one.nvim/commit/d9a6c5de4e5e26e4ef5d0bab64720efe5831f273))
+  > indent-blankline.nvim has released v3, but it seems have bugs.
+  > So lock it to v2 until v3 works without error.
+  > 
+  > If you has upgraded it to v3, you should delete indent-blankline.nvim and then install it again.
+- error when open one.nvim vimdoc ([a16d39e](https://github.com/adoyle-h/one.nvim/commit/a16d39e5489589731db812db1873b9391acbf2ad))
+  > Error shows: "Command not allowed in secure mode in current dir or tag search"
+- **ctrlsf**: fix error that "g.ctrlsf_context is undefined" ([f4bdaed](https://github.com/adoyle-h/one.nvim/commit/f4bdaede74f8e526cbf1e0d784f8307abd206dd5))
+- **indent-line**: align the context indent line to left ([7831451](https://github.com/adoyle-h/one.nvim/commit/78314511c8ff4863a97dca4042501448cf3f9396))
+- **neo-tree**: add keymaps. "h" to close opened directory. "l" to open directory and file. ([be4324c](https://github.com/adoyle-h/one.nvim/commit/be4324ca09109adca454ba54c72d90a5725f1685))
+- **notify**: set max_height=20 ([fbe70ab](https://github.com/adoyle-h/one.nvim/commit/fbe70ab196b10691a2cda5cc38c4f5e150d0e995))
 
 
 <a name="v4.3.2"></a>
