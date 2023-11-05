@@ -82,7 +82,7 @@ return function(Plug, Load, config)
 
 	Plug { 'adoyle-h/vim-eunuch', branch = 'adoyle', desc = 'UNIX commands. See :h eunuch' }
 	Plug { 'tpope/vim-repeat', desc = 'Enable repeating other supported plugins with the . command' }
-	Plug { 'mechatroner/rainbow_csv', desc = 'For .csv file', ft = 'csv' }
+	Plug { 'mechatroner/rainbow_csv', desc = 'For .csv file', ft = { 'csv', 'tsv', 'tab' } }
 	Plug 'rohanorton/lua-gf.nvim'
 	Plug { 'hotoo/pangu.vim', ft = { 'markdown', 'vimwiki', 'text' } }
 
