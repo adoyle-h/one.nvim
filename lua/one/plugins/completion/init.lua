@@ -172,6 +172,7 @@ local function configMapping(cmp, config)
 		['<C-u>'] = mapping(mapping.scroll_docs(-4), { 'i', 's' }), -- scroll preview up
 		['<C-d>'] = mapping(mapping.scroll_docs(4), { 'i', 's' }), -- scroll preview down
 		['<M-c>'] = mapping(mapping.abort(), { 'i', 'c', 's' }), -- abort completion
+		['<C-e>'] = { i = false },
 	}
 end
 
