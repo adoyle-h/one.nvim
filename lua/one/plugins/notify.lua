@@ -53,9 +53,9 @@ return {
 			},
 		},
 
-		ClearNotify = {
+		NotifyClean = {
 			function()
-				vim.notify.dismiss({ pending = true })
+				vim.notify.dismiss({ pending = true, silent = true })
 			end,
 			{ desc = 'Dismiss all notification windows currently displayed' },
 		},
