@@ -3,7 +3,7 @@ local M = {
 
 	desc = 'Emacs Editline in vim insert mode',
 
-	requires = { 'linty-org/readline.nvim' },
+	requires = { 'assistcontrol/readline.nvim' },
 }
 
 M.keymaps = function()
