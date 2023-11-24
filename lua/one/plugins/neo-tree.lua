@@ -161,7 +161,7 @@ M.defaultConfig = function(config)
 					folder_empty = '',
 					-- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
 					-- then these will never be used.
-					default = '',
+					default = '󰈙',
 					highlight = 'NeoTreeFileIcon',
 				},
 
@@ -399,11 +399,11 @@ M.defaultConfig = function(config)
 					-- 	source = '', -- string
 					-- 	display_name = '', -- string | nil
 					-- },
-					{ source = 'filesystem', display_name = '  File' },
-					{ source = 'buffers', display_name = '﬘ Buf' },
-					{ source = 'git_status', display_name = ' Git' },
-					{ source = 'diagnostics', display_name = '裂Diag' },
-					{ source = 'zk', display_name = '﬷ ZK' },
+					{ source = 'filesystem', display_name = ' 󰈢 File' },
+					{ source = 'buffers', display_name = '󰽘 Buf' },
+					{ source = 'git_status', display_name = '󰊢 Git' },
+					{ source = 'diagnostics', display_name = '󰒡Diag' },
+					{ source = 'zk', display_name = '󰘸 ZK' },
 				},
 				content_layout = 'start', -- string
 				tabs_layout = 'equal', -- string
@@ -494,11 +494,8 @@ end
 
 M.keymaps = {
 	{ 'n', '<space>b', ':Neotree toggle show buffers<CR>', { silent = true } },
-
 	{ 'n', '<space>g', ':Neotree toggle show git_status<CR>', { silent = true } },
-
 	{ 'n', '<space>m', ':Neotree toggle reveal<CR>', { silent = true } },
-
 	{ 'n', '<space>M', ':Neotree focus reveal<CR>', { silent = true } },
 }
 

@@ -42,9 +42,9 @@ M.defaultConfig = {
 			TODO = { icon = '', color = 'info', alt = { 'Todo' } },
 			HACK = { icon = '', color = 'warning', alt = { 'Hack' } },
 			WARN = { icon = '', color = 'warning', alt = { 'Warn', 'WARNING', 'XXX' } },
-			PERF = { icon = '', alt = { 'Perf', 'OPTIM', 'PERFORMANCE', 'OPTIMIZE' } },
-			NOTE = { icon = '', color = 'hint', alt = { 'Note', 'INFO', 'Info' } },
-			TEST = { icon = 'ﭧ', color = 'test', alt = { 'Test', 'TESTING', 'PASSED', 'FAILED' } },
+			PERF = { icon = '󰅒', alt = { 'Perf', 'OPTIM', 'PERFORMANCE', 'OPTIMIZE' } },
+			NOTE = { icon = '󰍨', color = 'hint', alt = { 'Note', 'INFO', 'Info' } },
+			TEST = { icon = '󰙨', color = 'test', alt = { 'Test', 'TESTING', 'PASSED', 'FAILED' } },
 		},
 
 		gui_style = {

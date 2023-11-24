@@ -1,6 +1,6 @@
 return {
 	['ts-parsers'] = {
-		desc = 'List nvim-treesitter parsers.  means installed.  is not. Press to install/update them.',
+		desc = 'List nvim-treesitter parsers. 󰄲 means installed. 󰄱 is not. Press to install/update them.',
 
 		command = function()
 			local parsers = require('nvim-treesitter.parsers').available_parsers()
@@ -11,7 +11,7 @@ return {
 				local installed = #api.nvim_get_runtime_file('parser/' .. lang .. '.so', false) > 0
 
 				list[i] = {
-					text = string.format('%s %s', installed and '' or '', lang),
+					text = string.format('%s %s', installed and '󰄲' or '󰄱', lang),
 					entry = { ordinal = lang },
 					lang = lang,
 					installed,

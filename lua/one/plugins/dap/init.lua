@@ -26,7 +26,7 @@ M.defaultConfig = {
 	},
 }
 
--- 
+-- 󰆹󰆷󰆸
 M.signs = {
 	DapBreakpoint = { text = 'B' },
 	DapBreakpointCondition = { text = 'C' },

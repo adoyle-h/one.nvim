@@ -61,7 +61,7 @@ local function renderTab(tab)
 		}
 
 		if config.tabby.showTabClose then
-			table.insert(list, 3, tab.close_btn(''))
+			table.insert(list, 3, tab.close_btn('󰅖'))
 			table.insert(list, 3, ' ')
 		end
 	else

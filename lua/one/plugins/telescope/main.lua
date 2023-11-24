@@ -202,10 +202,10 @@ M.defaultConfig = function(config)
 
 				buffers = {},
 
-				live_grep = { prompt_prefix = '  ' },
+				live_grep = { prompt_prefix = ' 󰈞 ' },
 
 				current_buffer_fuzzy_find = {
-					prompt_prefix = '  ',
+					prompt_prefix = ' 󰈞 ',
 					layout_config = {
 						preview_height = { 0.2, min = 4, max = 6 },
 						height = { 0.9, min = 10, max = 40 },

@@ -47,8 +47,8 @@ local M = {
 
 					glyphs = {
 						git = {
-							unstaged = '',
-							staged = '',
+							unstaged = '󰄱',
+							staged = '󰃨',
 							unmerged = '',
 							renamed = '➜',
 							untracked = '',
