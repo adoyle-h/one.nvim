@@ -10,7 +10,25 @@ You can use `:OneUpdate` to update one.nvim to latest. Please read [the "Update"
 
 ## [Unreleased]
 
-[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v4.3.3...HEAD)
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v4.3.4...HEAD)
+
+
+<a name="v4.3.4"></a>
+## v4.3.4 (2023-11-25 03:18:26 +08:00)
+
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v4.3.3...v4.3.4)
+
+### Bug Fixes
+
+- some icons were updated and moved to new codepoints for nerdfont v3.0.0 ([89452cf](https://github.com/adoyle-h/one.nvim/commit/89452cffd57fd93d928b35b98adf26c87d4cb2a9))
+- the repo "readline.nvim" is not found ([7413ea9](https://github.com/adoyle-h/one.nvim/commit/7413ea96ce374e5a15ec8d872f9f00f0afee3664))
+  > The github user linty-org is deleted.
+- use mirror.ghproxy.com instead of ghproxy.com ([b2ebad2](https://github.com/adoyle-h/one.nvim/commit/b2ebad2610a21e7a390407b9cf0e28c603f05b32))
+  > ghproxy.com is banned by GFW
+- **notify**: rename command "ClearNotify" to "NotifyClean" and suppress notification ([fcf1c6d](https://github.com/adoyle-h/one.nvim/commit/fcf1c6dcaa8dbd931001a81f35289bb03541e1c4))
+  > Suppress notification that pending notifications were dismissed
+- **nvim-cmp**: remove mapping `<C-e>` ([1ec0199](https://github.com/adoyle-h/one.nvim/commit/1ec019929c9ce7ded5b07ef99ec0d7fbe5153340))
+- **rainbow_csv**: load plugin when filetype equals one of csv, tsv, tab. ([c58d50d](https://github.com/adoyle-h/one.nvim/commit/c58d50df662506d56d06c69316cea8e7468870a1))
 
 
 <a name="v4.3.3"></a>
