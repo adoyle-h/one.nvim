@@ -24,7 +24,7 @@ default.opt = {
 	langmenu = vim.v.lang, -- :h 'langmenu'
 
 	-- Default nvim statusline (If statusline plugin disabled)
-	statusline = '%F%m%r%h%w [FORMAT=%{&ff}] [TYPE=%Y] [POS=%l,%v][%p%%] %{strftime(\"%d/%m/%y - %H:%M\")}',
+	statusline = '▌%{toupper(mode())}▐ %F%m%r%h%w │ %2p%% %l/%L %-2v │ ts:%{&ts} sw:%{&sw} ft:%Y ff:%{&ff} │ %{&encoding}',
 	shortmess = 'ilmnrxsW', -- helps to avoid all the hit-enter prompts caused by file messages
 	showmode = true,
 
