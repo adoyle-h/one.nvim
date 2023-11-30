@@ -7,7 +7,7 @@ local default = { 'vim' }
 local opt = vim.opt
 
 default.g = {
-	did_load_filetypes = 1, -- neither `$VIMRUNTIME/filetype.lua` nor `$VIMRUNTIME/filetype.vim` will run.
+	-- did_load_filetypes = 1, -- neither `$VIMRUNTIME/filetype.lua` nor `$VIMRUNTIME/filetype.vim` will run.
 
 	-- Set the default listing style:
 	-- = 0: thin listing (one file per line)
