@@ -10,6 +10,8 @@ Tricks for debug. Such as disable all plugins.
 
 ## [Commands](./commands.md)
 
+## [Filetypes](./filetypes.md)
+
 ## [Snippets](./snippet.md)
 
 ## LSP

@@ -10,6 +10,8 @@ Debug 技巧。例如禁用所有插件。
 
 ## [命令](./commands.md)
 
+## [文件格式 (Filetype)](./filetypes.md)
+
 ## [代码片段 (Snippet)](./snippet.md)
 
 ## LSP
