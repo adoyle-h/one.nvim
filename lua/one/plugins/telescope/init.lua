@@ -5,6 +5,14 @@ return {
 
 	deps = {
 		{
+			'nvim-telescope/telescope-live-grep-args.nvim',
+			version = '^1.0.0',
+			config = function()
+				require('telescope').load_extension('live_grep_args')
+			end,
+		},
+
+		{
 			'keyvchan/telescope-find-pickers.nvim',
 			desc = 'Find all pickers available (includes builtins and extensions)',
 			config = function()

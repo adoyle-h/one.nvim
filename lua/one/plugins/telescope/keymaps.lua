@@ -6,9 +6,7 @@ return function()
 	local map = {
 
 		{ 'n', '<space>;', require('telescope').extensions.find_pickers.find_pickers },
-
 		{ 'n', '<space>f', ':Telescope find_files<cr>', opts },
-
 		{ 'n', '<space>n', ':Telescope message<cr>', opts },
 
 		{
@@ -41,7 +39,7 @@ return function()
 		{
 			'n',
 			'<space>/',
-			':Telescope live_grep<cr>',
+			':Telescope live_grep_args<cr>',
 			{ silent = true, desc = 'Fuzzy find content in workspace' },
 		},
 
@@ -50,7 +48,7 @@ return function()
 			'<space>/',
 			function()
 				local text = util.getVisualSelection()
-				tb.live_grep({ default_text = text })
+				require('telescope').extensions.live_grep_args.live_grep_args({ default_text = text })
 			end,
 			{ silent = true, desc = 'Fuzzy find content with selection in workspace' },
 		},

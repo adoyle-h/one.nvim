@@ -224,6 +224,13 @@ M.defaultConfig = function(config)
 						layout_strategy = 'horizontal',
 					},
 				},
+
+				live_grep_args = {
+					auto_quoting = true,
+					mappings = { -- extend mappings
+						i = { ['<C-q>'] = require('telescope-live-grep-args.actions').quote_prompt() },
+					},
+				},
 			},
 		},
 	}
