@@ -9,6 +9,7 @@ return {
 		{
 			markdown = {
 				headline_highlights = { 'Headline' },
+				bullets = {}, -- bullets = { "◉", "○", "✸", "✿" },
 				codeblock_highlight = 'CodeBlock',
 				dash_highlight = 'Dash',
 				dash_string = '-',
