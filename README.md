@@ -288,7 +288,7 @@ Enable [profiling](./lua/one/plugins/profiling.lua) plugin, and invoke `:Startup
 
 ## Copyright and License
 
-Copyright 2016-2023 ADoyle (adoyle.h@gmail.com). Some Rights Reserved.
+Copyright 2016-2024 ADoyle (adoyle.h@gmail.com). Some Rights Reserved.
 The project is licensed under the **BSD 3-clause License**.
 
 Read the [LICENSE][] file for the specific language governing permissions and limitations under the License.
