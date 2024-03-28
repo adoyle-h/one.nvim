@@ -12,9 +12,12 @@ M.commands = function(config)
 		ListSessions = {
 			function()
 				local pwd = vim.fn.getcwd()
+				local path = pwd:gsub('^' .. consts.HOME_DIR, '')
+
+				if #path > 1 and path:sub(1, 1) == '/' then path = path:sub(2) end
 
 				require('telescope').extensions.persisted.persisted {
-					default_text = pwd:sub(#consts.HOME_DIR + 2),
+					default_text = path,
 					layout_config = { --
 						height = { 0.8, min = 6, max = 15 },
 						width = { 0.5, min = 60, max = 100 },

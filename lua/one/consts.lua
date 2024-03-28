@@ -17,7 +17,7 @@ local function make()
 		IS_WINDOWS = IS_WINDOWS,
 		PATH_SEPARATOR = PATH_SEPARATOR,
 
-		HOME_DIR = vim.fs.normalize('~/'):sub(1, -2),
+		HOME_DIR = vim.fs.normalize('~'),
 		DATA_DIR = vim.fn.stdpath('data'),
 		CACHE_DIR = vim.fn.stdpath('cache'),
 		CONFIG_DIR = vim.fn.stdpath('config'),
