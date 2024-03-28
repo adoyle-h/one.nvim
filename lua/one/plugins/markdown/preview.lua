@@ -1,10 +1,20 @@
 return {
 	'iamcco/markdown-preview.nvim',
-	disable = true,
 	ft = 'markdown',
 	run = function()
 		vim.fn['mkdp#util#install']()
 	end,
+
+	commands = {
+		-- If download MarkdownPeview binary files failed, you can use this command to do it agian.
+		MarkdownPeviewInstall = function()
+			local ft = vim.bo.ft
+			-- change filetype to markdown to load this plugin
+			vim.bo.ft = 'markdown'
+			vim.bo.ft = ft
+			vim.fn['mkdp#util#install']()
+		end,
+	},
 
 	config = function(config)
 		for key, value in pairs(config.markdown.preview) do vim.g[key] = value end
