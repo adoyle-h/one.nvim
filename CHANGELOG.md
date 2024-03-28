@@ -10,7 +10,39 @@ You can use `:OneUpdate` to update one.nvim to latest. Please read [the "Update"
 
 ## [Unreleased]
 
-[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v4.3.4...HEAD)
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v4.4.0...HEAD)
+
+
+<a name="v4.4.0"></a>
+## v4.4.0 (2024-03-28 17:32:55 +08:00)
+
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v4.3.4...v4.4.0)
+
+### New Features
+
+- enable iamcco/markdown-preview.nvim by default ([038fc0a](https://github.com/adoyle-h/one.nvim/commit/038fc0a73c5806ae92a00e354ef829c2f59af609))
+  > If download markdown-preview binary files failed, you can run command "MarkdownPeviewInstall" to download again.
+  > 
+  > Note: If you are in China, please use proxy to download.
+- use telescope-live-grep-args.nvim instead of live_grep ([39266b6](https://github.com/adoyle-h/one.nvim/commit/39266b659867709f3853fc427b62f5755eacf5be))
+
+### Bug Fixes
+
+- add requirements for latest rcarriga/nvim-dap-ui ([2956bfc](https://github.com/adoyle-h/one.nvim/commit/2956bfceb416d101fd3982d326609c65272ebb96))
+- **session**: the session list missing ([57a68a5](https://github.com/adoyle-h/one.nvim/commit/57a68a5eb3df951a08db9f65f32ff13af8ebf556))
+  > For latest persisted.nvim, the session name changed. It removed initial "/".
+  > 
+  > fix the wrong path of consts.HOME_DIR.
+- **vim-options**: change the display of default nvim statusline ([574ad21](https://github.com/adoyle-h/one.nvim/commit/574ad2129120648bda942edd6909cd02d6f33fdf))
+- **vim-options**: missing builtin syntax highlights when start without colors plugin ([27d54f4](https://github.com/adoyle-h/one.nvim/commit/27d54f43540c631e8e5ce570820c4f893f6920aa))
+
+### Document Changes
+
+- update usages ([235da74](https://github.com/adoyle-h/one.nvim/commit/235da7499cce109b5e1fd58dc27676a96249b784))
+  > - requires neovim 0.9.2+
+  > - update user config
+- renew license date ([6bf0676](https://github.com/adoyle-h/one.nvim/commit/6bf067685f52904f6e68a97c01b3fc790e69eb2b))
+- **filetype**: add usages about filetypes ([a0ad9f4](https://github.com/adoyle-h/one.nvim/commit/a0ad9f4394f5b0711d789596f1faee796357dcce))
 
 
 <a name="v4.3.4"></a>
