@@ -32,7 +32,7 @@ require('one').setup {
 }
 ```
 
-You can refer to [my init.lua][init.lua] to write your config.
+You can refer to [mine](https://github.com/adoyle-h/neovim-config) to write your config.
 
 You can override the default options of plugins. Read [Plugin - Using Plugin](./plugin.md#using-plugin).
 
@@ -105,5 +105,3 @@ For `<table id>`, `<function id>`, `<metatable>` tag explanations, read [inspect
 
 
 <!-- links -->
-
-[init.lua]: https://github.com/adoyle-h/neovim-config/blob/master/init.lua

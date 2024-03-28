@@ -32,7 +32,7 @@ require('one').setup {
 }
 ```
 
-你可参考[我的 init.lua][init.lua] 来编写你的配置。
+你可参考[我的配置](https://github.com/adoyle-h/neovim-config) 来编写你的配置。
 
 你可以覆盖插件的默认选项。详见 [插件 - 使用插件](./plugin.zh.md#使用插件)。
 
@@ -102,5 +102,3 @@ vim.api.nvim_create_user_command('Hellow', 'echo "world"', {})
 
 
 <!-- links -->
-
-[init.lua]: https://github.com/adoyle-h/neovim-config/blob/master/init.lua

@@ -6,7 +6,7 @@ You can use git clone to install. Or run nvim in container.
 
 ## Dependencies
 
-- [NVIM v0.8][] or later
+- Neovim 0.9.2 or later
 - python3、pip3
 - nvim python provider
   - `pip3 install --upgrade --user pynvim`
@@ -95,7 +95,6 @@ Do [initialization](#initialization) and then press `nvim` to get started.
 [mason.nvim]: https://github.com/williamboman/mason.nvim
 [null-ls]: https://github.com/jose-elias-alvarez/null-ls.nvim
 [nvim-lspconfig]: https://github.com/neovim/nvim-lspconfig
-[NVIM v0.8]: https://github.com/neovim/neovim/releases/tag/v0.8.0
 [init.lua]: https://github.com/adoyle-h/neovim-config/blob/master/init.lua
 [packer.nvim]: https://github.com/wbthomason/packer.nvim
 [treesitter]: https://github.com/nvim-treesitter/nvim-treesitter
