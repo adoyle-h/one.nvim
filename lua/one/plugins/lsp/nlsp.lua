@@ -12,7 +12,7 @@ return {
 		{
 			-- For global settings,
 			config_home = util.configPath('lsp-settings'),
-			-- For local project, put settings file in {project}/.lsp-settings/{server_name}.yaml.
+			-- For local project, put settings file in {project}/.nlsp-settings/{server_name}.yaml.
 			local_settings_dir = '.nlsp-settings',
 			local_settings_root_markers_fallback = { '.git' },
 			append_default_schemas = true,
