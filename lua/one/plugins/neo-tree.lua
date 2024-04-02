@@ -355,6 +355,13 @@ M.defaultConfig = function(config)
 						['<C-p>'] = 'move_cursor_up',
 						['<C-j>'] = 'move_cursor_down',
 						['<C-k>'] = 'move_cursor_up',
+						['<C-u>'] = function(state, scroll_padding)
+							require('neo-tree.ui.renderer').focus_node(state, nil, true, -10, scroll_padding)
+							vim.cmd('redraw!')
+						end,
+						['<C-d>'] = function(state, scroll_padding)
+							require('neo-tree.ui.renderer').focus_node(state, nil, true, 10, scroll_padding)
+						end,
 					},
 				},
 
