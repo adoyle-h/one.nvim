@@ -17,6 +17,10 @@ indent_style = tab
 
 [*.lua]
 indent_style = tab
+# Below options used by [LuaLS](https://github.com/LuaLS/lua-language-server)
+# https://github.com/CppCXY/EmmyLuaCodeStyle/blob/master/lua.template.editorconfig
+align_array_table = false
+align_continuous_inline_comment = false
 
 [*.{js,jsx,ts}]
 indent_size = 4
