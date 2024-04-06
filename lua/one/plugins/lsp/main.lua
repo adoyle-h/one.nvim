@@ -53,6 +53,8 @@ M.defaultConfig = {
 		-- ":h lspconfig-all" or https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 		-- for LSP configs provided by nvim-lspconfig
 		setup = {
+
+			-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#tsserver
 			tsserver = {
 				filetypes = { -- limit tsserver only .ts files
 					'typescript',
@@ -61,7 +63,9 @@ M.defaultConfig = {
 				},
 			},
 
+			-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#clangd
 			clangd = {
+				cmd = { 'clangd', '--enable-config' }, -- allow .clangd file
 				-- Fix: multiple different client offset_encodings detected for buffer
 				-- https://github.com/jose-elias-alvarez/null-ls.nvim/issues/428#issuecomment-997226723
 				capabilities = { offsetEncoding = { 'utf-16' } },
