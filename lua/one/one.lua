@@ -54,7 +54,6 @@ function One.reset()
 					break
 				end
 			end
-
 		end
 
 		if ok then
@@ -155,7 +154,7 @@ function One.update(name)
 		cmd = cmd .. ' 2>&1'
 		vim.cmd.terminal(cmd)
 
-		vim.api.nvim_buf_set_keymap(buf, 'n', 'q', ':q<CR>', {})
+		vim.api.nvim_buf_set_keymap(buf, 'n', 'q', ':q<CR>', { silent = true })
 		vim.api.nvim_buf_call(buf, function()
 			vim.api.nvim_put({ 'To run: ' .. cmd, '' }, 'l', false, true)
 		end)

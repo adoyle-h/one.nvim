@@ -81,4 +81,10 @@ return {
 			NotifyTRACETitle = { fg = c.orange },
 		}
 	end,
+
+	filetypes = {
+		notify = function(args)
+			vim.api.nvim_buf_set_keymap(args.buf, 'n', 'q', ':q<CR>', { silent = true })
+		end,
+	},
 }
