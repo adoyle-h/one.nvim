@@ -49,6 +49,8 @@ M.defaultConfig = {
 
 		masonLspconfig = { automatic_installation = false },
 
+		cursorHoldUptime = 100, -- millisecond. see ":h updatetime"
+
 		-- Change lsp.setup(opts). Format: {['lsp_name'] = settings}
 		-- ":h lspconfig-all" or https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 		-- for LSP configs provided by nvim-lspconfig
@@ -136,6 +138,8 @@ end
 function M.config(config)
 	local conf = config.lsp
 
+	vim.o.updatetime = conf.cursorHoldUptime
+
 	vim.lsp.set_log_level(conf.log.level)
 	vim.diagnostic.config(conf.diagnostic)
 	setDefaultBorder(conf)
@@ -193,7 +197,7 @@ M.keymaps = require('one.plugins.lsp.keymaps')
 
 M.autocmds = {
 	-- Show line diagnostics automatically in hover window
-	-- The CursorHold autocmd is triggered when updatetime. Use https://github.com/antoinemadec/FixCursorHold.nvim to fix it
+	-- The CursorHold autocmd is triggered when updatetime.
 	CursorHold = {
 		callback = function()
 			vim.diagnostic.open_float()

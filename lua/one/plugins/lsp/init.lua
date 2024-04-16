@@ -22,13 +22,5 @@ return {
 			end,
 			defaultConfig = { { 'lsp', 'toggle' }, {} },
 		},
-
-		{
-			-- This plugin is not needed after https://github.com/neovim/neovim/pull/20198
-			'antoinemadec/FixCursorHold.nvim',
-			config = function()
-				vim.g.cursorhold_updatetime = 100
-			end,
-		},
 	},
 }
