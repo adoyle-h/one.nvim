@@ -134,7 +134,7 @@ Or press `:h one-keymaps` to see the keymaps document.
 - `g<C-p>` = Reversed search word under cursor (without `<` and `>` around the word)
 - `<space>f` = Find files
 - `<space>?` = Fuzzy find content in current buffer
-- `<space>/` = Fuzzy find content in workspace
+- `<space>/` = Fuzzy find content in workspace. (Press `<C-'>` to toggle [live-grep-args](https://github.com/nvim-telescope/telescope-live-grep-args.nvim#grep-argument-examples))
 - `<leader>f` = Fuzzy find content in workspace (use CtrlSF)
 
 ## Highlight
@@ -216,6 +216,8 @@ Or press `:h one-keymaps` to see the keymaps document.
 - `<space>lf` = List LSP document symbols which filtered by kinds in current buffer
 - `<space>lS` = List LSP document symbols in the current workspace
 - `<space>lF` = List LSP document symbols which filtered by kinds in current workspace
+- `<space>?` = Fuzzy find content in current buffer
+- `<space>/` = Fuzzy find content in workspace. (Press `<C-'>` to toggle [live-grep-args](https://github.com/nvim-telescope/telescope-live-grep-args.nvim#grep-argument-examples))
 
 ## Telescope
 
