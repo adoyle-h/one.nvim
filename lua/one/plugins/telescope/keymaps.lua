@@ -46,10 +46,7 @@ return function()
 		{
 			'v',
 			'<space>/',
-			function()
-				local text = util.getVisualSelection()
-				require('telescope').extensions.live_grep_args.live_grep_args({ default_text = text })
-			end,
+			require('telescope-live-grep-args.shortcuts').grep_visual_selection,
 			{ silent = true, desc = 'Fuzzy find content with selection in workspace' },
 		},
 
