@@ -1,13 +1,14 @@
 return {
 	symbolMap = {
-		DEBUG = '', -- 
-		ERROR = '󰅚', -- 
+		DEBUG = '', -- 
+		ERROR = '', -- 
 		INFO = '', -- 
-		TRACE = '',
-		WARN = '', -- 
-		OTHER = '',
+		TRACE = '',
+		WARN = '', -- 
+		OTHER = '',
 		HINT = '󰌶',
-		LOCK = '',
+		LOCK = '󰌾',
+		UNLOCK = '󰿆',
 		BRANCH = '',
 		INSTALLED = '󰄲',
 		UNINSTALLED = '󰄱',
@@ -36,38 +37,38 @@ return {
 	},
 
 	kindSymbolMap = {
-		Array = '󰅪',
-		Boolean = '◩',
-		Class = '󰠱',
+		Array = '󰅪', -- 
+		Boolean = '◩', -- 
+		Class = '󰠱', -- 
 		Collapsed = '',
 		Color = '󰏘',
-		Constant = '🄲',
-		Constructor = '',
+		Constant = '',
+		Constructor = '🄲',
 		Enum = '',
 		EnumMember = '',
-		Event = '',
-		Field = '', -- '󰜢',
+		Event = '', -- 
+		Field = '', --  󰜢
 		File = '󰈙',
 		Folder = '󰉋',
 		Function = '󰊕',
-		Interface = '', -- '󰌗'
-		Keyword = '󰌋',
+		Interface = '', -- 󰌗 
+		Keyword = '󰌋', -- 
 		Method = '󰊕',
 		Module = '',
 		Namespace = '',
 		Null = '∅',
 		Number = '󰎠',
 		Object = '󰅩',
-		Operator = '󰆕',
+		Operator = '',
 		Package = '',
-		Property = '󰆧',
+		Property = '',
 		Reference = '󰈇',
 		Snippet = '',
-		String = '',
-		Struct = '󰙅',
+		String = '',
+		Struct = '',
 		Text = '󰉿',
-		TypeParameter = '𝕋', -- '󰊄'
+		TypeParameter = '', -- '󰊄'
 		Unit = '󰑭',
-		Variable = '𝕍', -- '', '𝒗'
+		Variable = '', -- 󰫧  𝕍 𝒗
 	},
 }
