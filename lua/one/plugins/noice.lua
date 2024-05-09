@@ -1,18 +1,25 @@
 local M = {
-	'folke/noice.nvim',
-	disable = true,
+	-- @TODO https://github.com/folke/noice.nvim/pull/796 and https://github.com/folke/noice.nvim/pull/796
+	-- 'folke/noice.nvim'
+	'adoyle-h/noice.nvim',
+	branch = 'a',
 	id = 'noice',
+	event = 'VeryLazy',
 
 	keymaps = {
 		{
 			'n',
 			'<space>n',
 			function()
-				if vim.bo.filetype == 'noice' then
-					vim.api.nvim_feedkeys('q', '', false)
+				if pcall(require, 'telescope') then
+					require('telescope').extensions.noice.noice {}
 				else
-					require('noice').cmd('history')
-					vim.api.nvim_feedkeys('G', 'n', false)
+					if vim.bo.filetype == 'noice' then
+						vim.api.nvim_feedkeys('q', '', false)
+					else
+						require('noice').cmd('history')
+						vim.api.nvim_feedkeys('G', 'n', false)
+					end
 				end
 			end,
 		},
@@ -24,6 +31,9 @@ local M = {
 			-- NoiceMini = { fg = c.grey, bg = c.darkBlue },
 			NoiceMini = { fg = c.grey, bg = c.darkBlue },
 			NoiceMiniBorder = { fg = c.blue, bg = c.black },
+			NoiceLSP = { fg = c.grey, bg = c.black },
+			-- NoiceLSP = { fg = c.grey, bg = c.darkGreen },
+			-- NoiceLSPBorder = { fg = c.green, bg = c.darkGreen },
 			NoiceCmdlineIconSearch = { fg = c.match.fg },
 			NoiceFormatEvent = { fg = c.green },
 			NoiceFormatKind = { fg = c.yellow },
@@ -36,6 +46,7 @@ local M = {
 	config = function(config)
 		vim.o.lazyredraw = false -- noice.nvim requires to disable this option
 		require('noice').setup(config.noice)
+		if pcall(require, 'telescope') then require('telescope').load_extension('noice') end
 	end,
 }
 
@@ -48,22 +59,105 @@ M.defaultConfig = function()
 		-- '{level} ',
 		-- '{cmdline} ',
 		'{title} ',
-		'| {message}',
+		'▏{message}',
+	}
+
+	local filterReadMsg = {
+		event = 'msg_show',
+		kind = '',
+		any = {
+			{ find = '^".+"  ?%d+ lines? %-%-%d+%%%-%-$' },
+			{ find = '^".+"  ?%[.+%] %d+ lines? %-%-%d+%%%-%-$' },
+			{ find = '^".+"  ?%d+L, %d+B$' },
+			{ find = '^".+"  ?%[.+%] %d+L, %d+B$' },
+		},
+	}
+
+	local filterNoLinesInBuf = {
+		event = 'msg_show',
+		kind = '',
+		any = { { find = '%-%No lines in buffer%-%-$' }, { find = '%-%-缓冲区无内容%-%-$' } },
+	}
+
+	local filterSearch = { event = 'msg_show', kind = '', max_height = 1, find = '^[/?].+' }
+	local filterSearchCount = { event = 'msg_show', kind = 'search_count' }
+	local filterLineChanged = {
+		event = 'msg_show',
+		any = {
+			{ find = '.+[；;] ?before #[0-9]+  .+' },
+			{ find = '.+[；;] ?after #[0-9]+  .+' },
+			{ find = '^少了 [0-9]+ 行$' },
+			{ find = '^[0-9]+ fewer lines$' },
+			{ find = '^1 line less$' },
+			{ find = '^[0-9]+ line [><]ed [0-9]+ time' },
+		},
+	}
+
+	local routes = {
+
+		{ -- Hide diagnostics messages
+			filter = { event = 'lsp', find = ' diagnostics_on_open ' },
+			opts = { skip = true },
+		},
+
+		-- Hide read messages
+		{ filter = filterReadMsg, opts = { skip = true } },
+
+		{ -- Hide Search
+			filter = filterSearchCount,
+			opts = { skip = true },
+		},
+
+		{ -- Hide Search
+			filter = filterSearch,
+			opts = { skip = true },
+		},
+
+		{ -- Hide messages "--No lines in buffer--" or "--缓冲区无内容--"
+			filter = filterNoLinesInBuf,
+			opts = { skip = true },
+		},
+
+		{ -- Hide lines changed/removed/moved
+			filter = filterLineChanged,
+			opts = { skip = true },
+		},
+
+		-- Show recording messages
+		{
+			view = 'mini',
+			filter = { event = 'msg_showmode', any = { { find = 'recording' }, { find = '记录' } } },
+		},
+
 	}
 
 	local historyViewOpts = {
 		-- options for the message history that you get with `:Noice`
-		-- view = 'split',
 		view = 'popup',
-		opts = { enter = true, format = viewFormat },
+		opts = { --
+			enter = true,
+			format = viewFormat,
+			size = { height = math.ceil(0.6 * vim.o.lines) },
+		},
+
 		filter = {
 			any = {
-				{ event = '' },
 				{ event = 'notify' },
 				{ error = true },
 				{ warning = true },
 				{ event = 'msg_show' },
 				{ event = 'lsp', kind = 'message' },
+			},
+
+			['not'] = {
+				any = {
+					filterReadMsg,
+					filterNoLinesInBuf,
+					filterSearch,
+					filterSearchCount,
+					filterLineChanged,
+					{ event = 'msg_show', kind = 'echomsg', find = '^E486: Pattern not found:.+' },
+				},
 			},
 		},
 	}
@@ -122,10 +216,15 @@ M.defaultConfig = function()
 
 			-- You can add any custom commands below that will be available with `:Noice command`
 			commands = {
+				-- :Noice history
 				history = historyViewOpts,
 
 				-- :Noice last
-				last = vim.tbl_extend('force', historyViewOpts, { filter_opts = { count = 10 } }),
+				last = vim.tbl_deep_extend('force', {}, historyViewOpts, {
+					filter_opts = {
+						count = 10, -- show last 10 messages
+					},
+				}),
 
 				-- :Noice errors
 				errors = {
@@ -155,7 +254,7 @@ M.defaultConfig = function()
 					format = 'lsp_progress',
 					format_done = 'lsp_progress_done',
 					throttle = 1000 / 100, -- frequency to update lsp progress message
-					view = 'mini',
+					view = 'lsp-view',
 				},
 
 				override = {
@@ -168,13 +267,13 @@ M.defaultConfig = function()
 				},
 
 				hover = {
-					enabled = true,
+					enabled = false,
 					view = nil, -- when nil, use defaults from documentation
 					opts = {}, -- merged with defaults from documentation
 				},
 
 				signature = {
-					enabled = true,
+					enabled = false,
 					auto_open = {
 						enabled = true,
 						trigger = true, -- Automatically show signature help when typing a trigger character from the LSP
@@ -194,6 +293,7 @@ M.defaultConfig = function()
 
 				-- defaults for hover and signature help
 				documentation = {
+					enabled = false,
 					view = 'hover',
 
 					opts = {
@@ -238,7 +338,7 @@ M.defaultConfig = function()
 				-- you can also add custom presets that you can enable/disable with enabled=true
 				bottom_search = false, -- use a classic bottom cmdline for search
 				command_palette = false, -- position the cmdline and popupmenu together
-				long_message_to_split = true, -- long messages will be sent to a split
+				long_message_to_split = false, -- long messages will be sent to a split
 				inc_rename = false, -- enables an input dialog for inc-rename.nvim
 				lsp_doc_border = false, -- add a border to hover docs and signature help
 			},
@@ -247,14 +347,16 @@ M.defaultConfig = function()
 			throttle = 1000 / 100,
 
 			views = { ---@see section on views
+
 				['mini'] = {
 					reverse = false,
 					align = 'message-left',
-					timeout = 5000,
-					position = { row = -2, col = -2 },
+					timeout = 3000,
+					position = { row = -2, col = -2 }, -- bottom-right of window
+					format = { '{date} ', '{title} ', '▏{message}' },
 
 					size = {
-						max_height = math.ceil(0.8 * vim.o.lines),
+						max_height = math.ceil(0.2 * vim.o.lines),
 						max_width = math.ceil(0.5 * vim.o.columns),
 						min_width = 30,
 						width = 'auto',
@@ -277,6 +379,30 @@ M.defaultConfig = function()
 					},
 
 					win_options = { winblend = 0 },
+				},
+
+				['lsp-view'] = {
+					backend = 'mini',
+					reverse = true,
+					align = 'right',
+					timeout = 2000,
+					position = { row = 1, col = -2 }, -- top-right of window
+					format = { '{message}' },
+
+					size = {
+						max_height = 5,
+						max_width = math.ceil(0.5 * vim.o.columns),
+						width = 'auto',
+						height = 'auto',
+					},
+
+					border = {
+						text = { top = ' LSP Progress ', top_align = 'right', bottom = '' },
+						style = { { ' ', 'NoiceLSP' } },
+						padding = { top = 0, bottom = 0, left = 1, right = 0 },
+					},
+
+					win_options = { winblend = 0, winhighlight = { Normal = 'NoiceLSP' } },
 				},
 
 				['cmdline'] = {
@@ -308,52 +434,26 @@ M.defaultConfig = function()
 						winhighlight = { Normal = 'NoiceCmdlineNormal', IncSearch = '', Search = '' },
 					},
 				},
-			},
-
-			routes = {
-
-				{ -- Hide diagnostics messages
-					filter = { event = 'lsp', find = ' diagnostics_on_open ' },
-					opts = { skip = true },
-				},
-
-				-- Hide read messages
-				{
-					filter = { event = 'msg_show', kind = '', find = '^".+"  ?%d+ lines? %-%-%d+%%%-%-$' },
-					opts = { skip = true },
-				},
-				{
-					filter = { event = 'msg_show', kind = '', find = '^".+"  ?%[.+%] %d+ lines? %-%-%d+%%%-%-$' },
-					opts = { skip = true },
-				},
-				{
-					filter = { event = 'msg_show', kind = '', find = '^".+"  ?%d+L, %d+B$' },
-					opts = { skip = true },
-				},
-				{
-					filter = { event = 'msg_show', kind = '', find = '^".+"  ?%[.+%] %d+L, %d+B$' },
-					opts = { skip = true },
-				},
-
-				{ -- Hide Search
-					filter = { event = 'msg_show', kind = 'search_count' },
-					opts = { skip = true },
-				},
-
-				-- { -- Hide Search
-				-- 	filter = { event = 'msg_show', kind = '', find = '^[/?].+ +%[%d+/%d+%]' },
-				-- 	opts = { skip = true },
-				-- },
-
-				{ -- Hide Search
-					filter = { event = 'msg_show', kind = '', find = '^[/?].+' },
-					opts = { skip = true },
-				},
 
 			},
+
+			routes = routes,
 
 			status = {}, --- @see section on statusline components
-			format = {}, --- @see section on formatting
+
+			format = { --- @see section on formatting
+				telescope = { '{date} ', '{event} ', '{title} ', '{message}' },
+				telescope_preview = {
+					' {date} ',
+					-- '{level} ',
+					'{event}',
+					{ '{kind}', before = { '.', hl_group = 'NoiceFormatKind' } },
+					' {title}',
+					'\n [{cmdline}]',
+					'\n {message}',
+				},
+
+			},
 		},
 	}
 end

@@ -94,6 +94,16 @@ All-in-one neovim configuration framework implemented with Lua. It is highly fle
 
 ![UI-2.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/UI-2.png)
 
+### Hidden cmdline
+
+![UI-noice.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/UI-noice.png)
+
+If you don't like the hidden cmdline, you can disable noice.nvim plugin to get the classic UI. Follow this config:
+
+```lua
+require('one').setup { plugins = { 'noice', disable = true } }
+```
+
 ### Outline
 
 ![outline.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/outline.png)

@@ -95,6 +95,17 @@
 
 ![UI-2.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/UI-2.png)
 
+### 隐藏 cmdline
+
+![UI-noice.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/UI-noice.png)
+
+如果你不喜欢隐藏 cmdline，可以禁用 noice.nvim 插件，回归经典 UI。只要设置配置
+
+```lua
+require('one').setup { plugins = { 'noice', disable = true } }
+```
+
+
 ### 大纲
 
 ![outline.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/outline.png)
