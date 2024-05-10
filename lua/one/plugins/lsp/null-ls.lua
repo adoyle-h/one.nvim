@@ -1,6 +1,6 @@
 -- null-ls is an attempt to bridge that gap and simplify the process of creating,
 -- sharing, and setting up LSP sources using pure Lua.
-local M = { 'jose-elias-alvarez/null-ls.nvim', deps = { 'jayp0521/mason-null-ls.nvim' } }
+local M = { 'jose-elias-alvarez/null-ls.nvim', deps = { 'jay-babu/mason-null-ls.nvim' } }
 
 local config = require('one.config').config
 local util = require('one.util')
