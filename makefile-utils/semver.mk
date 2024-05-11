@@ -5,7 +5,8 @@ SEMVER_BIN ?= makefile-utils/semver
 # @hide @target makefile-utils/semver  Download semver tool
 ${SEMVER_BIN}:
 	@mkdir -p $$(dirname '$@')
-	@curl -sSLo '$@' https://raw.githubusercontent.com/fsaintjacques/semver-tool/master/src/semver
+	@echo '[makefile-utils] To download semver-tool'
+	@curl -Lo '$@' https://raw.githubusercontent.com/fsaintjacques/semver-tool/master/src/semver
 	@chmod +x '$@'
 
 .PHONY: GIT_VERSION
