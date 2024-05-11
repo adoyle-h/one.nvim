@@ -20,4 +20,4 @@ GIT_VERSION:
 # @target semver-patch  Print next patch version (z) based on current git tag
 .PHONY: $(addprefix semver-,major minor patch)
 $(addprefix semver-,major minor patch): ${SEMVER_BIN}
-	@${SEMVER_BIN} bump $(subst semver-,,$@) "$(shell $(MAKE) GIT_VERSION)"
+	@${SEMVER_BIN} bump $(subst semver-,,$@) "$(shell $(MAKE) -s GIT_VERSION)"
