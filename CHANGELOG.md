@@ -10,7 +10,46 @@ You can use `:OneUpdate` to update one.nvim to latest. Please read [the "Update"
 
 ## [Unreleased]
 
-[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v4.4.0...HEAD)
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v5.0.0...HEAD)
+
+
+<a name="v5.0.0"></a>
+## v5.0.0 (2024-05-11 18:40:48 +08:00)
+
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v4.4.0...v5.0.0)
+
+### Breaking Changes
+
+Have 1 breaking changes. Check below logs with ⚠️ .
+
+### New Features
+
+- hidden cmdline && popup cmdline/search/message window && new message history window ([1d744ae](https://github.com/adoyle-h/one.nvim/commit/1d744ae6ba87fdb4b4565dfed78412ee22852cc6))
+  > enable noice.nvim
+  > 
+  > It changes the UI of cmdline and messages. The cmdline is hidden.
+  > The messages will show in popup window at bottom-right.
+  > The search (`/` and `?`) and vim command (`:`) will show in popup window at bottom-left.
+  > 
+  > Press `<C-n>` or `:Noice history` to view the message history.
+  > 
+  > If you don't like it, you can disable this plugin by:
+  > `require('one').setup { plugins = { 'noice', disable = true } }`
+- add config option "lsp.cursorHoldUptime" which default to 100 ([af13729](https://github.com/adoyle-h/one.nvim/commit/af13729a86da6d889655894b3a127f838b5a3b8d))
+- **neo-tree**: change keymaps `<C-u> and <C-d>` to page-up/down in fuzzy finder ([de81693](https://github.com/adoyle-h/one.nvim/commit/de816934fd4eacc524f7f0caa314cf11ee03bfd6))
+  > Please upgrade neo-tree.nvim to 3.24+
+- **telescope**: the search input will be quoted with live-grep-args in visual selection ([7cd54ee](https://github.com/adoyle-h/one.nvim/commit/7cd54eef3baaba27410a9fca6c8a9c1dea14c73e))
+  > and treat the search input as a literal string by adding "-F" option. see "rg --help".
+
+### Bug Fixes
+
+- ⚠️  update symbols for nerdfont v3.2.1 ([2f92991](https://github.com/adoyle-h/one.nvim/commit/2f92991b0a6327e1f5d3472e789df64b27d5e76b))
+  > Breaking Change:
+  > 
+  > User should reinstall the latest nerdfont
+- **lsp**: add --enable-config option for clangd ([c610833](https://github.com/adoyle-h/one.nvim/commit/c610833c450286ef2b570f3649d022649e6ce2d6))
+- **notify**: press "q" to quit notify window ([43d00c3](https://github.com/adoyle-h/one.nvim/commit/43d00c3601d988d03cba52ecb051b58c57b0a1f2))
+- **telescope**: press "`<C-'>`" to quote prompt in live-grep-args picker ([da8bf8f](https://github.com/adoyle-h/one.nvim/commit/da8bf8fbe235947cd9153129909e328a3269020b))
 
 
 <a name="v4.4.0"></a>
