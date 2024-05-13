@@ -1,61 +1,101 @@
+# @TODO This image not work. because there have many glibc problems with alpine. nvim will not work.
 ARG BASE_IMAGE
 FROM $BASE_IMAGE AS base
 
 WORKDIR /workspace
 ARG APK_PROXY
+ARG TARGETPLATFORM
 
-RUN if [ -n "$APK_PROXY" ]; then \
-  cp /etc/apk/repositories /etc/apk/repositories.bak && \
-  sed -i "s|dl-cdn.alpinelinux.org|$APK_PROXY|g" /etc/apk/repositories ; \
+RUN <<EOF
+  if [ -n "$APK_PROXY" ]; then
+    cp /etc/apk/repositories /etc/apk/repositories.bak
+    sed -i "s|dl-cdn.alpinelinux.org|$APK_PROXY|g" /etc/apk/repositories
   fi
-
-RUN apk update && apk add --no-cache \
-  tar coreutils curl
+  apk update
+  apk add --no-cache tar coreutils curl
+EOF
 
 ENV NVIM_TAR=/workspace/nvim-linux64.tar.gz
 ARG VERSION=master
 ARG GH_PROXY
 
-RUN curl -Lo $NVIM_TAR "${GH_PROXY}/https://github.com/neovim/neovim/releases/download/$VERSION/nvim-linux64.tar.gz" && \
-  curl -Lo "${NVIM_TAR}.sha256sum" "${GH_PROXY}/https://github.com/neovim/neovim/releases/download/$VERSION/nvim-linux64.tar.gz.sha256sum"
+RUN <<EOF
+  curl -Lo $NVIM_TAR "${GH_PROXY:+$GH_PROXY/}https://github.com/neovim/neovim/releases/download/$VERSION/nvim-linux64.tar.gz"
+  curl -Lo "${NVIM_TAR}.sha256sum" "${GH_PROXY:+$GH_PROXY/}https://github.com/neovim/neovim/releases/download/$VERSION/nvim-linux64.tar.gz.sha256sum"
+  sha256sum "${NVIM_TAR}"
+  tar xzvf "${NVIM_TAR}"
+EOF
 
-RUN sha256sum "${NVIM_TAR}" && tar xzvf "${NVIM_TAR}"
+RUN <<EOF
+  echo "TARGETPLATFORM=$TARGETPLATFORM"
+  case "$TARGETPLATFORM" in
+    linux/amd64)
+      meta_type=amd64
+      tini_type=amd64
+    ;;
+    linux/arm64)
+      meta_type=arm64
+      tini_type=arm64
+    ;;
+    linux/arm/v*)
+      meta_type=armv7
+      tini_type=armhf
+    ;;
+    *)
+      meta_type=unknown-arch
+      tini_type=unknown-arch
+    ;;
+  esac
+
+  curl -Lfo /tini "${GH_PROXY:+$GH_PROXY/}https://github.com/krallin/tini/releases/latest/download/tini-static-$tini_type"
+  chmod +x /tini
+EOF
 
 # -------------------------------------------------------------------------------
 
 FROM $BASE_IMAGE
 
-LABEL maintainer="ADoyle <adoyle.h@gmail.com>"
-
-WORKDIR /workspace
+WORKDIR /app
 ARG APK_PROXY
-
-COPY --from=base /workspace/nvim-linux64 /opt/nvim
-
-RUN ln -s /opt/nvim/bin/nvim /usr/local/bin/nvim && \
-  mkdir -p /root/.config/nvim
-
-RUN if [ -n "$APK_PROXY" ]; then \
-  cp /etc/apk/repositories /etc/apk/repositories.bak && \
-  sed -i "s|dl-cdn.alpinelinux.org|$APK_PROXY|g" /etc/apk/repositories ; \
-  fi
-
+ARG TARGETPLATFORM
 ARG GH_PROXY
 # GLIBC not work
-ARG GLIBC_VER=2.35-r0
-RUN apk update && \
-  apk add --no-cache curl && \
-  curl -Lo /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub && \
-  curl -LO "${GH_PROXY}/https://github.com/sgerrand/alpine-pkg-glibc/releases/download/$GLIBC_VER/glibc-$GLIBC_VER.apk" && \
-  apk add glibc-$GLIBC_VER.apk && rm glibc-$GLIBC_VER.apk /etc/apk/keys/sgerrand.rsa.pub && \
-  apk add --no-cache git gcompat libgcc ripgrep python3 py3-pip && \
-  pip3 install pynvim
+ARG GLIBC_VER=2.35-r1
+
+COPY --from=base /workspace/nvim-linux64 /opt/nvim
+COPY --from=base /tini /tini
+
+RUN <<EOF
+  ln -s /opt/nvim/bin/nvim /usr/local/bin/nvim
+  mkdir -p /root/.config/nvim
+
+  if [ -n "$APK_PROXY" ]; then
+    cp /etc/apk/repositories /etc/apk/repositories.bak
+    sed -i "s|dl-cdn.alpinelinux.org|$APK_PROXY|g" /etc/apk/repositories
+  fi
+
+  apk update
+  apk add --no-cache curl git gcompat libgcc ripgrep python3 py3-pip py3-pynvim
+
+  curl -Lo /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub
+  curl -LO "${GH_PROXY:+$GH_PROXY/}https://github.com/sgerrand/alpine-pkg-glibc/releases/download/$GLIBC_VER/glibc-$GLIBC_VER.apk"
+
+  apk add glibc-$GLIBC_VER.apk
+  rm glibc-$GLIBC_VER.apk /etc/apk/keys/sgerrand.rsa.pub
+EOF
 
 COPY . /usr/local/share/nvim/site/pack/user/start/one.nvim
 
-RUN if [ -n "$GH_PROXY" ]; then git config --global http.https://github.com.proxy $GH_PROXY; fi
+RUN <<EOF
+  if [ -n "$GH_PROXY" ]; then
+    git config --global http.https://github.com.proxy $GH_PROXY
+  fi
 
-RUN echo "require('one').setup {}" > /root/.config/nvim/init.lua
+  echo "require('one').setup {}" > /root/.config/nvim/init.lua
+EOF
 
-ENTRYPOINT [ "sh", "-c" ]
-CMD [ "nvim" "/workspace" ]
+LABEL maintainer="ADoyle <adoyle.h@gmail.com>"
+LABEL description="Run nvim and one.nvim in container"
+
+ENTRYPOINT ["/tini", "--", "nvim" ]
+CMD [ "/app" ]

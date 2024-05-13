@@ -68,23 +68,38 @@ Do [initialization](#initialization) and then press `nvim` to get started.
 
 You can also use it in container. It requires docker installed on your machine.
 
-### Build container
-
-Invoke [`scripts/build-container`](../scripts/build-container).
-(For users in China Mainland, it's recommended to add `-p` option to enable proxy for fasten building).
-
-**Note** for Mac users with Apple chip. Current nvim not provide releases building for Arm arch. So the container builds and runs with `--platform=linux/amd64` option. It's very slow when running it in container.
-
 ### Use container
 
 ```sh
-# Cache the nvim data in host
+# Create docker volume for caching the nvim data in host
 docker volume create nvim-data
-# It's recommended to add this line to ~/.bashrc
-alias nvim='docker run --rm -it --platform linux/amd64 -v "$HOME/.config/nvim:/root/.config/nvim" -v "nvim-data:/root/.local/share/nvim" -v "$PWD:/workspace" adoyle/one.nvim:v0.8.0'
+# It's recommended to add this line to ~/.bashrc. And replace
+alias nvim='docker run --rm -it --platform linux/amd64 -v "$HOME/.config/nvim:/root/.config/nvim" -v "nvim-data:/root/.local/share/nvim" -v "$PWD:/app" adoyle/one.nvim:vX.Y.Z'
 ```
 
-Do [initialization](#initialization) and then press `nvim` to get started.
+The tags of one.nvim image refer to [here](https://hub.docker.com/repository/docker/adoyle/one.nvim/general).
+
+Create your configuration file `/root/.config/nvim/init.lua` in host machine. See [Initialisation](#initialization) for details.
+
+Then run nvim from any directory to start the container. The initial start it automatically downloads the required dependency packages based on your configuration.
+
+You may encounter errors during this process. Restart nvim to reinstall it until it's done.
+
+Run nvim again to get started in current directory.
+
+**Note** for Mac users with Apple chip. Current [nvim not provide releases building for arm64 arch][nvim-arm64-issue]. So the container builds and runs with `--platform=linux/amd64` option.
+
+### Build image
+
+If you prefer to build the image of container from source code, read below.
+
+Git clone this project, and invoke `./scripts/build-container -v 0.9.5` to build image that includes nvim and basic config for one.nvim.
+
+`-v` is the nvim version.
+
+For users in China Mainland, it's recommended to add `-p` option to enable proxy for fasten building. If enabled, then image tag will be `vX.Y.Z-china`.
+
+**Note** for Mac users with Apple chip. Current [nvim not provide releases building for arm64 arch][nvim-arm64-issue]. So the container builds and runs with `--platform=linux/amd64` option.
 
 
 <!-- links -->
@@ -99,3 +114,4 @@ Do [initialization](#initialization) and then press `nvim` to get started.
 [packer.nvim]: https://github.com/wbthomason/packer.nvim
 [treesitter]: https://github.com/nvim-treesitter/nvim-treesitter
 [lazy.nvim]: https://github.com/folke/lazy.nvim
+[nvim-arm64-issue]: https://github.com/neovim/neovim/issues/15143

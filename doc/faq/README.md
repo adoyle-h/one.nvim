@@ -30,3 +30,7 @@ Open `:Mason` window to reinstall or update the LSP client.
 ## I want the tabline looks like vscode style
 
 See [this comment](https://github.com/adoyle-h/one.nvim/discussions/18#discussioncomment-6331752).
+
+## Mason not install latest LSP package
+
+`:MasonUpdate` to update the [Mason Registry](https://github.com/mason-org/mason-registry). Then open mason window to install/update LSP packages.

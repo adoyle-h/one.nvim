@@ -68,23 +68,38 @@ git clone --depth 1 --single-branch https://github.com/adoyle-h/one.nvim.git "$P
 
 你也可以在容器里运行它。这要求你的主机已安装 docker。
 
-### 构建容器
-
-执行 [`scripts/build-container`](../scripts/build-container)。
-（建议中国地区用户加上 `-p` 参数使用代理，加快构建速度）。
-
-**苹果芯片的 Mac 用户注意**。当前 nvim 未提供 Arm 架构下的发行版。所以容器构建和运行都使用了 `--platform=linux/amd64` 选项。苹果芯片下运行容器会很卡。
-
 ### 使用容器
 
 ```sh
-# 在主机上缓存 nvim 数据
+# 在宿主机创建 docker 数据卷用来缓存 nvim 数据
 docker volume create nvim-data
-# 建议把这行 alias 加到 ~/.bashrc
-alias nvim='docker run --rm -it --platform linux/amd64 -v "$HOME/.config/nvim:/root/.config/nvim" -v "nvim-data:/root/.local/share/nvim" -v "$PWD:/workspace" adoyle/one.nvim:v0.8.0'
+# 建议把这行 alias 加到 ~/.bashrc，同时 vX.Y.Z 要换成具体的版本号
+alias nvim='docker run --rm -it --platform linux/amd64 -v "$HOME/.config/nvim:/root/.config/nvim" -v "nvim-data:/root/.local/share/nvim" -v "$PWD:/app" adoyle/one.nvim:vX.Y.Z'
 ```
 
-[初始化](#初始化)后，执行 `nvim` 启动。
+one.nvim 镜像版本号详见[这里](https://hub.docker.com/repository/docker/adoyle/one.nvim/general)。
+
+在宿主机环境创建好你的配置文件 `/root/.config/nvim/init.lua`，详见 [初始化](#初始化)。
+
+然后在任意目录下执行 nvim 启动容器。初次启动它根据你的配置自动下载所需依赖包。
+
+这个过程可能会遇到错误。重启 nvim 尝试重装直到装好即可。
+
+再次执行 nvim，可正常编辑当前目录的文件。
+
+**苹果芯片的 Mac 用户注意**。当前 [nvim 未提供 arm64 架构的发行版][nvim-arm64-issue]。所以容器构建和运行都使用了 `--platform=linux/amd64` 选项。
+
+### 构建容器
+
+你若想从源代码构建容器镜像，继续往下读。
+
+git clone 本项目，然后执行 `./scripts/build-container -v 0.9.5` 在本地构建 nvim + one.nvim 镜像。
+
+`-v` 参数是 nvim 的版本号。
+
+建议中国地区用户加上 `-p` 参数加速构建。当使用这个参数，构建的镜像 tag 是 `vX.Y.Z-china`。
+
+**苹果芯片的 Mac 用户注意**。当前 [nvim 未提供 arm64 架构的发行版][nvim-arm64-issue]。所以容器构建和运行都使用了 `--platform=linux/amd64` 选项。
 
 
 <!-- links -->
@@ -99,3 +114,4 @@ alias nvim='docker run --rm -it --platform linux/amd64 -v "$HOME/.config/nvim:/r
 [packer.nvim]: https://github.com/wbthomason/packer.nvim
 [treesitter]: https://github.com/nvim-treesitter/nvim-treesitter
 [lazy.nvim]: https://github.com/folke/lazy.nvim
+[nvim-arm64-issue]: https://github.com/neovim/neovim/issues/15143

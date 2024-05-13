@@ -5,22 +5,59 @@ SHELL [ "/bin/bash", "-c" ]
 
 WORKDIR /workspace
 ARG APT_PROXY
+ARG TARGETPLATFORM
 
-RUN if [[ -n "$APT_PROXY" ]]; then \
-  sed -i "s|http://.*.ubuntu.com|$APT_PROXY|g" /etc/apt/sources.list ; \
+RUN <<EOF
+  if [[ -n "$APT_PROXY" ]]; then
+    sed -i "s|http://.*.ubuntu.com|$APT_PROXY|g" /etc/apt/sources.list
   fi
+  apt-get update
+  apt-get install -y tar coreutils curl unzip
+EOF
 
-RUN apt-get update && apt-get install -y \
-  tar coreutils curl unzip
 
 ENV NVIM_TAR=/workspace/nvim-linux64.tar.gz
 ARG VERSION=master
 ARG GH_PROXY
 
-RUN curl -o $NVIM_TAR "${GH_PROXY}/https://github.com/neovim/neovim/releases/download/$VERSION/nvim-linux64.tar.gz" && \
-  curl -o "${NVIM_TAR}.sha256sum" "${GH_PROXY}/https://github.com/neovim/neovim/releases/download/$VERSION/nvim-linux64.tar.gz.sha256sum"
+RUN <<EOF
+  curl -Lo $NVIM_TAR "${GH_PROXY:+$GH_PROXY/}https://github.com/neovim/neovim/releases/download/$VERSION/nvim-linux64.tar.gz"
+  curl -Lo "${NVIM_TAR}.sha256sum" "${GH_PROXY:+$GH_PROXY/}https://github.com/neovim/neovim/releases/download/$VERSION/nvim-linux64.tar.gz.sha256sum"
+  sha256sum "${NVIM_TAR}"
+  tar xzvf "${NVIM_TAR}"
+EOF
 
-RUN sha256sum "${NVIM_TAR}" && tar xzvf "${NVIM_TAR}"
+RUN <<EOF
+  curl -Lo $NVIM_TAR "${GH_PROXY:+$GH_PROXY/}https://github.com/neovim/neovim/releases/download/$VERSION/nvim-linux64.tar.gz"
+  curl -Lo "${NVIM_TAR}.sha256sum" "${GH_PROXY:+$GH_PROXY/}https://github.com/neovim/neovim/releases/download/$VERSION/nvim-linux64.tar.gz.sha256sum"
+  sha256sum "${NVIM_TAR}"
+  tar xzvf "${NVIM_TAR}"
+EOF
+
+RUN <<EOF
+  echo "TARGETPLATFORM=$TARGETPLATFORM"
+  case "$TARGETPLATFORM" in
+    linux/amd64)
+      meta_type=amd64
+      tini_type=amd64
+    ;;
+    linux/arm64)
+      meta_type=arm64
+      tini_type=arm64
+    ;;
+    linux/arm/v*)
+      meta_type=armv7
+      tini_type=armhf
+    ;;
+    *)
+      meta_type=unknown-arch
+      tini_type=unknown-arch
+    ;;
+  esac
+
+  curl -Lfo /tini "${GH_PROXY:+$GH_PROXY/}https://github.com/krallin/tini/releases/latest/download/tini-static-$tini_type"
+  chmod +x /tini
+EOF
 
 # -------------------------------------------------------------------------------
 
@@ -28,34 +65,42 @@ FROM $BASE_IMAGE
 
 SHELL [ "/bin/bash", "-c" ]
 
-LABEL maintainer="ADoyle <adoyle.h@gmail.com>"
-
-WORKDIR /workspace
+WORKDIR /app
 ARG APT_PROXY
+ARG TARGETPLATFORM
+ARG GH_PROXY
 
 COPY --from=base /workspace/nvim-linux64 /opt/nvim
+COPY --from=base /tini /tini
 
-RUN ln -s /opt/nvim/bin/nvim /usr/local/bin/nvim && \
+
+RUN <<EOF
+  ln -s /opt/nvim/bin/nvim /usr/local/bin/nvim
   mkdir -p /root/.config/nvim
 
-RUN if [[ -n "$APT_PROXY" ]]; then \
-  sed -i "s|http://.*.ubuntu.com|$APT_PROXY|g" /etc/apt/sources.list ; \
+
+  if [[ -n "$APT_PROXY" ]]; then
+    sed -i "s|http://.*.ubuntu.com|$APT_PROXY|g" /etc/apt/sources.list
   fi
 
-RUN apt update && apt install -y --no-install-recommends \
-  build-essential git curl ripgrep python3 python3-pip && \
-  rm -rf /var/lib/apt/lists/* && \
-  pip3 install --upgrade pynvim
+  apt update
+  apt install -y --no-install-recommends \
+    build-essential git curl ripgrep python3 python3-pip python3-pynvim
+  rm -rf /var/lib/apt/lists/*
+EOF
 
 COPY . /usr/local/share/nvim/site/pack/user/start/one.nvim
 
-ARG GH_PROXY
-
-RUN if [[ -n "$GH_PROXY" ]]; then \
-  git config --global http.https://github.com.proxy $GH_PROXY; \
+RUN <<EOF
+  if [ -n "$GH_PROXY" ]; then
+    git config --global http.https://github.com.proxy $GH_PROXY
   fi
 
-RUN echo "require('one').setup {}" > /root/.config/nvim/init.lua
+  echo "require('one').setup {}" > /root/.config/nvim/init.lua
+EOF
 
-ENTRYPOINT [ "bash", "-c" ]
-CMD [ "nvim", "/workspace" ]
+LABEL maintainer="ADoyle <adoyle.h@gmail.com>"
+LABEL description="Run nvim and one.nvim in container"
+
+ENTRYPOINT ["/tini", "--", "nvim" ]
+CMD [ "/app" ]
