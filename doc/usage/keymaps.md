@@ -230,13 +230,21 @@ In Telescope picker window.
 - `<C-t>` = Open buffer in new tab
 - `<C-b>` = Scroll results window page up
 - `<C-f>` = Scroll results window page down
+- `<M-h>` = Scroll results window left
+- `<M-l>` = Scroll results window right
 - `<C-u>` = Scroll preview window page up
 - `<C-d>` = Scroll preview window page down
+- `<M-j>` = Scroll preview window left
+- `<M-k>` = Scroll preview window right
 - `<C-y>` = Copy name of current selection
 - `<M-y>` = Copy path of current selection
 - `<M-a>` = Multi select all entries
 - `<M-A>` = Drop all entries from the current multi selection
 - `<Tab>` = Toggle current entry status for multi select
+- `<C-a>` = Move cursor to ahead
+- `<C-e>` = Move cursor to end
+- `<C-h>` = Move cursor to left
+- `<C-l>` = Move cursor to right
 
 ## Word Case
 

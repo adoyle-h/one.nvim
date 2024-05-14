@@ -53,6 +53,12 @@ M.defaultConfig = function(config)
 	local mappingsCommon = {
 		['<C-j>'] = 'move_selection_next',
 		['<C-k>'] = 'move_selection_previous',
+		['<C-h>'] = { "<Left>", type = 'command' },
+		['<C-l>'] = { "<Right>", type = 'command' },
+		['<M-h>'] = 'preview_scrolling_left',
+		['<M-l>'] = 'preview_scrolling_right',
+		['<M-j>'] = 'results_scrolling_left',
+		['<M-k>'] = 'results_scrolling_right',
 		['<C-s>'] = 'select_horizontal',
 		['<C-b>'] = 'results_scrolling_up',
 		['<C-f>'] = 'results_scrolling_down',
