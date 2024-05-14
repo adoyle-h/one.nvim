@@ -146,33 +146,40 @@ function M.config(config)
 
 	local masonLspconfig = require('mason-lspconfig')
 	masonLspconfig.setup(conf.masonLspconfig)
+	-- Newly installed LSP without having to restart Neovim!
+	masonLspconfig.setup_handlers {
+		-- The first entry (without a key) will be the default handler
+		-- and will be called for each installed server that doesn't have
+		-- a dedicated handler.
+		function(serverName) -- default handler (optional)
+			local lspconfig = require('lspconfig')
 
-	-- It only list LSP packages. Not includes DAP/Linter/Formatter packages and null-ls.
-	local servers = masonLspconfig.get_installed_servers()
-	local lspconfig = require('lspconfig')
+			-- https://github.com/hrsh7th/cmp-nvim-lsp#capabilities
+			local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-	local capabilities = require('cmp_nvim_lsp').default_capabilities()
-	capabilities.textDocument.completion.completionItem.snippetSupport = true
+			local opts = config.lsp.setup[serverName] or {}
+			if type(opts) == 'function' then opts = opts(lspconfig) or {} end
 
-	-- Use a loop to conveniently call 'setup' on multiple servers and
-	-- map buffer local keybindings when the language server attaches
-	for _, name in pairs(servers) do
-		local opts = config.lsp.setup[name] or {}
-		if type(opts) == 'function' then opts = opts(lspconfig) or {} end
+			opts = util.merge({
+				-- Use LspAttach autocmd insteads of on_attach function
+				-- on_attach = function(client, bufnr) end,
+				capabilities = capabilities,
+				autostart = true,
+				flags = {
+					debounce_text_changes = 150, -- This is default in neovim 0.7+
+				},
+			}, opts)
 
-		opts = util.merge({
-			-- Use LspAttach autocmd insteads of on_attach function
-			-- on_attach = function(client, bufnr) end,
-			capabilities = capabilities,
-			autostart = true,
-			flags = {
-				debounce_text_changes = 150, -- This is default in neovim 0.7+
-			},
-		}, opts)
+			-- :h lspconfig-setup
+			lspconfig[serverName].setup(opts)
+		end,
 
-		-- :h lspconfig-setup
-		lspconfig[name].setup(opts)
-	end
+		-- Next, you can provide a dedicated handler for specific servers.
+		-- For example, a handler override for the `rust_analyzer`:
+		-- ['rust_analyzer'] = function()
+		-- 	require('rust-tools').setup {}
+		-- end,
+	}
 end
 
 M.signs = function()
