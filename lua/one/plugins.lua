@@ -3,6 +3,7 @@ return function(Plug, Load, config)
 	Plug { 'adoyle-h/one.nvim', desc = 'The one.nvim' }
 
 	------- Basic required plugins -------
+	Load 'noice-fix'
 	Load 'vim-options'
 	Plug { 'lunarmodules/Penlight', id = 'pl' }
 	Load 'plenary'
