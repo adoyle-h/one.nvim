@@ -208,8 +208,8 @@ Or press `:h one-keymaps` to see the keymaps document.
 - `<space>j` = Show jumplists
 - `<space>v` = Find vim options
 - `<space>r` = Show recently opened files
-- `<space>N` = Find notifications
-- `<space>n` = Toggle messages (Default use telescope, if you enabled noice plugin, it will use noice)
+- `<space>N` = Find notifications (messages from `vim.notify` and `:Notify`)
+- `<space>n` = Toggle messages window (Default use telescope, if you enabled noice plugin, it will use noice)
 - `<space>t` = List all terminal windows
 - `<space>T` = List todo comments
 - `<space>ls` = Lists LSP document symbols in the current buffer
@@ -445,6 +445,12 @@ If bufferline plugin enabled, some keymaps will be overridden. See [Buffer Line]
 
 - `<Enter>` in trouble window = jump to file
 - `o` in trouble window = jump to file and auto close trouble window (See https://github.com/folke/trouble.nvim/issues/15)
+
+## Message
+
+- `<space>N` = Find notifications (messages from `vim.notify` and `:Notify`)
+- `<space>n` = Toggle messages window (Default use telescope, if you enabled noice plugin, it will use noice)
+- `<M-n>` = Clean all visible messages
 
 ## Uncategory
 

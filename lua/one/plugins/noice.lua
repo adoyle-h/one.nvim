@@ -23,6 +23,13 @@ local M = {
 				end
 			end,
 		},
+
+		{
+			'',
+			'<M-n>',
+			':Noice dismiss<CR>',
+			{ desc = 'Clean all visible messages', silent = true },
+		},
 	},
 
 	highlights = function(config)
