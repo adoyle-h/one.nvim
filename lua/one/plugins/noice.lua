@@ -357,7 +357,7 @@ M.defaultConfig = function()
 
 					size = {
 						max_height = math.ceil(0.2 * vim.o.lines),
-						max_width = math.ceil(0.5 * vim.o.columns),
+						max_width = math.ceil(0.9 * vim.o.columns),
 						min_width = 30,
 						width = 'auto',
 						height = 'auto',
