@@ -45,7 +45,7 @@ end
 M.defaultConfig = {
 	'lsp',
 	{
-		log = { level = 'ERROR' }, -- 'TRACE', 'DEBUG', 'INFO', 'WARN', 'ERROR', 'OFF'
+		log = { level = 'WARN' }, -- 'TRACE', 'DEBUG', 'INFO', 'WARN', 'ERROR', 'OFF'
 
 		masonLspconfig = { automatic_installation = false },
 
