@@ -25,7 +25,7 @@ default.opt = {
 
 	-- Default nvim statusline (If statusline plugin disabled)
 	statusline = '▌%{toupper(mode())}▐ %F%m%r%h%w │ %2p%% %l/%L %-2v │ ts:%{&ts} sw:%{&sw} ft:%Y ff:%{&ff} │ %{&encoding}',
-	shortmess = 'ilmnrxsW', -- helps to avoid all the hit-enter prompts caused by file messages
+	shortmess = 'ilmnrxsWF', -- helps to avoid all the hit-enter prompts caused by file messages
 	showmode = true,
 
 	cmdheight = 2, -- cmd line height. :h 'cmdheight'
