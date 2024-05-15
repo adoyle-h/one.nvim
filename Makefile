@@ -22,12 +22,12 @@ check-style:
 BUMP_TARGETS := $(addprefix bump-,major minor patch)
 .PHONY: $(BUMP_TARGETS)
 $(BUMP_TARGETS):
-	@$(MAKE) $(subst bump-,semver-,$@) > VERSION
+	@$(MAKE) -s $(subst bump-,semver-,$@) > VERSION
 
 .PHONY: changelog
 # @desc Generate and update the CHANGELOG file
 changelog:
-	$(MAKE) CHANGELOG NEXT_VERSION=$(shell cat VERSION)
+	$(MAKE) -s CHANGELOG NEXT_VERSION=$(shell cat VERSION)
 
 .PHONY: vimdoctags
 vimdoctags:

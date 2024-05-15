@@ -10,7 +10,26 @@ You can use `:OneUpdate` to update one.nvim to latest. Please read [the "Update"
 
 ## [Unreleased]
 
-[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v5.0.0...HEAD)
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v5.1.0...HEAD)
+
+
+<a name="v5.1.0"></a>
+## v5.1.0 (2024-05-16 01:22:17 +08:00)
+
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v5.0.0...v5.1.0)
+
+### New Features
+
+- **telescope**: add keymaps for move the cusror, preview window and results window ([fd58b92](https://github.com/adoyle-h/one.nvim/commit/fd58b922d65fd06cf03df87be1e2ba152d40eaf7))
+
+### Bug Fixes
+
+- don't give the file info when editing a file ([ea598e4](https://github.com/adoyle-h/one.nvim/commit/ea598e4900f5dc6e1710ccda4e75ec9080e0231e))
+- Newly installed LSP without having to restart Neovim ([faeb4ec](https://github.com/adoyle-h/one.nvim/commit/faeb4ec7963958122e8ea03673925e1cbeb1a046))
+- **lsp**: change log level: ERROR => WARN ([689a5e7](https://github.com/adoyle-h/one.nvim/commit/689a5e7e0ff82a315ac986dded77da1de92855f2))
+  > `:LspLog` will contain WARN level logs
+- **noice**: add keymap "`<M-n>`" to clean all visible messages ([a2da095](https://github.com/adoyle-h/one.nvim/commit/a2da095388a27a1776c7ac59c1f2f46af66b7a54))
+- **noice**: change the max-width of message window from 50% to 90% ([7469e7a](https://github.com/adoyle-h/one.nvim/commit/7469e7a69dbdb8f44edf0211c2d369e9e40e70ed))
 
 
 <a name="v5.0.0"></a>
