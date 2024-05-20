@@ -107,7 +107,7 @@ space_around_assign_operator = true
 
 # [align]
 
-align_call_args = true
+align_call_args = false
 
 align_function_params = false
 
