@@ -47,4 +47,11 @@ return {
 			},
 		},
 	},
+
+	highlights = {
+		MatchParen = {
+			fg = '#79c0ff',
+			reverse = true,
+		},
+	},
 }
