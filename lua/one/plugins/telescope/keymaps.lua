@@ -1,11 +1,12 @@
 return function()
 	local util = require('one.util')
 	local tb = require('telescope.builtin')
+	local te = require('telescope').extensions
 	local opts = { silent = true }
 
 	local map = {
 
-		{ 'n', '<space>;', require('telescope').extensions.find_pickers.find_pickers },
+		{ 'n', '<space>;', te.find_pickers.find_pickers },
 		{ 'n', '<space>f', ':Telescope find_files<cr>', opts },
 		{ 'n', '<space>n', ':Telescope message<cr>', opts },
 
@@ -50,8 +51,11 @@ return function()
 			{ silent = true, desc = 'Fuzzy find content with selection in workspace' },
 		},
 
-		{ 'n', '<space>p', ':Telescope commands<cr>', opts },
-		{ 'v', '<space>p', tb.commands, { silent = true, desc = 'List commands with selection' } },
+		{ 'n', '<space>p', ':Telescope cmdline<cr>', opts },
+		{ 'v', '<space>p', function()
+			local text = util.getVisualSelection()
+			te.cmdline.cmdline({ default_text = text })
+		end, { silent = true, desc = 'List commands with selection' } },
 
 		-- Press '<Enter>' to execute command immediately.
 		-- Press '<Ctrl-e>' to edit command in terminal mode.
