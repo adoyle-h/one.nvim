@@ -36,10 +36,22 @@ local function keymapCopy(state)
 		'5. Filename without extension: ' .. results[5],
 		'6. Extension of the filename: ' .. results[6],
 	}, { prompt = 'Choose to copy to clipboard:' }, function(choice)
+		if not choice then return end
 		local i = tonumber(choice:sub(1, 1))
 		local result = results[i]
-		vim.fn.setreg('"', result)
-		vim.notify('Copied: ' .. result)
+
+		vim.ui.select({
+			'Copy to nvim clipboard',
+			'Copy to system clipboard',
+		}, { prompt = 'Copy to' }, function(r)
+			if not r then return end
+			if r == 'Copy to nvim clipboard' then
+				vim.fn.setreg('"', result)
+			else
+				vim.fn.setreg('+', result)
+			end
+			vim.notify('Copied: ' .. result)
+		end)
 	end)
 end
 
