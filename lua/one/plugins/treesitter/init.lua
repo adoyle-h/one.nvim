@@ -8,7 +8,6 @@ local M = {
 	deps = {
 		require('one.plugins.treesitter.context'),
 		require('one.plugins.treesitter.rainbow'),
-		require('one.plugins.treesitter.pairs'),
 		require('one.plugins.treesitter.playground'),
 	},
 

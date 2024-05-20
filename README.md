@@ -32,7 +32,7 @@ All-in-one neovim configuration framework implemented with Lua. It is highly fle
   - Fuzzy Finding: [telescope](lua/one/plugins/telescope/main.lua) and [ctrlsf](lua/one/plugins/search/ctrlsf.lua)
   - Diagnostics Window: [trouble](lua/one/plugins/trouble.lua)
   - Undo: [vim-mundo](lua/one/plugins/undotree.lua)
-  - Syntax Highlight: [treesitter][] and [nvim-ts-rainbow](lua/one/plugins/treesitter/rainbow.lua) and [nvim-treesitter-pairs](lua/one/plugins/treesitter/pairs.lua)
+  - Syntax Highlight: [treesitter][] and [nvim-ts-rainbow](lua/one/plugins/treesitter/rainbow.lua)
   - Highlight Words: [vim-interestingwords](lua/one/plugins/highlight-words.lua)
   - Code Comment: [Comment.nvim](lua/one/plugins/comment.lua) (default) or [nerdcommenter](lua/one/plugins/comment_nerd.lua)
   - LSP: [nvim-lspconfig](lua/one/plugins/lsp/main.lua) and [treesitter](lua/one/plugins/treesitter/init.lua) and [null-ls](lua/one/plugins/lsp/null-ls.lua) and [nlsp](lua/one/plugins/lsp/nlsp.lua) and [goto-preview](lua/one/plugins/lsp/preview.lua) and [lsp-toggle](https://github.com/adoyle-h/lsp-toggle.nvim)

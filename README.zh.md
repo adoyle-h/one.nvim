@@ -32,7 +32,7 @@
   - 模糊查找: [telescope](lua/one/plugins/telescope/main.lua) 与 [ctrlsf](lua/one/plugins/search/ctrlsf.lua)
   - Diagnostics 窗口: [trouble](lua/one/plugins/trouble.lua)
   - 撤销: [vim-mundo](lua/one/plugins/undotree.lua)
-  - 语法高亮: [treesitter][] 与 [nvim-ts-rainbow](lua/one/plugins/treesitter/rainbow.lua) 与 [nvim-treesitter-pairs](lua/one/plugins/treesitter/pairs.lua)
+  - 语法高亮: [treesitter][] 与 [nvim-ts-rainbow](lua/one/plugins/treesitter/rainbow.lua)
   - 单词高亮: [vim-interestingwords](lua/one/plugins/highlight-words.lua)
   - 注释代码: [Comment.nvim](lua/one/plugins/comment.lua) (默认) 或 [nerdcommenter](lua/one/plugins/comment_nerd.lua)
   - LSP: [nvim-lspconfig](lua/one/plugins/lsp/main.lua) 与 [treesitter](lua/one/plugins/treesitter/init.lua) 与 [null-ls](lua/one/plugins/lsp/null-ls.lua) 与 [nlsp](lua/one/plugins/lsp/nlsp.lua) 与 [goto-preview](lua/one/plugins/lsp/preview.lua) 与 [lsp-toggle](https://github.com/adoyle-h/lsp-toggle.nvim)
