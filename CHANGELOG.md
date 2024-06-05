@@ -10,7 +10,26 @@ You can use `:OneUpdate` to update one.nvim to latest. Please read [the "Update"
 
 ## [Unreleased]
 
-[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v5.1.0...HEAD)
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v5.2.0...HEAD)
+
+
+<a name="v5.2.0"></a>
+## v5.2.0 (2024-05-21 01:24:24 +08:00)
+
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v5.1.0...v5.2.0)
+
+### New Features
+
+- reverse highlight of matched brackets and  language-specific keywords ([bc24d43](https://github.com/adoyle-h/one.nvim/commit/bc24d43f8174b16394da6242a107fba8d9203839))
+
+### Bug Fixes
+
+- **neo-tree**: When press "Y", user can choose copy to nvim or system clipboard ([d2ff1eb](https://github.com/adoyle-h/one.nvim/commit/d2ff1eb991e8ec7451137a49ff08cd0c5b8f2276))
+  > and fix error when Ctrl-c pressed with selection
+- **rainbow**: nvim-ts-rainbow is achieved, use rainbow-delimiters.nvim instead of ([8e459f9](https://github.com/adoyle-h/one.nvim/commit/8e459f99bec37c8b902985f6fec1a711aafba26a))
+  > User should install rainbow-delimiters.nvim via plugin manager
+- **telescope**: <space>p will show all commands and builtin ex commands ([0be1c8e](https://github.com/adoyle-h/one.nvim/commit/0be1c8e7a5d57cfa4ad53e0a5366c35f8a4c2091))
+  > User should upgrade ad-telescope-extensions.nvim and telescope-extension-maker.nvim to latest
 
 
 <a name="v5.1.0"></a>
