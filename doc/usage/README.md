@@ -10,6 +10,8 @@ Tricks for debug. Such as disable all plugins.
 
 ## [Commands](./commands.md)
 
+## [Colors and Highlights](../colors.md)
+
 ## [Filetypes](./filetypes.md)
 
 ## [Snippets](./snippet.md)
@@ -133,6 +135,18 @@ You can change it to other variable name as you like.
 Or set `false` or `nil` to prevent creating this global variable.
 
 That's cool, isn't it?
+
+## Startup Time
+
+```lua
+require('one').setup {
+  plugins = {
+    { 'profiling', disable = false }, -- This plugin is disabled in default
+  }
+}
+```
+
+Enable [profiling](../../lua/one/plugins/profiling.lua) plugin, and invoke `:StartupTime` in nvim. It will print each time on startup.
 
 
 <!-- links -->

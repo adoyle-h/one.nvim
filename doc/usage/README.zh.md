@@ -10,6 +10,8 @@ Debug 技巧。例如禁用所有插件。
 
 ## [命令](./commands.md)
 
+## [颜色和高亮](../colors.zh.md)
+
 ## [文件格式 (Filetype)](./filetypes.md)
 
 ## [代码片段 (Snippet)](./snippet.md)
@@ -132,6 +134,18 @@ require('one').setup {
 可以改成其他变量名，随你喜欢。或者设置 `false` 或 `nil`，不创建该全局变量。
 
 这很酷，不是吗？
+
+## 启动时间
+
+```lua
+require('one').setup {
+  plugins = {
+    { 'profiling', disable = false }, -- 该插件默认禁用
+  }
+}
+```
+
+启动 [profiling](../../lua/one/plugins/profiling.lua) 插件，nvim 启动后调用 `:StartupTime`。将会输出启动阶段的用时。
 
 
 <!-- links -->

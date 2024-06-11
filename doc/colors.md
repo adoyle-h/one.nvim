@@ -1,5 +1,7 @@
 # Colors and Highlights
 
+[English](./colors.md) | [中文](./colors.zh.md)
+
 You can change the colors and highlights.
 
 ## Color Design Principles
@@ -83,9 +85,9 @@ require('one').setup {
 
 ## The syntax highlights
 
-The syntax is parsed by [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter). The nvim-treesitter will set highlights for each syntax. See the [treesitter highlights](../lua/one/plugins/treesitter/highlights.lua) and [colors/highlights](../lua/one/plugins/colors/highlights.lua).
+It's highly dependent on [nvim-treesitter][]. The nvim-treesitter will set highlights for each syntax. See the [treesitter highlights](../lua/one/plugins/treesitter/highlights.lua) and [colors/highlights](../lua/one/plugins/colors/highlights.lua).
 
-Use `:TSHighlightCapturesUnderCursor` to view the highlight group of word under cursor.
+If syntax highlights not work, try to reinstall your [treesitter parsers](https://github.com/nvim-treesitter/nvim-treesitter#language-parsers). Read [doc/treesitter.md](./treesitter.md) for troubleshooting.
 
 ### NOTE: these syntax highlights are disabled for treesitter
 
@@ -177,3 +179,9 @@ require('one').setup {
 ```
 
 But some places do not look good, that you need to solve them by yourself.
+
+
+
+<!-- links -->
+
+[nvim-treesitter]: https://github.com/nvim-treesitter/nvim-treesitter

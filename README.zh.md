@@ -9,9 +9,9 @@
 - 用 Lua 管理 nvim 配置。所有配置项都可覆盖。详见[配置章节](#配置)。
 - 充分使用 Neovim 功能：Native LSP、Float Window、Winbar。
 - 支持的插件管理器：[lazy.nvim][], [vim-plug](https://github.com/junegunn/vim-plug), [packer.nvim][]。详见[插件管理器](#插件管理器)。
-- 帅气的界面和配色。暗黑模式。支持真彩色、平滑滚动、滚动条、Dashboard。你可以修改任意配色。详见 [颜色和高亮](#颜色和高亮)。
+- 帅气的界面和配色。暗黑模式。支持真彩色、平滑滚动、滚动条、Dashboard。你可以修改任意配色。详见 [颜色和高亮](./doc/colors.zh.md)。
 - 支持配置 github 代理，在中国大陆可加快插件下载速度。详见[代理](./doc/usage/proxy.zh.md)。
-- 集成了 120 多个 Vim/Nvim 插件。增强插件的使用体验，并且修复了一些插件的缺点。
+- 集成了 130 多个 Vim/Nvim 插件。增强插件的使用体验，并且修复了一些插件的缺点。
 
   <details close>
   <summary>点击展开/折叠插件列表</summary>
@@ -160,6 +160,8 @@ one.nvim 源码不由插件管理器管理。
 
 ## [常见问题](./doc/faq/README.md)
 
+## [注意事项](./doc/note.md)
+
 ## 配置
 
 ```lua
@@ -204,36 +206,12 @@ require('one').setup {
 
 你可以调用 `:OneShowPlugins` 查看加载的和未加载的插件。
 
-## 颜色和高亮
-
-本项目高度依赖 [treesitter][]。如果语法高亮失效，检查你的 [treesitter parsers](https://github.com/nvim-treesitter/nvim-treesitter#language-parsers) 是否正常。
-阅读 [./doc/treesitter.md](./doc/treesitter.md) 查看如何排查。
-
-你可以修改默认配色和高亮。
-阅读 [./doc/colors.md](./doc/colors.md) 查看更多细节。
-
-### 色彩空间
-
-本项目的颜色是根据 [Display P3](https://www.color.org/chardata/rgb/DisplayP3.xalter) 色彩空间设计的。对于 MacOS 系统和 iTerm2 用户友好。
-
-如果你的 nvim 配色看起来跟下图有点不一样。你的终端应该不是处于 Display P3 色彩空间。
-你可以尝试 [sRGB 配色](lua/one/colors/srgb.lua)。详见[颜色 - 色彩空间](./doc/colors.md#color-space)。
-
-<img src="https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/colors.png" height="400px" />
-
-什么是色彩空间？可参考[这篇文章](https://adoyle.me/Today-I-Learned/design/color-space.html)。
-
-## 注意
-
-`$VIMRUNTIME/filetype.vim` 不会被调用，文件类型设置请见 [./lua/one/plugins/filetype.lua](./lua/one/plugins/filetype.lua)。
-
-其他注意事项见 [./doc/note.md](./doc/note.md)。
-
 ## [使用](./doc/usage/README.zh.md)
 
 - [Debug](./doc/usage/debug.md)
 - [快捷键](./doc/usage/keymaps.zh.md)
 - [命令](./doc/usage/commands.md)
+- [颜色和高亮](./doc/colors.zh.md)
 - [代码片段 (Snippets)](./doc/usage/snippet.md)
 - [LSP](./doc/usage/README.zh.md#lsp)
 - [代码格式化](./doc/usage/README.zh.md#代码格式化)
@@ -243,6 +221,7 @@ require('one').setup {
 - [未加载的插件](./doc/usage/README.zh.md#未加载的插件)
 - [扩展你自己的插件、高亮、命令等配置](./doc/usage/README.zh.md#扩展你自己的插件高亮命令等配置)
 - [全局变量](./doc/usage/README.zh.md#全局变量)
+- [启动时间](./doc/usage/README.zh.md#启动时间)
 - [代理](./doc/usage/proxy.zh.md)
 
 ## API
@@ -282,18 +261,6 @@ require('one').setup {
 │           └── packer.lua   // Wrapper for packer.nvim
 └── scripts/                 // scripts for building project
 ```
-
-## 启动时间
-
-```lua
-require('one').setup {
-  plugins = {
-    { 'profiling', disable = false }, -- 该插件默认禁用
-  }
-}
-```
-
-启动 [profiling](./lua/one/plugins/profiling.lua) 插件，nvim 启动后调用 `:StartupTime`。将会输出启动阶段的用时。
 
 ## 提建议，修 Bug，做贡献
 

@@ -1,4 +1,4 @@
-# treesitter
+# Treesitter
 
 ## checkhealth
 
@@ -16,3 +16,7 @@ If you want to reinstall a parser, call `:TSUninstall {language}` and `:TSInstal
 
 All parsers installed in `nvim-treesitter/parser/`. `:TSUninstall` will remove `nvim-treesitter/parser/{language}.so` file.
 If you trapped in treesitter parsers, try to remove the `nvim-treesitter/parser-info/{language}.revision` as well.
+
+## Find TSHighlightCaptures
+
+Use `:TSHighlightCapturesUnderCursor` to view the highlight group of word under cursor.

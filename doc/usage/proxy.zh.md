@@ -1,5 +1,7 @@
 # 代理
 
+[English](./proxy.md) | [中文](./proxy.zh.md)
+
 ```lua
 require('one').setup {
   config = {

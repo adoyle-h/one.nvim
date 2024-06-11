@@ -9,9 +9,9 @@ All-in-one neovim configuration framework implemented with Lua. It is highly fle
 - All in Lua. All configs can be overridden. Read [Configuration](#configuration).
 - Use many Neovim features: Native LSP, Float Window, Winbar.
 - The supported plugin managers: [lazy.nvim][], [vim-plug](https://github.com/junegunn/vim-plug) and [packer.nvim][]. Read [Plugin Manager](#plugin-manager).
-- Awesome UI and color schema. Dark Mode. Support True-Color, Smooth-Scroll, Scrollbar, Dashboard. You can change colors and highlights. Read [Colors and Highlights](#colors-and-highlights).
+- Awesome UI and color schema. Dark Mode. Support True-Color, Smooth-Scroll, Scrollbar, Dashboard. You can change colors and highlights. Read [Colors and Highlights](./doc/colors.md).
 - Configurable proxy for fast git download in China Mainland. Read [Proxy](./doc/usage/proxy.md).
-- Integrated 120+ powerful Vim/Nvim plugins. Enhancing the usage experience, and fixed some shortcomings of these plugins.
+- Integrated 130+ powerful Vim/Nvim plugins. Enhancing the usage experience, and fixed some shortcomings of these plugins.
 
   <details close>
   <summary>Click to expend/collapse plugin list</summary>
@@ -158,6 +158,8 @@ You can update them by lua functions or commands.
 
 ## [FAQ](./doc/faq/README.md)
 
+## [Notice](./doc/note.md)
+
 ## Configuration
 
 ```lua
@@ -203,34 +205,12 @@ You can even set `onlyPlugins = {}` to disable all plugins. Read [Debug - Disabl
 
 You can invoke `:OneShowPlugins` to view disabled and enabled plugins.
 
-## Colors and Highlights
-
-It's highly dependent on [treesitter][]. If syntax highlights not work, check your [treesitter parsers](https://github.com/nvim-treesitter/nvim-treesitter#language-parsers) correct.
-Read [./doc/treesitter.md](./doc/treesitter.md) for troubleshooting.
-
-You can override the default colors and highlights.
-Read [./doc/colors.md](./doc/colors.md) for more details.
-
-### Color Space
-
-The colors are desiged based on [Display P3](https://www.color.org/chardata/rgb/DisplayP3.xalter) color space. It works for MacOS and iTerm2 users.
-
-If your nvim colors looks different from below picture. Your terminal is not under Display P3 color space.
-You may try [sRGB colors](lua/one/colors/srgb.lua). Read [Colors - Color Space](./doc/colors.md#color-space) for details.
-
-<img src="https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/colors.png" height="400px" />
-
-## Notice
-
-`$VIMRUNTIME/filetype.vim` won't be loaded. Filetype detected in [./lua/one/plugins/filetype.lua](./lua/one/plugins/filetype.lua)。
-
-Read [./doc/note.md](./doc/note.md) for other notes.
-
 ## [Usage](./doc/usage/README.md)
 
 - [Debug](./doc/usage/debug.md)
 - [Keymaps](./doc/usage/keymaps.md)
 - [Commands](./doc/usage/commands.md)
+- [Colors and Highlights](./doc/colors.md)
 - [Snippets](./doc/usage/snippet.md)
 - [LSP](./doc/usage/README.md#lsp)
 - [Code Format](./doc/usage/README.md#code-format)
@@ -240,6 +220,7 @@ Read [./doc/note.md](./doc/note.md) for other notes.
 - [Unloaded Plugins](./doc/usage/README.md#unloaded-plugins)
 - [Extend your plugins/highlights/commands and so on](./doc/usage/README.md#extend-your-pluginshighlightscommands-and-so-on)
 - [Global Variable](./doc/usage/README.md#global-variable)
+- [Startup Time](./doc/usage/README.md#startup-time)
 - [Proxy](./doc/usage/proxy.md)
 
 ## API
@@ -279,18 +260,6 @@ Just read [codes](./lua/one/init.lua).
 │           └── packer.lua   // Wrapper for packer.nvim
 └── scripts/                 // scripts for building project
 ```
-
-## Startup Time
-
-```lua
-require('one').setup {
-  plugins = {
-    { 'profiling', disable = false }, -- This plugin is disabled in default
-  }
-}
-```
-
-Enable [profiling](./lua/one/plugins/profiling.lua) plugin, and invoke `:StartupTime` in nvim. It will print each time on startup.
 
 ## Suggestion, Bug Reporting, Contributing
 
