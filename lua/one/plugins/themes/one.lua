@@ -79,6 +79,9 @@ M.highlights = function(config)
 		CursorLineNr = { bg = c.cursorLineNrBG, fg = c.cursorLineNrFG }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
 		CursorLineNrNC = { bg = c.NC_BG, fg = c.grey }, -- CursorLineNr for inactive windows
 		CursorLineNrNCQuickFix = { bg = c.NC_BG, fg = c.cursorLineNrFG }, -- CursorLineNr for inactive quickfix windows
+		Added = { fg = c.green }, -- Override neovim default colorscheme habamax
+		Changed = { fg = c.yellow }, -- Override neovim default colorscheme habamax
+		Removed = { fg = c.red }, -- Override neovim default colorscheme habamax
 		Directory = { fg = c.blue }, -- directory names (and other special names in listings)
 		DiffAdd = c.diff.add, -- diff mode: Added line |diff.txt|
 		DiffChange = c.diff.change, -- diff mode: Changed line |diff.txt|
