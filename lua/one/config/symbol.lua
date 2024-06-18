@@ -34,15 +34,19 @@ return {
 		EXPANDED_L = '',
 		COLLAPSED_L = '',
 		EXECUTABLE = '✦',
+		FOLDER_CLOSED = '󰉋',
+		FOLDER_OPEN = '󰝰',
+		FOLDER_EMPTY = '',
+		FILE = '󰈙',
 	},
 
 	kindSymbolMap = {
 		Array = '󰅪', -- 
-		Boolean = '◩', -- 
+		Boolean = '󰨙', --  ◩
 		Class = '󰠱', -- 
 		Collapsed = '',
 		Color = '󰏘',
-		Constant = '',
+		Constant = '󰏿', -- 
 		Constructor = '🄲',
 		Enum = '',
 		EnumMember = '',
@@ -55,7 +59,7 @@ return {
 		Keyword = '󰌋', -- 
 		Method = '󰊕',
 		Module = '',
-		Namespace = '',
+		Namespace = '󰦮', -- 
 		Null = '∅',
 		Number = '󰎠',
 		Object = '󰅩',
@@ -64,8 +68,8 @@ return {
 		Property = '',
 		Reference = '󰈇',
 		Snippet = '',
-		String = '',
-		Struct = '',
+		String = '', -- 
+		Struct = '', -- 󰆼
 		Text = '󰉿',
 		TypeParameter = '', -- '󰊄'
 		Unit = '󰑭',

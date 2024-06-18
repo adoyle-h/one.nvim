@@ -162,18 +162,18 @@ M.defaultConfig = function(config)
 					highlight = 'NeoTreeIndentMarker',
 					-- expander config, needed for nesting files
 					with_expanders = nil, -- if nil and file nesting is enabled, will enable expanders
-					expander_collapsed = '',
-					expander_expanded = '',
+					expander_collapsed = symbols.COLLAPSED_L,
+					expander_expanded = symbols.EXPANDED_L,
 					expander_highlight = 'NeoTreeExpander',
 				},
 
 				icon = {
-					folder_closed = '󰉋',
-					folder_open = '󰝰',
-					folder_empty = '',
+					folder_closed = symbols.FOLDER_CLOSED,
+					folder_open = symbols.FOLDER_OPEN,
+					folder_empty = symbols.FOLDER_EMPTY,
 					-- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
 					-- then these will never be used.
-					default = '󰈙',
+					default = symbols.FILE,
 					highlight = 'NeoTreeFileIcon',
 				},
 
