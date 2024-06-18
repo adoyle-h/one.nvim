@@ -10,7 +10,29 @@ You can use `:OneUpdate` to update one.nvim to latest. Please read [the "Update"
 
 ## [Unreleased]
 
-[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v5.2.0...HEAD)
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v5.2.1...HEAD)
+
+
+<a name="v5.2.1"></a>
+## v5.2.1 (2024-06-18 17:38:25 +08:00)
+
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v5.2.0...v5.2.1)
+
+### Bug Fixes
+
+- do not split the preview window when substitute ([a7ca3de](https://github.com/adoyle-h/one.nvim/commit/a7ca3deb0e777db0752fdaaebd6e08a4475beb0b))
+- trouble.nvim v3 has many breaking changes ([417cb3e](https://github.com/adoyle-h/one.nvim/commit/417cb3e2ed19bf2cc019056c48f71391f9c9c5ac))
+  > Please upgrade trouble.nvim to latest.
+  > 
+  > see https://github.com/folke/trouble.nvim/releases/tag/v3.0.0
+- **color**: set highlights Added/Changed/Removed ([b630277](https://github.com/adoyle-h/one.nvim/commit/b630277330bd1d0c7c220503714d3c9cd1a9e6c9))
+  > Since neovim 0.10, it uses new default colorscheme "habamax",
+  > which breaks legacy vim colorscheme.
+- **config**: update symbols ([c6eceb4](https://github.com/adoyle-h/one.nvim/commit/c6eceb44b94a85a4a48bb280dd3e6e6b0e0d2626))
+
+### Document Changes
+
+- better documents ([ead058f](https://github.com/adoyle-h/one.nvim/commit/ead058fa1c94c35b9fafe7046004d385d9c960f9))
 
 
 <a name="v5.2.0"></a>
