@@ -111,7 +111,7 @@ default.opt = {
 	-- Searching
 	ignorecase = true, -- case insensitive searching
 	smartcase = true, -- case-sensitive if expresson contains a capital letter
-	inccommand = 'split', -- neovim feature: live preview
+	inccommand = 'nosplit', -- neovim feature: live preview
 
 	-- Error Bell
 	errorbells = false,
