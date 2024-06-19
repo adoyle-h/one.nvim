@@ -6,7 +6,7 @@ The format is inspired by [Keep a Changelog](http://keepachangelog.com/en/1.0.0/
 
 The versions follow the rules of [Semantic Versioning 2.0.0](http://semver.org/spec/v2.0.0.html).
 
-You can use `:OneUpdate` to update one.nvim to latest. Please read [the "Update"](./README.md#Update) for details.
+You can use `:OneUpdate` to update one.nvim to latest. Please read [the "Update"](./README.md#update) for details.
 
 ## [Unreleased]
 
