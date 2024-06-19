@@ -10,7 +10,20 @@ You can use `:OneUpdate` to update one.nvim to latest. Please read [the "Update"
 
 ## [Unreleased]
 
-[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v5.2.1...HEAD)
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v5.2.2...HEAD)
+
+
+<a name="v5.2.2"></a>
+## v5.2.2 (2024-06-19 20:17:37 +08:00)
+
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v5.2.1...v5.2.2)
+
+### Bug Fixes
+
+- dressing.nvim has a breaking change ([17def1b](https://github.com/adoyle-h/one.nvim/commit/17def1b505e4eb8f9d5c6cac035eafe25a106985))
+  > See https://github.com/stevearc/dressing.nvim/commit/cd895f511fc8bd841324c73feb2b9c791b946691
+- use folke/noice.nvim instead of adoyle-h/noice.nvim ([ed04251](https://github.com/adoyle-h/one.nvim/commit/ed04251aed2fbe948dfea7875b321bd463c11b48))
+  > User should reinstall noice.nvim
 
 
 <a name="v5.2.1"></a>
