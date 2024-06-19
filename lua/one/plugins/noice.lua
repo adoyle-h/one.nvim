@@ -1,8 +1,5 @@
 local M = {
-	-- @TODO https://github.com/folke/noice.nvim/pull/796 and https://github.com/folke/noice.nvim/pull/796
-	-- 'folke/noice.nvim'
-	'adoyle-h/noice.nvim',
-	branch = 'a',
+	'folke/noice.nvim',
 	id = 'noice',
 	event = 'VeryLazy',
 
