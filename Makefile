@@ -23,6 +23,14 @@ BUMP_TARGETS := $(addprefix bump-,major minor patch)
 .PHONY: $(BUMP_TARGETS)
 $(BUMP_TARGETS):
 	@$(MAKE) -s $(subst bump-,semver-,$@) > VERSION
+	@$(MAKE) -s changelog
+	@git add .
+	@git commit -m "bump: $(subst bump-,,$@) version"
+	@$(MAKE) -s new-tag
+
+.PHONY: new-tag
+new-tag:
+	@git tag v$(shell cat VERSION)
 
 .PHONY: changelog
 # @desc Generate and update the CHANGELOG file
