@@ -18,9 +18,6 @@ return {
 				-- Can be 'left', 'right', or 'center'
 				prompt_align = 'left',
 
-				-- When true, <Esc> will close the modal
-				insert_only = true,
-
 				-- When true, input will start in insert mode.
 				start_in_insert = true,
 
@@ -47,6 +44,7 @@ return {
 				mappings = {
 					n = { ['<Esc>'] = 'Close', ['<CR>'] = 'Confirm' },
 					i = {
+						['<Esc>'] = 'Close',
 						['<C-c>'] = 'Close',
 						['<CR>'] = 'Confirm',
 						['<Up>'] = 'HistoryPrev',
