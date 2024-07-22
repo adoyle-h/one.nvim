@@ -148,13 +148,9 @@ Function signature completion
 
 ## Update
 
-The source codes of one.nvim is not managed by plugin manager.
+You can update the one.nvim via plugin manager or commands `:OneUpdate one` or `:lua one.update('one')`.
 
-You can update them by lua functions or commands.
-
-- Update one.nvim: `:OneUpdate one` or `:lua one.update('one')`
-- Update pm: `:OneUpdate pm` or `:lua one.update('pm')`
-- Update all (one.nvim + pm): `:OneUpdate` or `:OneUpdate all` or `:lua one.update()`
+Please submit [issue][] when encounter problems after updating.
 
 ## [FAQ](./doc/faq/README.md)
 
@@ -286,3 +282,4 @@ Read the [NOTICE][] file distributed with this work for additional information r
 [packer.nvim]: https://github.com/wbthomason/packer.nvim
 [treesitter]: https://github.com/nvim-treesitter/nvim-treesitter
 [lazy.nvim]: https://github.com/folke/lazy.nvim
+[issue]: https://github.com/adoyle-h/one.nvim/issues

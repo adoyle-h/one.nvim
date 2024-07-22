@@ -150,13 +150,9 @@ require('one').setup { plugins = { 'noice', disable = true } }
 
 ## 更新
 
-one.nvim 源码不由插件管理器管理。
+你可以通过插件管理器更新 one.nvim。或命令 `:OneUpdate one` 或 `:lua one.update('one')` 也可更新。
 
-你可以使用 lua 函数或者命令来更新它们。
-
-- 更新 one.nvim: `:OneUpdate one` 或 `:lua one.update('one')`
-- 更新 pm: `:OneUpdate pm` 或 `:lua one.update('pm')`
-- 更新所有 (one.nvim + pm): `:OneUpdate` 或 `:OneUpdate all` 或 `:lua one.update()`
+如果更新后遇到问题请提交 [issue][]。
 
 ## [常见问题](./doc/faq/README.md)
 
@@ -287,3 +283,4 @@ Read the [NOTICE][] file distributed with this work for additional information r
 [packer.nvim]: https://github.com/wbthomason/packer.nvim
 [treesitter]: https://github.com/nvim-treesitter/nvim-treesitter
 [lazy.nvim]: https://github.com/folke/lazy.nvim
+[issue]: https://github.com/adoyle-h/one.nvim/issues

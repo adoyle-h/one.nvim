@@ -3,15 +3,10 @@ local function make()
 
 	local IS_WINDOWS = vim.fn.has('win32') == 1 or vim.fn.has('win32unix') == 1
 	local PATH_SEPARATOR = '/'
-
-	local ONE_DIR
-	if vim.env.XDG_DATA_HOME then
-		ONE_DIR = vim.env.XDG_DATA_HOME .. '/nvim/site/pack/user/start/one.nvim'
-	else
-		ONE_DIR = vim.env.HOME .. '/.local/share/nvim/site/pack/user/start/one.nvim'
-	end
-
 	if IS_WINDOWS == true then PATH_SEPARATOR = '\\' end
+
+	local XDG_DATA_HOME = vim.fn.join({ vim.env.XDG_DATA_HOME or vim.env.HOME, '.local', 'share' }, PATH_SEPARATOR)
+	local ONE_DIR = vim.fn.join({ XDG_DATA_HOME, '/nvim/plugins/one.nvim' }, PATH_SEPARATOR)
 
 	return {
 		IS_WINDOWS = IS_WINDOWS,

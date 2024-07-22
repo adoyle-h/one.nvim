@@ -1,4 +1,4 @@
-local M = { 'one', desc = 'One.nvim functions and commands' }
+local M = { 'one', desc = 'The functions and commands provided by one.nvim' }
 
 local One = require('one.one')
 

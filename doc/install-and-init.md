@@ -28,9 +28,9 @@ The versions follow the rules of [Semantic Versioning 2.0.0](http://semver.org/s
 ## git clone
 
 ```sh
-PACK_DIR=${XDG_DATA_HOME:-$HOME/.local/share}/nvim/site/pack/user/start
-mkdir -p "$PACK_DIR"
-git clone --depth 1 --single-branch https://github.com/adoyle-h/one.nvim.git "$PACK_DIR"/one.nvim
+PLUGIN_DIR=${XDG_DATA_HOME:-$HOME/.local/share}/nvim/plugins
+mkdir -p "$PLUGIN_DIR"
+git clone --single-branch https://github.com/adoyle-h/one.nvim.git "$PLUGIN_DIR"/one.nvim
 ```
 
 Do [initialization](#initialization) and then press `nvim` to get started.
