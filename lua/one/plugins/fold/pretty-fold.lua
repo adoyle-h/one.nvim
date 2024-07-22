@@ -1,5 +1,5 @@
 return {
-	'anuvyklack/pretty-fold.nvim',
+	'bbjornstad/pretty-fold.nvim',
 
 	config = function(config)
 		require('pretty-fold').setup(config['pretty-fold'])
