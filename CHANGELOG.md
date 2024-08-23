@@ -10,7 +10,39 @@ You can use `:OneUpdate` to update one.nvim to latest. Please read [the "Update"
 
 ## [Unreleased]
 
-[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v5.2.2...HEAD)
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v5.3.0...HEAD)
+
+
+<a name="v5.3.0"></a>
+## v5.3.0 (2024-08-23 17:46:10 +08:00)
+
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v5.2.2...v5.3.0)
+
+### New Features
+
+- support to upgrade one.nvim by plugin manager ([0fa6e25](https://github.com/adoyle-h/one.nvim/commit/0fa6e25c1fae7d787c7bf3e42f71312eff338089))
+
+### Bug Fixes
+
+- persisted.nvim has breaking changes ([2a69f74](https://github.com/adoyle-h/one.nvim/commit/2a69f74607e974f002bfd6b76fedb275b1698079))
+  > It makes alpha.lua wrong
+- **escape**: breaking change in max397574/better-escape.nvim ([d225d91](https://github.com/adoyle-h/one.nvim/commit/d225d91e7358276878b1cfba1803a5a1becc515b))
+  > see https://github.com/max397574/better-escape.nvim#rewrite
+- **gitsigns**: some config options are deprecated ([8d0b022](https://github.com/adoyle-h/one.nvim/commit/8d0b02213850a573226edf234aa360d731ed4bc0))
+  > removed support for yadm, see https://github.com/lewis6991/gitsigns.nvim/pull/1055
+  > config.signs.<kind>.[hl,numhl,linehl] are now deprecated, see https://github.com/lewis6991/gitsigns.nvim/pull/1054
+- **pretty-fold**: error messages "symbol not found" when using diff ([199e7c7](https://github.com/adoyle-h/one.nvim/commit/199e7c708f5e286a4ed0b02ce47fb64116a4235f))
+  > User should upgrade the plugin pretty-fold.nvim by manual.
+  > 
+  > use bbjornstad/pretty-fold.nvim instead of anuvyklack/pretty-fold.nvim,
+  > because the later has not updated since 2 years ago.
+  > 
+  > related issue: https://github.com/anuvyklack/pretty-fold.nvim/issues/39
+  > pr: https://github.com/anuvyklack/pretty-fold.nvim/pull/41
+- **whitespace**: whitespace highlights show in dashboard ([0175214](https://github.com/adoyle-h/one.nvim/commit/017521404f7a3858fdb9bef5f6d397ccc87512b4))
+  > User should reinstall plugin whitespace.nvim by self.
+  > 
+  > See https://github.com/johnfrankmorgan/whitespace.nvim/issues/13
 
 
 <a name="v5.2.2"></a>
