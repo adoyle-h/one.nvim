@@ -50,7 +50,8 @@ M.config = function(config)
 
 	vim.opt.sessionoptions = opts.session_options
 
-	opts.should_autosave = function()
+	-- Function to determine if a session should be saved
+	opts.should_save = function()
 		return not vim.tbl_contains(opts.ignored_filetypes, vim.bo.filetype)
 	end
 
@@ -65,30 +66,28 @@ M.defaultConfig = function(config)
 	return {
 		'persisted',
 		{
-			-- Do not enable "globals". Because if you change a option value (such as 'fdm') in runtime,
-			-- it will store/restore forever.
-			session_options = { 'curdir', 'folds', 'tabpages', 'winpos' }, -- :h ssop
+			autostart = true, -- Automatically start the plugin on load?
+			-- should_save = function() return true end, -- this option will be defined in M.config()
+
 			save_dir = util.dataPath('sessions'), -- directory where session files are saved.
-			command = 'VimLeavePre', -- the autocommand for which the session is saved
-			silent = false, -- silent nvim message when sourcing session file
-			use_git_branch = true, -- create session files based on the branch of the git enabled repository
-			branch_separator = '@@', -- string used to separate session directory name from branch name
-			autosave = true, -- automatically save session files when exiting Neovim
-			autoload = false, -- automatically load the session for the cwd on Neovim startup
-			on_autoload_no_session = nil, -- function to run when `autoload = true` but there is no session to load
 			follow_cwd = true, -- change session file name to match current working directory if it changes
+			use_git_branch = true, -- create session files based on the branch of the git enabled repository
+			autoload = false, -- automatically load the session for the cwd on Neovim startup
+			on_autoload_no_session = function() end, -- function to run when `autoload = true` but there is no session to load
+
 			allowed_dirs = nil, -- table of dirs that the plugin will auto-save and auto-load from
 			ignored_dirs = nil, -- table of dirs that are ignored when auto-saving and auto-loading
-
-			ignored_filetypes = vim.list_extend({ '', 'neoterm' }, config.ignore.fileTypesForSomePlugs),
-
-			after_save = nil, -- function to run after the session is saved to disk
-
-			after_source = nil, -- function to run after the session is sourced
 
 			telescope = { -- options for the telescope extension
 				reset_prompt_after_deletion = false, -- whether to reset prompt after session deleted
 			},
+
+			-- Below are my extend options --
+
+			-- Do not enable "globals". Because if you change a option value (such as 'fdm') in runtime,
+			-- it will store/restore forever.
+			session_options = { 'curdir', 'folds', 'tabpages', 'winpos' }, -- :h ssop
+			ignored_filetypes = vim.list_extend({ '', 'neoterm' }, config.ignore.fileTypesForSomePlugs),
 		},
 	}
 end

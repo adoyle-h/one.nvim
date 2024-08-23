@@ -22,15 +22,14 @@ local function makePressFn(i)
 	end
 end
 
-local function makeKeymap(sess, load_session)
+local function makeKeymap(sess)
 	return function()
-		load_session(sess.path, nil, nil, true)
+		local load_session = require('persisted').load
+		load_session({ seesion = sess.path })
 	end
 end
 
 local function formatSessions(sessions, matched, sessionLimit)
-	local load_session = require('persisted.utils').load_session
-
 	table.sort(sessions, function(prev, next)
 		return #prev.val < #next.val
 	end)
@@ -50,16 +49,17 @@ local function formatSessions(sessions, matched, sessionLimit)
 		sess.on_press = makePressFn(i)
 
 		sess.opts.shortcut = printf(' %s ', i)
-		vim.keymap.set('n', '' .. i, makeKeymap(sess, load_session),
+		vim.keymap.set('n', '' .. i, makeKeymap(sess),
 			{ buffer = 0, noremap = true, silent = true, nowait = true })
 	end
 
 	return { sessions, textWidth }
 end
 
-local function getSessions(conf)
+local function getSessions(config)
 	if PM.isPlugDisabled('olimorris/persisted.nvim') then return { type = 'padding', val = 0 } end
 
+	local conf = config.alpha
 	local pwd = vim.fn.getcwd()
 	local sessionLimit = conf.sessionLimit
 
@@ -72,23 +72,24 @@ local function getSessions(conf)
 	local matched
 
 	local i = 1
-	for _, session in pairs(persisted.list()) do
-		local path = session.file_path
+	for _, path in pairs(persisted.list()) do
+		path = path:sub(#config.persisted.save_dir + 1)
 		local isContained = path:find(pwd:gsub('/', '%%'), 1, true)
-
 		if not isContained then goto continue end
 
 		local str
-		if session.branch then
-			str = printf('%s (branch: %s)', session.dir_path, session.branch)
+		local session_dir, session_branch = table.unpack(vim.split(path:gsub('%%', '/'):gsub('.vim$', ''), '@@'))
+
+		if session_branch then
+			str = printf('%s (branch: %s)', session_dir, session_branch)
 		else
-			str = session.dir_path
+			str = session_dir
 		end
 
 		sessions[i] = {
 			type = 'button',
 			val = str,
-			path = path,
+			path = session_dir,
 
 			opts = {
 				position = 'center',
@@ -99,7 +100,7 @@ local function getSessions(conf)
 			},
 		}
 
-		if session.branch and session.branch == branch then matched = sessions[i] end
+		if session_branch and session_branch == branch then matched = sessions[i] end
 
 		i = i + 1
 
@@ -185,7 +186,7 @@ function M.config(config)
 		end
 	end
 
-	table.insert(layout, index or 1, getSessions(conf))
+	table.insert(layout, index or 1, getSessions(config))
 
 	require('alpha').setup { layout = conf.layout, opts = conf.opts }
 end
