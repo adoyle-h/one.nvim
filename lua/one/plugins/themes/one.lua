@@ -127,7 +127,7 @@ M.highlights = function(config)
 		TermCursor = { bg = c.purple }, -- cursor in a focused terminal
 		TermCursorNC = { bg = c.NC_BG }, -- cursor in an unfocused terminal
 		Title = { fg = c.blue }, -- titles for output from ":set all", ":autocmd"
-		Visual = { bg = c.darkOrange, fg = c.white }, -- Visual mode selection
+		Visual = { bg = c.darkOrange }, -- Visual mode selection
 		VisualNOS = { link = 'Visual' }, -- Visual mode selection when vim is "Not Owning the Selection".
 		WarningMsg = { fg = c.yellow }, -- warning messages
 		WinBar = { bg = c.BG, fg = c.white },
