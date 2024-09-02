@@ -11,7 +11,7 @@ return {
 
 	{ 'n', '<leader>r', vim.lsp.buf.rename, { silent = true, desc = ':h vim.lsp.buf.rename' } },
 
-	{ 'n', 'gc', vim.lsp.buf.code_action, { silent = true, desc = ':h vim.lsp.buf.code_action' } },
+	{ 'n', '<space>a', vim.lsp.buf.code_action, { silent = true, desc = ':h vim.lsp.buf.code_action' } },
 
 	{ 'n', 'gh', vim.lsp.buf.hover, { silent = true, desc = ':h vim.lsp.buf.hover' } },
 

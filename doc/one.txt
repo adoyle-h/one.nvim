@@ -475,13 +475,13 @@ If bufferline plugin enabled, some keymaps will be overridden. See [Buffer Line]
 --------------------------------------------------------------------------------
 ### Comments                                              *one-keymaps-comments*
 
-- `<leader>cc` or `<space>c` = Comment toggle current line
-- `<leader>cb` = Comment toggle current block
-- `<leader>cl` = Comment insert at the end of line
-- `<leader>cO` = Comment insert on the line above
-- `<leader>co` = Comment insert on the line below
-- `<leader>c<Enter>` = Comment toggle in current scope
-- `<leader>c<Motion>` = Comment toggle in `<Motion>` scope (see `:h text-objects`)
+- `gcc` or `<space>c` = Comment toggle current line
+- `gcb` = Comment toggle current block
+- `gcA` = Comment insert at the end of line
+- `gcO` = Comment insert on the line above
+- `gco` = Comment insert on the line below
+- `gc<Enter>` = Comment toggle in current scope
+- `gc<Motion>` = Comment toggle in `<Motion>` scope (see `:h text-objects`)
 
 --------------------------------------------------------------------------------
 ### Completion                                          *one-keymaps-completion*
@@ -516,7 +516,7 @@ If bufferline plugin enabled, some keymaps will be overridden. See [Buffer Line]
 - `gR` = Show references about the symbol under cursor
 - `gt` = Open float window to preview type definition about the symbol under cursor
 - `gT` = Goto preview type definition about the symbol under cursor
-- `gc` = Selects a code action available at the current cursor position.
+- `<space>a` = Selects a code action available at the current cursor position.
 - `<leader>r` = Rename all references to the symbol under the cursor.
 - `gh` = Display hover information about the symbol under the cursor in a floating window. Calling the function twice will jump into the floating window.
   - `gh` in markdown files = Open a telescope picker to select a heading
