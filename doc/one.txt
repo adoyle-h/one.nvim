@@ -418,13 +418,15 @@ If bufferline plugin enabled, some keymaps will be overridden. See [Buffer Line]
 
 - `-` = Choose window in current tab
 - `<C-w><C-w>` = Choose window or tab via telescope picker
-- `<M-w>` = Focus to next window
-- `<M-W>` = Focus to previous window
+- `<]w>` = Focus to next window
+- `<[w>` = Focus to previous window
 - `<C-w>p` = Focus to last accessed window.
 - `<C-w>q` = Close current window
 - `<C-w>o` = Close all other windows
 - `<C-w>|` = Open window (vsplit)
 - `<C-w>\` or `<C-w>n` = Open window (split)
+- `<C-w>s` = Copy window (split)
+- `<C-w>v` = Copy window (vsplit)
 - `<C-w>r` = Enter window resize mode
 - `<C-w>h` = Focus to left window
 - `<C-w>j` = Focus to bottom window
@@ -443,6 +445,10 @@ If bufferline plugin enabled, some keymaps will be overridden. See [Buffer Line]
 - `<C-w>t` = Move current window to new tab
 - `<C-w>_` = Maximize window height
 - `<C-w>=` = Make all windows (almost) equally high and wide, but use 'winheight' and 'winwidth' for the current window.
+- `<C-w><C-H>` = move current window to left
+- `<C-w><C-J>` = move current window to bottom
+- `<C-w><C-K>` = move current window to top
+- `<C-w><C-L>` = move current window to right
 
 --------------------------------------------------------------------------------
 ## Scroll                                                   *one-keymaps-scroll*
