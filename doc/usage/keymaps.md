@@ -325,6 +325,17 @@ If bufferline plugin enabled, some keymaps will be overridden. See [Buffer Line]
 - `<C-w><C-J>` = move current window to bottom
 - `<C-w><C-K>` = move current window to top
 - `<C-w><C-L>` = move current window to right
+- `<C-w>m` = Start Win-Move mode
+  - `h` or `<left>`    = Move window left
+  - `j` or `<down>`    = Move window down
+  - `k` or `<up>`      = Move window up
+  - `l` or `<right>`   = Move window right
+  - `H` or `<S-left>`  = Move window far_left
+  - `J` or `<S-down>`  = Move window far_down
+  - `K` or `<S-up>`    = Move window far_up
+  - `L` or `<S-right>` = Move window far_right
+  - `<ESC>` or `q` or `<C-c>` = Exit Win-Move mode
+- `<C-w>M` = Start Win-Swap mode
 
 ## Scroll
 
