@@ -10,7 +10,30 @@ You can use `:OneUpdate` to update one.nvim to latest. Please read [the "Update"
 
 ## [Unreleased]
 
-[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v5.3.0...HEAD)
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v5.4.0...HEAD)
+
+
+<a name="v5.4.0"></a>
+## v5.4.0 (2024-09-06 19:53:14 +08:00)
+
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v5.3.0...v5.4.0)
+
+### New Features
+
+- **window**: add winshift.nvim plugin to start win-move mode ([4553c48](https://github.com/adoyle-h/one.nvim/commit/4553c48b304b8a83cf15cdcdeb6d864f5bf0716d))
+
+### Bug Fixes
+
+- ignore gitcommit for some plugins ([bdd7859](https://github.com/adoyle-h/one.nvim/commit/bdd785940a524fddf8368759e51a412ad9fc622c))
+- adjust window keymaps ([0ae175b](https://github.com/adoyle-h/one.nvim/commit/0ae175baf8e5c35b579ac3822cedbc4bd2d89d63))
+  > `<M-w>` -> `<]w>`
+  > `<M-W>` -> `<[w>`
+- keymaps of comments and code action ([c58f9a8](https://github.com/adoyle-h/one.nvim/commit/c58f9a86a7dc96b85eb3eca159aba53fc04753e2))
+  > comments keymaps should same to nvim native keymaps
+  > So that <leader>c* -> gc*  <leader>cl -> gcA
+  > 
+  > Change code action keymap: gc -> gl
+- change Visual highlight that not override foreground color ([b14644b](https://github.com/adoyle-h/one.nvim/commit/b14644b369b5dfcee540c03cb20d9dca4ef58cd6))
 
 
 <a name="v5.3.0"></a>
