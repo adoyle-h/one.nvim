@@ -50,7 +50,7 @@ return function(colors)
 				-- LuaFormatter off
 				'TelescopePrompt', 'TelescopeResults', 'lsp-installer', 'null-ls-info', 'lspinfo', 'aerial',
 				'nerdtree', 'NvimTree', 'neo-tree', 'notify', 'Trouble', 'Mundo', 'mason', 'man', 'alpha', 'calendar',
-				'PlenaryTestPopup', 'noice', 'lazy',
+				'PlenaryTestPopup', 'noice', 'lazy', 'gitcommit',
 				-- LuaFormatter on
 			},
 		},
