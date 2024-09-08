@@ -25,8 +25,7 @@ end
 
 local function has_words_before()
 	local line, col = table.unpack(api.nvim_win_get_cursor(0))
-	return col ~= 0 and api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') ==
-		       nil
+	return col ~= 0 and api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
 end
 
 local function configMapping(cmp, config)
@@ -227,6 +226,12 @@ function M.config(config)
 	end
 
 	cmp.setup {
+		-- https://github.com/hrsh7th/nvim-cmp/wiki/Advanced-techniques#disabling-completion-in-certain-contexts-such-as-comments
+		enabled = function()
+			local filetype = vim.api.nvim_buf_get_option(0, 'filetype')
+			if filetype == 'TelescopePrompt' then return false end
+			return true
+		end,
 		mapping = conf.mapping,
 		formatting = configFormating(conf),
 		sources = normalSources,
