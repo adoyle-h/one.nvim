@@ -2,6 +2,7 @@ local M = {
 	'folke/noice.nvim',
 	id = 'noice',
 	event = 'VeryLazy',
+	disable = true,
 
 	keymaps = {
 		{
