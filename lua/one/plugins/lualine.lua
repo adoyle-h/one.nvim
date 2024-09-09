@@ -257,7 +257,7 @@ M.defaultConfig = function()
 			globalstatus = true,
 
 			-- how often lualine should refreash it's contents (in ms)
-			refresh = { statusline = 5000, tabline = 0, winbar = 200 },
+			refresh = { statusline = 5000, tabline = 0, winbar = 500 },
 		},
 
 		sections = {
