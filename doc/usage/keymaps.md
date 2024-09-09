@@ -292,7 +292,7 @@ If bufferline plugin enabled, some keymaps will be overridden. See [Buffer Line]
 
 ## Window
 
-- `-` = Choose window in current tab
+- `-` = Jump to window in current tab
 - `<C-w><C-w>` = Choose window or tab via telescope picker
 - `<]w>` = Focus to next window
 - `<[w>` = Focus to previous window
