@@ -139,7 +139,6 @@ local function setNoice(lualineConfig, c)
 			color = { fg = c.match.fg },
 		})
 	end
-
 end
 
 M.defaultConfig = function()

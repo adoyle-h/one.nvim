@@ -46,7 +46,7 @@ All-in-one neovim configuration framework implemented with Lua. It is highly fle
   - Git: [gitsigns](lua/one/plugins/git/sign.lua) and [lazygit](lua/one/plugins/git/lazygit.lua) and [diffview.nvim](https://github.com/sindrets/diffview.nvim)
   - Indent Line: [indent-blankline](lua/one/plugins/indent-line.lua)
   - Cursor Move: [flash.nvim](lua/one/plugins/move/flash.lua) and [accelerated-jk](lua/one/plugins/move/accelerated.lua) or [hop.nvim](lua/one/plugins/move/jump.lua) 
-  - Window Picker: [nvim-window-picker](lua/one/plugins/move/window-picker.lua) (default) or [yorickpeterse/nvim-window](lua/one/plugins/move/window-selector.lua) or [vim-choosewin](lua/one/plugins/move/choose-window.lua)
+  - Window Picker: [nvim-window-picker](lua/one/plugins/move/window-picker.lua) or [vim-choosewin](lua/one/plugins/move/choose-window.lua)
   - Window Resize: [simeji/winresizer](lua/one/plugins/window/resize.lua) and [windows.nvim](lua/one/plugins/window/maximize.lua)
   - Context: [aerial](lua/one/plugins/aerial.lua) (default) or [navic](lua/one/plugins/navic.lua) and [nvim-treesitter-context](lua/one/plugins/treesitter/context.lua)
   - Text Align: [vim-easy-align](lua/one/plugins/align.lua)

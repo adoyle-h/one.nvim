@@ -46,7 +46,7 @@
   - Git: [gitsigns](lua/one/plugins/git/sign.lua) 与 [lazygit](lua/one/plugins/git/lazygit.lua) 与 [diffview.nvim](https://github.com/sindrets/diffview.nvim)
   - 缩进基准线: [indent-blankline](lua/one/plugins/indent-line.lua)
   - 光标移动: [flash.nvim](lua/one/plugins/move/flash.lua) 与 [accelerated-jk](lua/one/plugins/move/accelerated.lua) 或 [hop.nvim](lua/one/plugins/move/jump.lua)
-  - 窗口选择: [nvim-window-picker](lua/one/plugins/move/window-picker.lua) (默认) 或 [yorickpeterse/nvim-window](lua/one/plugins/move/window-selector.lua) 或 [vim-choosewin](lua/one/plugins/move/choose-window.lua)
+  - 窗口选择: [nvim-window-picker](lua/one/plugins/move/window-picker.lua) (默认) 或 [vim-choosewin](lua/one/plugins/move/choose-window.lua)
   - 窗口大小调整: [simeji/winresizer](lua/one/plugins/window/resize.lua) 与 [windows.nvim](lua/one/plugins/window/maximize.lua)
   - Context: [aerial](lua/one/plugins/aerial.lua) (默认) 或 [navic](lua/one/plugins/navic.lua) 与 [nvim-treesitter-context](lua/one/plugins/treesitter/context.lua)
   - 文本对齐: [vim-easy-align](lua/one/plugins/align.lua)
