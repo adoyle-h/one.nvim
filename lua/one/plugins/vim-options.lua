@@ -28,7 +28,7 @@ default.opt = {
 	shortmess = 'ilmnrxsWF', -- helps to avoid all the hit-enter prompts caused by file messages
 	showmode = true,
 
-	cmdheight = 2, -- cmd line height. :h 'cmdheight'
+	cmdheight = 1, -- cmd line height. :h 'cmdheight'
 	number = true, -- show line number
 	relativenumber = true, -- show relative line number
 	-- wrap = false, -- line wrapping
