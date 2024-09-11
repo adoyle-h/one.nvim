@@ -10,7 +10,31 @@ You can use `:OneUpdate` to update one.nvim to latest. Please read [the "Update"
 
 ## [Unreleased]
 
-[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v5.4.0...HEAD)
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v5.5.0...HEAD)
+
+
+<a name="v5.5.0"></a>
+## v5.5.0 (2024-09-11 20:17:15 +08:00)
+
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v5.4.0...v5.5.0)
+
+### New Features
+
+- add colorful-winsep.nvim ([d5f1eab](https://github.com/adoyle-h/one.nvim/commit/d5f1eab9f3d816a7061f80f392f44f1292c3d2f8))
+
+### Bug Fixes
+
+- mirror.ghproxy.com is GFW, use ghp.ci ([7b6462d](https://github.com/adoyle-h/one.nvim/commit/7b6462d538d57b064d9f036420d4248e031873e7))
+- nvim-window-picker upgrade from v1 to v2 ([bac2ad6](https://github.com/adoyle-h/one.nvim/commit/bac2ad694d81d78b4ca54174e12e532b6aa6eaca))
+  > User should upgrade nvim-window-picker by manual.
+- disable plugin noice.nvim ([488111a](https://github.com/adoyle-h/one.nvim/commit/488111ace56954cd04a0cc81d9927a0039944635))
+  > The noice.nvim has some noisy messages and bugs.
+  > So I decided disable this plugin util all problem solved.
+  > 
+  > The nvim-window-picker cannot work with lualine.nvim and noice.nvim.
+- set cmdheight from 2 to 1. ([087e39a](https://github.com/adoyle-h/one.nvim/commit/087e39ac8e84f5cba1a005d724a2b266aa66191f))
+- change lualine refresh interval from 200 to 500ms ([405611c](https://github.com/adoyle-h/one.nvim/commit/405611cd93e977c6407c6514b6ea38411fbd93b6))
+- **nvim-cmp**: disable nvim-cmp in Telescope prompt ([a592de9](https://github.com/adoyle-h/one.nvim/commit/a592de917f4e9fb0195c71d973592cc3585c1284))
 
 
 <a name="v5.4.0"></a>
