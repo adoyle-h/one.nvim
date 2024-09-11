@@ -1,10 +1,6 @@
 return {
 	'max397574/better-escape.nvim',
 
-	-- keymaps = {
-	-- { 'i', 'jk', '<Esc>', { noremap = true, silent = true, desc = 'Exit from input mode' } },
-	-- },
-
 	defaultConfig = {
 		'escape',
 		{
@@ -15,26 +11,11 @@ return {
 			mappings = {
 				i = {
 					j = {
-						-- These can all also be functions
 						k = '<Esc>',
 					},
 				},
-				c = {
-					j = {
-						k = '<Esc>',
-					},
-				},
+
 				t = {
-					j = {
-						k = '<Esc>',
-					},
-				},
-				v = {
-					j = {
-						k = '<Esc>',
-					},
-				},
-				s = {
 					j = {
 						k = '<Esc>',
 					},
