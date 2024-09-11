@@ -5,7 +5,7 @@ describe('CM.config', function()
 		CM.setup({
 			colorcolumn = { 80, 100 },
 
-			proxy = { github = 'https://mirror.ghproxy.com/' },
+			proxy = { github = 'https://ghp.ci/' },
 
 			nullLS = {
 				sources = function(builtins)
@@ -23,7 +23,7 @@ describe('CM.config', function()
 
 		local config = CM.config
 
-		assert.are.same(config.proxy, { github = 'https://mirror.ghproxy.com/' })
+		assert.are.same(config.proxy, { github = 'https://ghp.ci/' })
 		assert.are.same(config['mason-installer'].ensureInstalled, { 'css-lsp', 'yamlfmt' })
 
 		local null_ls = require('null-ls')

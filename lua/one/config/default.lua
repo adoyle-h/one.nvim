@@ -36,7 +36,7 @@ return function(colors)
 		},
 
 		proxy = {
-			-- If you are in China Mainland, it is suggested to set 'https://mirror.ghproxy.com/'
+			-- If you are in China Mainland, it is suggested to set 'https://ghp.ci/'
 			github = nil, -- string|nil  proxy url
 		},
 

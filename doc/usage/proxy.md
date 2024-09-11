@@ -6,12 +6,12 @@
 require('one').setup {
   config = {
     proxy = {
-      -- If you are in China Mainland, it is suggested to set 'https://mirror.ghproxy.com'. Otherwise, remove this option.
-      github = 'https://mirror.ghproxy.com',
+      -- If you are in China Mainland, it is suggested to set 'https://ghp.ci'. Otherwise, remove this option.
+      github = 'https://ghp.ci',
     },
   },
 }
 ```
 
-Proxy will not work for some plugins using "git submodule". It's recommended to execute `git config --global http.https://github.com.proxy https://mirror.ghproxy.com` to set global git proxy.
+Proxy will not work for some plugins using "git submodule". It's recommended to execute `git config --global http.https://github.com.proxy https://ghp.ci` to set global git proxy.
 
