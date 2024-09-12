@@ -229,8 +229,7 @@ function M.config(config)
 		-- https://github.com/hrsh7th/nvim-cmp/wiki/Advanced-techniques#disabling-completion-in-certain-contexts-such-as-comments
 		enabled = function()
 			local filetype = vim.api.nvim_buf_get_option(0, 'filetype')
-			if filetype == 'TelescopePrompt' then return false end
-			return true
+			return vim.fn.index({ 'TelescopePrompt', 'neo-tree', 'neo-tree-popup' }, filetype) == -1
 		end,
 		mapping = conf.mapping,
 		formatting = configFormating(conf),
