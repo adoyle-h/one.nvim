@@ -10,7 +10,19 @@ You can use `:OneUpdate` to update one.nvim to latest. Please read [the "Update"
 
 ## [Unreleased]
 
-[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v5.5.0...HEAD)
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v5.5.1...HEAD)
+
+
+<a name="v5.5.1"></a>
+## v5.5.1 (2024-09-12 16:08:26 +08:00)
+
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v5.5.0...v5.5.1)
+
+### Bug Fixes
+
+- Error in decoration provider cmp:GHOST_TEXT.win ([1399474](https://github.com/adoyle-h/one.nvim/commit/13994746cc8cc87fc2f99690441e9cf1d5f6b3da))
+  > Do not show nvim-cmp in neo-tree
+- **escape**: press jk escaped in visual mode ([e4af02a](https://github.com/adoyle-h/one.nvim/commit/e4af02ac979a9df4e7101ddaa2910aa114802315))
 
 
 <a name="v5.5.0"></a>
