@@ -65,6 +65,7 @@ return function(Plug, Load, config)
 	Load 'live-cmd'
 	Load 'translate'
 	Load 'mark'
+	Load 'yazi'
 
 	Plug {
 		'tyru/capture.vim',
