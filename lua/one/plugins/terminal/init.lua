@@ -20,8 +20,6 @@ M.keymaps = {
 
 	{ 'n', '<space>t', ':Telescope terminals<CR>' },
 
-	{ 't', 'jk', '<C-\\><C-n>', { noremap = true, desc = 'Exit from terminal mode' } },
-
 	{
 		'n',
 		'<leader>tn',

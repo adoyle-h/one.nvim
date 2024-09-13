@@ -1,3 +1,11 @@
+local function escape()
+	if vim.fn.index({ 'TelescopePrompt', 'neo-tree', 'neo-tree-popup', 'yazi' }, vim.bo.filetype) then
+		-- <c-v> is used to avoid mappings
+		return '<C-v>j<C-v>k'
+	end
+	return '<ESC>'
+end
+
 return {
 	'max397574/better-escape.nvim',
 
@@ -11,13 +19,13 @@ return {
 			mappings = {
 				i = {
 					j = {
-						k = '<Esc>',
+						k = escape,
 					},
 				},
 
 				t = {
 					j = {
-						k = '<Esc>',
+						k = escape,
 					},
 				},
 			},
