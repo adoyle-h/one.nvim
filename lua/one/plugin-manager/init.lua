@@ -130,7 +130,11 @@ function PM.run(isNew)
 	end
 
 	if PM.configFn then
-		local userConfig = PM.configFn(config) or {}
+		local ok, userConfig = pcall(PM.configFn, config)
+		if not ok then
+			vim.notify('Error in function configFn(): ' .. userConfig, vim.log.levels.ERROR)
+			userConfig = {}
+		end
 		for key, value in pairs(userConfig) do config[key] = util.merge(config[key], value) end
 	end
 
