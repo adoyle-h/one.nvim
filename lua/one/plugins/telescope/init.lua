@@ -5,8 +5,11 @@ return {
 
 	deps = {
 		{
-			'nvim-telescope/telescope-live-grep-args.nvim',
-			version = '^1.0.0',
+			-- TODO: Waiting the PR merged: https://github.com/nvim-telescope/telescope-live-grep-args.nvim/pull/88
+			-- 'nvim-telescope/telescope-live-grep-args.nvim',
+			-- version = '^1.0.0',
+			'adoyle-h/telescope-live-grep-args.nvim',
+			branch = 'a',
 			config = function()
 				require('telescope').load_extension('live_grep_args')
 			end,
