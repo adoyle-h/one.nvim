@@ -9,7 +9,7 @@ return {
 	},
 
 	deps = {
-		require('one.plugins.lsp.null-ls'),
+		require('one.plugins.lsp.none-ls'),
 		require('one.plugins.lsp.preview'),
 		require('one.plugins.lsp.nlsp'),
 		require('one.plugins.lsp.fidget'),
