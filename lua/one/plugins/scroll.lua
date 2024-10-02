@@ -1,33 +1,36 @@
+local function setKeymaps(neoscroll, mappings)
+	local modes = { 'n', 'v', 'x' }
+	for key, func in pairs(mappings) do
+		vim.keymap.set(modes, key, function()
+			func(neoscroll)
+		end)
+	end
+end
+
 return {
 	'karb94/neoscroll.nvim',
 	desc = 'Smooth scrolling',
 	config = function(config)
-		require('neoscroll').setup(config.scroll)
-		require('neoscroll.config').set_mappings(config.scroll.mappings)
+		local neoscroll = require('neoscroll')
+		neoscroll.setup(config.scroll)
+		setKeymaps(neoscroll, config.scroll.mappings)
 	end,
 
 	defaultConfig = {
 		'scroll',
 		{
-			-- All these keys will be mapped to their corresponding default scrolling animation
-			-- mappings = { '<C-u>', '<C-d>', '<C-b>', '<C-f>', '<C-y>', '<C-e>', 'zt', 'zz', 'zb' },
 			mappings = {
-				-- Syntax: t[keys] = {function, {function arguments}}
-				-- Use the "sine" easing function
-				['<C-u>'] = { 'scroll', { '-vim.wo.scroll', 'true', '100', [['quadratic']] } },
-				['<C-d>'] = { 'scroll', { 'vim.wo.scroll', 'true', '100', [['quadratic']] } },
-				-- Use the "circular" easing function
-				['<C-b>'] = { 'scroll', { '-vim.api.nvim_win_get_height(0)', 'true', '120', [['quadratic']] } },
-				['<C-f>'] = { 'scroll', { 'vim.api.nvim_win_get_height(0)', 'true', '120', [['quadratic']] } },
-				-- Pass "nil" to disable the easing animation (constant scrolling speed)
-				['<C-y>'] = { 'scroll', { '-0.10', 'true', '100', nil } },
-				['<C-e>'] = { 'scroll', { '0.10', 'true', '100', nil } },
-				-- When no easing function is provided the default easing function (in this case "quadratic") will be used
-				['zt'] = { 'zt', { '200' } },
-				['zz'] = { 'zz', { '200' } },
-				['zb'] = { 'zb', { '200' } },
-				-- ['G'] = { 'G', { '50', [['sine']] } }, -- @BUG ":<number>G" will not work.
-				-- ['gg'] = { 'gg', { '50', [['sine']] } }, -- Too slow when scroll large content
+				-- :h neoscroll-helper-functions
+				-- 'quadratic'
+				['<C-u>'] = function(neoscroll) neoscroll.ctrl_u({ duration = 100 }) end;
+				['<C-d>'] = function(neoscroll) neoscroll.ctrl_d({ duration = 100 }) end;
+				['<C-b>'] = function(neoscroll) neoscroll.ctrl_b({ duration = 120 }) end;
+				['<C-f>'] = function(neoscroll) neoscroll.ctrl_f({ duration = 120 }) end;
+				['<C-y>'] = function(neoscroll) neoscroll.scroll(-0.1, { move_cursor = false; duration = 100 }) end;
+				['<C-e>'] = function(neoscroll) neoscroll.scroll(0.1, { move_cursor = false; duration = 100 }) end;
+				['zt'] = function(neoscroll) neoscroll.zt({ half_win_duration = 200 }) end;
+				['zz'] = function(neoscroll) neoscroll.zz({ half_win_duration = 200 }) end;
+				['zb'] = function(neoscroll) neoscroll.zb({ half_win_duration = 200 }) end;
 			},
 
 			hide_cursor = true, -- Hide cursor while scrolling
