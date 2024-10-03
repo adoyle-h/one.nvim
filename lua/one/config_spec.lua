@@ -7,14 +7,9 @@ describe('CM.config', function()
 
 			proxy = { github = 'https://ghp.ci/' },
 
-			nullLS = {
+			noneLS = {
 				sources = function(builtins)
-					local code_actions = builtins.code_actions
-					local diagnostics = builtins.diagnostics
-					local formatting = builtins.formatting
-
-					return { code_actions.eslint_d, diagnostics.eslint_d, formatting.eslint_d,
-              formatting.prettierd }
+					return { builtins.formatting.stylua, builtins.completion.spell }
 				end,
 			},
 
@@ -28,17 +23,10 @@ describe('CM.config', function()
 
 		local null_ls = require('null-ls')
 		local builtins = null_ls.builtins
-		local sources = config.nullLS.sources(builtins) or {}
-
-		local code_actions = builtins.code_actions
-		local diagnostics = builtins.diagnostics
-		local formatting = builtins.formatting
+		local sources = config.noneLS.sources(builtins) or {}
 
 		assert.are.same(sources, {
-			code_actions.eslint_d,
-			diagnostics.eslint_d,
-			formatting.eslint_d,
-			formatting.prettierd,
+			builtins.formatting.stylua, builtins.completion.spell,
 		})
 	end)
 end)

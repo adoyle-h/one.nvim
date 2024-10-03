@@ -102,6 +102,15 @@ describe('util.merge', function()
 		assert.equals(r.a.b.f, f2)
 	end)
 
+	it('(function, table)', function()
+		local f1 = function()
+			return 1
+		end
+		local r = util.merge({ a = f1 }, { a = { b = 2 } })
+
+		assert.are.same({ a = { b = 2 } }, r)
+	end)
+
 	it('({ a = { b = 1 } }, { a = {} })', function()
 		local r = util.merge({ a = { b = 1 } }, { a = {} })
 		assert.equals(r.a.b, 1)
