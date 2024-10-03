@@ -79,12 +79,14 @@ end
 function util.existDir(path)
 	return fn.isdirectory(path) == 1
 end
+
 util.isDir = util.existDir
 
 -- directory is a file
 function util.existFile(path)
 	return fn.empty(fn.glob(path)) == 0
 end
+
 util.isFile = util.existFile
 
 function util.getFolderName(repo)
@@ -186,8 +188,6 @@ function util.newWindow(opts)
 	opts = opts or {}
 	local title = opts.title
 
-	vim.cmd.vsplit()
-	local win = api.nvim_get_current_win()
 	local buf = api.nvim_create_buf(true, true)
 
 	if title then
@@ -196,6 +196,9 @@ function util.newWindow(opts)
 		pcall(api.nvim_buf_set_name, buf, title)
 		buffers[title] = buf
 	end
+
+	vim.cmd.vsplit()
+	local win = api.nvim_get_current_win()
 
 	api.nvim_buf_set_option(buf, 'filetype', opts.ft or 'text')
 	api.nvim_buf_set_option(buf, 'sw', opts.sw or 2)

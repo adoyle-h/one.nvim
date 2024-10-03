@@ -21,7 +21,17 @@ M.commands = {
 		},
 	},
 
-	OneShowConfig = { One.showConfig, { desc = 'Show the merged config of one.nvim' } },
+	OneShowConfig = { One.showConfig, {
+		desc = 'Show the merged config of one.nvim',
+		nargs = '?',
+		complete = function(ArgLead, CmdLine, CursorPos)
+			local keys = {}
+			for k, _ in pairs(One.CM.config) do
+				table.insert(keys, k)
+			end
+			return keys
+		end,
+	} },
 
 	OneShowPlugins = { One.showPlugins, { desc = 'Show plugins of one.nvim' } },
 }
