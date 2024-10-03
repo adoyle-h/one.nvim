@@ -10,7 +10,40 @@ You can use `:OneUpdate` to update one.nvim to latest. Please read [the "Update"
 
 ## [Unreleased]
 
-[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v5.5.1...HEAD)
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v6.0.0...HEAD)
+
+
+<a name="v6.0.0"></a>
+## v6.0.0 (2024-10-03 23:05:58 +08:00)
+
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v5.5.1...v6.0.0)
+
+### New Features
+
+- :OneShowConfig support filtering by key ([b46fb06](https://github.com/adoyle-h/one.nvim/commit/b46fb06010e966af479e1a8d7cd72e7ad49af3b9))
+- use none-ls.nvim instead of null-ls.nvim ([e2a924b](https://github.com/adoyle-h/one.nvim/commit/e2a924b3f4acd069b856a31388b41d4ae6f907b3))
+  > The null-ls.nvim project is archived. Please use none-ls and none-ls-extras.
+  > 
+  > Notice: config.nullLS change to config.noneLS
+  > 
+  > The null-ls config is still reserved. If you prefer null-ls,
+  > you could disable none-ls and require('one.plugins.lsp.null-ls') in plugins.
+- add plugin yazi.nvim ([0679026](https://github.com/adoyle-h/one.nvim/commit/06790264f7e416468b927d5e5be628fde7f1047b))
+  > Before use it, user should install yazi https://github.com/sxyazi/yazi
+  > Use "<space>," and "<space>." to open the yazi window
+
+### Bug Fixes
+
+- change config for latest version of live-cmd.nvim ([d03b783](https://github.com/adoyle-h/one.nvim/commit/d03b783ddaa6ec0278c3a2fb5c5b2d83bb8dead8))
+- do not abort loading config when configFn() throws an error ([6447126](https://github.com/adoyle-h/one.nvim/commit/64471266c55d58afdb5d0688610c2f8e5c7f9881))
+- **escape**: do not use jk to escape for some filetypes ([d3ed944](https://github.com/adoyle-h/one.nvim/commit/d3ed94486917955c630235a9bf48b5054c75835f))
+  > exclude filetypes: 'TelescopePrompt', 'neo-tree', 'neo-tree-popup', 'yazi'
+- **neoscroll**: breaking change in mappings ([d3fbaeb](https://github.com/adoyle-h/one.nvim/commit/d3fbaeb03f432e2bfffbc75884ab8c6ffb50ca00))
+  > Please upgrade neoscroll.nvim to latest.
+- **telescope**: use adoyle-h/telescope-live-grep-args.nvim ([f61a2d0](https://github.com/adoyle-h/one.nvim/commit/f61a2d025e2b11760fad930d75196273bc43c1b6))
+  > instead of nvim-telescope/telescope-live-grep-args.nvim
+  > 
+  > Waiting the PR to be merged: https://github.com/nvim-telescope/telescope-live-grep-args.nvim/pull/88
 
 
 <a name="v5.5.1"></a>
