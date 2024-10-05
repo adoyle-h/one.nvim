@@ -1,5 +1,5 @@
 local function escape()
-	if vim.fn.index({ 'TelescopePrompt', 'neo-tree', 'neo-tree-popup', 'yazi' }, vim.bo.filetype) then
+	if vim.fn.index({ 'TelescopePrompt', 'neo-tree', 'neo-tree-popup', 'yazi' }, vim.bo.filetype) >= 0 then
 		-- <c-v> is used to avoid mappings
 		return '<C-v>j<C-v>k'
 	end
