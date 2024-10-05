@@ -10,7 +10,17 @@ You can use `:OneUpdate` to update one.nvim to latest. Please read [the "Update"
 
 ## [Unreleased]
 
-[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v6.0.0...HEAD)
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v6.0.1...HEAD)
+
+
+<a name="v6.0.1"></a>
+## v6.0.1 (2024-10-05 22:53:05 +08:00)
+
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v6.0.0...v6.0.1)
+
+### Bug Fixes
+
+- **escape**: jk not trigger <ESC> ([c2ccdee](https://github.com/adoyle-h/one.nvim/commit/c2ccdee6773aadb0f1fe2f55bc8a054df20e282e))
 
 
 <a name="v6.0.0"></a>
