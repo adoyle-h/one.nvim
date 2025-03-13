@@ -47,9 +47,11 @@ M.defaultConfig = {
 			-- you need to include `latex` in this list as this is the name of the parser)
 			disable = function(lang, buf)
 				if vim.tbl_contains({
-					'markdown', -- Use my markdown highlights instead of
-					'help', -- The help use tree-sitter-vimdoc as parser. But currently its highlights is poor than builtin.
-				}, lang) then return true end
+						'markdown', -- Use my markdown highlights instead of
+						'help', -- The help use tree-sitter-vimdoc as parser. But currently its highlights is poor than builtin.
+					}, lang) then
+					return true
+				end
 
 				-- To disable highlight when open large file
 				local max_filesize = 100 * 1024 -- 100 KB
@@ -104,8 +106,7 @@ function M.config(config)
 
 	if config.proxy.github then
 		for name, parserConf in pairs(require('nvim-treesitter.parsers').get_parser_configs()) do
-			parserConf.install_info.url = parserConf.install_info.url:gsub('https://github.com/',
-				util.proxyGithub('https://github.com/'))
+			parserConf.install_info.url = util.proxyGithub(parserConf.install_info.url)
 			local fn = conf.parserConf[name]
 			if fn then fn(parserConf) end
 		end
