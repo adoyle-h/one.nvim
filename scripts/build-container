@@ -52,7 +52,7 @@ main() {
   if [[ -n ${opts[p]:-} ]]; then
     docker_args+=(
       -t "adoyle/one.nvim:$VERSION-china"
-      --build-arg "GH_PROXY=https://ghp.ci"
+      --build-arg "GH_PROXY=https://gh-proxy.com"
     )
 
     if [[ $DIST == 'ubuntu' ]]; then
