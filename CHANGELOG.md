@@ -10,7 +10,41 @@ You can use `:OneUpdate` to update one.nvim to latest. Please read [the "Update"
 
 ## [Unreleased]
 
-[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v6.0.1...HEAD)
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v7.0.0...HEAD)
+
+
+<a name="v7.0.0"></a>
+## v7.0.0 (2025-05-24 20:57:46 +08:00)
+
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v6.0.1...v7.0.0)
+
+### Breaking Changes
+
+Have 1 breaking changes. Check below logs with ⚠️ .
+
+### New Features
+
+- use smartcolumn.nvim ([e8fd074](https://github.com/adoyle-h/one.nvim/commit/e8fd074faec2c8ce062aa3262c3e25d0ae5296ae))
+- integrated AI plugins ([3cc5849](https://github.com/adoyle-h/one.nvim/commit/3cc584964c1cb482b50a4881a3884dc09d26eebb))
+  > but disabled by default. User should set 'plugins = { { 'ai', disable = false } }' to enable it.
+- **markdown**: better pretty style for markdown ([bde45cd](https://github.com/adoyle-h/one.nvim/commit/bde45cd88ed99b18037f5976a675eda47b4be9c9))
+  > use render-markdown.nvim to replace plasticboy/vim-markdown and headlines.nvim
+
+### Bug Fixes
+
+- vim.tbl_islist => vim.islist ([97fe609](https://github.com/adoyle-h/one.nvim/commit/97fe609d47c7619b57f1825fabf45ff0d0d50436))
+  > vim.tbl_islist would be removed in neovim v0.12
+- unlock the version of whitespace.nvim ([146eab9](https://github.com/adoyle-h/one.nvim/commit/146eab99255dbf18aed4a83d40ad31dcbc7ea68f))
+- for github proxy, the ghp.ci is unavailable, use gh-proxy.com ([b8c5286](https://github.com/adoyle-h/one.nvim/commit/b8c52869bdd90d4b1343d7e1e4def41028acc1dd))
+- ⚠️  **lsp**: upgrade mason-lspconfig to v2 && use vim.lsp apis ([c2aa8cb](https://github.com/adoyle-h/one.nvim/commit/c2aa8cbb448de23bf222a70b2ca99a344c07acd4))
+  > BREAKING CHANGE:
+  > 
+  > User should upgrade neovim to 0.11+, and upgrade mason-lspconfig to latest version.
+- **plugin-manager**: build property not work ([9201f82](https://github.com/adoyle-h/one.nvim/commit/9201f8266112d7fe6e717a1dc1b3814faedd0a6e))
+
+### Document Changes
+
+- renew license date && update install dependencies ([33a09ab](https://github.com/adoyle-h/one.nvim/commit/33a09ab9243a87093cd503442e1af63daefd2d36))
 
 
 <a name="v6.0.1"></a>
