@@ -12,6 +12,7 @@ return function(Plug, Load, config)
 	Load 'notifier'
 	Load 'treesitter'
 	Load 'telescope'
+	Plug { 'echasnovski/mini.nvim', version = '*' } -- use stable branch
 
 	------------- UI plugins -------------
 	Load 'dressing'
@@ -66,6 +67,7 @@ return function(Plug, Load, config)
 	Load 'translate'
 	Load 'mark'
 	Load 'yazi'
+	Load 'ai'
 
 	Plug {
 		'tyru/capture.vim',

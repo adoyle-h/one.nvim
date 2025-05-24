@@ -605,6 +605,26 @@ If bufferline plugin enabled, some keymaps will be overridden. See [Buffer Line]
 - `o` in trouble window = jump to file and auto close trouble window (See https://github.com/folke/trouble.nvim/issues/15)
 
 --------------------------------------------------------------------------------
+## AI                                                           *one-keymaps-ai*
+
+- `<leader>m` = Toggle MCPHub
+- `<leader>aa` = avante: ask
+- `<leader>af` = avante: focus
+- `<leader>at` = avante: toggle
+- `<leader>aS` = avante: stop
+- `<leader>ae` = avante: edit
+- `<leader>ar` = avante: refresh
+- `<leader>a?` = avante: select model
+- `<leader>ad` = avante: toggle debug
+- `<leader>ah` = avante: select history
+- `<leader>an` = avante: create new ask
+- `<leader>an` = avante: create new ask
+- `<leader>aR` = avante: display repo map
+- `<leader>as` = avante: toggle suggestion
+- `<leader>aB` = avante: add all open buffers
+- `<leader>ac` = avante: add current buffer to file selector
+
+--------------------------------------------------------------------------------
 ## Uncategory                                           *one-keymaps-uncategory*
 
 - `<leader>cr` = Send request in HTTP file (NTBBloodbath/rest.nvim)

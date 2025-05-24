@@ -472,6 +472,25 @@ If bufferline plugin enabled, some keymaps will be overridden. See [Buffer Line]
 - `<space>n` = Toggle messages window (Default use telescope, if you enabled noice plugin, it will use noice)
 - `<M-n>` = Clean all visible messages
 
+## AI
+
+- `<leader>m` = Toggle MCPHub
+- `<leader>aa` = avante: ask
+- `<leader>af` = avante: focus
+- `<leader>at` = avante: toggle
+- `<leader>aS` = avante: stop
+- `<leader>ae` = avante: edit
+- `<leader>ar` = avante: refresh
+- `<leader>a?` = avante: select model
+- `<leader>ad` = avante: toggle debug
+- `<leader>ah` = avante: select history
+- `<leader>an` = avante: create new ask
+- `<leader>an` = avante: create new ask
+- `<leader>aR` = avante: display repo map
+- `<leader>as` = avante: toggle suggestion
+- `<leader>aB` = avante: add all open buffers
+- `<leader>ac` = avante: add current buffer to file selector
+
 ## Uncategory
 
 - `<leader>cr` = Send request in HTTP file (NTBBloodbath/rest.nvim)
