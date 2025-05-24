@@ -22,7 +22,7 @@ return {
 		end,
 
 		onSubmit = function(items)
-			if not vim.tbl_islist(items) then items = { items } end
+			if not vim.islist(items) then items = { items } end
 
 			local toInstall = {}
 			local toUpdate = {}
@@ -71,7 +71,7 @@ return {
 		end,
 
 		onSubmit = function(item)
-			if vim.tbl_islist(item) then error('Not support multiple selections') end
+			if vim.islist(item) then error('Not support multiple selections') end
 
 			local one = require('one')
 			local path = one.PM.getPluginFolderPath(item.id)

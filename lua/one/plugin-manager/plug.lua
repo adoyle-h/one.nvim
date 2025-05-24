@@ -47,7 +47,7 @@ local plugOpts = {
 		-- @param events {string|string[]}
 		iterator = function(opts, events)
 			if not opts then return end
-			if vim.tbl_islist(opts) then
+			if vim.islist(opts) then
 				for _, value in pairs(opts) do create_autocmd(events, value) end
 			else
 				create_autocmd(events, opts)

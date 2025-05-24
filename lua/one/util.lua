@@ -4,7 +4,7 @@ local util = {}
 
 local api = vim.api
 local fn = vim.fn
-local tbl_islist = vim.tbl_islist
+local tbl_islist = vim.islist
 
 local PATH_SEPARATOR = consts.PATH_SEPARATOR
 local IS_WINDOWS = consts.IS_WINDOWS
