@@ -219,6 +219,7 @@ function M.config(config)
 	if pcall(require, 'cmp_copilot') then addNormalSrc('copilot') end
 	if pcall(require, 'cmp_treesitter') then addNormalSrc('treesitter', 2) end
 	if pcall(require, 'codeium') then addNormalSrc('codeium') end
+	if pcall(require, 'render-markdown') then addNormalSrc('render-markdown') end
 	if pcall(require, 'snippy') then
 		snippet.expand = function(args)
 			require('snippy').expand_snippet(args.body)

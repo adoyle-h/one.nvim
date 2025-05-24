@@ -9,6 +9,6 @@ return {
 		require('one.plugins.markdown.main'),
 		require('one.plugins.markdown.toc'),
 		require('one.plugins.markdown.preview'),
-		require('one.plugins.markdown.headlines'),
+		-- require('one.plugins.markdown.headlines'),
 	},
 }
