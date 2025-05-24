@@ -68,6 +68,7 @@ return function(Plug, Load, config)
 	Load 'mark'
 	Load 'yazi'
 	Load 'ai'
+	Load 'smartcolumn'
 
 	Plug {
 		'tyru/capture.vim',
