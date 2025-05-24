@@ -1,7 +1,5 @@
 return {
 	'johnfrankmorgan/whitespace.nvim',
-	-- @TODO remove below line after [the issue](https://github.com/johnfrankmorgan/whitespace.nvim/issues/13) fixed.
-	commit = '406cd69216dd7847b0cb38486603a8ed5c4f8c77',
 	desc = 'highlight trailing spaces',
 
 	highlights = function(config)
