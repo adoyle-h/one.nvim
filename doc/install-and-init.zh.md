@@ -6,7 +6,7 @@
 
 ## 依赖
 
-- Neovim 0.9.2 或之后版本
+- Neovim 0.11.0 或之后版本
 - python3、pip3
 - nvim python provider
   - `pip3 install --upgrade --user pynvim`
@@ -15,6 +15,9 @@
 - C 编译器与 libstdc++。([treesitter](https://github.com/nvim-treesitter/nvim-treesitter#requirements) 需要)
 - [Nerd Font 字体][Nerd Font]。推荐 [DejaVuSansMonoForPowerline Nerd Font][font]。记得修改你的终端的字体设置。(图标可能看起来很小。这是 [nerd-fonts 的 BUG](https://github.com/ryanoasis/nerd-fonts/issues/1061))。
 - [ripgrep(rg)](https://github.com/BurntSushi/ripgrep)
+- [luarocks](https://luarocks.org/) 和 [penlight](https://github.com/lunarmodules/Penlight).
+  - 安装 luarocks: https://github.com/luarocks/luarocks/wiki/Download
+  - 安装 penlight: `luarocks install penlight`
 - 支持 Linux 和 MacOS，不支持 Windows
 
 ## 版本
