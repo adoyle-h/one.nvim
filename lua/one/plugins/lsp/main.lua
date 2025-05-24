@@ -47,7 +47,9 @@ M.defaultConfig = {
 	{
 		log = { level = 'WARN' }, -- 'TRACE', 'DEBUG', 'INFO', 'WARN', 'ERROR', 'OFF'
 
-		masonLspconfig = { automatic_installation = false },
+		masonLspconfig = {
+			automatic_enable = true,
+		},
 
 		cursorHoldUptime = 100, -- millisecond. see ":h updatetime"
 
@@ -144,42 +146,29 @@ function M.config(config)
 	vim.diagnostic.config(conf.diagnostic)
 	setDefaultBorder(conf)
 
+	-- https://github.com/hrsh7th/cmp-nvim-lsp#capabilities
+	local capabilities = require('cmp_nvim_lsp').default_capabilities()
+	vim.lsp.config('*', {
+		capabilities = capabilities,
+		-- Use LspAttach autocmd insteads of on_attach function
+		-- on_attach = on_attach, -- on_attach: function(client, bufnr) end
+		handlers = handlers,
+		autostart = true,
+		flags = {
+			debounce_text_changes = 150, -- This is default in neovim 0.7+
+		},
+	})
+
+	local lspUserSetups = config.lsp.setup
+	local lspconfig = require('lspconfig')
+
+	for serverName, opts in ipairs(lspUserSetups) do
+		if type(opts) == 'function' then opts = opts(lspconfig) or {} end
+		vim.lsp.config(serverName, opts)
+	end
+
 	local masonLspconfig = require('mason-lspconfig')
 	masonLspconfig.setup(conf.masonLspconfig)
-	-- Newly installed LSP without having to restart Neovim!
-	masonLspconfig.setup_handlers {
-		-- The first entry (without a key) will be the default handler
-		-- and will be called for each installed server that doesn't have
-		-- a dedicated handler.
-		function(serverName) -- default handler (optional)
-			local lspconfig = require('lspconfig')
-
-			-- https://github.com/hrsh7th/cmp-nvim-lsp#capabilities
-			local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-			local opts = config.lsp.setup[serverName] or {}
-			if type(opts) == 'function' then opts = opts(lspconfig) or {} end
-
-			opts = util.merge({
-				-- Use LspAttach autocmd insteads of on_attach function
-				-- on_attach = function(client, bufnr) end,
-				capabilities = capabilities,
-				autostart = true,
-				flags = {
-					debounce_text_changes = 150, -- This is default in neovim 0.7+
-				},
-			}, opts)
-
-			-- :h lspconfig-setup
-			lspconfig[serverName].setup(opts)
-		end,
-
-		-- Next, you can provide a dedicated handler for specific servers.
-		-- For example, a handler override for the `rust_analyzer`:
-		-- ['rust_analyzer'] = function()
-		-- 	require('rust-tools').setup {}
-		-- end,
-	}
 end
 
 M.signs = function()

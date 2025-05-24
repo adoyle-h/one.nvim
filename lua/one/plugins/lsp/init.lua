@@ -4,7 +4,7 @@ return {
 	requires = {
 		require('one.plugins.lsp.mason'),
 		require('one.plugins.lsp.mason-installer'),
-		'williamboman/mason-lspconfig.nvim',
+		'mason-org/mason-lspconfig.nvim',
 		require('one.plugins.lsp.main'),
 	},
 
