@@ -5,7 +5,9 @@ function M.parseOpts(fields, opts, plugOpts)
 
 	for k, v in pairs(fields) do
 		plugOpts[v] = opts[v]
-		if type(k) == 'string' then plugOpts[v] = opts[k] end
+		if type(k) == 'string' and opts[k] ~= nil then
+			plugOpts[v] = opts[k]
+		end
 	end
 
 	return plugOpts
