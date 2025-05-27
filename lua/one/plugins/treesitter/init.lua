@@ -46,13 +46,6 @@ M.defaultConfig = {
 			-- (for example if you want to disable highlighting for the `tex` filetype,
 			-- you need to include `latex` in this list as this is the name of the parser)
 			disable = function(lang, buf)
-				if vim.tbl_contains({
-						'markdown', -- Use my markdown highlights instead of
-						'help', -- The help use tree-sitter-vimdoc as parser. But currently its highlights is poor than builtin.
-					}, lang) then
-					return true
-				end
-
 				-- To disable highlight when open large file
 				local max_filesize = 100 * 1024 -- 100 KB
 				local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
