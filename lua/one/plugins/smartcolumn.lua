@@ -6,7 +6,9 @@ return {
 	defaultConfig = { 'smartcolumn', {
 		colorcolumn = '80',
 		disabled_filetypes = {
-			'help', 'text', 'markdown', 'NvimTree', 'lazy', 'mason', 'help', 'checkhealth', 'lspinfo', 'noice', 'Trouble', 'fish', 'zsh' },
+			'alpha', 'calendar', 'help', 'text', 'markdown', 'NvimTree', 'lazy', 'mason', 'help',
+			'checkhealth', 'lspinfo', 'noice', 'Trouble', 'fish', 'zsh',
+		},
 		custom_colorcolumn = {},
 		scope = 'file',
 		editorconfig = true,
