@@ -179,7 +179,7 @@ M.defaultConfig = { 'renderMarkdown', {
 		-- Added to the sign column if enabled.
 		-- Output is evaluated by `cycle(value, context.level)`.
 		-- signs = { '󰫎 ' },
-		signs = false,
+		signs = {},
 		-- Width of the heading background.
 		-- | block | width of the heading text |
 		-- | full  | full width of the window  |
@@ -267,7 +267,7 @@ M.defaultConfig = { 'renderMarkdown', {
 		-- Turn on / off code block & inline code rendering.
 		enabled = true,
 		-- Additional modes to render code blocks.
-		render_modes = false,
+		render_modes = {'i'},
 		-- Turn on / off any sign column related rendering.
 		sign = false,
 		-- Determines how code blocks & inline code are rendered.
@@ -313,7 +313,7 @@ M.defaultConfig = { 'renderMarkdown', {
 		-- | thick | use the same highlight as the code body              |
 		-- | thin  | when lines are empty overlay the above & below icons |
 		-- | hide  | conceal lines unless language name or icon is added  |
-		border = 'hide',
+		border = 'thin',
 		-- Used above code blocks for thin border.
 		above = '▄',
 		-- Used below code blocks for thin border.
@@ -625,6 +625,7 @@ M.defaultConfig = { 'renderMarkdown', {
 			youtube = { pattern = 'youtube%.com', icon = '󰗃 ' },
 		},
 	},
+
 	sign = {
 		-- Turn on / off sign rendering.
 		enabled = true,
