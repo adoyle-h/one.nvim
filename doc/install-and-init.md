@@ -31,7 +31,7 @@ The versions follow the rules of [Semantic Versioning 2.0.0](http://semver.org/s
 ## git clone
 
 ```sh
-PLUGIN_DIR=${XDG_DATA_HOME:-$HOME/.local/share}/nvim/plugins
+PLUGIN_DIR=${XDG_DATA_HOME:-$HOME/.local/share}/nvim/site/pack/plugins/start
 mkdir -p "$PLUGIN_DIR"
 git clone --single-branch https://github.com/adoyle-h/one.nvim.git "$PLUGIN_DIR"/one.nvim
 ```

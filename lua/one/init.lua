@@ -51,8 +51,6 @@ One.setup = function(opts)
 
 	PM.setup(opts)
 	FT.setup()
-
-	vim.opt.rtp:append(consts.ONE_DIR)
 end
 
 return One

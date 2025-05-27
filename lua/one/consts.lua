@@ -5,8 +5,8 @@ local function make()
 	local PATH_SEPARATOR = '/'
 	if IS_WINDOWS == true then PATH_SEPARATOR = '\\' end
 
-	local XDG_DATA_HOME = vim.fn.join({ vim.env.XDG_DATA_HOME or vim.env.HOME, '.local', 'share' }, PATH_SEPARATOR)
-	local ONE_DIR = vim.fn.join({ XDG_DATA_HOME, '/nvim/plugins/one.nvim' }, PATH_SEPARATOR)
+	local XDG_DATA_HOME = vim.env.XDG_DATA_HOME or vim.fn.join({ vim.env.HOME, '.local', 'share' }, PATH_SEPARATOR)
+	local ONE_DIR = vim.fn.join({ XDG_DATA_HOME, 'nvim', 'site', 'pack', 'plugins', 'start', 'one.nvim' }, PATH_SEPARATOR)
 
 	return {
 		IS_WINDOWS = IS_WINDOWS,

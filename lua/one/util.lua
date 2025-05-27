@@ -84,7 +84,7 @@ util.isDir = util.existDir
 
 -- directory is a file
 function util.existFile(path)
-	return fn.empty(fn.glob(path)) == 0
+	return vim.uv.fs_stat(path) ~= nil
 end
 
 util.isFile = util.existFile
