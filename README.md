@@ -8,7 +8,7 @@ All-in-one neovim configuration framework implemented with Lua. It is highly fle
 
 - All in Lua. All configs can be overridden. Read [Configuration](#configuration).
 - Use many Neovim features: Native LSP, Float Window, Winbar.
-- The supported plugin managers: [lazy.nvim][], [vim-plug](https://github.com/junegunn/vim-plug) and [packer.nvim][]. Read [Plugin Manager](#plugin-manager).
+- Supporting plugin manager: [lazy.nvim][]
 - Awesome UI and color schema. Dark Mode. Support True-Color, Smooth-Scroll, Scrollbar, Dashboard. You can change colors and highlights. Read [Colors and Highlights](./doc/colors.md).
 - Configurable proxy for fast git download in China Mainland. Read [Proxy](./doc/usage/proxy.md).
 - Integrated 130+ powerful Vim/Nvim plugins. Enhancing the usage experience, and fixed some shortcomings of these plugins.
@@ -16,7 +16,7 @@ All-in-one neovim configuration framework implemented with Lua. It is highly fle
   <details close>
   <summary>Click to expend/collapse plugin list</summary>
 
-  - Plugin Manager: [lazy](lua/one/plugin-manager/lazy.lua) (default) or [vim-plug](lua/one/plugin-manager/vim-plug.lua) or [packer](lua/one/plugin-manager/packer.lua)
+  - Plugin Manager: [lazy.nvim](lua/one/plugin-manager/lazy.lua) (default)
   - Vim Options: [vim-options](lua/one/plugins/vim-options.lua)
   - Utilities: [plenary](https://github.com/nvim-lua/plenary.nvim) and [Penlight](https://github.com/lunarmodules/Penlight) and [nui](https://github.com/MunifTanjim/nui.nvim)
   - Dashboard: [alpha.nvim](lua/one/plugins/alpha.lua)
@@ -167,26 +167,23 @@ Please read [User Config](./doc/user-config.md).
 
 ## Plugin Manager
 
-**Note**: One.nvim will install plugin manager on start up. So user should not install one.nvim via plugin manager.
+**Note**: One.nvim use [lazy.nvim](https://github.com/folke/lazy.nvim) as plugin manager. The lazy.nvim would be installed on start up. So user should not install one.nvim via plugin manager.
 
-Choose your favorite plugin manager. Now available: `lazy` (default), `vim-plug`, `packer`, `local`.
+
+|                   | lazy.nvim               |
+|-------------------|-------------------------|
+| Plugins Directory | {DATA_DIR}/plugins      |
+| Default Config    | lua/one/config/lazy.lua |
+
+The value of `{DATA_DIR}` is `:lua print(vim.fn.stdpath('data'))`.
 
 ```lua
 require('one').setup {
   config = {
-    pluginManager = { use = 'lazy' }, -- 'lazy' or 'vim-plug' or 'packer' or 'local'
+    pluginManager = { use = 'lazy' }, -- Default to 'lazy'. Available value: lazy' or 'local'
   },
 }
 ```
-
-|                   | lazy                    | vim-plug                    | packer                                      |
-|-------------------|-------------------------|-----------------------------|---------------------------------------------|
-| Plugins Directory | {DATA_DIR}/plugins      | {DATA_DIR}/plugins          | {DATA_DIR}/site/pack/user/start/packer.nvim |
-| Default Config    | lua/one/config/lazy.lua | lua/one/config/vim-plug.lua | lua/one/config/packer.lua                   |
-
-The value of `{DATA_DIR}` is `:lua print(vim.fn.stdpath('data'))`.
-
-When you change to packer from lazy or vim-plug, the plugins should be reinstalled. Read [initialization](./doc/install-and-init.md#initialization) for details.
 
 When `config.pluginManager.use = 'local'`, this plugin manager can only load local plugins. It cannnot install packages from remote.
 
@@ -234,9 +231,8 @@ Just read [codes](./lua/one/init.lua).
 │       ├── config/          // Keymaps
 │       │   ├── colors.lua   // Default color config
 │       │   ├── default.lua  // Default config
-│       │   ├── packer.lua   // packer.nvim default config
-│       │   ├── symbol.lua   // symbols
-│       │   └── vim-plug.lua // vim-plug default config
+│       │   ├── lazy.lua     // Default config for lazy.nvim
+│       │   └── symbol.lua   // symbols
 │       ├── config.lua       // Config loader
 │       ├── consts.lua       // Constants
 │       ├── filetype.lua     // FileType autocmd
@@ -251,9 +247,7 @@ Just read [codes](./lua/one/init.lua).
 │       └── plugin-manager/
 │           ├── init.lua     // Plugin Manager
 │           ├── lazy.lua     // Wrapper for lazy.nvim
-│           ├── local.lua    // Only load local files
-│           ├── vim-plug.lua // Wrapper for vim-plug
-│           └── packer.lua   // Wrapper for packer.nvim
+│           └── local.lua    // Only load local files
 └── scripts/                 // scripts for building project
 ```
 

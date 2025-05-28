@@ -8,7 +8,7 @@
 
 - 用 Lua 管理 nvim 配置。所有配置项都可覆盖。详见[配置章节](#配置)。
 - 充分使用 Neovim 功能：Native LSP、Float Window、Winbar。
-- 支持的插件管理器：[lazy.nvim][], [vim-plug](https://github.com/junegunn/vim-plug), [packer.nvim][]。详见[插件管理器](#插件管理器)。
+- 支持插件管理器：[lazy.nvim][]
 - 帅气的界面和配色。暗黑模式。支持真彩色、平滑滚动、滚动条、Dashboard。你可以修改任意配色。详见 [颜色和高亮](./doc/colors.zh.md)。
 - 支持配置 github 代理，在中国大陆可加快插件下载速度。详见[代理](./doc/usage/proxy.zh.md)。
 - 集成了 130 多个 Vim/Nvim 插件。增强插件的使用体验，并且修复了一些插件的缺点。
@@ -16,7 +16,7 @@
   <details close>
   <summary>点击展开/折叠插件列表</summary>
 
-  - 插件管理器: [lazy](lua/one/plugin-manager/lazy.lua) (默认) 或 [vim-plug](lua/one/plugin-manager/vim-plug.lua) 或 [packer](lua/one/plugin-manager/packer.lua)
+  - 插件管理器: [lazy.nvim](lua/one/plugin-manager/lazy.lua)
   - Vim 选项: [vim-options](lua/one/plugins/vim-options.lua)
   - 工具函数: [plenary](https://github.com/nvim-lua/plenary.nvim) 和 [Penlight](https://github.com/lunarmodules/Penlight) 和 [nui](https://github.com/MunifTanjim/nui.nvim)
   - 面板: [alpha.nvim](lua/one/plugins/alpha.lua)
@@ -169,26 +169,23 @@ require('one').setup {}
 
 ## 插件管理器
 
-**注意**: one.nvim 会在启动时自动安装插件管理器。所以用户请勿用自己的插件管理器去安装 one.nvim。
+**注意**: one.nvim 使用 [lazy.nvim](https://github.com/folke/lazy.nvim) 管理插件，并且会在启动时自动安装 lazy.nvim。所以用户请勿用自己的插件管理器去安装 one.nvim。
 
-选择你喜欢的插件管理器，目前提供 `lazy` (默认)，`vim-plug`，`packer`，`local`。
+
+|              | lazy.nvim               |
+|--------------|-------------------------|
+| 插件目录     | {DATA_DIR}/plugins      |
+| 默认配置文件 | lua/one/config/lazy.lua |
+
+`{DATA_DIR}` 的值见 `:lua print(vim.fn.stdpath('data'))`。
 
 ```lua
 require('one').setup {
   config = {
-    pluginManager = { use = 'lazy' }, -- 'lazy' or 'vim-plug' or 'packer' or 'local'
+    pluginManager = { use = 'lazy' }, -- Default to 'lazy'. Available value: lazy' or 'local'
   },
 }
 ```
-
-|              | lazy                    | vim-plug                    | packer                                      |
-|--------------|-------------------------|-----------------------------|---------------------------------------------|
-| 插件目录     | {DATA_DIR}/plugins      | {DATA_DIR}/plugins          | {DATA_DIR}/site/pack/user/start/packer.nvim |
-| 默认配置文件 | lua/one/config/lazy.lua | lua/one/config/vim-plug.lua | lua/one/config/packer.lua                   |
-
-`{DATA_DIR}` 的值见 `:lua print(vim.fn.stdpath('data'))`。
-
-当你从 vim-plug 或者 lazy 切换到 packer，就需要重装插件。详见[初始化](./doc/install-and-init.zh.md#初始化)流程。
 
 当 `config.pluginManager.use = 'local'`，插件管理器只能加载本地插件，无法从远端下载安装的插件。
 
@@ -235,9 +232,8 @@ require('one').setup {
 │       ├── config/          // Keymaps
 │       │   ├── colors.lua   // Default color config
 │       │   ├── default.lua  // Default config
-│       │   ├── packer.lua   // packer.nvim default config
-│       │   ├── symbol.lua   // symbols
-│       │   └── vim-plug.lua // vim-plug default config
+│       │   ├── lazy.lua     // Default config for lazy.nvim
+│       │   └── symbol.lua   // symbols
 │       ├── config.lua       // Config loader
 │       ├── consts.lua       // Constants
 │       ├── filetype.lua     // FileType autocmd
@@ -252,9 +248,7 @@ require('one').setup {
 │       └── plugin-manager/
 │           ├── init.lua     // Plugin Manager
 │           ├── lazy.lua     // Wrapper for lazy.nvim
-│           ├── local.lua    // Only load local files
-│           ├── vim-plug.lua // Wrapper for vim-plug
-│           └── packer.lua   // Wrapper for packer.nvim
+│           └── local.lua    // Only load local files
 └── scripts/                 // scripts for building project
 ```
 

@@ -23,7 +23,7 @@
 ```lua
 return {
   -- string | nil. The name of plugin. It must be first.
-  -- If the name has "/", such as "repo/name", the plugin manager (vim-plug/packer) will install the repo.
+  -- If the name has "/", such as "repo/name", the plugin manager will install the repo.
   -- If the name has not "/", no repo installed. User can name this plugin with any characters.
   'repo/name',
 
@@ -43,8 +43,7 @@ return {
               -- Specifies plugins to load before this plugin. (Only work for packer)
 
   -- Supporting more specifying options by plugin manager
-  -- packer: https://github.com/wbthomason/packer.nvim#specifying-plugins
-  -- vim-plug: https://github.com/junegunn/vim-plug#plug-options
+  -- lazy.nvim: https://lazy.folke.io/spec
 
   -- Specifies code to run before this plugin is loaded.
   -- User should not require lua module in this function.

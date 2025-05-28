@@ -31,17 +31,6 @@
   - 按 `:Lazy home` 或者 `<space>P` 打开 lazy 窗口。然后光标移到对应的插件按 `x` 删除，再按 `i` 重新安装。
   - 这是 lazy.nvim 的缺陷。参考[这个 issue](https://github.com/folke/lazy.nvim/issues/224#issuecomment-1367108251)。
 
-### 当 `config.pluginManager.use = vim-plug`
-
-- 在 nvim 执行 `:PlugInstall` 安装所有插件，重复直到全部安装成功。
-- 插件默认安装在 `~/.local/share/nvim/plugins`。你可以通过配置项 `CM.config.pluginManager['vim-plug'].pluginDir` 修改插件目录。
-
-### 当 `config.pluginManager.use = packer`
-
-- 在 nvim 执行 `:PackerSync` 安装所有插件，重复直到全部安装成功。
-- 插件默认安装在 `~/.local/share/nvim/pack/packer`。**不要修改** `config.pluginManager.packer.package_root`，除非你十分明白自己在做什么。如果你修改后出了错，请不要来询问我。
-- 在 [packer.nvim][] 提供的缓存机制作用下，你可能会遇到古怪的错误。尝试 `:lua one.reset()` 来清空所有插件和缓存文件。
-
 
 <!-- links -->
 

@@ -22,11 +22,7 @@ return function(colors)
 		global = 'one',
 
 		pluginManager = {
-			use = 'lazy', -- 'vim-plug' or 'packer' or 'lazy' or 'local'
-
-			['vim-plug'] = require('one.config.vim-plug'),
-
-			packer = require('one.config.packer'),
+			use = 'lazy',
 
 			lazy = require('one.config.lazy'),
 

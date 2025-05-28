@@ -214,15 +214,11 @@ function PM.setup(opts)
 	local P
 	if use == 'lazy' then
 		P = require('one.plugin-manager.lazy')
-	elseif use == 'packer' then
-		P = require('one.plugin-manager.packer')
-	elseif use == 'vim-plug' then
-		P = require('one.plugin-manager.vim-plug')
 	elseif use == 'local' then
 		P = require('one.plugin-manager.local')
 	else
 		error(string.format(
-			'Invalid value of config.pluginManager.use = %s . Available value: "lazy", "vim-plug", "packer", "local"',
+			'Invalid value of config.pluginManager.use = %s . Available value: "lazy", "local"',
 			use))
 	end
 

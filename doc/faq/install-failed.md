@@ -31,17 +31,6 @@ Related Issues/Discussions: [#6](https://github.com/adoyle-h/one.nvim/discussion
   - `:Lazy home` or press `<space>P` to open the lazy window. Move cursor to the plugin and press `x` to delete. And press `i` to re-install this plugin.
   - It is a fault of lazy.nvim, see [the issue](https://github.com/folke/lazy.nvim/issues/224#issuecomment-1367108251) for details.
 
-### If `config.pluginManager.use = vim-plug`
-
-- Run `:PlugInstall` to install all plugins in nvim. Repeat it util all plugins installed successfully.
-- All plugines installed in `~/.local/share/nvim/plugins`. You can modify the plugin directory with the `CM.config.pluginManager['vim-plug'].pluginDir` option.
-
-### If `config.pluginManager.use = packer`
-
-- Run `:PackerSync` to install all plugins in nvim. Repeat it util all plugins installed successfully.
-- All plugines installed in `~/.local/share/nvim/pack/packer`. **DO NOT MODIFY** the `config.pluginManager.packer.package_root` option, unless you completely know what you are doing. If the option modified and get any error, please don't ask me anything.
-- With the cache mechanisms by [packer.nvim][], you may be trapped in weird exceptions. Try `:lua one.reset()` to remove all plugins and cached files.
-
 
 <!-- links -->
 
