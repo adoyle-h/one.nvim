@@ -13,10 +13,11 @@
 - 支持配置 github 代理，在中国大陆可加快插件下载速度。详见[代理](./doc/usage/proxy.zh.md)。
 - 集成了 130 多个 Vim/Nvim 插件。增强插件的使用体验，并且修复了一些插件的缺点。
 
-  <details close>
-  <summary>点击展开/折叠插件列表</summary>
+<details close>
+<summary>点击展开/折叠插件列表</summary>
 
   - 插件管理器: [lazy.nvim](lua/one/plugin-manager/lazy.lua)
+  - AI: [avante.nvim](lua/one/plugins/ai/avante.lua) 与 [mcphub.nvim](lua/one/plugins/ai/mcphub.lua)
   - Vim 选项: [vim-options](lua/one/plugins/vim-options.lua)
   - 工具函数: [plenary](https://github.com/nvim-lua/plenary.nvim) 和 [Penlight](https://github.com/lunarmodules/Penlight) 和 [nui](https://github.com/MunifTanjim/nui.nvim)
   - 面板: [alpha.nvim](lua/one/plugins/alpha.lua)
@@ -77,7 +78,7 @@
   - [游戏](lua/one/plugins/funny.lua)
   - One.nvim 增强插件: [one](lua/one/plugins/one.lua)
 
-  </details>
+</details>
 
 
 ## 截图
@@ -94,6 +95,8 @@
 ![UI.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/UI.png)
 
 ![UI-2.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/UI-2.png)
+
+![Markdown UI](https://raw.githubusercontent.com/adoyle-h/_imgs/master/github/one.nvim/markdown-ui.webp)
 
 ### 隐藏 cmdline
 

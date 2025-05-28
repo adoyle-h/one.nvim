@@ -13,10 +13,11 @@ All-in-one neovim configuration framework implemented with Lua. It is highly fle
 - Configurable proxy for fast git download in China Mainland. Read [Proxy](./doc/usage/proxy.md).
 - Integrated 130+ powerful Vim/Nvim plugins. Enhancing the usage experience, and fixed some shortcomings of these plugins.
 
-  <details close>
-  <summary>Click to expend/collapse plugin list</summary>
+<details close>
+<summary>Click to expend/collapse plugin list</summary>
 
   - Plugin Manager: [lazy.nvim](lua/one/plugin-manager/lazy.lua) (default)
+  - AI: [avante.nvim](lua/one/plugins/ai/avante.lua) and [mcphub.nvim](lua/one/plugins/ai/mcphub.lua)
   - Vim Options: [vim-options](lua/one/plugins/vim-options.lua)
   - Utilities: [plenary](https://github.com/nvim-lua/plenary.nvim) and [Penlight](https://github.com/lunarmodules/Penlight) and [nui](https://github.com/MunifTanjim/nui.nvim)
   - Dashboard: [alpha.nvim](lua/one/plugins/alpha.lua)
@@ -77,7 +78,7 @@ All-in-one neovim configuration framework implemented with Lua. It is highly fle
   - [Games](lua/one/plugins/funny.lua)
   - one.nvim enhanced plugin: [one](lua/one/plugins/one.lua)
 
-  </details>
+</details>
 
 ## Screenshots
 
@@ -93,6 +94,8 @@ All-in-one neovim configuration framework implemented with Lua. It is highly fle
 ![UI.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/UI.png)
 
 ![UI-2.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/one.nvim/UI-2.png)
+
+![Markdown UI](https://raw.githubusercontent.com/adoyle-h/_imgs/master/github/one.nvim/markdown-ui.webp)
 
 ### Hidden cmdline
 
