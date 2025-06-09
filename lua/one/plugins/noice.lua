@@ -53,6 +53,16 @@ local M = {
 		require('noice').setup(config.noice)
 		if pcall(require, 'telescope') then require('telescope').load_extension('noice') end
 	end,
+
+	autocmds = {
+		RecordingLeave = {
+			group = vim.api.nvim_create_augroup('MacroRecording', { clear = true }),
+			callback = function()
+				-- Display a message when macro recording stops
+				print('Macro recording stopped')
+			end,
+		},
+	},
 }
 
 M.defaultConfig = function()
