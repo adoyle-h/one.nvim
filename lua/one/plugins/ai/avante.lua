@@ -24,11 +24,15 @@ M.defaultConfig = { 'avante', {
 
 	cursor_applying_provider = nil, -- The provider used in the applying phase of Cursor Planning Mode, defaults to nil, when nil uses Config.provider as the provider for the applying phase
 
-	claude = {
-		endpoint = 'https://api.anthropic.com',
-		model = 'claude-3-5-sonnet-20241022',
-		temperature = 0,
-		max_tokens = 4096,
+	providers = {
+		claude = {
+			endpoint = 'https://api.anthropic.com',
+			model = 'claude-3-5-sonnet-20241022',
+			extra_request_body = {
+				temperature = 0,
+				max_tokens = 4096,
+			},
+		},
 	},
 
 	---Specify the special dual_boost mode
@@ -113,14 +117,17 @@ M.defaultConfig = { 'avante', {
 			align = 'center', -- left, center, right for title
 			rounded = true,
 		},
+
 		input = {
 			prefix = '> ',
-			height = 8, -- Height of the input window in vertical layout
+			height = 4, -- Height of the input window in vertical layout
 		},
+
 		edit = {
 			border = 'rounded',
-			start_insert = true, -- Start insert mode when opening the edit window
+			start_insert = false, -- Start insert mode when opening the edit window
 		},
+
 		ask = {
 			floating = false, -- Open the 'AvanteAsk' prompt in a floating window
 			start_insert = true, -- Start insert mode when opening the ask window
