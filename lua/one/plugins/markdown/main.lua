@@ -15,6 +15,7 @@ M.highlights = function(config)
 		RenderMarkdownH5Bg = { bg = colors.darkPurple },
 		RenderMarkdownCode = { bg = colors.grey1 },
 		RenderMarkdownCodeInline = { fg = colors.blue, bg = colors.grey1 },
+		RenderMarkdownBullet = { fg = colors.blue },
 	}
 end
 
@@ -24,7 +25,8 @@ M.defaultConfig = { 'renderMarkdown', {
 	-- Vim modes that will show a rendered view of the markdown file, :h mode(), for all enabled
 	-- components. Individual components can be enabled for other modes. Remaining modes will be
 	-- unaffected by this plugin.
-	render_modes = { 'n', 'c', 't' },
+	-- render_modes = { 'n', 'c', 't' },
+	render_modes = { 'n', 'c', 't', 'i', 'v', 'V', '\22' },
 	-- Maximum file size (in MB) that this plugin will attempt to render.
 	-- Any file larger than this will effectively be ignored.
 	max_file_size = 10.0,
@@ -158,7 +160,7 @@ M.defaultConfig = { 'renderMarkdown', {
 		-- Turn on / off heading icon & background rendering.
 		enabled = true,
 		-- Additional modes to render headings.
-		render_modes = { 'i' },
+		render_modes = false,
 		-- Turn on / off atx heading rendering.
 		atx = true,
 		-- Turn on / off setext heading rendering.
@@ -267,7 +269,7 @@ M.defaultConfig = { 'renderMarkdown', {
 		-- Turn on / off code block & inline code rendering.
 		enabled = true,
 		-- Additional modes to render code blocks.
-		render_modes = { 'i' },
+		render_modes = false,
 		-- Turn on / off any sign column related rendering.
 		sign = false,
 		-- Determines how code blocks & inline code are rendered.
@@ -380,7 +382,7 @@ M.defaultConfig = { 'renderMarkdown', {
 		-- Turn on / off list bullet rendering
 		enabled = true,
 		-- Additional modes to render list bullets
-		render_modes = { 'i' },
+		render_modes = false,
 		-- Replaces '-'|'+'|'*' of 'list_item'.
 		-- If the item is a 'checkbox' a conceal is used to hide the bullet instead.
 		-- Output is evaluated depending on the type.
