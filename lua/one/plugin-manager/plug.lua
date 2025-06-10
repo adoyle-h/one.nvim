@@ -8,7 +8,6 @@ local dynamic = require('one.plugins.completion.dynamic.source')
 local set_keymap = vim.keymap.set
 local set_hl = vim.api.nvim_set_hl
 local set_cmd = vim.api.nvim_create_user_command
-local sign_define = vim.fn.sign_define
 local create_autocmd = vim.api.nvim_create_autocmd
 
 local plugOpts = {
@@ -18,7 +17,9 @@ local plugOpts = {
 		name = 'signs',
 		iterator = function(props, name)
 			if not props then return end
-			sign_define(name, props)
+			vim.diagnostic.config {
+				signs = props,
+			}
 		end,
 	},
 
