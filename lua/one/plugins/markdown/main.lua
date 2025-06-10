@@ -59,11 +59,11 @@ M.defaultConfig = { 'renderMarkdown', {
 		gitcommit = {
 			enabled = true,
 			query = [[
-                ((message) @injection.content
-                    (#set! injection.combined)
-                    (#set! injection.include-children)
-                    (#set! injection.language "markdown"))
-            ]],
+				((message) @injection.content
+					(#set! injection.combined)
+					(#set! injection.include-children)
+					(#set! injection.language "markdown"))
+			]],
 		},
 	},
 
@@ -267,7 +267,7 @@ M.defaultConfig = { 'renderMarkdown', {
 		-- Turn on / off code block & inline code rendering.
 		enabled = true,
 		-- Additional modes to render code blocks.
-		render_modes = {'i'},
+		render_modes = { 'i' },
 		-- Turn on / off any sign column related rendering.
 		sign = false,
 		-- Determines how code blocks & inline code are rendered.
