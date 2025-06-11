@@ -10,7 +10,32 @@ You can use `:OneUpdate` to update one.nvim to latest. Please read [the "Update"
 
 ## [Unreleased]
 
-[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v7.0.0...HEAD)
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v7.0.1...HEAD)
+
+
+<a name="v7.0.1"></a>
+## v7.0.1 (2025-06-11 03:02:29 +08:00)
+
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v7.0.0...v7.0.1)
+
+### Bug Fixes
+
+- vim.fn.sign_define would be deprecated in neovim 0.12 ([61e887d](https://github.com/adoyle-h/one.nvim/commit/61e887d349520ba9276e1cf7147f64be9214f332))
+- one.nvim only use lazy.nvim as plugin manager ([a74ce37](https://github.com/adoyle-h/one.nvim/commit/a74ce37beb010ddaef63e4f2b6c73bbca8387971))
+  > removed vim-plug and packer.nvim
+  > fix the document for installation
+- **avante**: migrate default config for latest version ([5c83bae](https://github.com/adoyle-h/one.nvim/commit/5c83bae981a8d2b5a35bf89515ab11ab11e5dc9a))
+- **markdown**: better UI ([0a72868](https://github.com/adoyle-h/one.nvim/commit/0a7286881272e192358cd1d08158f42ac9028ea2))
+- **markdown**: better ui ([51d3a1f](https://github.com/adoyle-h/one.nvim/commit/51d3a1fdb9e1e5639e3b0f2c484b89cbf0ed77c9))
+- **markdown**: html link should not conceal ([7fdf9db](https://github.com/adoyle-h/one.nvim/commit/7fdf9db0e98f5e083582e78eee645d29cb858b1b))
+- **markdown**: concealing for markdown links uncorrected. ([d47cc6d](https://github.com/adoyle-h/one.nvim/commit/d47cc6de2c68f876d13b8c0470f87c4be034f908))
+- **noice**: Display a message when macro recording stops ([a721ea3](https://github.com/adoyle-h/one.nvim/commit/a721ea307018887ffb9daeaefbd27615f7dbd6e1))
+- **smartcolumn**: not show columns in alpha window ([5121298](https://github.com/adoyle-h/one.nvim/commit/5121298aa7a926ac9fe92653be9a7f32e357bdac))
+
+### Document Changes
+
+- update introduction ([4dab5fe](https://github.com/adoyle-h/one.nvim/commit/4dab5fe0b5a26a4462d5b6900519013e2d5388c3))
+- fix install script ([90380c4](https://github.com/adoyle-h/one.nvim/commit/90380c49a57c8b59a4a29dedb42d182d3834bcfc))
 
 
 <a name="v7.0.0"></a>
