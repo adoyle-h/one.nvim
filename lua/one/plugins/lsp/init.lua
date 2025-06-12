@@ -13,7 +13,6 @@ return {
 		require('one.plugins.lsp.preview'),
 		require('one.plugins.lsp.nlsp'),
 		require('one.plugins.lsp.fidget'),
-		require('one.plugins.lsp.format'),
 
 		{
 			'adoyle-h/lsp-toggle.nvim',

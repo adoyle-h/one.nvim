@@ -3,6 +3,7 @@ return {
 	desc = 'Format Settings',
 
 	deps = {
+		require('one.plugins.format.conform'),
 		require('one.plugins.align'),
 
 		{ 'editorconfig/editorconfig-vim', desc = '.editorconfig support' },
