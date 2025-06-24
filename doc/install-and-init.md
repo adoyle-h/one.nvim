@@ -15,9 +15,8 @@ You can use git clone to install. Or run nvim in container.
 - A C compiler in your path and libstdc++ installed. (Required by [treesitter](https://github.com/nvim-treesitter/nvim-treesitter#requirements))
 - [Nerd Font][]. Recommend [DejaVuSansMonoForPowerline Nerd Font][font]. Remember to change your terminal font setting. (The icons may look small. It is [a bug of nerd-fonts](https://github.com/ryanoasis/nerd-fonts/issues/1061))
 - [ripgrep(rg)](https://github.com/BurntSushi/ripgrep)
-- [luarocks](https://luarocks.org/) and [penlight](https://github.com/lunarmodules/Penlight).
+- [luarocks](https://luarocks.org/)
   - install luarocks: https://github.com/luarocks/luarocks/wiki/Download
-  - install penlight: `luarocks install penlight`
 - Linux and MacOS are supported. Windows not.
 
 ## Versions

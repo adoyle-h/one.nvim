@@ -491,11 +491,11 @@ function util.inspect2Lines(tbl)
 end
 
 function util.dump(tbl)
-	return require('pl.pretty').write(tbl)
+	return vim.inspect(tbl)
 end
 
 function util.dump2Lines(tbl)
-	return vim.split(require('pl.pretty').write(tbl), '\n')
+	return vim.split(vim.inspect(tbl), '\n')
 end
 
 return util

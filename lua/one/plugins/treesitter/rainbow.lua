@@ -4,16 +4,7 @@ return {
 	after = 'nvim-treesitter',
 
 	config = function(config)
-		local rainbow_delimiters = require 'rainbow-delimiters'
-		local tablex = require('pl.tablex')
-
-		local conf = config.rainbow
-
-		conf.strategy = tablex.map(function(name)
-			return rainbow_delimiters.strategy[name]
-		end, conf.strategy)
-
-		require 'rainbow-delimiters.setup'.setup(conf)
+		require('rainbow-delimiters.setup').setup(config.rainbow)
 	end,
 
 	defaultConfig = {
@@ -21,12 +12,17 @@ return {
 		{
 			-- NOTE: the value should be string
 			strategy = {
-				[''] = 'global',
+				[''] = 'rainbow-delimiters.strategy.global',
 				-- commonlisp = 'local',
 			},
 			query = {
 				[''] = 'rainbow-delimiters',
 				latex = 'rainbow-blocks',
+				lua = 'rainbow-blocks',
+			},
+			priority = {
+				[''] = 110,
+				lua = 210,
 			},
 			highlight = {
 				'RainbowDelimiter_1',
