@@ -52,6 +52,20 @@ Or press `:h one-keymaps` to see the keymaps document.
 - `K` = Split current line on cursor
 - `<M-CR>` in insert mode = Move cursor to next line
 
+## Surround
+
+See `:h nvim-surround.basics`.
+
+- `ds[char]` = deleting the surrounding pair associated with `{char}`
+- `cs{target}{replacement}` = changing the surrounding pair associated with `{target}` to a pair associated with `{replacement}`
+- `cS{target}{replacement}` = the normal-mode operator is analogous to `cs`, but adds the replacement delimiter pair on new lines
+- `vs[char]` = add delimiter pair associated with `{char}` around the cursor and visual selection
+- `vgs[char]` = the normal-mode operator is analogous to `vs`, but adds the replacement delimiter pair on new lines
+- `ys{motion}{char}` = surrounds a given motion or text-object with a delimiter pair associated with `{char}`
+- `yss[char]` = the operator is a special case for `ys`, and operates on the current line via `yss[char]`, ignoring leading and trailing whitespace
+- `yS[char]` = the operators are analogous to `ys`, but add the delimiter pair on new lines.
+- `ySS[char]` = the operators are analogous to `yss`, but add the delimiter pair on new lines.
+
 ## Indent
 
 - `>` = Increment indent

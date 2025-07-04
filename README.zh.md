@@ -43,7 +43,7 @@
   - 补全: [nvim-cmp](lua/one/plugins/completion/init.lua)
   - Snippets: [nvim-snippy](lua/one/plugins/completion/snippet.lua)
   - Markdown: [render-markdown.nvim](lua/one/plugins/markdown/main.lua) 与 [markdown-preview](lua/one/plugins/markdown/preview.lua) 与 [vim-MarkdownTOC](lua/one/plugins/markdown/toc.lua)
-  - 括号配对: [nvim-surround](lua/one/plugins/match/surround.lua) 与 [nvim-autopairs](lua/one/plugins/match/autopairs.lua) 与 [nvim-ts-autotag](lua/one/plugins/match/ts-autotag.lua) 与 [vim-matchup](lua/one/plugins/match/matchup.lua)
+  - 括号配对: [nvim-surround](lua/one/plugins/match/surround/init.lua) 与 [nvim-autopairs](lua/one/plugins/match/autopairs.lua) 与 [nvim-ts-autotag](lua/one/plugins/match/ts-autotag.lua) 与 [vim-matchup](lua/one/plugins/match/matchup.lua)
   - Git: [gitsigns](lua/one/plugins/git/sign.lua) 与 [lazygit](lua/one/plugins/git/lazygit.lua) 与 [diffview.nvim](https://github.com/sindrets/diffview.nvim)
   - 缩进基准线: [indent-blankline](lua/one/plugins/indent-line.lua)
   - 光标移动: [flash.nvim](lua/one/plugins/move/flash.lua) 与 [accelerated-jk](lua/one/plugins/move/accelerated.lua) 或 [hop.nvim](lua/one/plugins/move/jump.lua)

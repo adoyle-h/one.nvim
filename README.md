@@ -43,7 +43,7 @@ All-in-one neovim configuration framework implemented with Lua. It is highly fle
   - Completion: [nvim-cmp](lua/one/plugins/completion/init.lua)
   - Snippets: [nvim-snippy](lua/one/plugins/completion/snippet.lua)
   - Markdown: [render-markdown.nvim](lua/one/plugins/markdown/main.lua) and [markdown-preview](lua/one/plugins/markdown/preview.lua) and [vim-MarkdownTOC](lua/one/plugins/markdown/toc.lua)
-  - Surrounds: [nvim-surround](lua/one/plugins/match/surround.lua) and [nvim-autopairs](lua/one/plugins/match/autopairs.lua) and [nvim-ts-autotag](lua/one/plugins/match/ts-autotag.lua) and [vim-matchup](lua/one/plugins/match/matchup.lua)
+  - Surrounds: [nvim-surround](lua/one/plugins/match/surround/init.lua) and [nvim-autopairs](lua/one/plugins/match/autopairs.lua) and [nvim-ts-autotag](lua/one/plugins/match/ts-autotag.lua) and [vim-matchup](lua/one/plugins/match/matchup.lua)
   - Git: [gitsigns](lua/one/plugins/git/sign.lua) and [lazygit](lua/one/plugins/git/lazygit.lua) and [diffview.nvim](https://github.com/sindrets/diffview.nvim)
   - Indent Line: [indent-blankline](lua/one/plugins/indent-line.lua)
   - Cursor Move: [flash.nvim](lua/one/plugins/move/flash.lua) and [accelerated-jk](lua/one/plugins/move/accelerated.lua) or [hop.nvim](lua/one/plugins/move/jump.lua)
