@@ -14,5 +14,7 @@ return {
 				},
 			} },
 		},
+
+		require('one.plugins.match.surround.markdown'),
 	},
 }
