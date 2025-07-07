@@ -1,4 +1,3 @@
-local util = require('one.util')
 local symbolMap = require('one.config').config.symbolMap
 
 local M = { 'neovim/nvim-lspconfig' }
@@ -84,7 +83,16 @@ M.defaultConfig = {
 
 		diagnostic = { -- :h vim.diagnostic.config
 			virtual_text = false,
-			signs = true,
+			signs = {
+				text = SeverityMap,
+				numhl = {
+					[vim.diagnostic.severity.ERROR] = 'DiagnosticSign' .. 'ERROR',
+					[vim.diagnostic.severity.WARN] = 'DiagnosticSign' .. 'WARN',
+					[vim.diagnostic.severity.INFO] = 'DiagnosticSign' .. 'INFO',
+					[vim.diagnostic.severity.HINT] = 'DiagnosticSign' .. 'HINT',
+				},
+				priority = 10, -- the priority of gitsigns is 6
+			},
 			underline = true,
 			update_in_insert = false,
 			severity_sort = true,
@@ -169,24 +177,6 @@ function M.config(config)
 
 	local masonLspconfig = require('mason-lspconfig')
 	masonLspconfig.setup(conf.masonLspconfig)
-end
-
-M.signs = function()
-	local map = {
-		Error = symbolMap.ERROR,
-		Warn = symbolMap.WARN,
-		Hint = symbolMap.HINT,
-		Info = symbolMap.INFO,
-	}
-
-	local signs = {}
-
-	for type, icon in pairs(map) do
-		local hl = 'DiagnosticSign' .. type
-		signs[hl] = { text = icon, texthl = hl, numhl = hl }
-	end
-
-	return signs
 end
 
 M.keymaps = require('one.plugins.lsp.keymaps')
