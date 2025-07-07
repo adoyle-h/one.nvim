@@ -10,7 +10,39 @@ You can use `:OneUpdate` to update one.nvim to latest. Please read [the "Update"
 
 ## [Unreleased]
 
-[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v7.0.1...HEAD)
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v7.1.0...HEAD)
+
+
+<a name="v7.1.0"></a>
+## v7.1.0 (2025-07-08 03:47:03 +08:00)
+
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v7.0.1...v7.1.0)
+
+### New Features
+
+- enable auto trigger signature and `<C-s>` toggle signature in insert mode ([93a354d](https://github.com/adoyle-h/one.nvim/commit/93a354d05e2a3dc891864cb963b345f570f0061b))
+- use gsuuon/tshjkl.nvim to select the next closest text-objects ([0676cd5](https://github.com/adoyle-h/one.nvim/commit/0676cd5a3816b2546d76205cd50aa7336849def1))
+  > remove gcmt/wildfire.vim and RRethy/nvim-treesitter-textsubjects
+- use conform.nvim instead of lsp-format.nvim ([dda4108](https://github.com/adoyle-h/one.nvim/commit/dda410804996c11fd542898cf8d71cf9966b20b9))
+- **nvim-surround**: add new shortcuts for markdown buffer ([87ea115](https://github.com/adoyle-h/one.nvim/commit/87ea115a2227ae63c5cb305e0a6857833a6826ed))
+  > - "vsl" and "vsL" for [text](link)
+
+### Bug Fixes
+
+- OneShowConfig print nil ([c4be2df](https://github.com/adoyle-h/one.nvim/commit/c4be2df4d1374d882081d08d20b2f3b07910a6f1))
+- remove Penlight ([df154d5](https://github.com/adoyle-h/one.nvim/commit/df154d58ee2e55dc6cc7cf35c18a90f1f58c2903))
+- **git**: change the sign_priority of git ([b7432b3](https://github.com/adoyle-h/one.nvim/commit/b7432b30f1409021bc56dcd8aa1b45ddbb32e555))
+- **lsp**: diagnostic signs should use icons ([81fdd5b](https://github.com/adoyle-h/one.nvim/commit/81fdd5b43e13f8806d467f0f1ef6c333ea0c7f98))
+- **nvim-surround**: change keymaps: vS* -> vs* and vgS* -> vgs* ([ae5099d](https://github.com/adoyle-h/one.nvim/commit/ae5099d9ac965e3a4a5de7212b2bdf70c0f85031))
+  > If user used "vs" previously, please use "vc" instead of "vs". The origin "vc" and "vs" shortcuts are same.
+
+### Document Changes
+
+- update plugin list ([3928e20](https://github.com/adoyle-h/one.nvim/commit/3928e203ca301963f34428d9c3e755d705572fb9))
+### Reverts
+
+- fix: vim.fn.sign_define would be deprecated in neovim 0.12
+
 
 
 <a name="v7.0.1"></a>
