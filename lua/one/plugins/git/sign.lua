@@ -56,7 +56,7 @@ M.defaultConfig = {
 			virt_text_priority = 100,
 		},
 		current_line_blame_formatter = '[<author_time:%Y/%m/%d %H:%M:%S> <author>] <summary>',
-		sign_priority = 6,
+		sign_priority = 16, -- the sign_priority of diagnostics is 10
 		update_debounce = 100,
 		status_formatter = nil, -- Use default
 		max_file_length = 40000, -- Disable if file is longer than this (in lines)
