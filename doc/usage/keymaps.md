@@ -424,6 +424,7 @@ If bufferline plugin enabled, some keymaps will be overridden. See [Buffer Line]
 - `gh` = Display hover information about the symbol under the cursor in a floating window. Calling the function twice will jump into the floating window.
   - `gh` in markdown files = Open a telescope picker to select a heading
 - `gs` = Display signature information about the symbol under the cursor in a floating window.
+- `<C-s>` in insert mode = Toggle signature on and off in insert mode.
 
 ## Format
 
