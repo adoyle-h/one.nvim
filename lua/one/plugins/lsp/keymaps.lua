@@ -13,7 +13,7 @@ return {
 
 	{ 'n', '<space>a', vim.lsp.buf.code_action, { silent = true, desc = ':h vim.lsp.buf.code_action' } },
 
-	{ 'n', 'gh', vim.lsp.buf.hover, { silent = true, desc = ':h vim.lsp.buf.hover' } },
+	{ 'n', 'gh', function() vim.lsp.buf.hover({ border = 'rounded' }) end, { silent = true, desc = ':h vim.lsp.buf.hover' } },
 
-	{ 'n', 'gs', vim.lsp.buf.signature_help, { silent = true, desc = ':h vim.lsp.buf.signature_help' } },
+	{ 'n', 'gs', function() vim.lsp.buf.signature_help({ border = 'rounded' }) end, { silent = true, desc = ':h vim.lsp.buf.signature_help' } },
 }
