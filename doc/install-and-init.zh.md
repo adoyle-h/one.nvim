@@ -13,13 +13,16 @@
   - `pip2 install --upgrade --user pynvim` (这是可选的)
 - Git 与 curl
 - C 编译器与 libstdc++。([treesitter](https://github.com/nvim-treesitter/nvim-treesitter#requirements) 需要)
-- [Nerd Font 字体][Nerd Font]。推荐 [DejaVuSansMonoForPowerline Nerd Font][font]。记得修改你的终端的字体设置。(图标可能看起来很小。这是 [nerd-fonts 的 BUG](https://github.com/ryanoasis/nerd-fonts/issues/1061))。
+- [Nerd Font 字体][Nerd Font]。推荐 [DejaVuSansMonoForPowerline Nerd Font][font]。记得修改你的终端的字体设置。
 - [ripgrep(rg)](https://github.com/BurntSushi/ripgrep)
 - [luarocks](https://luarocks.org/)
   - 安装 luarocks: https://github.com/luarocks/luarocks/wiki/Download
 - 支持 Linux 和 MacOS，不支持 Windows
 
 ## 版本
+
+one.nvim 不锁插件的版本。它只保证兼容最新版本的插件。如果你遇到问题，请先更新所有插件（包括 one.nvim）到最新版，再重启 nvim。
+如果仍然存在问题，请提交 issue。
 
 推荐使用 `master` 分支。它是稳定的。
 你也可以尝试 `develop` 分支来获取最新代码，但可能不稳定。

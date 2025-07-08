@@ -13,13 +13,16 @@ You can use git clone to install. Or run nvim in container.
   - `pip2 install --upgrade --user pynvim` (it is optional)
 - Git and curl
 - A C compiler in your path and libstdc++ installed. (Required by [treesitter](https://github.com/nvim-treesitter/nvim-treesitter#requirements))
-- [Nerd Font][]. Recommend [DejaVuSansMonoForPowerline Nerd Font][font]. Remember to change your terminal font setting. (The icons may look small. It is [a bug of nerd-fonts](https://github.com/ryanoasis/nerd-fonts/issues/1061))
+- [Nerd Font][]. Recommend [DejaVuSansMonoForPowerline Nerd Font][font]. Remember to change the font setting in your terminal.
 - [ripgrep(rg)](https://github.com/BurntSushi/ripgrep)
 - [luarocks](https://luarocks.org/)
   - install luarocks: https://github.com/luarocks/luarocks/wiki/Download
 - Linux and MacOS are supported. Windows not.
 
 ## Versions
+
+The one.nvim does not lock plugin versions. It only guarantees compatibility with the latest version of plugins. If you encounter problems, please update all plugins (including one.nvim) to the latest version, and restart nvim.
+If you are still having problems, please submit an issue.
 
 It's recommended to use `master` branch which should be always stable.
 You can try `develop` branch for latest update but may be unstable.
