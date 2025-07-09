@@ -285,7 +285,20 @@ M.defaultConfig = function(config)
 					{ name = 'nvim_lua', group_index = 1 },
 					{ name = 'snippy', group_index = 1 },
 					{ name = 'nvim_lsp', group_index = 1 },
-					{ name = 'buffer', group_index = 1 },
+					{
+						name = 'buffer',
+						group_index = 1,
+						option = {
+							get_bufnrs = function()
+								local bufs = {}
+								local wins = vim.api.nvim_tabpage_list_wins(0)
+								for idx, win in ipairs(wins) do
+									bufs[idx] = vim.api.nvim_win_get_buf(win)
+								end
+								return bufs
+							end,
+						},
+					},
 					{ name = 'spell', group_index = 2 },
 				},
 
