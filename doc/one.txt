@@ -561,9 +561,8 @@ If bufferline plugin enabled, some keymaps will be overridden. See [Buffer Line]
 --------------------------------------------------------------------------------
 ## Format                                                   *one-keymaps-format*
 
-- `==` = vim default `==`. See `:h ==`
-- `<M-=>` = Format a buffer using the attached language server clients. (format will be trigger when write buffer to disk)
-- `<M-=>` in selection = Format selected texts using the attached language server clients.
+- `=` = Format a buffer using the attached language server clients. (Format will be trigger when write buffer to disk)
+- `=` in selection = Range format selected text using the attached language server clients.
 
 --------------------------------------------------------------------------------
 ## Diff                                                       *one-keymaps-diff*

@@ -1,5 +1,5 @@
 local M = {
-		'stevearc/conform.nvim',
+	'stevearc/conform.nvim',
 
 	config = function(config)
 		require('conform').setup(config.conform)
@@ -103,5 +103,24 @@ M.defaultConfig = { 'conform', {
 		-- end,
 	},
 } }
+
+local function format()
+	require('conform').format({ async = true, lsp_fallback = true }, function(err)
+		if not err then
+			-- If we formatted in visual mode, escape to normal mode after formatting
+			if vim.startswith(vim.api.nvim_get_mode().mode:lower(), 'v') then
+				vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Esc>', true, false, true), 'n', true)
+			end
+		end
+	end)
+end
+
+M.keymaps = {
+	{
+		'n', '=', format, { desc = 'Format a buffer using the attached language server clients. (Format will be trigger when write buffer to disk)' },
+		'v', '=', format, { desc = 'Range format selected text using the attached language server clients.' },
+	},
+
+}
 
 return M
