@@ -151,10 +151,13 @@ function M.config(config)
 		capabilities = capabilities,
 		-- Use LspAttach autocmd insteads of on_attach function
 		-- on_attach = on_attach, -- on_attach: function(client, bufnr) end
-		handlers = handlers,
-		autostart = true,
+		-- handlers = handlers,
 		flags = {
-			debounce_text_changes = 150, -- This is default in neovim 0.7+
+			debounce_text_changes = 150, -- This is default in neovim
+			-- Milliseconds to wait for server to exit cleanly after sending the "shutdown" request
+			-- before sending kill -15.
+			-- If set to false, nvim exits immediately after sending the "shutdown" request to the server.
+			exit_timeout = false, -- `integer|false`, default: `false`)
 		},
 	})
 
