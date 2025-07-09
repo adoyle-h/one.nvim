@@ -498,6 +498,15 @@ If bufferline plugin enabled, some keymaps will be overridden. See [Buffer Line]
 ## AI
 
 - `<leader>m` = Toggle MCPHub
+
+### CodeCompanion
+
+- `<leader>cc` = Toggle CodeCompanion chat window
+- `<leader>ca` = Open CodeCompanion actions window
+- `?` in CodeCompanion chat window = show keymaps/variables/tools
+
+### Avante
+
 - `<leader>aa` = avante: ask
 - `<leader>af` = avante: focus
 - `<leader>at` = avante: toggle

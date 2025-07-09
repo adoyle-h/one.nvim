@@ -4,6 +4,7 @@ local M = {
 	-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
 	build = 'make',
 	version = false, -- must be false
+	disable = true,
 
 	config = function(config)
 		require('avante').setup(config.avante)
