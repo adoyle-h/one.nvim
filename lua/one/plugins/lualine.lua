@@ -11,6 +11,10 @@ local M = {
 
 local printf = string.format
 
+M.highlights = {
+	AerialDenseSep = { fg = colors.red, bg = colors.darkCyan },
+}
+
 ---@return string current mode name
 local function getMode()
 	local mode_code = vim.api.nvim_get_mode().mode
@@ -268,13 +272,15 @@ M.defaultConfig = function()
 		-- When 'dense' mode is on, icons are not rendered near their symbols. Only
 		-- a single icon that represents the kind of current symbol is rendered at
 		-- the beginning of status line.
-		dense = false,
+		dense = true,
 
 		dense_sep = '.', -- The separator to be used to separate symbols in dense mode.
 
+		sep_highlight = 'AerialDenseSep',
+
 		colored = true, -- Color the symbol icons.
 
-		color = { fg = colors.cyan, bg = '#0A1921', gui = 'bold' },
+		color = { fg = colors.cyan, bg = c.darkCyan, gui = 'bold' },
 	}
 
 	local progress = require('lualine.components.progress')
@@ -328,6 +334,7 @@ M.defaultConfig = function()
 						return ' '
 					end,
 					padding = 0,
+					color = { bg = colors.darkCyan },
 				},
 			},
 			lualine_y = {},
@@ -345,7 +352,7 @@ M.defaultConfig = function()
 		table.insert(lualineConfig.winbar.lualine_c, {
 			navic.get_location,
 			cond = navic.is_available,
-			color = { fg = colors.cyan, bg = '#0A1921', gui = 'underline' },
+			color = { fg = colors.cyan, bg = colors.darkCyan, gui = 'underline' },
 		})
 	end
 
