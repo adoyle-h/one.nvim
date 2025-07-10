@@ -1,4 +1,5 @@
 local config = require('one.config').config
+local colors = config.colors
 
 local M = {
 	'nvim-lualine/lualine.nvim',
@@ -50,6 +51,12 @@ local function bufferNumber()
 	return 'buf:' .. vim.api.nvim_get_current_buf()
 end
 
+
+local function winNumber()
+	return 'win:' .. vim.api.nvim_get_current_win()
+end
+
+
 local function location()
 	local row, col = table.unpack(vim.api.nvim_win_get_cursor(0))
 	local total = vim.api.nvim_buf_line_count(0)
@@ -61,12 +68,33 @@ local function spaces()
 	return printf('ts:%s sw:%s', vim.o.tabstop, vim.o.shiftwidth)
 end
 
+
+local wordCount = {
+	function()
+		local wc = vim.fn.wordcount()
+		local visual_chars = wc.visual_chars
+
+		if visual_chars then
+			return printf('󰈭 %s', visual_chars)
+		else
+			return ''
+		end
+	end,
+	separator = '',
+	padding = 0,
+	color = { fg = colors.orange },
+}
+
 local function my_sections(funcs)
-	return function()
-		local str = ''
-		for _, func in pairs(funcs) do str = str .. ' ' .. func() end
-		return str
-	end
+	return {
+		function()
+			local str = ''
+			for _, func in pairs(funcs) do str = str .. ' ' .. func() end
+			return str
+		end,
+		padding = 0,
+		separator = '',
+	}
 end
 
 local function theme(colors)
@@ -83,16 +111,28 @@ local function theme(colors)
 			c = { fg = colors.sec_c_fg, bg = sec_c_bg },
 			x = { fg = colors.sec_c_fg, bg = colors.sec_x_bg },
 			y = { fg = white, bg = colors.sec_y_bg },
-			z = { fg = black, bg = green },
+			z = { fg = black, bg = green, gui = '' },
 		},
 
-		insert = { a = { fg = black, bg = colors.blue, gui = 'bold' } },
+		insert = {
+			a = { fg = black, bg = colors.blue, gui = 'bold' },
+			z = { fg = black, bg = colors.blue, gui = '' },
+		},
 
-		visual = { a = { fg = black, bg = colors.orange, gui = 'bold' } },
+		visual = {
+			a = { fg = black, bg = colors.orange, gui = 'bold' },
+			z = { fg = black, bg = colors.orange, gui = '' },
+		},
 
-		replace = { a = { fg = black, bg = colors.purple, gui = 'bold' } },
+		replace = {
+			a = { fg = black, bg = colors.purple, gui = 'bold' },
+			z = { fg = black, bg = colors.purple, gui = '' },
+		},
 
-		command = { a = { fg = black, bg = colors.yellow, gui = 'bold' } },
+		command = {
+			a = { fg = black, bg = colors.yellow, gui = 'bold' },
+			z = { fg = black, bg = colors.yellow, gui = '' },
+		},
 
 		inactive = {
 			a = { fg = white, bg = grey, gui = 'bold' },
@@ -264,7 +304,7 @@ M.defaultConfig = function()
 			lualine_a = { getMode },
 			lualine_b = { { 'branch', icon = symbolMap.BRANCH } },
 			lualine_c = { filename },
-			lualine_x = { my_sections({ progress, location, spaces, bufferNumber }), 'filesize' },
+			lualine_x = { wordCount, my_sections({ progress, location, spaces, bufferNumber, winNumber }), { 'filesize', color = { fg = colors.cyan } } },
 			lualine_y = { 'filetype' },
 			lualine_z = { 'encoding', 'fileformat', mixLine, paste },
 		},
