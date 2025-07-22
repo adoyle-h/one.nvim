@@ -42,6 +42,6 @@ return {
 		{ { 'n', 'x' }, 'P', '<Plug>(YankyPutBefore)' },
 		{ { 'n', 'x' }, 'gp', '<Plug>(YankyGPutAfter)' },
 		{ { 'n', 'x' }, 'gP', '<Plug>(Y, optsankyGPutBefore)' },
-		{ 'n', '<space>y', ':Telescope yank_history<cr>' },
+		{ { 'n', 'x' }, '<space>y', ':Telescope yank_history<cr>' },
 	},
 }
