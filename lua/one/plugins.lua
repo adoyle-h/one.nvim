@@ -11,7 +11,6 @@ return function(Plug, Load, config)
 	Load 'notifier'
 	Load 'treesitter'
 	Load 'telescope'
-	Plug { 'echasnovski/mini.nvim', version = '*' } -- use stable branch
 
 	------------- UI plugins -------------
 	Load 'dressing'
