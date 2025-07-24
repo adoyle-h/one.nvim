@@ -137,8 +137,20 @@ M.defaultConfig = {
 	},
 }
 
+-- Since nvim 0.11, it add default keymaps "gr*" for LSP
+-- https://github.com/neovim/neovim/pull/28651
+-- But I prefer to use gr/gR/gi/gt/gd with rmagatti/goto-preview
+local function disableNvimLSPDefaultMapping()
+	vim.keymap.del('n', 'grr')
+	vim.keymap.del('n', 'grn')
+	vim.keymap.del('n', 'gri')
+	vim.keymap.del({ 'n', 'x' }, 'gra')
+end
+
 function M.config(config)
 	local conf = config.lsp
+
+	disableNvimLSPDefaultMapping()
 
 	vim.o.updatetime = conf.cursorHoldUptime
 
