@@ -40,6 +40,7 @@ return function(Plug, Load, config)
 	Load 'highlight-words'
 	Load 'increment'
 	Load 'markdown'
+	Load 'typst'
 	Load 'move'
 	Load 'neo-tree' -- neo-tree must put after move plugin
 	Load 'open-url'
