@@ -10,7 +10,61 @@ You can use `:OneUpdate` to update one.nvim to latest. Please read [the "Update"
 
 ## [Unreleased]
 
-[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v7.1.0...HEAD)
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v7.2.0...HEAD)
+
+
+<a name="v7.2.0"></a>
+## v7.2.0 (2025-07-26 01:23:55 +08:00)
+
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v7.1.0...v7.2.0)
+
+### New Features
+
+- support typst ([3d6a3b9](https://github.com/adoyle-h/one.nvim/commit/3d6a3b9d93404b92554b1d1ec8e657e32d511067))
+  > add OXY2DEV/markview.nvim
+  > add chomosuke/typst-preview.nvim (optional)
+- enable AI plugins && use codecompanion.nvim instead of avante.nivm ([3bd6a53](https://github.com/adoyle-h/one.nvim/commit/3bd6a532b5209b8d226eac5b1919e04c3aa7d896))
+  > If user prefers avante.nivm, use below settings:
+  > 
+  > require('one').setup {
+  >   plugins = {
+  >     { 'yetone/avante.nvim', disable = false },
+  >     { 'olimorris/codecompanion.nvim', disable = true },
+  >   }
+  > }
+  > 
+  > If user wants to disable AI plugins, set:
+  > 
+  > require('one').setup {
+  >   plugins = {
+  >     { 'ai', disable = true },
+  >   }
+  > }
+- **completion**: list words from all buffers in current tabpage ([0dbbd85](https://github.com/adoyle-h/one.nvim/commit/0dbbd852a22b6fef3d0a5a4ab643541a71fd959a))
+  > instead of the buffer of current window
+- **statusline**: turn on the dense mode of aerial.nvim for the context path in winbar ([4ec73c8](https://github.com/adoyle-h/one.nvim/commit/4ec73c8f780ac9982ff2146c61d615b527502c3d))
+- **statusline**: change details ([5eeb521](https://github.com/adoyle-h/one.nvim/commit/5eeb52116ffcd41fcf8ca88aadf4d885848fdf12))
+  > - show selected characters count in statusline with visual mode
+  > - show winid in statusline
+  > - change the highlight and style of middle sections
+  > - add fg=cyan for filesize
+
+### Bug Fixes
+
+- remove the nvim default keymaps for LSP ([08a9544](https://github.com/adoyle-h/one.nvim/commit/08a954421b852f8aacbde06ac5d5653136fa44f2))
+  > Since nvim 0.11, it add default keymaps "gr*" for LSP.
+  > https://github.com/neovim/neovim/pull/28651
+  > But I prefer to use gr/gR/gi/gt/gd with rmagatti/goto-preview.
+- remove mini.nvim ([58d1976](https://github.com/adoyle-h/one.nvim/commit/58d19760f7d8f9eed9ca4da5e5ecd80deae43fd7))
+- the options for vim.lsp.config ([f91e4c2](https://github.com/adoyle-h/one.nvim/commit/f91e4c287dbccd1b7dfba11bd1de34e2322a70ea))
+- **format**: support = to format and range format ([44b56d1](https://github.com/adoyle-h/one.nvim/commit/44b56d1b9d38040f402bc13eaf4cf8b25b659e2d))
+  > removed useless codes: lua/one/plugins/lsp/format.lua
+- **lsp**: show window border for lsp.buf.hover and signature_help ([4ff4afe](https://github.com/adoyle-h/one.nvim/commit/4ff4afefb2130eb809b805e1d014ec37d0001871))
+- **yank**: <space>y should show yank history in visual mode ([31377b8](https://github.com/adoyle-h/one.nvim/commit/31377b8279472a70d7fc70e3d5b332fded006a77))
+
+### Document Changes
+
+- update installation doc ([7105eb4](https://github.com/adoyle-h/one.nvim/commit/7105eb44f6ccc4fb2385c33877e046beba13d461))
 
 
 <a name="v7.1.0"></a>
