@@ -27,7 +27,6 @@ return {
 			enable = false,
 			filetypes = { 'md', 'rmd', 'quarto' },
 			ignore_buftypes = { 'nofile' },
-			ignore_previews = {},
 
 			modes = { 'n', 'no', 'c' },
 			hybrid_modes = {},
