@@ -1,11 +1,16 @@
 local M = { 'nvim-telescope/telescope.nvim' }
 
+M.deps = {
+	{ 'Marskey/telescope-sg' },
+}
+
 function M.config(config)
 	local telescope = require('telescope')
 
 	telescope.setup(config.telescope.main)
 
 	if pcall(require, 'notify') then telescope.load_extension('notify') end
+	if pcall(require, 'telescope._extensions.ast_grep') then telescope.load_extension('ast_grep') end
 end
 
 local function genCopy(actions, action_state, fields)
@@ -53,8 +58,8 @@ M.defaultConfig = function(config)
 	local mappingsCommon = {
 		['<C-j>'] = 'move_selection_next',
 		['<C-k>'] = 'move_selection_previous',
-		['<C-h>'] = { "<Left>", type = 'command' },
-		['<C-l>'] = { "<Right>", type = 'command' },
+		['<C-h>'] = { '<Left>', type = 'command' },
+		['<C-l>'] = { '<Right>', type = 'command' },
 		['<M-h>'] = 'preview_scrolling_left',
 		['<M-l>'] = 'preview_scrolling_right',
 		['<M-j>'] = 'results_scrolling_left',
@@ -72,6 +77,31 @@ M.defaultConfig = function(config)
 	local mappings = {
 		i = vim.tbl_extend('force', {}, mappingsCommon),
 		n = vim.tbl_extend('force', {}, mappingsCommon),
+	}
+
+	local extensions = {
+		heading = {
+			picker_opts = {
+				layout_config = { width = 0.8, preview_width = 0.5, preview_cutoff = 80 },
+				layout_strategy = 'horizontal',
+			},
+		},
+
+		live_grep_args = {
+			auto_quoting = true,
+			mappings = { -- extend mappings
+				i = { ['<C-\'>'] = require('telescope-live-grep-args.actions').quote_prompt() },
+			},
+		},
+
+		ast_grep = {
+			command = {
+				'ast-grep', -- For Linux, use `ast-grep` instead of `sg`
+				'--json=stream',
+			}, -- must have --json=stream
+			grep_open_files = false, -- search in opened files
+			lang = nil, -- string value, specify language for ast-grep `nil` for default
+		},
 	}
 
 	return {
@@ -223,21 +253,7 @@ M.defaultConfig = function(config)
 				diagnostics = {},
 			},
 
-			extensions = {
-				heading = {
-					picker_opts = {
-						layout_config = { width = 0.8, preview_width = 0.5, preview_cutoff = 80 },
-						layout_strategy = 'horizontal',
-					},
-				},
-
-				live_grep_args = {
-					auto_quoting = true,
-					mappings = { -- extend mappings
-						i = { ['<C-\'>'] = require('telescope-live-grep-args.actions').quote_prompt() },
-					},
-				},
-			},
+			extensions = extensions,
 		},
 	}
 end

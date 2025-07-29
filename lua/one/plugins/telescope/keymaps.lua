@@ -110,6 +110,7 @@ return function()
 		{ 'n', '<space>lf', ':Telescope lsp_document_symbols_filter<cr>', opts },
 		{ 'n', '<space>lS', ':Telescope lsp_workspace_symbols<cr>', opts },
 		{ 'n', '<space>lF', ':Telescope lsp_workspace_symbols_filter<cr>', opts },
+		{ 'n', '<space>A', ':Telescope ast_grep<cr>', opts },
 
 		{
 			'n',

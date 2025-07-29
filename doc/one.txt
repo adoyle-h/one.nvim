@@ -552,6 +552,7 @@ If bufferline plugin enabled, some keymaps will be overridden. See [Buffer Line]
 - `gt` = Open float window to preview type definition about the symbol under cursor
 - `gT` = Goto preview type definition about the symbol under cursor
 - `<space>a` = Selects a code action available at the current cursor position.
+- `<space>A` = Grep texts with ast_grep
 - `<leader>r` = Rename all references to the symbol under the cursor.
 - `gh` = Display hover information about the symbol under the cursor in a floating window. Calling the function twice will jump into the floating window.
   - `gh` in markdown files = Open a telescope picker to select a heading
