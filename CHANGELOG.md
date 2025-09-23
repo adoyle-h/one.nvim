@@ -10,7 +10,23 @@ You can use `:OneUpdate` to update one.nvim to latest. Please read [the "Update"
 
 ## [Unreleased]
 
-[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v7.2.0...HEAD)
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v7.2.1...HEAD)
+
+
+<a name="v7.2.1"></a>
+## v7.2.1 (2025-09-23 23:45:26 +08:00)
+
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v7.2.0...v7.2.1)
+
+### Bug Fixes
+
+- **codecompanion**: throw error when open codecompanion chat ([4596f05](https://github.com/adoyle-h/one.nvim/commit/4596f0534a386d9fc43522840d2b27a63a212960))
+  > auto_tool_mode is deleted in default config
+- **codecompanion**: adapters.opts is deprecated in latest version of codecompanion.nvim ([5aacefc](https://github.com/adoyle-h/one.nvim/commit/5aacefcb9af4acfbc5063560fbaf6c4e7651828c))
+- **lazy.nvim**: change default config options ([b29e282](https://github.com/adoyle-h/one.nvim/commit/b29e2820d18e0d0ede6589a196729ed259ea8912))
+  > - the maximum of concurrent tasks is double number of CPUs
+  > - change the git timeout from 120 to 180 seconds
+- **typst**: ignore_previews option is removed ([4b1e1d5](https://github.com/adoyle-h/one.nvim/commit/4b1e1d5961294f958ef818fecd4c568d41ff975d))
 
 
 <a name="v7.2.0"></a>
