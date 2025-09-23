@@ -225,7 +225,7 @@ local keymaps = {
 		modes = {
 			n = 'gf',
 		},
-		index = 15,
+		index = 45,
 		callback = 'keymaps.fold_code',
 		description = 'Fold code',
 	},
@@ -245,25 +245,35 @@ local keymaps = {
 		callback = 'keymaps.toggle_system_prompt',
 		description = 'Toggle the system prompt',
 	},
-	auto_tool_mode = {
-		modes = {
-			n = 'gta',
-		},
+	memory = {
+		modes = { n = 'gM' },
 		index = 18,
-		callback = 'keymaps.auto_tool_mode',
-		description = 'Toggle automatic tool mode',
+		callback = 'keymaps.clear_memory',
+		description = 'Clear memory',
+	},
+	yolo_mode = {
+		modes = { n = 'gty' },
+		index = 19,
+		callback = 'keymaps.yolo_mode',
+		description = 'YOLO mode toggle',
 	},
 	goto_file_under_cursor = {
 		modes = { n = 'gR' },
-		index = 19,
+		index = 20,
 		callback = 'keymaps.goto_file_under_cursor',
 		description = 'Open the file under cursor in a new tab.',
 	},
 	copilot_stats = {
 		modes = { n = 'gS' },
-		index = 20,
+		index = 21,
 		callback = 'keymaps.copilot_stats',
 		description = 'Show Copilot usage statistics',
+	},
+	super_diff = {
+		modes = { n = 'gD' },
+		index = 22,
+		callback = 'keymaps.super_diff',
+		description = 'Show Super Diff',
 	},
 }
 
