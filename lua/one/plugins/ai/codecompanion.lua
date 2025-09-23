@@ -458,8 +458,10 @@ local extensions = {
 
 M.defaultConfig = { 'codecompanion', {
 	adapters = {
-		opts = {
-			show_defaults = false, -- Set false, only display the adapters defined in your user configuration
+		http = {
+			opts = {
+				show_defaults = false, -- Set false, only display the adapters defined in your user configuration
+			},
 		},
 
 		-- ## Examples
