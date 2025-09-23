@@ -4,6 +4,7 @@ local One = require('one.one')
 local CM = require('one.config')
 local FT = require('one.filetype')
 local dynamic = require('one.plugins.completion.dynamic.source')
+local custom = require('one.plugins.completion.custom')
 
 local set_keymap = vim.keymap.set
 local set_hl = vim.api.nvim_set_hl
@@ -82,6 +83,14 @@ local plugOpts = {
 
 	{
 		name = 'completions',
+		iterator = function(props, name)
+			if not props then return end
+			dynamic.add(name, props)
+		end,
+	},
+
+	{
+		name = 'completion-sources',
 		iterator = function(props, name)
 			if not props then return end
 			dynamic.add(name, props)

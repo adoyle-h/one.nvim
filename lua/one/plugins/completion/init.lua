@@ -226,6 +226,9 @@ function M.config(config)
 		end
 	end
 
+	cmp.register_source('custom', require('one.plugins.completion.sources.custom'))
+	addNormalSrc('custom')
+
 	cmp.setup {
 		-- https://github.com/hrsh7th/nvim-cmp/wiki/Advanced-techniques#disabling-completion-in-certain-contexts-such-as-comments
 		enabled = function()
