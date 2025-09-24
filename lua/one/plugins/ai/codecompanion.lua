@@ -126,7 +126,7 @@ local keymaps = {
 	close = {
 		modes = {
 			n = 'q',
-			i = '_',
+			i = '<nop>',
 		},
 		index = 4,
 		callback = 'keymaps.close',
@@ -135,7 +135,6 @@ local keymaps = {
 	stop = {
 		modes = {
 			n = '<C-c>',
-			i = '_',
 		},
 		index = 5,
 		callback = 'keymaps.stop',
@@ -148,132 +147,6 @@ local keymaps = {
 		index = 6,
 		callback = 'keymaps.clear',
 		description = 'Clear Chat',
-	},
-	codeblock = {
-		modes = {
-			n = 'gc',
-		},
-		index = 7,
-		callback = 'keymaps.codeblock',
-		description = 'Insert Codeblock',
-	},
-	yank_code = {
-		modes = {
-			n = 'gy',
-		},
-		index = 8,
-		callback = 'keymaps.yank_code',
-		description = 'Yank Code',
-	},
-	pin = {
-		modes = {
-			n = 'gp',
-		},
-		index = 9,
-		callback = 'keymaps.pin_reference',
-		description = 'Pin Reference',
-	},
-	watch = {
-		modes = {
-			n = 'gw',
-		},
-		index = 10,
-		callback = 'keymaps.toggle_watch',
-		description = 'Watch Buffer',
-	},
-	next_chat = {
-		modes = {
-			n = '<C-]>',
-		},
-		index = 11,
-		callback = 'keymaps.next_chat',
-		description = 'Next Chat',
-	},
-	previous_chat = {
-		modes = {
-			n = '<C-[>',
-		},
-		index = 12,
-		callback = 'keymaps.previous_chat',
-		description = 'Previous Chat',
-	},
-	next_header = {
-		modes = {
-			n = ']]',
-		},
-		index = 13,
-		callback = 'keymaps.next_header',
-		description = 'Next Header',
-	},
-	previous_header = {
-		modes = {
-			n = '[[',
-		},
-		index = 14,
-		callback = 'keymaps.previous_header',
-		description = 'Previous Header',
-	},
-	change_adapter = {
-		modes = {
-			n = 'ga',
-		},
-		index = 15,
-		callback = 'keymaps.change_adapter',
-		description = 'Change adapter',
-	},
-	fold_code = {
-		modes = {
-			n = 'gf',
-		},
-		index = 45,
-		callback = 'keymaps.fold_code',
-		description = 'Fold code',
-	},
-	debug = {
-		modes = {
-			n = 'gd',
-		},
-		index = 16,
-		callback = 'keymaps.debug',
-		description = 'View debug info',
-	},
-	system_prompt = {
-		modes = {
-			n = 'gs',
-		},
-		index = 17,
-		callback = 'keymaps.toggle_system_prompt',
-		description = 'Toggle the system prompt',
-	},
-	memory = {
-		modes = { n = 'gM' },
-		index = 18,
-		callback = 'keymaps.clear_memory',
-		description = 'Clear memory',
-	},
-	yolo_mode = {
-		modes = { n = 'gty' },
-		index = 19,
-		callback = 'keymaps.yolo_mode',
-		description = 'YOLO mode toggle',
-	},
-	goto_file_under_cursor = {
-		modes = { n = 'gR' },
-		index = 20,
-		callback = 'keymaps.goto_file_under_cursor',
-		description = 'Open the file under cursor in a new tab.',
-	},
-	copilot_stats = {
-		modes = { n = 'gS' },
-		index = 21,
-		callback = 'keymaps.copilot_stats',
-		description = 'Show Copilot usage statistics',
-	},
-	super_diff = {
-		modes = { n = 'gD' },
-		index = 22,
-		callback = 'keymaps.super_diff',
-		description = 'Show Super Diff',
 	},
 }
 
