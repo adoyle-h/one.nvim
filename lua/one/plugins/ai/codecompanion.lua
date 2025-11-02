@@ -377,7 +377,7 @@ M.defaultConfig = { 'codecompanion', {
 	opts = {
 		log_level = 'INFO',
 		language = 'English',
-		send_code = false,
+		send_code = true,
 	},
 
 	strategies = strategies,
