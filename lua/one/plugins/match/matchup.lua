@@ -26,7 +26,7 @@ return {
 					stopline = 400,
 					timeout = 300,
 					insert_timeout = 60,
-					deferred = 0,
+					deferred = 1,
 					deferred_show_delay = 50,
 					deferred_hide_delay = 700,
 					hi_surround_always = 0,
