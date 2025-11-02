@@ -10,7 +10,20 @@ You can use `:OneUpdate` to update one.nvim to latest. Please read [the "Update"
 
 ## [Unreleased]
 
-[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v7.2.1...HEAD)
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v7.2.2...HEAD)
+
+
+<a name="v7.2.2"></a>
+## v7.2.2 (2025-11-02 23:48:10 +08:00)
+
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v7.2.1...v7.2.2)
+
+### Bug Fixes
+
+- **codecompanion**: allow send code to LLM ([cd3dd1f](https://github.com/adoyle-h/one.nvim/commit/cd3dd1f62467f8bf375f8803e338c6eb5ff35d87))
+- **codecompanion**: for variable selection, user cannot select the next one in completion pop window ([7e3aed9](https://github.com/adoyle-h/one.nvim/commit/7e3aed9dc0b9ae8361e3eea64b1fefa6e55e26bb))
+  > It's caused by the highlighting behavior of vim-matchup plugin.
+- **codecompanion**: change keymaps ([69270f3](https://github.com/adoyle-h/one.nvim/commit/69270f340c3f8ddd68893fe3283ddc92a4681234))
 
 
 <a name="v7.2.1"></a>
