@@ -1,10 +1,11 @@
 return {
 	'nvim-treesitter/nvim-treesitter-textobjects',
+	branch = 'main',
 
 	after = 'nvim-treesitter',
 
 	config = function(config)
-		require('nvim-treesitter.configs').setup { textobjects = config.select.textobjects }
+		require('nvim-treesitter').setup { textobjects = config.select.textobjects }
 	end,
 
 	defaultConfig = {

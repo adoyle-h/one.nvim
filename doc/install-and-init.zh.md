@@ -13,6 +13,7 @@
   - `pip2 install --upgrade --user pynvim` (这是可选的)
 - Git 与 curl
 - C 编译器与 libstdc++。([treesitter](https://github.com/nvim-treesitter/nvim-treesitter#requirements) 需要)
+- [tree-sitter-cli](https://github.com/tree-sitter/tree-sitter/tree/master/crates/cli)
 - [Nerd Font 字体][Nerd Font]。推荐 [DejaVuSansMonoForPowerline Nerd Font][font]。记得修改你的终端的字体设置。
 - [ripgrep(rg)](https://github.com/BurntSushi/ripgrep)
 - [luarocks](https://luarocks.org/)
@@ -63,7 +64,7 @@ git clone --single-branch https://github.com/adoyle-h/one.nvim.git "$PLUGIN_DIR"
 
 3. 如果下载插件失败。详见 [FAQ - 插件安装失败](./faq/install-failed.zh.md#插件安装失败)。
 
-4. nvim 启动后会自动下载 treesitter parsers。它们定义在 `config.treesitter.ensure_installed` 和 `config.treesitter.ignore_install`。如果安装失败，重启 nvim 或执行 `:TSInstall all` 来重装。
+4. 在 nvim 执行 `:TSEnsureInstall` 会下载安装 treesitter parsers。它们定义在 `config.treesitter.ensure_installed` 和 `config.treesitter.ignore_install`。如果安装失败，重启 nvim 再重试，或者检查你的网络。
 
 5. nvim 启动后会自动下载 LSP/DAP/Formatter/Linter，它们定义在 `config['mason-installer'].ensureInstalled`.
 

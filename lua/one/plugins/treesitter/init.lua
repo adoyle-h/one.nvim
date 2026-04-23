@@ -1,9 +1,13 @@
+local CM = require('one.config')
+
 -- NOTE: nvim-treesitter has many Breaking Changes
 -- Notice of Breaking Changes: https://github.com/nvim-treesitter/nvim-treesitter/issues/2293
 local M = {
 	'treesitter',
 
-	requires = { 'nvim-treesitter/nvim-treesitter' },
+	requires = {
+		{ 'nvim-treesitter/nvim-treesitter', branch = 'main' },
+	},
 
 	deps = {
 		require('one.plugins.treesitter.context'),
@@ -21,8 +25,6 @@ local function register_lang(lang, ft)
 		ts.language.register(lang, ft)
 		return
 	end
-	-- nvim version <= 0.8.3
-	require('nvim-treesitter.parsers').filetype_to_parsername[ft] = lang
 end
 
 M.defaultConfig = {
@@ -98,17 +100,20 @@ function M.config(config)
 	require('nvim-treesitter.install').prefer_git = conf.prefer_git
 
 	if config.proxy.github then
-		for name, parserConf in pairs(require('nvim-treesitter.parsers').get_parser_configs()) do
-			parserConf.install_info.url = util.proxyGithub(parserConf.install_info.url)
-			local fn = conf.parserConf[name]
-			if fn then fn(parserConf) end
+		-- rewrite install url for each parser
+		for name, parserConf in pairs(require('nvim-treesitter.parsers')) do
+			if parserConf ~= nil and parserConf.install_info then
+				parserConf.install_info.url = util.proxyGithub(parserConf.install_info.url)
+				local fn = conf.parserConf[name]
+				if fn then fn(parserConf) end
+			end
 		end
 	end
 
 	vim.opt.foldmethod = 'expr'
 	vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 
-	require('nvim-treesitter.configs').setup(conf)
+	require('nvim-treesitter').setup(conf)
 
 	for parserName, fts in pairs(conf.registerLang) do
 		for _, ft in pairs(fts) do --
@@ -116,5 +121,30 @@ function M.config(config)
 		end
 	end
 end
+
+M.autocmds = {
+	FileType = {
+		callback = function()
+			-- Enable treesitter highlighting and disable regex syntax
+			pcall(vim.treesitter.start)
+			-- Enable treesitter-based indentation (Experimental Featrue)
+			-- vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+		end,
+	},
+}
+
+M.commands = {
+	TSEnsureInstall = function()
+		local ensureInstalled = CM.config.treesitter.ensure_installed
+		local alreadyInstalled = require('nvim-treesitter.config').get_installed()
+		local parsersToInstall = vim.iter(ensureInstalled)
+			:filter(function(parser)
+				return not vim.tbl_contains(alreadyInstalled, parser)
+			end)
+			:totable()
+
+		require('nvim-treesitter').install(parsersToInstall)
+	end,
+}
 
 return M

@@ -13,6 +13,7 @@ You can use git clone to install. Or run nvim in container.
   - `pip2 install --upgrade --user pynvim` (it is optional)
 - Git and curl
 - A C compiler in your path and libstdc++ installed. (Required by [treesitter](https://github.com/nvim-treesitter/nvim-treesitter#requirements))
+- [tree-sitter-cli](https://github.com/tree-sitter/tree-sitter/tree/master/crates/cli)
 - [Nerd Font][]. Recommend [DejaVuSansMonoForPowerline Nerd Font][font]. Remember to change the font setting in your terminal.
 - [ripgrep(rg)](https://github.com/BurntSushi/ripgrep)
 - [luarocks](https://luarocks.org/)
@@ -63,7 +64,7 @@ Do [initialization](#initialization) and then press `nvim` to get started.
 
 3. When plugins installed failed. See [FAQ - Plugins Installed Failed](./faq/install-failed.md#plugins-installed-failed).
 
-4. It will auto download treesitter parsers, which defined in `config.treesitter.ensure_installed` and `config.treesitter.ignore_install`. If install failed, restart nvim or run `:TSInstall all` to install them.
+4. Press `:TSEnsureInstall` in nvim to install treesitter parsers, which defined in `config.treesitter.ensure_installed` and `config.treesitter.ignore_install`. If install failed, restart nvim and try again or check your network.
 
 5. It will auto download LSP/DAP/Formatter/Linter, which defined in `config['mason-installer'].ensureInstalled`.
 

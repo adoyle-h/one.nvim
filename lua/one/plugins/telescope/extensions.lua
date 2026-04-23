@@ -3,7 +3,7 @@ return {
 		desc = 'List nvim-treesitter parsers. 󰄲 means installed. 󰄱 is not. Press to install/update them.',
 
 		command = function()
-			local parsers = require('nvim-treesitter.parsers').available_parsers()
+			local parsers = require('nvim-treesitter.parsers')
 			local list = {}
 			local api = vim.api
 
