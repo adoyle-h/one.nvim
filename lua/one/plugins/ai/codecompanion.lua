@@ -109,7 +109,7 @@ local keymaps = {
 	send = {
 		modes = {
 			n = { '<CR>', '<C-s>' },
-			i = '<C-s>',
+			i = { '<C-CR>', '<C-s>' },
 		},
 		index = 2,
 		callback = 'keymaps.send',
