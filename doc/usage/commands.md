@@ -7,8 +7,9 @@ Useful commands that user should know.
 - `MasonInstall <tool>`
 - `OneShowConfig`, `OneShowPlugins`, `OneUpdate`, `OneReset`
 - `TSInstall <type>` and `TSUpdate <type>` : install/update treesitter parsers.
-- `TSHighlightCapturesUnderCursor` and `TSCaptureUnderCursor` and `TSNodeUnderCursor`
-- `TSPlaygroundToggle` and `TSHighlightCapturesUnderCursor`
+- `TSEnsureInstall` : To install ensured treesitter parsers.
+<!-- - `TSHighlightCapturesUnderCursor` and `TSCaptureUnderCursor` and `TSNodeUnderCursor` -->
+<!-- - `TSPlaygroundToggle` and `TSHighlightCapturesUnderCursor` -->
 - `Space2Tab` and `Tab2Space`
 - `IconPickerYank` and `IconPickerInsert` and `IconPickerNormal`
 - `Gitsigns <command>`
