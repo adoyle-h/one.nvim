@@ -1,5 +1,6 @@
 return {
 	'klen/nvim-test',
+	disable = true,
 
 	after = 'nvim-treesitter', -- it requires 'nvim-treesitter.ts_utils'
 
