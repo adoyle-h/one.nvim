@@ -154,7 +154,7 @@ function M.config(config)
 
 	vim.o.updatetime = conf.cursorHoldUptime
 
-	vim.lsp.set_log_level(conf.log.level)
+	vim.lsp.log.set_level(conf.log.level)
 	vim.diagnostic.config(conf.diagnostic)
 
 	-- https://github.com/hrsh7th/cmp-nvim-lsp#capabilities

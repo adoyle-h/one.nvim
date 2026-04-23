@@ -6,7 +6,7 @@ You can use git clone to install. Or run nvim in container.
 
 ## Dependencies
 
-- Neovim 0.11.0 or later
+- Neovim 0.12.0 or later
 - python3、pip3
 - nvim python provider
   - `pip3 install --upgrade --user pynvim`

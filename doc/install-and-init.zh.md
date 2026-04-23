@@ -6,7 +6,7 @@
 
 ## 依赖
 
-- Neovim 0.11.0 或之后版本
+- Neovim 0.12.0 或之后版本
 - python3、pip3
 - nvim python provider
   - `pip3 install --upgrade --user pynvim`
