@@ -5,37 +5,50 @@ local M = {
 	'lukas-reineke/indent-blankline.nvim',
 	desc = 'Show indent line',
 	after = 'nvim-treesitter',
-	tag = 'v2.20.8',
-
-	highlights = {
-		IndentBlanklineChar = { fg = colors.grey1 },
-		IndentBlanklineContextChar = { fg = colors.purple },
-	},
 }
 
 M.defaultConfig = {
 	'indentLine',
 	{
-		line = '▏', -- '┊', '󰇙', '⎜', '⎸', '│', '⎜', '⎜', '⎜'
-		excludeFileType = {
-			'alpha', -- goolord/alpha-nvim, see plugins/alpha.lua
+		-- :h ibl
+		enabled = true,
+		debounce = 100,
+
+		indent = {
+			char = '▏', -- '┊', '󰇙', '⎜', '⎸', '│', '⎜', '⎜', '⎜'
+			tab_char = '▏',
+			highlight = 'IblIndent',
+			smart_indent_cap = true,
+			priority = 1,
+			repeat_linebreak = true,
 		},
-		opts = { -- :h indent_blankline
-			-- space_char_blankline = " ",
-			show_current_context = true,
-			show_current_context_start = false,
+
+		whitespace = {
+			highlight = 'IblWhitespace',
+			remove_blankline_trail = false,
+		},
+
+		scope = {
+			enabled = true,
+			show_start = false,
+			show_end = false,
+			injected_languages = true,
+			highlight = 'IblScope',
+			priority = 1024,
+		},
+
+		exclude = {
+			filetypes = { 'alpha' },
+			buftypes = { 'terminal' },
 		},
 	},
 }
 
 function M.config()
-	local conf = config.indentLine
-
-	vim.g.indent_blankline_char = conf.line
-	vim.g.indent_blankline_context_char = conf.line
-	vim.g.indent_blankline_filetype_exclude = conf.excludeFileType
-
-	require('indent_blankline').setup(conf.opts)
+	vim.api.nvim_set_hl(0, 'IblWhitespace', { bg = colors.black })
+	vim.api.nvim_set_hl(0, 'IblIndent', { fg = colors.grey2 })
+	vim.api.nvim_set_hl(0, 'IblScope', { fg = colors.purple })
+	require('ibl').setup(config.indentLine)
 end
 
 return M
