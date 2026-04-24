@@ -10,7 +10,39 @@ You can use `:OneUpdate` to update one.nvim to latest. Please read [the "Update"
 
 ## [Unreleased]
 
-[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v7.2.2...HEAD)
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v8.0.0...HEAD)
+
+
+<a name="v8.0.0"></a>
+## v8.0.0 (2026-04-24 07:34:54 +08:00)
+
+[Full Changes](https://github.com/adoyle-h/one.nvim/compare/v7.2.2...v8.0.0)
+
+### Bug Fixes
+
+- disable nvim-treesitter/playground ([11f66d2](https://github.com/adoyle-h/one.nvim/commit/11f66d20b26999eca84c55cea0759617e0465455))
+- disable nvim-test ([eba55e7](https://github.com/adoyle-h/one.nvim/commit/eba55e77e9aec40b71dbc4d8c7c994c6976cc792))
+  > Because nvim-test is incompatible with nvim-treesitter (main branch)
+- treesitter has breaking changes with nvim 0.12 ([7e46abd](https://github.com/adoyle-h/one.nvim/commit/7e46abd9b04b5c132edf34a9b7f63b36cded7147))
+  > User should install tree-sitter-cli on local host. And reinstall treesitter parsers.
+  > Follow https://www.qu8n.com/posts/treesitter-migration-guide-for-nvim-0-12
+  > 
+  > BREAKING CHANGES:
+  > 
+  > upgrade treesitter from master branch to main branch that includes breaking changes.
+  > 
+  > Signed-off-by: ADoyle <adoyle.h[@gmail](https://github.com/gmail).com>
+- nvim api deprecated in v0.12 ([9e487bc](https://github.com/adoyle-h/one.nvim/commit/9e487bce2c34314eb28ccdd6221bdff2ab9353af))
+  > BREAKING CHANGES:
+  > 
+  > one.nvim now only compatible with v0.12+
+  > 
+  > Signed-off-by: ADoyle <adoyle.h[@gmail](https://github.com/gmail).com>
+- **codecompanion**: add keymap `<C-CR>` to send message ([91b306a](https://github.com/adoyle-h/one.nvim/commit/91b306a9ed507a00eb372d21825ab70be29f9815))
+  > Signed-off-by: ADoyle <adoyle.h[@gmail](https://github.com/gmail).com>
+- **indent-line**: upgrade indent-line v2 to v3 ([88e0a01](https://github.com/adoyle-h/one.nvim/commit/88e0a01ba2b28247306e6653eb8de825cb753cc7))
+- **nvim-surround**: migrate v3 to v4 ([a72be15](https://github.com/adoyle-h/one.nvim/commit/a72be15ff80b608ca5fa28a13f72d44135705fd5))
+  > Signed-off-by: ADoyle <adoyle.h[@gmail](https://github.com/gmail).com>
 
 
 <a name="v7.2.2"></a>
