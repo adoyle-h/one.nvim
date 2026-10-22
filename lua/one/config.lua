@@ -25,6 +25,7 @@ function CM.setup(conf)
 	config._revision = CM.config._revision and (CM.config._revision + 1) or 1
 
 	local proxyGithub = config.proxy.github
+	util.proxyGithub = function(url) return url end
 	if type(proxyGithub) == 'string' and #proxyGithub > 0 then
 		if not vim.endswith(proxyGithub, '/') then
 			proxyGithub = proxyGithub .. '/'

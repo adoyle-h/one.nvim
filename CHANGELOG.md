@@ -12,6 +12,10 @@ You can use `:OneUpdate` to update one.nvim to latest. Please read [the "Update"
 
 [Full Changes](https://github.com/adoyle-h/one.nvim/compare/v8.0.0...HEAD)
 
+### Bug Fixes
+
+- reset the GitHub URL proxy when setup is called with the default config
+
 
 <a name="v8.0.0"></a>
 ## v8.0.0 (2026-04-24 07:34:54 +08:00)
