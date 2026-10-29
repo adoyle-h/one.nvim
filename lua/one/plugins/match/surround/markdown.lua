@@ -12,6 +12,10 @@ M.filetypes.markdown = function(args)
 		vim.api.nvim_feedkeys('2ds*', 'm', false)
 	end, { silent = true, desc = 'unbold text', buffer = args.buf })
 
+	vim.keymap.set('v', '<M-l>', function()
+		vim.api.nvim_feedkeys('sl', 'x', false)
+	end, { silent = true, desc = 'add [text](link)', buffer = args.buf })
+
 	require('nvim-surround').buffer_setup({
 		surrounds = {
 			-- Surround markdown link title, using clipboard contents.

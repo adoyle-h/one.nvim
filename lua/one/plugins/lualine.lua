@@ -79,7 +79,7 @@ local wordCount = {
 		local visual_chars = wc.visual_chars
 
 		if visual_chars then
-			return printf('󰈭 %s', visual_chars)
+			return printf(' 󰈭 %s', visual_chars)
 		else
 			return ''
 		end
@@ -88,6 +88,25 @@ local wordCount = {
 	padding = 0,
 	color = { fg = colors.orange },
 }
+
+local lineCount = {
+	function()
+		local mode = vim.api.nvim_get_mode().mode
+		if not (mode == 'v' or mode == 'V' or mode == '\22') then
+			return ''
+		end
+
+		local start = vim.fn.line('v')
+		local finish = vim.api.nvim_win_get_cursor(0)[1]
+		local count = math.abs(finish - start) + 1
+
+		return printf(' 󰬓 %s', count)
+	end,
+	separator = '',
+	padding = 0,
+	color = { fg = colors.orange },
+}
+
 
 local function my_sections(funcs)
 	return {
@@ -310,7 +329,7 @@ M.defaultConfig = function()
 			lualine_a = { getMode },
 			lualine_b = { { 'branch', icon = symbolMap.BRANCH } },
 			lualine_c = { filename },
-			lualine_x = { wordCount, my_sections({ progress, location, spaces, bufferNumber, winNumber }), { 'filesize', color = { fg = colors.cyan } } },
+			lualine_x = { lineCount, wordCount, my_sections({ progress, location, spaces, bufferNumber, winNumber }), { 'filesize', color = { fg = colors.cyan } } },
 			lualine_y = { 'filetype' },
 			lualine_z = { 'encoding', 'fileformat', mixLine, paste },
 		},
