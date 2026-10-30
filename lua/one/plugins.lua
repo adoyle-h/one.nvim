@@ -49,6 +49,7 @@ return function(Plug, Load, config)
 	Load 'table'
 	Load 'trailing'
 	Load 'undotree'
+	Load 'undotree-builtin'
 	Load 'window'
 	Load 'abbreviation'
 	Load 'terminal'

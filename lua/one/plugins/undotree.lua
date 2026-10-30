@@ -2,6 +2,7 @@ local util = require('one.util')
 
 local M = {
 	'simnalamburt/vim-mundo',
+	disable = true,
 	desc = 'undo history tree',
 	on = 'UndotreeToggle',
 	keymaps = { { 'n', '<space>u', ':MundoToggle<CR>' } },
