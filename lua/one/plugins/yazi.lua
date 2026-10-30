@@ -1,6 +1,7 @@
 return {
 	'mikavilpas/yazi.nvim',
 
+	disable = true,
 	lazy = true,
 	cmd = 'Yazi',
 
