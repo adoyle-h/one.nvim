@@ -444,6 +444,7 @@ If bufferline plugin enabled, some keymaps will be overridden. See [Buffer Line]
 - `gh` in markdown files = Open a telescope picker to select a heading
 - `<M-b>` in visual mode = bold selected text (add surrounding pair with `**`)
 - `<M-B>` = unbold text (remove surrounding pair with `**`)
+- `<M-l>` in visual mode = add `[selected text](url)` (you should copy url before)
 - `sl` in visual mode = add link to text from system clipboard
 - `sL` in visual mode = add link to text from nvim clipboard
 - `dsl` = remove markdown link
